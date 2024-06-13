@@ -38,7 +38,7 @@
             // Replace these with your actual ezShip account details and return URL
     const suID = 'hoiming.yeung@gmail.com';
     const processID = 'ORDER_' + new Date().getTime(); // Unique process ID for the order
-    const rtURL = 'https://the2dge.github.io/ezShip'; // URL where ezShip will send the data
+    const rtURL = 'https://the2dge.github.io/ezShip/return.html'; // URL where ezShip will send the data
 
     // Construct the ezShip map URL with required parameters
     const url = `https://map.ezship.com.tw/ezship_map_web.jsp?suID=${suID}&processID=${processID}&rtURL=${encodeURIComponent(rtURL)}`;
