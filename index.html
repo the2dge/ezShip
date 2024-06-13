@@ -1,0 +1,52 @@
+
+</!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ezShip TEST</title>
+   <style type="text/css">
+       .checkout-btn {
+            display: block;
+            width: 100px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+   </style>
+</head>
+<body>
+<button type="button" id="ezShipBtn" class="checkout-btn">請選 超商</button>
+
+<script>
+    const ezShipBtn = document.getElementById("ezShipBtn");
+    ezShipBtn.onclick = function() {
+        ezShipPopup();
+    };
+    function ezShipPopup() {
+        try {
+            // Replace these with your actual ezShip account details and return URL
+    const suID = 'hoiming.yeung@gmail.com';
+    const processID = 'ORDER_' + new Date().getTime(); // Unique process ID for the order
+    const rtURL = 'https://the2dge.github.io/ezShip'; // URL where ezShip will send the data
+
+    // Construct the ezShip map URL with required parameters
+    const url = `https://map.ezship.com.tw/ezship_map_web.jsp?suID=${suID}&processID=${processID}&rtURL=${encodeURIComponent(rtURL)}`;
+
+            console.log("Opening ezShip popup with URL:", url);
+            window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
+        } catch (error) {
+            console.error("Error in ezShipPopup:", error);
+        }
+    }
+</script>
+</body>
+</html>
