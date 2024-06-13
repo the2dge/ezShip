@@ -50,7 +50,7 @@
         }
     };
     // Handle the return data from ezShip
-    static handleEzShipReturn(data) {
+    function handleEzShipReturn(data) {
         try {
             const shippingAddress = `${data.stName}, ${data.stAddr}, ${data.stCate} ${data.stCode}`;
             document.getElementById("shippingAddress").value = shippingAddress;
