@@ -14,9 +14,14 @@
                 stCate: urlParams.get('stCate'),
                 stCode: urlParams.get('stCode')
             };
-            // Send the ezShip data back to the main window
-            window.opener.postMessage(ezShipData, '*');
-            window.close();
+            
+            if (window.opener) {
+                // Send the ezShip data back to the main window
+                window.opener.postMessage(ezShipData, '*');
+                window.close();
+            } else {
+                console.error("window.opener is null. Cannot send message to the main window.");
+            }
         }
 
         window.onload = sendEzShipDataBack;
