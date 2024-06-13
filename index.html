@@ -58,6 +58,13 @@
             console.error("Error in handleEzShipReturn:", error);
         }
     }
+    // Listen for messages from the ezShip return page
+        window.addEventListener('message', function(event) {
+            // Ensure the message is from the expected origin
+            if (event.origin === window.location.origin) {
+                handleEzShipReturn(event.data);
+            }
+        }, false);
 </script>
 </body>
 </html>
