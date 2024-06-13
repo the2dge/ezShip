@@ -24,6 +24,8 @@
    </style>
 </head>
 <body>
+<h3>SHIPPING ADDRESS</h3>   
+<input type="text" id="shippingAddress" name="shippingAddress" readonly>
 <button type="button" id="ezShipBtn" class="checkout-btn">請選 超商</button>
 
 <script>
@@ -45,6 +47,15 @@
             window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
         } catch (error) {
             console.error("Error in ezShipPopup:", error);
+        }
+    };
+    // Handle the return data from ezShip
+    static handleEzShipReturn(data) {
+        try {
+            const shippingAddress = `${data.stName}, ${data.stAddr}, ${data.stCate} ${data.stCode}`;
+            document.getElementById("shippingAddress").value = shippingAddress;
+        } catch (error) {
+            console.error("Error in handleEzShipReturn:", error);
         }
     }
 </script>
