@@ -1,87 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ezShip TEST</title>
-    <style type="text/css">
-        .checkout-btn {
-            display: block;
-            width: 100px;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .checkout-btn:hover {
-            background-color: #218838;
-        }
-    </style>
-</head>
-<body>
-    <h3>SHIPPING ADDRESS</h3>
-    <input type="text" id="shippingAddress" name="shippingAddress" readonly>
-    <button type="button" id="ezShipBtn" class="checkout-btn">請選 超商</button>
-
+  <head>
+    <title>電子地圖連接模擬</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  </head>
+  <body>
+    <p align="center"><b>電子地圖連接模擬</b></p>
+    <form id="simulation-form">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border-collapse: collapse">
+        <tr>
+          <td align="center">
+            <input type="submit" value="選擇門市">
+            <input type="hidden" name="suID"  value="hoiming.yeung@gmail.com">
+            <input type="hidden" name="processID" value="155922">
+            <input type="hidden" name="stCate" value="<%=s_stCate%>">
+            <input type="hidden" name="stCode" value="<%=s_stCode%>">
+            <input type="hidden" name="rtURL"  value="https://ez-ship.vercel.app/">
+            <input type="hidden" name="webPara" value="optionalPage">
+          </td>
+        </tr>
+      </table>
+    </form>
+    <hr>
     <script>
-        const ezShipBtn = document.getElementById("ezShipBtn");
-        ezShipBtn.onclick = function() {
-            ezShipPopup();
-        };
+      const form = document.getElementById('simulation-form');
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent default form submission
 
-        function ezShipPopup() {
-            try {
-                const suID = 'hoiming.yeung@gmail.com';
-                const processID = 'ORDER_' + new Date().getTime(); // Unique process ID for the order
-                const rtURL = 'https://ez-ship.vercel.app/api/return'; // URL where ezShip will send the data
+        const formData = new FormData(form);
 
-                // Construct the ezShip map URL with required parameters
-                const url = `https://map.ezship.com.tw/ezship_map_web.jsp?suID=${suID}&processID=${processID}&rtURL=${encodeURIComponent(rtURL)}`;
-
-                console.log("Opening ezShip popup with URL:", url);
-                window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
-            } catch (error) {
-                console.error("Error in ezShipPopup:", error);
-            }
-        }
-
-        // Handle the return data from ezShip
-        function handleEzShipReturn(data) {
-            try {
-                const shippingAddress = `${data.stName}, ${data.stAddr}, ${data.stCate} ${data.stCode}`;
-                document.getElementById("shippingAddress").value = shippingAddress;
-            } catch (error) {
-                console.error("Error in handleEzShipReturn:", error);
-            }
-        }
-
-        // Listen for messages from the ezShip return page
-        window.addEventListener('message', function(event) {
-            handleEzShipReturn(event.data);
-        }, false);
-
-        // Function to get URL parameters (for testing purposes)
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(window.location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // For testing: Load data from URL parameters (if any)
-        window.onload = function() {
-            const stName = getUrlParameter('stName');
-            const stAddr = getUrlParameter('stAddr');
-            const stCate = getUrlParameter('stCate');
-            const stCode = getUrlParameter('stCode');
-            if (stName && stAddr && stCate && stCode) {
-                handleEzShipReturn({ stName, stAddr, stCate, stCode });
-            }
-        };
+        fetch('/api/return', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          // Handle the response from your Vercel API route
+          if (response.ok) {
+            return response.text();
+          } else {
+            throw new Error('Error: ' + response.status);
+          }
+        })
+        .then(data => {
+          // Process the response data
+          console.log(data);
+          // Display or handle the data as needed
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      });
     </script>
-</body>
+  </body>
 </html>
