@@ -1,18 +1,29 @@
 export default (req, res) => {
-  const { query, url } = req;
+  const { method, query } = req;
 
-  // Log the full URL to see what is being received
-  console.log('998 Full request URL:', req.url);
+  // Log the request method
+  console.log('Request method:', method);
 
-  // Log the query parameters
-  console.log('Query parameters:', query);
-
-  const ezShipData = {
-    stName: query.stName,
-    stAddr: query.stAddr,
-    stCate: query.stCate,
-    stCode: query.stCode,
-  };
+  // Handle GET and POST requests
+  let ezShipData;
+  if (method === 'GET') {
+    ezShipData = {
+      stName: query.stName,
+      stAddr: query.stAddr,
+      stCate: query.stCate,
+      stCode: query.stCode,
+    };
+  } else if (method === 'POST') {
+    const body = req.body;
+    ezShipData = {
+      stName: body.stName,
+      stAddr: body.stAddr,
+      stCate: body.stCate,
+      stCode: body.stCode,
+    };
+  } else {
+    return res.status(405).send('Method Not Allowed');
+  }
 
   // Log the ezShipData object
   console.log('ezShipData:', ezShipData);
