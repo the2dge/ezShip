@@ -1,23 +1,22 @@
-export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    const formData = req.body;
+export default (req, res) => {
+  const { query, url } = req;
 
-    try {
-      const ezShipResponse = await fetch('https://map.ezship.com.tw/ezship_map_web.jsp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData),
-      });
+  // Log the full URL to see what is being received
+  console.log('998 Full request URL:', req.url);
 
-      const data = await ezShipResponse.text();
-      res.status(200).send(data);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Error fetching data from ezShip' });
-    }
-  } else {
-    res.status(405).json({ error: 'Method not allowed' });
-  }
-}
+  // Log the query parameters
+  console.log('Query parameters:', query);
+
+  const ezShipData = {
+    stName: query.stName,
+    stAddr: query.stAddr,
+    stCate: query.stCate,
+    stCode: query.stCode,
+  };
+
+  // Log the ezShipData object
+  console.log('ezShipData:', ezShipData);
+
+  const redirectUrl = `https://ez-ship.vercel.app/index.html?${new URLSearchParams(ezShipData).toString()}`;
+  res.redirect(redirectUrl);
+};
