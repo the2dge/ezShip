@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ezShip Return</title>
     <script>
-        // Extract ezShip data from URL parameters and send it back to the main window
         function sendEzShipDataBack() {
             const urlParams = new URLSearchParams(window.location.search);
             const ezShipData = {
@@ -16,7 +15,6 @@
             };
             
             if (window.opener) {
-                // Send the ezShip data back to the main window
                 window.opener.postMessage(ezShipData, '*');
                 window.close();
             } else {
