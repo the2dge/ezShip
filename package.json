@@ -1,0 +1,10 @@
+{
+  "name": "ez-ship",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "micro": "^9.3.4"
+  }
+}
