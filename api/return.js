@@ -7,6 +7,6 @@ export default (req, res) => {
     stCode: query.stCode,
   };
 
-  const redirectUrl = `https://your-project-name.vercel.app/index.html?${new URLSearchParams(ezShipData).toString()}`;
+  const redirectUrl = `https://ez-ship.vercel.app/index.html?${new URLSearchParams(ezShipData).toString()}`;
   res.redirect(redirectUrl);
 };
