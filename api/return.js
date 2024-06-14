@@ -1,12 +1,16 @@
-export default (req, res) => {
-  const { method, query } = req;
+import { parse } from 'url';
+import { json } from 'micro';
+
+export default async (req, res) => {
+  const { method } = req;
 
   // Log the request method
   console.log('Request method:', method);
 
-  // Handle GET and POST requests
-  let ezShipData;
+  let ezShipData = {};
+
   if (method === 'GET') {
+    const query = parse(req.url, true).query;
     ezShipData = {
       stName: query.stName,
       stAddr: query.stAddr,
@@ -14,7 +18,7 @@ export default (req, res) => {
       stCode: query.stCode,
     };
   } else if (method === 'POST') {
-    const body = req.body;
+    const body = await json(req);
     ezShipData = {
       stName: body.stName,
       stAddr: body.stAddr,
