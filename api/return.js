@@ -1,5 +1,7 @@
 export default (req, res) => {
-  const { query } = req;
+  const { query, url } = req;
+
+  console.log('Full request URL:', url); // Log the full request URL
 
   console.log('Query parameters:', query); // Log the query parameters
 
