@@ -3,8 +3,47 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ezShip TEST</title>
 </head>
 <body>
-  <iframe style="height: 600px; width: 100%" src="https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec"></iframe>
+    <h3>SHIPPING ADDRESS</h3>
+    <input type="text" id="shippingAddress" name="shippingAddress" readonly>
+    <div id="shippingInfo"></div>
+    <iframe id="appsScriptIframe" style="height: 600px; width: 100%" src="https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec"></iframe>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(window.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Extract parameters from URL
+        window.onload = function() {
+            const stName = getUrlParameter('stName');
+            const stAddr = getUrlParameter('stAddr');
+            const stCate = getUrlParameter('stCate');
+            const stCode = getUrlParameter('stCode');
+
+            if (stName && stAddr && stCate && stCode) {
+                const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
+                document.getElementById("shippingAddress").value = shippingAddress;
+                document.getElementById("shippingInfo").innerText = `Selected Store: ${shippingAddress}`;
+
+                // Send data to iframe
+                const iframe = document.getElementById("appsScriptIframe");
+                iframe.onload = function() {
+                    iframe.contentWindow.postMessage({
+                        stName: stName,
+                        stAddr: stAddr,
+                        stCate: stCate,
+                        stCode: stCode
+                    }, '*');
+                };
+            }
+        };
+    </script>
 </body>
 </html>
