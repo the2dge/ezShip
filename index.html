@@ -3,85 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ezShip TEST</title>
-    <style type="text/css">
-        .checkout-btn {
-            display: block;
-            width: 100px;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .checkout-btn:hover {
-            background-color: #218838;
-        }
-    </style>
 </head>
 <body>
-    <h3>SHIPPING ADDRESS</h3>
-    <input type="text" id="shippingAddress" name="shippingAddress" readonly>
-    <button type="button" id="ezShipBtn" class="checkout-btn">請選 超商</button>
-
-    <script>
-        const ezShipBtn = document.getElementById("ezShipBtn");
-        ezShipBtn.onclick = function() {
-            ezShipPopup();
-        };
-
-        function ezShipPopup() {
-            try {
-                const suID = 'hoiming.yeung@gmail.com';
-                const processID = 'ORDER_' + new Date().getTime(); // Unique process ID for the order
-                const rtURL = 'https://asia-east1-cloudprintfunction.cloudfunctions.net/ezShip'; // URL where ezShip will send the data
-
-                // Construct the ezShip map URL with required parameters
-                const url = `https://map.ezship.com.tw/ezship_map_web.jsp?suID=${suID}&processID=${processID}&rtURL=${encodeURIComponent(rtURL)}`;
-
-                console.log("Opening ezShip popup with URL:", url);
-                window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
-            } catch (error) {
-                console.error("Error in ezShipPopup:", error);
-            }
-        }
-
-        // Handle the return data from ezShip
-        function handleEzShipReturn(data) {
-            try {
-                const shippingAddress = `${data.stName}, ${data.stAddr}, ${data.stCate} ${data.stCode}`;
-                document.getElementById("shippingAddress").value = shippingAddress;
-            } catch (error) {
-                console.error("Error in handleEzShipReturn:", error);
-            }
-        }
-
-        // Listen for messages from the ezShip return page
-        window.addEventListener('message', function(event) {
-            handleEzShipReturn(event.data);
-        }, false);
-
-        // Function to get URL parameters (for testing purposes)
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(window.location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // For testing: Load data from URL parameters (if any)
-        window.onload = function() {
-            const stName = getUrlParameter('stName');
-            const stAddr = getUrlParameter('stAddr');
-            const stCate = getUrlParameter('stCate');
-            const stCode = getUrlParameter('stCode');
-            if (stName && stAddr && stCate && stCode) {
-                handleEzShipReturn({ stName, stAddr, stCate, stCode });
-            }
-        };
-    </script>
+  <iframe style="height: 600px; width: 100%" src="https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec"></iframe>
 </body>
 </html>
