@@ -29,8 +29,8 @@
             const stCode = getUrlParameter('stCode');
             
             const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
-            document.getElementById("shippingAddress").value = shippingAddress;
-            document.getElementById("shippingInfo").innerText = `Selected Store: ${shippingAddress}`;
+         //   document.getElementById("shippingAddress").value = shippingAddress;
+         //   document.getElementById("shippingInfo").innerText = `Selected Store: ${shippingAddress}`;
 
             // Construct iframe src URL with query parameters
             const iframeSrc = `https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec?${new URLSearchParams({ stName, stAddr, stCate, stCode }).toString()}`;
