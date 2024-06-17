@@ -16,14 +16,23 @@
                 handleEzShipReturn(event.data);
             }
         }, false);
-       // Handle the return data from ezShip
-        function handleEzShipReturn(data) {
-            try {
-                const shippingAddress = `${data.stName}, ${data.stAddr}, ${data.stCate} ${data.stCode}`;
-                document.getElementById("shippingAddress").value = shippingAddress;
-            } catch (error) {
-                console.error("Error in handleEzShipReturn:", error);
+       // Function to get URL parameters (for testing purposes)
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(window.location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // For testing: Load data from URL parameters (if any)
+        window.onload = function() {
+            const stName = getUrlParameter('stName');
+            const stAddr = getUrlParameter('stAddr');
+            const stCate = getUrlParameter('stCate');
+            const stCode = getUrlParameter('stCode');
+            if (stName && stAddr && stCate && stCode) {
+                handleEzShipReturn({ stName, stAddr, stCate, stCode });
             }
-        } </script>
+        }; </script>
 </body>
 </html>
