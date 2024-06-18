@@ -4,43 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ezShip TEST</title>
-    <style>
-        body{margin: 0; padding: 0;}
-    </style>
 </head>
 <body>
-    
-  <!--  <input type="text" id="shippingAddress" name="shippingAddress" readonly-->
-    <div id="shippingInfo"></div>
-    <!-- Embed the Apps Script Web App -->
-    <iframe id="appsScriptIframe" style="height: 800px; width: 100%" src=""></iframe>
-
-    <script>
-        // Function to get URL parameters
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(window.location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        // Extract parameters from URL and set the iframe src
-        window.onload = function() {
-            const stName = getUrlParameter('stName');
-            const stAddr = getUrlParameter('stAddr');
-            const stCate = getUrlParameter('stCate');
-            const stCode = getUrlParameter('stCode');
-            
-            const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
-         //   document.getElementById("shippingAddress").value = shippingAddress;
-         //   document.getElementById("shippingInfo").innerText = `Selected Store: ${shippingAddress}`;
-
-            // Construct iframe src URL with query parameters
-            const iframeSrc = `https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec?${new URLSearchParams({ stName, stAddr, stCate, stCode }).toString()}`;
-
-            // Set iframe src
-            document.getElementById("appsScriptIframe").src = iframeSrc;
-        };
-    </script>
+    <iframe style="height: 600px; width: 100%" src="https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec"></iframe>
 </body>
 </html>
