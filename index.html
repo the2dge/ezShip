@@ -44,7 +44,8 @@
     const url = `https://map.ezship.com.tw/ezship_map_web.jsp?suID=${suID}&processID=${processID}&rtURL=${encodeURIComponent(rtURL)}`;
 
             console.log("Opening ezShip popup with URL:", url);
-            window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
+            window.location.href = url;
+          //  window.open(url, 'ezship', 'width=1000,height=600,scrollbars=yes');
         } catch (error) {
             console.error("Error in ezShipPopup:", error);
         }
