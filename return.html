@@ -1,4 +1,3 @@
-<!-- This version does close window on "Confirm Address" button clicking-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,19 +27,10 @@
         const parentWindow = window.opener || window.parent;
         parentWindow.postMessage(storeData, "https://the2dge.github.io");
 
-        // Send data to GAS web app endpoint
+        // Redirect to GAS web app endpoint with parameters
         const gasEndpoint = "https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec";
         const params = new URLSearchParams(storeData).toString();
-        fetch(`${gasEndpoint}?${params}`, {
-          method: "GET",
-        })
-        .then(response => response.text())
-        .then(result => {
-          console.log("Data sent to GAS web app:", result); // Debugging log
-        })
-        .catch(error => {
-          console.error("Error sending data to GAS web app:", error); // Debugging log
-        });
+        window.location.href = `${gasEndpoint}?${params}`;
       }
     }
 
@@ -71,7 +61,7 @@
   </script>
 </head>
 <body>
-  <h1>店家名稱 close comment out</h1>
+  <h2>店家名稱 No CLOSE BTN</h2>
   <div id="storeInfo">Store information will be displayed here.</div>
   <div id="stName"></div>
   <div id="stAddr"></div>
