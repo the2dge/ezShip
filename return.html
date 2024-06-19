@@ -11,12 +11,12 @@
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
-    function sendStoreDataToParent() {
+     function sendStoreDataToParent() {
       const stName = getUrlParameter('stName');
       const stAddr = getUrlParameter('stAddr');
       const stCate = getUrlParameter('stCate');
       const stCode = getUrlParameter('stCode');
-      console.log("Address Confirm Button clicked!");
+
       if (stName && stAddr && stCate && stCode) {
         const storeData = {
           stName: stName,
@@ -26,8 +26,21 @@
         };
         console.log("Sending store data to parent:", storeData); // Debugging log
         const parentWindow = window.opener || window.parent;
-        parentWindow.postMessage(storeData, "https://the2dge.github.io/ezShip/");
-       // window.close();
+        parentWindow.postMessage(storeData, "https://the2dge.github.io");
+
+        // Send data to GAS web app endpoint
+        const gasEndpoint = "https://script.google.com/macros/s/AKfycbywiCkfH_8McvqaHS22v-dgRd5t2wKVGxHqBwC6mMHE0Xdi7VeWzpaB5MzKpe1oRRs/exec";
+        const params = new URLSearchParams(storeData).toString();
+        fetch(`${gasEndpoint}?${params}`, {
+          method: "GET",
+        })
+        .then(response => response.text())
+        .then(result => {
+          console.log("Data sent to GAS web app:", result); // Debugging log
+        })
+        .catch(error => {
+          console.error("Error sending data to GAS web app:", error); // Debugging log
+        });
       }
     }
 
