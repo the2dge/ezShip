@@ -25,8 +25,8 @@
         };
         console.log("Sending store data to parent:", storeData); // Debugging log
         const parentWindow = window.opener || window.parent;
-        parentWindow.postMessage(storeData, "https://the2dge.github.io/ezShip/");
-        window.close(); 
+        parentWindow.postMessage(storeData, "https://the2dge.github.io/");
+        
       }
     }
 
@@ -62,7 +62,7 @@
   <div id="stName"></div>
   <div id="stAddr"></div>
   <div id="stCate"></div>
-  <div id="stCode"></div>
+  
   <button id="addressConfirmedBtn">Confirm Address</button>
 </body>
 </html>
