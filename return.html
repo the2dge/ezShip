@@ -10,17 +10,21 @@
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
-    function updateParentPage() {
+    function sendStoreDataToParent() {
       const stName = getUrlParameter('stName');
       const stAddr = getUrlParameter('stAddr');
       const stCate = getUrlParameter('stCate');
       const stCode = getUrlParameter('stCode');
 
       if (stName && stAddr && stCate && stCode) {
-        const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
+        const storeData = {
+          stName: stName,
+          stAddr: stAddr,
+          stCate: stCate,
+          stCode: stCode
+        };
         const parentWindow = window.opener || window.parent;
-        parentWindow.document.getElementById("storeInfo").innerText = `Selected Store: ${shippingAddress}`;
-        parentWindow.document.getElementById("shippingAddress").value = shippingAddress;
+        parentWindow.postMessage(storeData, "https://the2dge.github.io");
       }
     }
 
@@ -42,18 +46,17 @@
       }
 
       document.getElementById("addressConfirmedBtn").onclick = function() {
-        updateParentPage();
+        sendStoreDataToParent();
         window.close();
       };
     }
   </script>
 </head>
 <body>
-  <h1>取貨商店</h1>
+  <h1>ezShip Return Page</h1>
   <div id="storeInfo">Store information will be displayed here.</div>
   <div id="stName"></div>
   <div id="stAddr"></div>
-
   <button id="addressConfirmedBtn">Confirm Address</button>
 </body>
 </html>
