@@ -27,7 +27,7 @@
         console.log("Sending store data to parent:", storeData); // Debugging log
         const parentWindow = window.opener || window.parent;
         parentWindow.postMessage(storeData, "https://the2dge.github.io/ezShip/");
-        window.close(); 
+       // window.close();
       }
     }
 
@@ -58,7 +58,7 @@
   </script>
 </head>
 <body>
-  <h1>店家名稱1</h1>
+  <h1>店家名稱 close comment out</h1>
   <div id="storeInfo">Store information will be displayed here.</div>
   <div id="stName"></div>
   <div id="stAddr"></div>
