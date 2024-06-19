@@ -1,3 +1,4 @@
+<!-- This version does close window on "Confirm Address" button clicking-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,8 +26,8 @@
         };
         console.log("Sending store data to parent:", storeData); // Debugging log
         const parentWindow = window.opener || window.parent;
-        parentWindow.postMessage(storeData, "https://the2dge.github.io/");
-        window.close();
+        parentWindow.postMessage(storeData, "https://the2dge.github.io/ezShip/");
+        window.close(); 
       }
     }
 
@@ -57,12 +58,12 @@
   </script>
 </head>
 <body>
-  <h1>店家名稱</h1>
+  <h1>店家名稱1</h1>
   <div id="storeInfo">Store information will be displayed here.</div>
   <div id="stName"></div>
   <div id="stAddr"></div>
   <div id="stCate"></div>
-  
+  <div id="stCode"></div>
   <button id="addressConfirmedBtn">Confirm Address</button>
 </body>
 </html>
