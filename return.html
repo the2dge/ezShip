@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>取貨商店</title>
+  <title>ezShip Return Page</title>
   <script>
     function getUrlParameter(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
       const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
       const results = regex.exec(window.location.search);
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    function updateParentPage() {
+      const stName = getUrlParameter('stName');
+      const stAddr = getUrlParameter('stAddr');
+      const stCate = getUrlParameter('stCate');
+      const stCode = getUrlParameter('stCode');
+
+      if (stName && stAddr && stCate && stCode) {
+        const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
+        const parentWindow = window.opener || window.parent;
+        parentWindow.document.getElementById("storeInfo").innerText = `Selected Store: ${shippingAddress}`;
+        parentWindow.document.getElementById("shippingAddress").value = shippingAddress;
+      }
     }
 
     window.onload = function() {
@@ -26,6 +40,11 @@
       } else {
         document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
       }
+
+      document.getElementById("addressConfirmedBtn").onclick = function() {
+        updateParentPage();
+        window.close();
+      };
     }
   </script>
 </head>
@@ -34,7 +53,7 @@
   <div id="storeInfo">Store information will be displayed here.</div>
   <div id="stName"></div>
   <div id="stAddr"></div>
-  <div id="stCate"></div>
-  <div id="stCode"></div>
+
+  <button id="addressConfirmedBtn">Confirm Address</button>
 </body>
 </html>
