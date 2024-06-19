@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ezShip Return</title>
-    <script>
-        function sendEzShipDataBack() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const ezShipData = {
-                stName: urlParams.get('stName'),
-                stAddr: urlParams.get('stAddr'),
-                stCate: urlParams.get('stCate'),
-                stCode: urlParams.get('stCode')
-            };
-            
-            if (window.opener) {
-                window.opener.postMessage(ezShipData, '*');
-                window.close();
-            } else {
-                console.error("window.opener is null. Cannot send message to the main window.");
-            }
-        }
+  <title>ezShip Return Page</title>
+  <script>
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(window.location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
 
-        window.onload = sendEzShipDataBack;
-    </script>
+    window.onload = function() {
+      const stName = getUrlParameter('stName');
+      const stAddr = getUrlParameter('stAddr');
+      const stCate = getUrlParameter('stCate');
+      const stCode = getUrlParameter('stCode');
+
+      if (stName && stAddr && stCate && stCode) {
+        const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
+        document.getElementById("storeInfo").innerText = `Selected Store: ${shippingAddress}`;
+        document.getElementById("stName").innerText = `Store Name: ${stName}`;
+        document.getElementById("stAddr").innerText = `Store Address: ${stAddr}`;
+        document.getElementById("stCate").innerText = `Store Category: ${stCate}`;
+        document.getElementById("stCode").innerText = `Store Code: ${stCode}`;
+      } else {
+        document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
+      }
+    }
+  </script>
 </head>
 <body>
+  <h1>ezShip Return Page</h1>
+  <div id="storeInfo">Store information will be displayed here.</div>
+  <div id="stName"></div>
+  <div id="stAddr"></div>
+  <div id="stCate"></div>
+  <div id="stCode"></div>
 </body>
 </html>
