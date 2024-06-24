@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>ezShip Return Page</title>
-  <style>body{font-size: 30px;} .confirmBtn{min-width: 30vw; background:#eaa}</style>
+  <style>body{font-size: 26px;} .confirmBtn{font-size: 30px;min-width: 30vw; background:#eaa}</style>
   <script>
     function getUrlParameter(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -38,11 +38,10 @@
 
       if (stName && stAddr && stCate && stCode) {
         const shippingAddress = `${stName}, ${stAddr}, ${stCate} ${stCode}`;
-        document.getElementById("storeInfo").innerText = `Selected Store: ${shippingAddress}`;
-        document.getElementById("stName").innerText = `Store Name: ${stName}`;
-        document.getElementById("stAddr").innerText = `Store Address: ${stAddr}`;
-        document.getElementById("stCate").innerText = `Store Category: ${stCate}`;
-        document.getElementById("stCode").innerText = `Store Code: ${stCode}`;
+    //    document.getElementById("storeInfo").innerText = `Selected Store: ${shippingAddress}`;
+        document.getElementById("stName").innerText = `店家名稱: ${stName}`;
+        document.getElementById("stAddr").innerText = `店鋪地址: ${stAddr}`;
+
       } else {
         document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
       }
@@ -63,6 +62,6 @@
   <div id="stAddr"></div>
   <div id="stCate"></div>
   <div id="stCode"></div>
-  <button id="addressConfirmedBtn" class="confirmBtn">Confirm Address</button>
+  <button id="addressConfirmedBtn" class="confirmBtn">確認地址</button>
 </body>
 </html>
