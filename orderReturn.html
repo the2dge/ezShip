@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ezShip Order Request Return Page</title>
+  <style>body{font-size: 26px;} .confirmBtn{font-size: 35px;min-width: 30vw; background:#eaa}</style>
+  <script>
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(window.location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    function sendStoreDataToParent() {
+      const order_id = getUrlParameter('order_id');
+      const sn_id = getUrlParameter('sn_id');
+      const order_status = getUrlParameter('order_status');
+      const webPara = getUrlParameter('webPara');
+
+      if (order_id && sn_id && order_status && webPara) {
+        const storeData = {
+          order_id: order_id,
+          sn_id: sn_id,
+          order_status: order_status,
+          webPara: webPara
+        };
+        console.log("Sending store data to parent:", storeData); // Debugging log
+        const parentWindow = window.opener || window.parent;
+        parentWindow.postMessage(storeData, "*"); // Use "*" for testing purposes; change to specific origin for production
+      }
+    }
+
+    window.onload = function() {
+      const order_id = getUrlParameter('order_id');
+      const sn_id = getUrlParameter('sn_id');
+      const order_status = getUrlParameter('order_status');
+      const webPara = getUrlParameter('webPara');
+
+      if (order_id && sn_id && order_status && webPara) {
+        const orderReturn = `${order_id}, ${sn_id}, ${order_status} ${webPara}`;
+   //     document.getElementById("orderInfo").innerText = `Order Return: ${orderReturn}`;
+        document.getElementById("order_id").innerText = `訂單編號: ${order_id}`;
+        document.getElementById("sn_id").innerText = `店到店編號: ${sn_id}`;
+
+      } else {
+        document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
+      }
+
+      document.getElementById("closeConfirmedBtn").onclick = function() {
+        sendStoreDataToParent();
+        setTimeout(() => {
+          window.close();
+        }, 1000); // Give some time for the message to be processed
+      };
+    }
+  </script>
+</head>
+<body>
+  <h1>ORDER RETURN INFO</h1>
+<!--  <div id="orderInfo">Store information will be displayed here.</div>-->
+  <div id="order_id"></div>
+  <div id="sn_id"></div>
+  <div id="order_status"></div>
+  <div id="webPara"></div><br>
+  <button id="closeConfirmedBtn" class="confirmBtn">Thanks for shopping and close!</button>
+</body>
+</html>
