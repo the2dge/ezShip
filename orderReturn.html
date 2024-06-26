@@ -17,7 +17,7 @@
       const order_status = getUrlParameter('order_status');
       const webPara = getUrlParameter('webPara');
 
-      if (order_status === 'S01' && order_id && sn_id && order_status && webPara) {
+      if (order_status === 'S01' && order_id && sn_id && order_status) {
         const storeData = {
           order_id: order_id,
           sn_id: sn_id,
