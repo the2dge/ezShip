@@ -36,7 +36,7 @@
       const order_status = getUrlParameter('order_status');
       const webPara = getUrlParameter('webPara');
 
-      if (order_id && sn_id && order_status && webPara) {
+      if (order_id && sn_id && order_status) {
         const orderReturn = `${order_id}, ${sn_id}, ${order_status} ${webPara}`;
    //     document.getElementById("orderInfo").innerText = `Order Return: ${orderReturn}`;
         document.getElementById("order_id").innerText = `訂單編號: ${order_id}`;
