@@ -17,7 +17,7 @@
       const order_status = getUrlParameter('order_status');
       const webPara = getUrlParameter('webPara');
 
-      if (order_id && sn_id && order_status && webPara) {
+      if (order_status === 'S01' && order_id && sn_id && order_status && webPara) {
         const storeData = {
           order_id: order_id,
           sn_id: sn_id,
@@ -38,12 +38,16 @@
 
       if (order_id && sn_id && order_status) {
         const orderReturn = `${order_id}, ${sn_id}, ${order_status} ${webPara}`;
-   //     document.getElementById("orderInfo").innerText = `Order Return: ${orderReturn}`;
         document.getElementById("order_id").innerText = `訂單編號: ${order_id}`;
         document.getElementById("sn_id").innerText = `店到店編號: ${sn_id}`;
 
+        if (order_status === 'S01') {
+          document.getElementById("order_status").innerText = `訂單狀態: 成功`;
+        } else {
+          document.getElementById("order_status").innerText = `訂單狀態: 失敗`;
+        }
       } else {
-        document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
+        document.getElementById("orderInfo").innerText = `No store data found in URL parameters.`;
       }
 
       document.getElementById("closeConfirmedBtn").onclick = function() {
@@ -57,7 +61,6 @@
 </head>
 <body>
   <h1>ORDER RETURN INFO</h1>
-<!--  <div id="orderInfo">Store information will be displayed here.</div>-->
   <div id="order_id"></div>
   <div id="sn_id"></div>
   <div id="order_status"></div>
