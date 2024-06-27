@@ -43,6 +43,7 @@
 
         if (order_status === 'S01') {
           document.getElementById("order_status").innerText = `訂單狀態: 成功`;
+          sendStoreDataToParent();
         } else {
           document.getElementById("order_status").innerText = `訂單狀態: 失敗`;
         }
@@ -51,9 +52,9 @@
       }
 
       document.getElementById("closeConfirmedBtn").onclick = function() {
-        sendStoreDataToParent();
+        
         setTimeout(() => {
-        //  window.close();
+          window.close();
         }, 1000); // Give some time for the message to be processed
       };
     }
