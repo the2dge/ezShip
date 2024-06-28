@@ -45,7 +45,8 @@
           document.getElementById("order_status").innerText = `訂單狀態: 成功`;
           sendStoreDataToParent();
         } else {
-          document.getElementById("order_status").innerText = `訂單狀態: 失敗 ${<br>}抱歉,請聯絡 荳荳先生`;
+          document.getElementById("order_status").innerText = `訂單狀態: 失敗`;
+          document.getElementById("message").display = 'block';
         }
       } else {
         document.getElementById("orderInfo").innerText = `No store data found in URL parameters.`;
@@ -66,6 +67,7 @@
   <div id="sn_id"></div>
   <div id="order_status"></div>
   <div id="webPara"></div><br>
+  <div id="message" style="display: none;">非常抱歉! 請聯絡 荳荳先生來處理您的訂單</div>
   <button id="closeConfirmedBtn" class="confirmBtn">Thanks for shopping and close!</button>
 </body>
 </html>
