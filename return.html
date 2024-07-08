@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>ezShip Return Page</title>
-  <style>body{font-size: 36px;display: flex; flex-wrap: wrap; justify-content: center;} h1{width: 100%;} .confirmBtn{font-size: 42px;min-width: 50vw; background:#eaa}</style>
+  <style>body{font-size: 36px;display: flex; flex-wrap: wrap; justify-content: center;} #stName, #stAddr{width:100%; left: 0} h1{width: 100%;} .confirmBtn{font-size: 42px;min-width: 50vw; background:#eaa}</style>
   <script>
     function getUrlParameter(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
@@ -56,8 +56,7 @@
   </script>
 </head>
 <body>
-  <div></div><h1>取貨地點</h1><br></div>
-<!--  <div id="storeInfo">Store information will be displayed here.</div>-->
+  <div><h1>取貨地點</h1><br></div>
   <div id="stName"></div><br>
   <div id="stAddr"></div><br>
   <div id="stCate"></div>
