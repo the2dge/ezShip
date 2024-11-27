@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ECPay C2C Return</title>
+  <style>body{font-size: 36px;display: flex; flex-wrap: wrap; justify-content: center;} #stName, #stAddr{width:80%; left: 0} h1{width: 100%;} .confirmBtn{font-size: 42px;min-width: 80vw; background:#eaa} .confirmBtn:hover{cursor: pointer; font-size: 42px;min-width: 80vw; background:#ecc}</style>
+  <script>
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      const results = regex.exec(window.location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    function sendStoreDataToParent() {
+      const CVSStoreName = getUrlParameter('CVSStoreName');
+      const CVSAddress = getUrlParameter('CVSAddress');
+
+
+      if (storeName && storeAddress) {
+        const storeData = {
+          CVSStoreName: CVSStoreName,
+          CVSAddress: CVSAddress,
+        };
+        console.log("Sending store data to parent:", storeData); // Debugging log
+        const parentWindow = window.opener || window.parent;
+        parentWindow.postMessage(storeData, "*"); // Use "*" for testing purposes; change to specific origin for production
+      }
+    }
+
+    window.onload = function() {
+      const CVSStoreName = getUrlParameter('CVSStoreName');
+      const CVSAddress = getUrlParameter('CVSAddress');
+
+
+      if (CVSStoreName && CVSAddress) {
+  
+        document.getElementById("stName").innerText = `店家名稱: ${CVSStoreName}`;
+        document.getElementById("stAddr").innerText = `店鋪地址: ${CVSAddress}`;
+
+      } else {
+        document.getElementById("storeInfo").innerText = `No store data found in URL parameters.`;
+      }
+
+      document.getElementById("addressConfirmedBtn").onclick = function() {
+        sendStoreDataToParent();
+        setTimeout(() => {
+          window.close();
+        }, 1000); // Give some time for the message to be processed
+      };
+    }
+  </script>
+</head>
+<body>
+  <div><h1>取貨地點</h1><br></div>
+  <div id="stName"></div><br>
+  <div id="stAddr"></div><br>
+  <button id="addressConfirmedBtn" class="confirmBtn">確認地址</button>
+</body>
+</html>
