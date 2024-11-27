@@ -16,7 +16,7 @@
       const CVSAddress = getUrlParameter('CVSAddress');
 
 
-      if (storeName && storeAddress) {
+      if (CVSStoreName && CVSAddress) {
         const storeData = {
           CVSStoreName: CVSStoreName,
           CVSAddress: CVSAddress
@@ -34,8 +34,8 @@
 
       if (CVSStoreName && CVSAddress) {
   
-        document.getElementById("stName").innerText = `店家名稱: ${CVSStoreName}`;
-        document.getElementById("stAddr").innerText = `店鋪地址: ${CVSAddress}`;
+        document.getElementById("storeName").innerText = `店家名稱: ${CVSStoreName}`;
+        document.getElementById("storeAddress").innerText = `店鋪地址: ${CVSAddress}`;
 
       } 
 
@@ -50,8 +50,8 @@
 </head>
 <body>
   <div><h1>取貨地點</h1><br></div>
-  <div id="stName"></div><br>
-  <div id="stAddr"></div><br>
+  <div id="storeName"></div><br>
+  <div id="storeAddress"></div><br>
 
   <button id="addressConfirmedBtn" class="confirmBtn">確認地址</button>
 </body>
