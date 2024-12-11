@@ -10,7 +10,12 @@
 </head>
 <body>
   <div id="iframe-container"></div>
-
+ <div id="store-info" style="display: none;">
+    <h2>Store Information</h2>
+    <p id="store-name"></p>
+    <p id="store-address"></p>
+    <p id="store-code"></p>
+  </div>
   <script>
     // Function to extract URL parameters
     function getQueryParameter(param) {
@@ -18,19 +23,34 @@
       return urlParams.get(param);
     }
 
-    // Capture orderId from the URL
+    // Capture parameters from the URL
     const orderId = getQueryParameter('MerchantTradeNo');
-    console.log('Captured Order ID:', orderId);
+    const storeName = getQueryParameter('CVSStoreName');
+    const storeAddress = getQueryParameter('CVSAddress');
+    const storeCode = getQueryParameter('CVSStoreID');
 
-    // Build the Web App URL with the orderId
-    const webAppUrl = `https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec?MerchantTradeNo=${orderId}`;
+    // Check if store info exists
+    if (storeName && storeAddress && storeCode) {
+      // Display store information on the page
+      document.getElementById('store-info').style.display = 'block';
+      document.getElementById('store-name').innerText = `Store Name: ${storeName}`;
+      document.getElementById('store-address').innerText = `Store Address: ${storeAddress}`;
+      document.getElementById('store-code').innerText = `Store Code: ${storeCode}`;
+    }
+
+    // Build the original WebApp URL
+    const webAppUrl = `https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec?MerchantTradeNo=${orderId}&CVSStoreName=${encodeURIComponent(storeName)}&CVSAddress=${encodeURIComponent(storeAddress)}&CVSStoreID=${storeCode}`;
     
-    // Log the URL for debugging
-    console.log('Web App URL:', webAppUrl);
+    // Log the WebApp URL for debugging
+    console.log('Redirecting back to WebApp:', webAppUrl);
 
-    // Embed the Web App into an iframe
-    const iframeContainer = document.getElementById('iframe-container');
-    iframeContainer.innerHTML = `<iframe src="${webAppUrl}" width="100%" height="600px" style="border:none;"></iframe>`;
+    // Embed the WebApp in an iframe or redirect to the WebApp
+    if (orderId) {
+      const iframeContainer = document.getElementById('iframe-container');
+      iframeContainer.innerHTML = `<iframe src="${webAppUrl}" width="100%" height="600px" style="border:none;"></iframe>`;
+    } else {
+      console.error('Order ID is missing!');
+    }
   </script>
 </body>
 </html>
