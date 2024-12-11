@@ -1,18 +1,37 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>荳荳先生精品堅果 超低溫養生堅果</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="https://www.mrbean.tw">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/Nf8M6szk/mrbean.jpg">
-    <meta name="keywords" content="超低溫烘焙,精品堅果, 養生堅果,堅果多,營養早餐">
-    <style>
-        html, body{margin: 0; padding: 0}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://www.mrbean.tw">
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/Nf8M6szk/mrbean.jpg">
+  <meta name="keywords" content="超低溫烘焙,精品堅果, 養生堅果,堅果多,營養早餐">
+  <title>荳荳先生精品堅果 超低溫養生堅果</title>
 </head>
 <body>
-  <iframe style="height: 1000px; width: 100%" src="https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec"></iframe>
+  <h1>Welcome to Mr. Bean's Order Page</h1>
+  <div id="iframe-container"></div>
+
+  <script>
+    // Function to extract URL parameters
+    function getQueryParameter(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Capture orderId from the URL
+    const orderId = getQueryParameter('MerchantTradeNo');
+    console.log('Captured Order ID:', orderId);
+
+    // Build the Web App URL with the orderId
+    const webAppUrl = `https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec?MerchantTradeNo=${orderId}`;
+    
+    // Log the URL for debugging
+    console.log('Web App URL:', webAppUrl);
+
+    // Embed the Web App into an iframe
+    const iframeContainer = document.getElementById('iframe-container');
+    iframeContainer.innerHTML = `<iframe src="${webAppUrl}" width="100%" height="600px" style="border:none;"></iframe>`;
+  </script>
 </body>
 </html>
