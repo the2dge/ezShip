@@ -39,7 +39,7 @@
     }
 
     // Build the original WebApp URL
-    const webAppUrl = `https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec?MerchantTradeNo=${orderId}&CVSStoreName=${encodeURIComponent(storeName)}&CVSAddress=${encodeURIComponent(storeAddress)}&CVSStoreID=${storeCode}`;
+    const webAppUrl = `https://script.google.com/macros/s/AKfycbwWxseNeX_TUhPAyqDns8oz5u2KjieQVXf3LAjcPtms-sq5ObbVKRTaxdpRdCe8r9RU/exec?ExtraData=2&MerchantTradeNo=${orderId}&CVSStoreName=${encodeURIComponent(storeName)}&CVSAddress=${encodeURIComponent(storeAddress)}&CVSStoreID=${storeCode}`;
     
     // Log the WebApp URL for debugging
     console.log('Redirecting back to WebApp:', webAppUrl);
