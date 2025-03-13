@@ -9,6 +9,7 @@
   <title>荳荳先生精品堅果 超低溫養生堅果</title>
 </head>
 <body>
+  <button id="back-to-home" class="btn btn-primary" style="margin-bottom: 25px;font-size: 20px;">🏠 返回首頁</button>
   <div id="iframe-container"></div>
  <div id="store-info" style="display: none;">
     <h2>Store Information</h2>
@@ -53,5 +54,12 @@
       console.error('Order ID is missing!');
     }
   </script>
+<script src="../js/jquery.min.js"></script> 
+<script type="text/javascript">
+      // Event listener for Back to Home button
+$("#back-to-home").click(function() {
+    window.location.href = "../index.html"; // Redirects to parent page
+});
+</script>
 </body>
 </html>
