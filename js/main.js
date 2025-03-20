@@ -412,7 +412,7 @@ setTimeout(function(){
 					}
 				});
 			}
-			
+			/*
 			function updateQuantityByProductKey(key, quantity) {
 				quantity = typeof(quantity) != 'undefined' ? quantity : 1;
 				$.ajax({
@@ -427,7 +427,7 @@ setTimeout(function(){
 						});
 					}
 				});
-			}
+			}*/
 			
 			function removeProductFromSideCart(key, idx) {
 				//var newkey = encodeURIComponent(key);
@@ -582,6 +582,7 @@ setTimeout(function(){
 						});
 						
 												 var product_category = "";
+												 /*
 						 $.getJSON( "index.php?route=common/footer/getProductCategory&product_id=" + product_id, function( data ) {
 							 
 							 if(data) product_category = data;
@@ -613,7 +614,7 @@ setTimeout(function(){
 								   });
 							   }
 							 
-						 });
+						 }); */
 						 
 												
 												
@@ -802,7 +803,7 @@ setTimeout(function(){
 					}, 500);
 				}
 			}
-			
+			/*
 			function removeCartByProductID(product_id) {
 				if( is.existy(product_id) ) {
 				$.ajax({
@@ -814,7 +815,7 @@ setTimeout(function(){
 					}
 				});
 				}
-			}
+			}*/
 			
 			function updateQuantityByProductID(product_id, quantity) {
 				quantity = typeof(quantity) != 'undefined' ? quantity : 1;
@@ -899,6 +900,7 @@ setTimeout(function(){
 					
 										
 					var milliseconds = new Date().getTime();
+					/*
 					$.getJSON( "index.php?route=common/header/getLoggedInUserInfo&token=" + milliseconds + "1" + (Math.floor(Math.random() * 999) + 100), function( data ) {
 						if( is.existy(data) && data.isLogged ) {
 														$("#header-logged-menu > a.dropdown-toggle").prepend("<i class='fa fa-user-o'></i>");
@@ -927,7 +929,7 @@ setTimeout(function(){
 							setTimeout(function(){ $("section#cart").removeClass("active"); }, 50);
 						}
 						
-					});
+					});*/
 					
 					setTimeout(function(){ 
 						$('.side_float_banner_wrapper').attr("style","");
@@ -1480,6 +1482,7 @@ $("#facebook-page-container").html('<iframe src="https://www.facebook.com/plugin
 			initCoreCSS();
 			setTimeout(function(){ 
 				initCoreJS();
+				/*
 				$.getJSON( "index.php?route=account/account/get_user_track&token=" + (Math.floor(Math.random() * 999) + 100), function( data ) { 
 					if( data.user_id ) { ga_userId = data.user_id; } 
 					if( data.uuid ) {
@@ -1493,7 +1496,7 @@ $("#facebook-page-container").html('<iframe src="https://www.facebook.com/plugin
 					}
 					if( data.utm_source == "affiliates" ) { ga_utm_source = data.utm_source; }
 						
-				});
+				});*/
 				var vidDefer = document.getElementsByTagName('iframe');
 				for (var i=0; i<vidDefer.length; i++) {
 					if(vidDefer[i].getAttribute('src')) {
