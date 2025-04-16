@@ -132,7 +132,7 @@ img[data-src] { opacity: 1; }
 .display_price { display:none; }
 
 
-@media (min-width:1025px) { 
+@media (min-width:968px) { 
 .any-products { text-align: center; }
 .any-products .products-box { text-align: center; }
 .any-products .any-box > .grid-box { min-height: 280px; margin: 0px; padding: 0px; }
@@ -143,6 +143,9 @@ img[data-src] { opacity: 1; }
 @media (min-width:1000px){
 	#item_wrapper{margin-top: 160px;}
 }
+@media (max-width:768px) {
+	.any-products .any-box > .grid-box { min-width: 49%; margin: 0px; padding: 0px; }
+ }
 .mini-cart-info td, .mini-cart-total td { line-height:20px; }
 /* Side Cart Styles */
 .side-cart {
