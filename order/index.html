@@ -1,15 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://www.mrbean.tw">
-  <link rel="icon" type="image/png" href="https://i.postimg.cc/Nf8M6szk/mrbean.jpg">
+  <link rel="icon" type="image/png" href="https://i.postimg.cc/c1X1F948/doudou.png">
   <meta name="keywords" content="超低溫烘焙,精品堅果, 養生堅果,堅果多,營養早餐">
   <title>荳荳先生精品堅果 超低溫養生堅果</title>
+<style>
+html{font-family: sans-serif;}
+.label{display: inline-flex; width: 100%}
+.orange{color: orange; align-content: center;}
+</style>
 </head>
 <body>
-  <button id="back-to-home" class="btn btn-primary" style="margin-bottom: 25px;font-size: 20px;">🏠 返回首頁</button>
+  <button id="back-to-home" class="btn btn-primary" style="margin-bottom: 25px;font-size: 20px;">🏠 返回首頁</button><br>
+  <div class="label">
+  <img id="mrbean-home" src="https://i.postimg.cc/c1X1F948/doudou.png" style="width: 10%; min-width: 60px"><h1 class="orange">荳荳先生<span> | 結帳</span></h1></div>
   <div id="iframe-container"></div>
  <div id="store-info" style="display: none;">
     <h2>Store Information</h2>
@@ -58,6 +66,9 @@
 <script type="text/javascript">
       // Event listener for Back to Home button
 $("#back-to-home").click(function() {
+    window.location.href = "../index.html"; // Redirects to parent page
+});
+$("#mrbean-home").click(function() {
     window.location.href = "../index.html"; // Redirects to parent page
 });
 </script>
