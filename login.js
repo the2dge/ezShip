@@ -1,5 +1,5 @@
-const CLIENT_ID = "2006943877"; // LINE Channel ID
-const REDIRECT_URI = "https://the2dge.github.io/bean0428"; //網站 callback URL
+const CLIENT_ID = "2007420785"; // LINE Channel ID
+const REDIRECT_URI = "https://mrbean.tw"; //網站 callback URL
 function loginWithLINE() {
   // fallback: try to load cart from sessionStorage if not in memory
   const storedCart = sessionStorage.getItem("cart");
