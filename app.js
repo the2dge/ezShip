@@ -1217,7 +1217,7 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
             tradeDesc: 'Order Description', // Replace with your order description
             itemName: itemsString, // Replace with your product name
             returnUrl: 'https://asia-east1-ecpay-rtnmessage.cloudfunctions.net/handleECPayPost', // Replace with your ReturnURL
-            clientBackUrl: 'https://the2dge.github.io/bean0428/' 
+            clientBackUrl: 'https://www.mrbean.tw/' 
         };
         console.log("Data for ECPay Credit Card (to be sent to server):", ecpayData);
 
