@@ -1599,7 +1599,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     async function exchangeCodeForToken(code) {
-      const cloudFunctionURL = 'https://save-to-sheet-545199463340.asia-east1.run.app'; // <-- replace with your real function URL
+      const cloudFunctionURL = 'https://mrbean-website-line-login-545199463340.asia-east1.run.app'; // <-- replace with your real function URL
 
       try {
         const response = await fetch(`${cloudFunctionURL}?mode=getLineProfile&code=${encodeURIComponent(code)}`);
