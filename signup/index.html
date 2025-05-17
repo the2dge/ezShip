@@ -72,7 +72,7 @@
 <body>
   <div class="signup-container">
     <h2>註冊會員 / Sign Up</h2>
-    <form id="signupForm">
+    <form onsubmit="event.preventDefault(); submitForm();">
       <div class="form-group">
         <label for="name">姓名 / Name</label>
         <input type="text" id="name" name="name" value="${lineUserEmail}" required>
@@ -90,6 +90,40 @@
   </div>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 <script>
+    <script>
+  // Frontend Form Submission
+function submitForm() {
+    const userId = document.getElementById("userId").value;
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+  //  const idToken = document.getElementById("idToken").value; // Get the ID Token
+
+    if (!name || !mobile) {
+        alert("❗All fields are required.");
+        return;
+    }
+
+    const cloudFunctionURL = "https://mrbean-website-save-to-sheet-545199463340.us-central1.run.app";
+
+    fetch(cloudFunctionURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, name, mobile}) // Include idToken
+    })
+    .then(() => {
+        // ✅ Show a confirmation message to the user
+        alert("✅ 註冊成功！現在您可以關閉此頁面並返回 LINE。");
+
+        // ✅ Wait 0.5 seconds, then close the window and return to LINE
+        setTimeout(() => {
+            liff.closeWindow(); // Close the LIFF window and return to LINE
+        }, 500);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Registration failed. Please try again.");
+    });
+}
     document.addEventListener("DOMContentLoaded", function() {
         liff.init({ liffId: "2007420785-nWz56ek1" }) // Replace with your LIFF ID
             .then(() => {
