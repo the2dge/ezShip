@@ -506,7 +506,7 @@ async function renderCheckoutPage(cartItems) {
           const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
           const data = await res.json();
     
-          if (data.status === 'found') {
+          if (data.status === 'success') {
             renderCheckoutHeaderDOM(lineUserName); // ✅ Safe to show member name
           } else {
             console.log("Not a registered member — skip header or show sign-up prompt.");
