@@ -714,12 +714,34 @@ dropdown.appendChild(creditBalance);
         memberLoginBtn.textContent = '會員登入';
         memberLoginBtn.classList.add('member-login-btn'); // Add class for styling
         memberLoginBtn.addEventListener('click', () => {
-            if (typeof loginWithLINE === 'function') {
-                loginWithLINE();
-            } else {
-                console.error('loginWithLINE function is not defined.');
-                alert('登入功能暫時無法使用。');
-            }
+          const lineUserId = sessionStorage.getItem('lineUserId');
+        
+          if (!lineUserId) {
+            alert("尚未取得 LINE ID，請重新載入頁面。");
+            return;
+          }
+        
+          // Check membership first
+          fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`)
+            .then(res => res.json())
+            .then(data => {
+              if (data.status === 'found') {
+                if (typeof loginWithLINE === 'function') {
+                  loginWithLINE();  // Only login if member exists
+                } else {
+                  console.error('loginWithLINE function is not defined.');
+                  alert('登入功能暫時無法使用。');
+                }
+              } else {
+                alert('⚠️ 尚未註冊為會員，請先註冊。');
+                // Optionally redirect to sign-up page:
+                // window.location.href = 'https://your-domain.com/signup';
+              }
+            })
+            .catch(err => {
+              console.error("錯誤發生:", err);
+              alert("發生錯誤，請稍後再試。");
+            });
         });
         titleRow.appendChild(memberLoginBtn);
     }
