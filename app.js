@@ -489,7 +489,7 @@ let currentShippingCost = 0;
 let currentDiscountRate = 0; // Store as percentage, e.g., 5 for 5%
 
 // --- Main Function to Render Checkout Page ---
-function renderCheckoutPage(cartItems) {
+async function renderCheckoutPage(cartItems) {
     mainBody.checkoutWrapper.innerHTML = ''; // Clear previous content
     window.scrollTo(0, 0);
 
