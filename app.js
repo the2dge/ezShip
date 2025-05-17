@@ -498,7 +498,7 @@ async function renderCheckoutPage(cartItems) {
     const lineUserId = sessionStorage.getItem('lineUserId');
     const lineUserName = sessionStorage.getItem('lineUserName');
     const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
-
+    console.log("LINE ID is: ", lineUserId);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
       // Conditionally render header only if the user is a member
       if (lineUserId) {
