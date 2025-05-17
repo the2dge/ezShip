@@ -715,7 +715,7 @@ dropdown.appendChild(creditBalance);
         memberLoginBtn.classList.add('member-login-btn'); // Add class for styling
         memberLoginBtn.addEventListener('click', () => {
           const lineUserId = sessionStorage.getItem('lineUserId');
-        
+          console.log("UserID is: ", lineUserId);
           if (!lineUserId) {
             alert("您還不是會員，請至《荳荳先生LINE官方帳號》註冊。");
             return;
