@@ -717,7 +717,7 @@ dropdown.appendChild(creditBalance);
           const lineUserId = sessionStorage.getItem('lineUserId');
         
           if (!lineUserId) {
-            alert("尚未取得 LINE ID，請重新載入頁面。");
+            alert("您還不是會員，請至《荳荳先生LINE官方帳號》註冊。");
             return;
           }
         
