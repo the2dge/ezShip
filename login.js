@@ -85,69 +85,6 @@ function generateCustomOrderId() {
   return `${aaCode}${day}${yyy}`;
 }
 
-function submitPayment(customerName,customerPhone, orderId, amount, orderItems, payType, pickupOption, storeCode) {
-  const merchantID = '2000933';  // ECPay Testing Merchant ID
-  const hashKey = 'XBERn1YOvpM9nfZc';        // ECPay Testing Hash Key
-  const hashIV = 'h1ONHk4P4yqbl5LK';          // ECPay Testing Hash IV
-  //var merchantID = '3428230';  // MR.BEAN Merchant ID
-  //var hashKey = '1LB3xdWvpCfBUcvm';        // MR.BEAN Hash Key
-  //var hashIV = 'nLw4YqFOCAD9dfiP';          // MR.BEAN Hash IV
-  const now = new Date();
-  const merchantTradeDate = Utilities.formatDate(now, "GMT+8", "yyyy/MM/dd HH:mm:ss");
-
-  try {
-    // Append the order details to Google Sheets(toDo:1)
-    sheet2.appendRow([
-      now,           // Timestamp
-      customerName,  // Customer Name
-      customerPhone, //
-      orderId,       // Order ID
-      amount,        // Amount
-      orderItems, // Ordered Items
-      payType,       // Payment Type
-      pickupOption,   // Pickup Option
-      storeCode
-    ]);
-    Logger.log("Order saved successfully to Google Sheets(lineSales).");
-    // Prepare a notification message
-    const message = `🛒 新訂單通知\n\n姓名: ${customerName}\n電話: ${customerPhone}\n訂單編號: ${orderId}\n商品項目: ${orderItems}\n金額: ${amount} 元\n取貨方式: ${pickupOption}\n取貨店代碼: ${storeCode}`;
-
-    // Send a notification to the LINE Official Account chat(toDo:2)
-    sendLineNotificationToOfficial(message);
-    // Combine order items and pickup option into a single string
-  const combinedItemName = `${orderItems} | 取貨方式: ${pickupOption}`;
-  Logger.log("combinedItemName is: " + combinedItemName);
-
-
-// Prepare the form data for ECPay
-    const formData = {
-      'MerchantID': merchantID,
-      'MerchantTradeNo': orderId,
-      'MerchantTradeDate': merchantTradeDate,
-      'PaymentType': 'aio',
-      'TotalAmount': amount,
-      'TradeDesc': customerName,
-      'ItemName': combinedItemName,
-      'ReturnURL': 'https://asia-east1-ecpay-rtnmessage.cloudfunctions.net/handleECPayPost',
-      'ClientBackURL': 'https://www.mrbean.tw',
-      'ChoosePayment': payType,
-      'CustomField1' : pickupOption,
-      'CustomField2' : storeCode,
-      'CustomField3' : customerName,
-      'CustomField4' : customerPhone,
-      'EncryptType': '1'  // ECPay requirement
-    };
- // Generate the CheckMacValue
-    formData.CheckMacValue = createCheckMacValue(formData, hashKey, hashIV);
-    // Log the data being sent
-    Logger.log("Form data prepared for ECPay: " + JSON.stringify(formData));
-
-    return formData; // Return the formData object for further processing
-  } catch (error) {
-    Logger.log("Error processing payment: " + error.message);
-    throw new Error("Failed to process payment. Please try again later.");
-  }
-}
 // Call this after login is confirmed
 const storedUserName = sessionStorage.getItem('lineUserName');
 if (storedUserName) updateNavbarWithUserName(storedUserName);
