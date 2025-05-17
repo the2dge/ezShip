@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LINE Member Registration</title>
+  <script>
+  // Frontend Form Submission
+function submitForm() {
+    const userId = document.getElementById("userId").value;
+    const name = document.getElementById("name").value;
+    const mobile = document.getElementById("mobile").value;
+  //  const idToken = document.getElementById("idToken").value; // Get the ID Token
+
+    if (!name || !mobile) {
+        alert("❗All fields are required.");
+        return;
+    }
+
+    const cloudFunctionURL = "https://mrbean-website-save-to-sheet-545199463340.us-central1.run.app";
+
+    fetch(cloudFunctionURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, name, mobile}) // Include idToken
+    })
+    .then(() => {
+        // ✅ Show a confirmation message to the user
+        alert("✅ 註冊成功！");
+
+        // ✅ Wait 0.5 seconds, then close the window and return to LINE
+        setTimeout(() => {
+            liff.closeWindow(); // Close the LIFF window and return to LINE
+        }, 500);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Registration failed. Please try again.");
+    });
+}
+
+
+  </script>
+</head>
+<body>
+  <h2 style="color: green;">註冊會員</h2>
+
+  <form onsubmit="event.preventDefault(); submitForm();">
+    <label for="name">姓名:&nbsp&nbsp</label>
+    <input type="text" id="name" required><br><br>
+    <label for="mobile">手機號碼:</label>
+    <input type="text" id="mobile" required><br><br>
+    <input type="hidden" id="userId" readonly><br><br>
+    <button type="submit">Submit</button>
+  </form>
+
+<script>/*
+    document.getElementById("registerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("name").value;
+        const lineUserId = document.getElementById("lineUserId").value;
+        const mobileNumber = document.getElementById("mobileNumber").value;
+
+     //   fetch("https://script.google.com/macros/s/AKfycbzDQHnqmUYn2HWvGQWl2z8Dul6lr5meaMRnSYpBo1PN/dev", {
+  fetch("https://script.google.com/macros/s/AKfycbwevFe06bnQSzQJcOTucesqIAStCblfuqf61z7IPE2YeXWc7fQu8EtZOEDoArrPJTbqbw/exec",{
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        userId: document.getElementById("lineUserId").value,
+        name: document.getElementById("name").value,
+        mobile: document.getElementById("mobileNumber").value
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log("Success:", data);
+    alert("Registration successful!");
+})
+.catch(error => {
+    console.error("Error:", error);
+    alert("Registration failed. Please check the network request.");
+});
+*/
+</script>
+<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        liff.init({ liffId: "2006943877-ZEVv2oml" }) // Replace with your LIFF ID
+            .then(() => {
+                if (liff.isLoggedIn()) {
+                    getUserProfile();
+                } else {
+                    liff.login(); // Auto-login if not logged in
+                }
+            })
+            .catch(err => console.error('LIFF Initialization failed', err));
+    });
+
+    function getUserProfile() {
+        liff.getProfile()
+            .then(profile => {
+                document.getElementById("name").value = profile.displayName;
+                document.getElementById("userId").value = profile.userId;
+                console.log("User ID:", profile.userId); // Debugging
+            })
+            .catch(err => console.error('Error getting profile:', err));
+    }
+</script>
+</body>
+</html>
