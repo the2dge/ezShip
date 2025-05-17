@@ -607,7 +607,7 @@ function renderCheckoutHeaderDOM(lineUserName) {
                 if (data.status === 'success') {
                     alert(`💰 目前點數餘額：${data.creditBalance}`);
                 } else if (data.status === 'not_found') {
-                    alert('⚠️ 查無此會員資料，請聯絡客服 https://www.mrbean.tw/signup');
+                    alert('⚠️ 查無此會員資料，請聯絡客服或點擊註冊：\nhttps://your-domain.com/signup');
                 } else {
                     alert(`❌ 無法取得點數資料：${data.message || '請稍後再試'}`);
                 }
