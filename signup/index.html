@@ -107,6 +107,7 @@
             .then(profile => {
                 document.getElementById("name").value = profile.displayName;
                 document.getElementById("userId").value = profile.userId;
+              document.getElementById("email").value = profile.email;
                 console.log("User ID:", profile.userId); // Debugging
             })
             .catch(err => console.error('Error getting profile:', err));
