@@ -2,110 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Sign Up - Membership</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINE Member Registration</title>
-  <script>
-  // Frontend Form Submission
-function submitForm() {
-    const userId = document.getElementById("userId").value;
-    const name = document.getElementById("name").value;
-    const mobile = document.getElementById("mobile").value;
-  //  const idToken = document.getElementById("idToken").value; // Get the ID Token
-
-    if (!name || !mobile) {
-        alert("❗All fields are required.");
-        return;
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
-    const cloudFunctionURL = "https://mrbean-website-save-to-sheet-545199463340.us-central1.run.app";
+    .signup-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+    }
 
-    fetch(cloudFunctionURL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, name, mobile}) // Include idToken
-    })
-    .then(() => {
-        // ✅ Show a confirmation message to the user
-        alert("✅ 註冊成功！");
+    .signup-container h2 {
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+    }
 
-        // ✅ Wait 0.5 seconds, then close the window and return to LINE
-        setTimeout(() => {
-            liff.closeWindow(); // Close the LIFF window and return to LINE
-        }, 500);
-    })
-    .catch(error => {
-        console.error("Error:", error);
-        alert("❌ Registration failed. Please try again.");
-    });
-}
+    .form-group {
+      margin-bottom: 1rem;
+    }
 
+    .form-group label {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
 
-  </script>
+    .form-group input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group input:disabled {
+      background-color: #f0f0f0;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-  <h2 style="color: green;">註冊會員</h2>
+  <div class="signup-container">
+    <h2>註冊會員 / Sign Up</h2>
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="name">姓名 / Name</label>
+        <input type="text" id="name" name="name" required disabled>
+      </div>
+      <div class="form-group">
+        <label for="email">電子郵件 / Email</label>
+        <input type="email" id="email" name="email" required disabled>
+      </div>
+      <div class="form-group">
+        <label for="tel">電話號碼 / Telephone</label>
+        <input type="tel" id="tel" name="tel" required>
+      </div>
+      <button type="submit" class="submit-btn">提交註冊 / Submit</button>
+    </form>
+  </div>
 
-  <form onsubmit="event.preventDefault(); submitForm();">
-    <label for="name">姓名:&nbsp&nbsp</label>
-    <input type="text" id="name" required><br><br>
-    <label for="mobile">手機號碼:</label>
-    <input type="text" id="mobile" required><br><br>
-    <input type="hidden" id="userId" readonly><br><br>
-    <button type="submit">Submit</button>
-  </form>
+  <script>
+    // Assume you retrieve LINE profile from LIFF SDK or backend
+    const lineProfile = {
+      name: "王小明",
+      email: "test@example.com"
+    };
 
-<script>/*
-    document.getElementById("registerForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById("name").value;
-        const lineUserId = document.getElementById("lineUserId").value;
-        const mobileNumber = document.getElementById("mobileNumber").value;
+    // Auto-fill name and email
+    document.getElementById("name").value = lineProfile.name;
+    document.getElementById("email").value = lineProfile.email;
 
-     //   fetch("https://script.google.com/macros/s/AKfycbzDQHnqmUYn2HWvGQWl2z8Dul6lr5meaMRnSYpBo1PN/dev", {
-  fetch("https://script.google.com/macros/s/AKfycbwevFe06bnQSzQJcOTucesqIAStCblfuqf61z7IPE2YeXWc7fQu8EtZOEDoArrPJTbqbw/exec",{
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        userId: document.getElementById("lineUserId").value,
-        name: document.getElementById("name").value,
-        mobile: document.getElementById("mobileNumber").value
-    })
-})
-.then(response => response.json())
-.then(data => {
-    console.log("Success:", data);
-    alert("Registration successful!");
-})
-.catch(error => {
-    console.error("Error:", error);
-    alert("Registration failed. Please check the network request.");
-});
-*/
-</script>
-<script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        liff.init({ liffId: "2006943877-ZEVv2oml" }) // Replace with your LIFF ID
-            .then(() => {
-                if (liff.isLoggedIn()) {
-                    getUserProfile();
-                } else {
-                    liff.login(); // Auto-login if not logged in
-                }
-            })
-            .catch(err => console.error('LIFF Initialization failed', err));
+    // Handle form submission
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const tel = document.getElementById("tel").value;
+
+      if (!tel.trim()) {
+        alert("請輸入電話號碼 / Please enter your phone number.");
+        return;
+      }
+
+      const formData = {
+        name: lineProfile.name,
+        email: lineProfile.email,
+        tel: tel
+      };
+
+      console.log("Submitting sign-up data:", formData);
+
+      // Example: Submit to Google Apps Script function
+      google.script.run
+        .withSuccessHandler(function(response) {
+          alert("註冊成功！/ Sign up successful!");
+          // Optionally redirect or refresh
+        })
+        .withFailureHandler(function(error) {
+          console.error("Error during sign-up:", error);
+          alert("註冊失敗，請稍後再試 / Sign up failed. Please try again later.");
+        })
+        .registerNewMember(formData); // GAS function
     });
-
-    function getUserProfile() {
-        liff.getProfile()
-            .then(profile => {
-                document.getElementById("name").value = profile.displayName;
-                document.getElementById("userId").value = profile.userId;
-                console.log("User ID:", profile.userId); // Debugging
-            })
-            .catch(err => console.error('Error getting profile:', err));
-    }
-</script>
+  </script>
 </body>
 </html>
