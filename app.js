@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
                     <p class="price">${itemData.price}</p>
                     <button class="add-to-cart-btn" data-product-id="${itemData.id}">加入購物車</button>
-                     <button class="back-to-products-btn">返回產品頁</button> </div>
+                     <button class="back-to-products-btn" styple="cursor: 'pointer">返回產品頁</button> </div>
             </article>
         `;
          // Add listener specifically for the new back button
