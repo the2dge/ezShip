@@ -813,7 +813,7 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
     const storedPhone = ''; // Or retrieve if you store phone number elsewhere
 
     form.innerHTML = `
-        <h4>顧客資訊及運送選項</h4>
+        <h4>顧客資訊 及 取貨選項</h4>
 
         <div class="form-group">
             <label for="discount_code">折扣碼 (選填):</label>
