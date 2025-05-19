@@ -498,7 +498,7 @@ async function renderCheckoutPage(cartItems) {
     const lineUserId = sessionStorage.getItem('lineUserId');
     const lineUserName = sessionStorage.getItem('lineUserName');
     const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
-    console.log("LINE ID is: ", lineUserId);
+   
     let isMember = false;
 
       if (lineUserId) {
@@ -508,7 +508,7 @@ async function renderCheckoutPage(cartItems) {
           isMember = true;
         }
       }
-    
+     console.log("LINE ID and isMember?:  ", lineUserId, isMember);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
     renderCheckoutHeaderDOM(lineUserName, isMember);
     
