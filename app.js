@@ -510,7 +510,7 @@ async function renderCheckoutPage(cartItems) {
       }
      console.log("LINE ID and isMember?:  ", lineUserId, isMember);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
-    renderCheckoutHeaderDOM(lineUserName, isMember);
+    renderCheckoutHeaderDOM(lineUserName);
     
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
     renderOrderedItemsSummaryDOM(cartItems);
@@ -559,7 +559,7 @@ function handleTopUp(amount) {
   // TODO: replace with real top-up call
   alert(`您選擇了儲值 ${amount}`);
 }
-function renderCheckoutHeaderDOM(lineUserName, isMember) {
+function renderCheckoutHeaderDOM(lineUserName) {
     const titleRow = document.createElement('div');
     titleRow.className = 'checkout-title-row'; // Add a class for styling
     titleRow.style.display = 'flex';
