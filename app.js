@@ -1327,7 +1327,7 @@ function ECpayStoreDataBackTransfer() {
 
     // Check if we are on the checkout page by looking for a specific element
     const checkoutFormRefactored = document.getElementById('checkout-form-refactored');
-
+    console.log("CVSStoreID, CVSAddress, OrderID and checkout-form-refactored: ", CVSStoreID, CVSAddress, MerchantTradeNo, checkoutFormRefactored);
     if (CVSStoreID && CVSStoreName && CVSAddress && MerchantTradeNo && checkoutFormRefactored) {
         const selectedStoreData = { CVSStoreID, CVSStoreName, CVSAddress, MerchantTradeNo };
         sessionStorage.setItem('selectedStoreInfo', JSON.stringify(selectedStoreData));
