@@ -424,7 +424,7 @@ function openLogisticsMap(orderId) {
     const url = `https://mrbean-website-store-select-545199463340.asia-east1.run.app?orderId=${encodeURIComponent(orderId)}`;
     window.open(url, "_self");
 }
-
+/*
 function ECpayStoreDataBackTransfer() {
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -482,7 +482,7 @@ function ECpayStoreDataBackTransfer() {
       shippingFee, finalTotal // optional for reuse
     };
   }
-}
+} */
 
 // Global or module-scoped variables for checkout state
 let currentShippingCost = 0;
