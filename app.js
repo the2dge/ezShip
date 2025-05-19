@@ -572,7 +572,7 @@ function renderCheckoutHeaderDOM(lineUserName) {
     checkoutTitle.style.margin = '0'; // Remove default margin
     titleRow.appendChild(checkoutTitle);
 
-    if (lineUserName && isMember) {
+    if (lineUserName) {
         const memberWrapper = document.createElement('div');
         memberWrapper.classList.add('member-dropdown-wrapper');
         memberWrapper.style.position = 'relative'; // For dropdown positioning
