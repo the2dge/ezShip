@@ -500,6 +500,9 @@ async function renderCheckoutPage(cartItems) {
     const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
     console.log("LINE ID is: ", lineUserId);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
+    renderCheckoutHeaderDOM(lineUserName);
+    /*
+    // 1. Render Checkout Header (Title "結帳", Login/Member Button)
       // Conditionally render header only if the user is a member
       if (lineUserId) {
         try {
@@ -520,7 +523,7 @@ async function renderCheckoutPage(cartItems) {
         console.log("LINE ID not found in sessionStorage — treat as guest.");
         renderCheckoutHeaderDOM(null);
       }
-
+*/
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
     renderOrderedItemsSummaryDOM(cartItems);
 
