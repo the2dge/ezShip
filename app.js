@@ -499,19 +499,18 @@ async function renderCheckoutPage(cartItems) {
     const lineUserName = sessionStorage.getItem('lineUserName');
     const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
     console.log("LINE ID is: ", lineUserId);
-
     let isMember = false;
 
       if (lineUserId) {
-        const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
+        const res = await fetch(`https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
         const data = await res.json();
         if (data.status === 'success') {
           isMember = true;
         }
       }
-
-  // ✅ Always render the header, control what's displayed inside it
-  renderCheckoutHeaderDOM(isMember ? lineUserName : null);
+    
+    // 1. Render Checkout Header (Title "結帳", Login/Member Button)
+    renderCheckoutHeaderDOM(lineUserName, isMember);
     
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
     renderOrderedItemsSummaryDOM(cartItems);
@@ -560,7 +559,7 @@ function handleTopUp(amount) {
   // TODO: replace with real top-up call
   alert(`您選擇了儲值 ${amount}`);
 }
-function renderCheckoutHeaderDOM(lineUserName) {
+function renderCheckoutHeaderDOM(lineUserName, isMember) {
     const titleRow = document.createElement('div');
     titleRow.className = 'checkout-title-row'; // Add a class for styling
     titleRow.style.display = 'flex';
@@ -573,7 +572,7 @@ function renderCheckoutHeaderDOM(lineUserName) {
     checkoutTitle.style.margin = '0'; // Remove default margin
     titleRow.appendChild(checkoutTitle);
 
-    if (lineUserName) {
+    if (lineUserName && isMember) {
         const memberWrapper = document.createElement('div');
         memberWrapper.classList.add('member-dropdown-wrapper');
         memberWrapper.style.position = 'relative'; // For dropdown positioning
