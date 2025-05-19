@@ -499,31 +499,20 @@ async function renderCheckoutPage(cartItems) {
     const lineUserName = sessionStorage.getItem('lineUserName');
     const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
     console.log("LINE ID is: ", lineUserId);
-    // 1. Render Checkout Header (Title "結帳", Login/Member Button)
-    renderCheckoutHeaderDOM(lineUserName);
-    /*
-    // 1. Render Checkout Header (Title "結帳", Login/Member Button)
-      // Conditionally render header only if the user is a member
+
+    let isMember = false;
+
       if (lineUserId) {
-        try {
-          const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
-          const data = await res.json();
-    
-          if (data.status === 'success') {
-            renderCheckoutHeaderDOM(lineUserName); // ✅ Safe to show member name
-          } else {
-            console.log("Not a registered member — skip header or show sign-up prompt.");
-            // Optionally show guest header or sign-up button
-            renderCheckoutHeaderDOM(null); // or show "Guest" version
-          }
-        } catch (err) {
-          console.error("Failed to check member info:", err);
+        const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
+        const data = await res.json();
+        if (data.status === 'success') {
+          isMember = true;
         }
-      } else {
-        console.log("LINE ID not found in sessionStorage — treat as guest.");
-        renderCheckoutHeaderDOM(null);
       }
-*/
+
+  // ✅ Always render the header, control what's displayed inside it
+  renderCheckoutHeaderDOM(isMember ? lineUserName : null);
+    
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
     renderOrderedItemsSummaryDOM(cartItems);
 
