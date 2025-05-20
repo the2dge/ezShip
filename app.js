@@ -1031,6 +1031,14 @@ shippingSelect.addEventListener('change', () => {
     // wire up the “reselect” button
     document.getElementById('reselect-store-btn')
       .addEventListener('click', () => {
+        sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
+          name: nameInput.value,
+          email: emailInput.value,
+          phone: phoneInput.value,
+          payment: paymentSelect.value,
+          discountCode: discountInput.value,
+          currentDiscountRate: currentDiscountRate
+        }));
         // clear previous info, then open map
         sessionStorage.removeItem('selectedStoreInfo');
         shippingSelect.value = 'seven_eleven'; // keep dropdown
