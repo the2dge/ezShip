@@ -114,7 +114,7 @@ body { margin: 0; font-family: sans-serif; }
 #checkout-form label { display: block; margin-bottom: 5px; }
 #checkout-form input, #checkout-form textarea { width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; box-sizing: border-box; }
 #checkout-form button { padding: 12px 25px; background-color: #007bff; color: white; border: none; cursor: pointer; }
-
+#discount-message {background: #a88; padding: 0 5px; margin: 10px 0}
 /* Side Cart */
 .side-cart { position: fixed; top: 0; right: -370px; /* Initially hidden */ width: 350px; height: 100%; background-color: white; box-shadow: -2px 0 5px rgba(0,0,0,0.2); display: flex; flex-direction: column; transition: right 0.3s ease-in-out; z-index: 1000; padding: 20px; box-sizing: border-box; }
 .side-cart.open { right: 0; /* Slides in */ }
