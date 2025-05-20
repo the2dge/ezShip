@@ -1039,6 +1039,13 @@ shippingSelect.addEventListener('change', () => {
           discountCode: discountInput.value,
           currentDiscountRate: currentDiscountRate
         }));
+          // 🔁 Also re-save cart and orderId (in case cart updated)
+        const now = new Date();
+        const orderId = localStorage.getItem('currentOrderId') || 
+          `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}${String(now.getSeconds()).padStart(2,'0')}${Math.floor(Math.random()*1000)}`;
+    
+        localStorage.setItem('currentOrderId', orderId);
+        localStorage.setItem('cart', JSON.stringify(cart));
         // clear previous info, then open map
         sessionStorage.removeItem('selectedStoreInfo');
         shippingSelect.value = 'seven_eleven'; // keep dropdown
