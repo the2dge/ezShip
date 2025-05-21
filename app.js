@@ -1742,7 +1742,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("LINE info: ", profile);
           // Update UI
     document.getElementById('login-link').style.display = 'none';
-    document.getElementById('user-name-link').style.display = 'inline-block';
+    document.getElementById('user-name').style.display = 'inline-block';
     document.getElementById('user-name').textContent = profile.displayName || '會員';
 
     // Optional: save login info to localStorage/session
