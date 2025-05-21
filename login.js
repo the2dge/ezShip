@@ -13,6 +13,26 @@ function logout() {
   // Refresh to reset UI
   location.reload();
 }
+async function handleLINELoginReturn() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+  const state = urlParams.get('state');
+
+  if (code) {
+    const profile = await exchangeCodeForToken(code); // should return user info
+
+    // Update UI
+    document.getElementById('login-link').style.display = 'none';
+    document.getElementById('user-name-link').style.display = 'inline-block';
+    document.getElementById('user-name').textContent = profile.displayName || '會員';
+
+    // Optional: save login info to localStorage/session
+    localStorage.setItem('lineUser', JSON.stringify(profile));
+
+    // Clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+}
 function loginWithLINE() {
   // IMPORTANT: First, make sure we get the ACTUAL current cart from your global state
   // This ensures we're not using a stale reference
