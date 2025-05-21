@@ -1697,7 +1697,7 @@ document.addEventListener('DOMContentLoaded', () => {
         coverTrigger: false
       });
     if (storedUserName){
-        const user = JSON.parse(storedUser);
+        const user = JSON.parse(storedUserName);
         showUserDropdown(user.displayName);
     }
     //if (storedUserName) updateNavbarWithUserName(storedUserName);
