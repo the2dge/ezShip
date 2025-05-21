@@ -2,6 +2,10 @@ const CLIENT_ID = "2007420785"; // LINE Channel ID
 const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
 function logout() {
   // Clear user info and cart
+  sessionStorage.removeItem('lineUserName');
+            sessionStorage.removeItem('lineUserEmail');
+            sessionStorage.removeItem('lineUserId');
+            localStorage.removeItem('currentOrderId');
   localStorage.removeItem('lineUser');
   localStorage.removeItem('cart');
   localStorage.removeItem('scrollPosition');
