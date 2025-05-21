@@ -1740,6 +1740,7 @@ document.addEventListener('DOMContentLoaded', () => {
       await exchangeCodeForToken(code);
 
       const savedCart = localStorage.getItem('cart');
+         console.log("Item saved !Return from LINE Login: ", savedCart);
       if (savedCart) cart = JSON.parse(savedCart);
 
       if (state === 'checkout') {
