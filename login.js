@@ -2,19 +2,32 @@ const CLIENT_ID = "2007420785"; // LINE Channel ID
 const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
 
 function loginWithLINE() {
-  // Get the current cart 
-  const storedCart = localStorage.getItem("cart");
-  const currentCart = storedCart ? JSON.parse(storedCart) : [];
+  // IMPORTANT: First, make sure we get the ACTUAL current cart from your global state
+  // This ensures we're not using a stale reference
+  // Assuming your cart is stored in a global variable or state management system
+  let currentCart = window.cartItems || []; // Replace with however you actually track cart items
+  
+  // For debugging, inspect what's in the cart before we do anything
+  console.log("ACTUAL cart before LINE login:", JSON.stringify(currentCart));
   
   // Store scroll position if needed
   localStorage.setItem("scrollPosition", window.scrollY);
   
-  // Store cart for after redirect - ensure we're storing the CURRENT cart
-  console.log("Storing cart before LINE login:", currentCart);
+  // Force localStorage to save the current cart state immediately
+  // Using a unique key to avoid any potential caching issues
+  const timestamp = new Date().getTime();
+  localStorage.setItem("line_login_cart_" + timestamp, JSON.stringify(currentCart));
+  localStorage.setItem("active_cart_key", "line_login_cart_" + timestamp);
+  
+  // Also keep the original cart key for compatibility
   localStorage.setItem("cart", JSON.stringify(currentCart));
   
-  // Add "state" to resume at checkout
-  const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email&state=checkout`;
+  // Verify the cart was stored correctly
+  const verifyCart = localStorage.getItem("line_login_cart_" + timestamp);
+  console.log("Verified cart storage before redirect:", verifyCart);
+  
+  // Add "state" parameter with cart reference
+  const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email&state=checkout_${timestamp}`;
   window.location.href = loginUrl;
 }
 function loginWithLINE_tmp() {
