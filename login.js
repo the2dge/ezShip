@@ -59,7 +59,7 @@ function loginWithLINE() {
   console.log("Verified cart storage before redirect:", verifyCart);
   
   // Add "state" parameter with cart reference
-  const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email`;
+  const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email&state=content`;
   window.location.href = loginUrl;
 }
 function loginWithLINE_tmp() {
