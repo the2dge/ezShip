@@ -1737,7 +1737,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Case 1: Returning from LINE login ---
 if (code) {
-      await exchangeCodeForToken(code);
+     const profile = await exchangeCodeForToken(code);
+    console.log("LINE info: ", profile);
           // Update UI
     document.getElementById('login-link').style.display = 'none';
     document.getElementById('user-name-link').style.display = 'inline-block';
