@@ -1492,7 +1492,16 @@ document.addEventListener('DOMContentLoaded', () => {
              // Assuming contact scrolls to footer
             document.querySelector('.footer')?.scrollIntoView({ behavior: 'smooth' });
         });
-        
+        //Listener for Login
+        const memberLoginBtn = document.querySelector('.member-login-btn');
+        memberLoginBtn.addEventListener('click', () => {
+            if (typeof loginWithLINE === 'function') {
+                loginWithLINE();
+            } else {
+                console.error('loginWithLINE function is not defined.');
+                alert('登入功能暫時無法使用。');
+            }
+        });
         //Listener for Category Filter Button
         if (contentContainers.categoryFiltersContainer) {
             contentContainers.categoryFiltersContainer.addEventListener('click', (e) => {
