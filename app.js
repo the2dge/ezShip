@@ -1738,25 +1738,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Case 1: Returning from LINE login ---
 if (code) {
   await exchangeCodeForToken(code);
-
-  let cart = [];
-
-  if (state && state.startsWith('checkout:')) {
-    const cartKey = state.split(':')[1];
-    const savedCart = localStorage.getItem(cartKey);
-    console.log("Restoring cart via cartKey: ", cartKey, savedCart);
-    if (savedCart) cart = JSON.parse(savedCart);
+  
+  // Retrieve cart from localStorage
+  const savedCart = localStorage.getItem('cart');
+  console.log("Retrieved cart after LINE Login:", savedCart);
+  
+  // Parse the cart data and handle potential errors
+  try {
+    if (savedCart && savedCart !== "undefined" && savedCart !== "null") {
+      cart = JSON.parse(savedCart);
+    } else {
+      console.warn("No valid cart found in localStorage after LINE login");
+      cart = []; // Initialize empty cart if nothing was saved
+    }
+  } catch (error) {
+    console.error("Error parsing cart from localStorage:", error);
+    cart = []; // Fallback to empty cart on error
   }
-
-  if (state.startsWith('checkout')) {
-    renderCheckoutPage(cart);
+  
+  // Continue with the flow based on state
+  if (state === 'checkout') {
+    renderCheckoutPage(cart); // cart + user
     switchView('checkout');
   } else {
     switchView('content');
   }
-
+  
+  // Clean up URL parameters
   window.history.replaceState({}, document.title, window.location.pathname);
-  return;
+  return; // exit early
 }
 
     // --- Case 2: Returning from 7-11 store selection ---
