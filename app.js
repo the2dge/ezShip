@@ -1686,7 +1686,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
   //  if (storedUserName) updateNavbarWithUserName(storedUserName);
-    if(storedUserName) {console.log("UserName is: ", storedUserName);
+    if(storedUserName) {console.log("UserName is: ", storedUserName)};
 
     // --- Initialization Function ---
     async function init() {
@@ -1758,7 +1758,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         switchView('content');
       }
-
       window.history.replaceState({}, document.title, window.location.pathname);
       return; // ✅ exit early
     }
