@@ -1738,11 +1738,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Case 1: Returning from LINE login ---
 
     if (code) {
-     const profile = await exchangeCodeForToken(code);
+    const profile = await exchangeCodeForToken(code);
     console.log("LINE info: ", profile);
           // Update UI
     document.getElementById('login-link').style.display = 'none';
-    document.getElementById('user-name').style.display = 'inline-block';
+    document.getElementById('user-dropdown').style.display = 'block';
     document.getElementById('user-name').textContent = profile.displayName || '會員';
 
     // Optional: save login info to localStorage/session
