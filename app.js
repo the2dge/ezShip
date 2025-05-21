@@ -1736,23 +1736,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const CVSStoreID = urlParams.get('CVSStoreID');
 
     // --- Case 1: Returning from LINE login ---
-    if (code) {
-      await exchangeCodeForToken(code);
+if (code) {
+  await exchangeCodeForToken(code);
 
-      const savedCart = localStorage.getItem('cart');
-         console.log("Item saved !Return from LINE Login: ", savedCart);
-      if (savedCart) cart = JSON.parse(savedCart);
+  let cart = [];
 
-      if (state === 'checkout') {
-        renderCheckoutPage(cart); // cart + user
-        switchView('checkout');
-      } else {
-        switchView('content');
-      }
+  if (state && state.startsWith('checkout:')) {
+    const cartKey = state.split(':')[1];
+    const savedCart = localStorage.getItem(cartKey);
+    console.log("Restoring cart via cartKey: ", cartKey, savedCart);
+    if (savedCart) cart = JSON.parse(savedCart);
+  }
 
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return; // ✅ exit early
-    }
+  if (state.startsWith('checkout')) {
+    renderCheckoutPage(cart);
+    switchView('checkout');
+  } else {
+    switchView('content');
+  }
+
+  window.history.replaceState({}, document.title, window.location.pathname);
+  return;
+}
 
     // --- Case 2: Returning from 7-11 store selection ---
     if (CVSStoreID) {
