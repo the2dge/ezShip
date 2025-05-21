@@ -2,7 +2,8 @@ const CLIENT_ID = "2007420785"; // LINE Channel ID
 const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
 function loginWithLINE() {
   // fallback: try to load cart from sessionStorage if not in memory
-  const storedCart = sessionStorage.getItem("cart");
+  //const storedCart = sessionStorage.getItem("cart");
+  const storedCart = localStorage.getItem('cart');
   const currentCart = storedCart ? JSON.parse(storedCart) : [];
   // Store current scroll position
   sessionStorage.setItem("scrollPosition", window.scrollY);
