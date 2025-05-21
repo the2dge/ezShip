@@ -1734,9 +1734,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const code = urlParams.get('code');
   const state = urlParams.get('state');
   const CVSStoreID = urlParams.get('CVSStoreID');
-  await handleLINELoginReturn();
+
     // --- Case 1: Returning from LINE login ---
-/*
+
     if (code) {
      const profile = await exchangeCodeForToken(code);
     console.log("LINE info: ", profile);
@@ -1762,7 +1762,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.history.replaceState({}, document.title, window.location.pathname);
       return; // ✅ exit early
     }
-*/
+
     // --- Case 2: Returning from 7-11 store selection ---
     if (CVSStoreID) {
       console.log("Detected 7-11 store info via CVSStoreID");
