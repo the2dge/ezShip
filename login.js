@@ -1,6 +1,22 @@
 const CLIENT_ID = "2007420785"; // LINE Channel ID
 const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
 function loginWithLINE() {
+  // Use localStorage to persist cart through redirect
+  const storedCart = localStorage.getItem("cart");
+  const currentCart = storedCart ? JSON.parse(storedCart) : [];
+
+  // Store scroll position if needed
+  localStorage.setItem("scrollPosition", window.scrollY);
+
+  // Store cart for after redirect
+  localStorage.setItem("cart", JSON.stringify(currentCart));  // ✅ Use localStorage
+
+  // Add "state" to resume at checkout
+  const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email&state=checkout`;
+
+  window.location.href = loginUrl;
+}
+function loginWithLINE_tmp() {
   // fallback: try to load cart from sessionStorage if not in memory
   //const storedCart = sessionStorage.getItem("cart");
   const storedCart = localStorage.getItem('cart');
