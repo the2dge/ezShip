@@ -1685,8 +1685,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
-  //  if (storedUserName) updateNavbarWithUserName(storedUserName);
-    if(storedUserName) {console.log("UserName is: ", storedUserName)};
+    console.log("storedUserName is: ", storedUserName);
+    if (storedUserName) updateNavbarWithUserName(storedUserName);
+
 
     // --- Initialization Function ---
     async function init() {
