@@ -1683,11 +1683,24 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.disabled = true; // Optional: prevent re-clicking
       }
     }
+    function showUserDropdown(displayName) {
+      document.getElementById('login-link').style.display = 'none';
+      document.getElementById('user-name').textContent = displayName || '會員';
+      document.getElementById('user-dropdown').style.display = 'block';
+    }
 
     // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
-    console.log("storedUserName is: ", storedUserName);
-    if (storedUserName) updateNavbarWithUserName(storedUserName);
+    const dropdowns = document.querySelectorAll('.dropdown-trigger');
+      M.Dropdown.init(dropdowns, {
+        constrainWidth: false,
+        coverTrigger: false
+      });
+    if (storedUserName){
+        const user = JSON.parse(storedUser);
+        showUserDropdown(user.displayName);
+    }
+    //if (storedUserName) updateNavbarWithUserName(storedUserName);
 
 
     // --- Initialization Function ---
