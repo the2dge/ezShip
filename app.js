@@ -1623,6 +1623,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Normal page load
             const storedUserName = sessionStorage.getItem('lineUserName');
+            console.log("userName is", storedUserName);
             if (storedUserName) {
                 updateNavbarWithUserName(storedUserName);
             }
