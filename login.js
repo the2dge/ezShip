@@ -1,6 +1,14 @@
 const CLIENT_ID = "2007420785"; // LINE Channel ID
 const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
+function logout() {
+  // Clear user info and cart
+  localStorage.removeItem('lineUser');
+  localStorage.removeItem('cart');
+  localStorage.removeItem('scrollPosition');
 
+  // Refresh to reset UI
+  location.reload();
+}
 function loginWithLINE() {
   // IMPORTANT: First, make sure we get the ACTUAL current cart from your global state
   // This ensures we're not using a stale reference
