@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr.Bean website </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,21 +20,7 @@
                     <li><a href="#" id="nav-contact">聯絡我們</a></li>
                 </ul>
             </nav>
-            <ul class="right hide-on-med-and-down" id="navbar-links">
-              <!-- Login link (shown before login) -->
-              <li id="login-link">
-                <a href="#" onclick="loginWithLINE()">會員登入</a>
-              </li>
-            
-              <!-- User dropdown (shown after login) -->
-              <li id="user-dropdown" class="dropdown-trigger" style="display: none;" data-target="user-menu">
-                <a href="#">Hi, <span id="user-name"></span> <i class="material-icons right">arrow_drop_down</i></a>
-              </li>
-            </ul>
-            <!-- Dropdown content -->
-            <ul id="user-menu" class="dropdown-content">
-              <li><a href="#" onclick="logout()">登出</a></li>
-            </ul>
+            <button class="member-login-button">會員登入</button>
             <div class="cart-icon-container">
                 <button id="cart-icon">
                     <img src="image/shopping-cart.png" alt="Shopping Cart">
