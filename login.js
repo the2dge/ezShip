@@ -3,6 +3,7 @@ const REDIRECT_URI = "https://www.mrbean.tw/"; //網站 callback URL
 function loginWithLINE() {
   // Use localStorage to persist cart through redirect
   const storedCart = localStorage.getItem("cart");
+  const savedOrderId = localStorage.getItem('currentOrderId');
   const currentCart = storedCart ? JSON.parse(storedCart) : [];
 
   // Store scroll position if needed
