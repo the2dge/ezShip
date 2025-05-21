@@ -1691,16 +1691,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
-    const dropdowns = document.querySelectorAll('.dropdown-trigger');
-      M.Dropdown.init(dropdowns, {
-        constrainWidth: false,
-        coverTrigger: false
-      });
-    if (storedUserName){
-        const user = JSON.parse(storedUserName);
-        showUserDropdown(user.displayName);
-    }
-    //if (storedUserName) updateNavbarWithUserName(storedUserName);
+
+    if (storedUserName) updateNavbarWithUserName(storedUserName);
 
 
     // --- Initialization Function ---
