@@ -135,6 +135,22 @@ document.addEventListener('DOMContentLoaded', function () {
       mobileNav.classList.toggle('active');
     });
   }
+
+  const toggleBtn = document.getElementById('member-service-toggle');
+  const menu = document.getElementById('member-service-menu');
+
+  if (toggleBtn && menu) {
+    toggleBtn.addEventListener('click', function () {
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Optional: click outside to close
+    document.addEventListener('click', function (e) {
+      if (!document.getElementById('member-service-container').contains(e.target)) {
+        menu.style.display = 'none';
+      }
+    });
+  }
 });
 </script>
 
