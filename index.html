@@ -8,27 +8,50 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="image/logo.png" alt="Mr.Bean Logo">
-            </div>
-            <nav class="nav-links">
-                <ul>
-                    <li><a href="#" id="nav-about">關於荳荳</a></li>
-                    <li><a href="#" id="nav-product">荳荳精選</a></li>
-                    <li><a href="#" id="nav-contact">聯絡我們</a></li>
-                </ul>
-            </nav>
-            <div class="member-login-button"><a href="#" onclick="loginWithLINE()">會員登入</a></div>
-            <div id="user-name"></div>
-            <div class="cart-icon-container">
-                <button id="cart-icon">
-                    <img src="image/shopping-cart.png" alt="Shopping Cart">
-                    <span id="cart-item-count">0</span> </button>
-            </div>
-        </div>
-    </header>
+<header class="navbar">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="image/logo.png" alt="Mr.Bean Logo">
+    </div>
+
+    <!-- Full nav links (desktop only) -->
+    <nav class="nav-links desktop-only">
+      <ul>
+        <li><a href="#" id="nav-about">關於荳荳</a></li>
+        <li><a href="#" id="nav-product">荳荳精選</a></li>
+        <li><a href="#" id="nav-contact">聯絡我們</a></li>
+      </ul>
+    </nav>
+
+    <!-- Member login + Cart + Hamburger -->
+    <div class="nav-right">
+      <button class="member-login-button">會員登入</button>
+      <div class="member-name-display"></div>
+
+      <div class="cart-icon-container">
+        <button id="cart-icon">
+          <img src="image/shopping-cart.png" alt="Shopping Cart">
+          <span id="cart-item-count">0</span>
+        </button>
+      </div>
+
+      <!-- Hamburger icon (mobile only) -->
+      <button class="hamburger mobile-only" id="hamburger-toggle">
+        <span>☰</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Collapsible mobile nav -->
+  <nav class="mobile-nav mobile-only" id="mobile-nav">
+    <ul>
+      <li><a href="#" id="nav-about-mobile">關於荳荳</a></li>
+      <li><a href="#" id="nav-product-mobile">荳荳精選</a></li>
+      <li><a href="#" id="nav-contact-mobile">聯絡我們</a></li>
+    </ul>
+  </nav>
+</header>
 
     <main class="main-body">
         <div id="content-wrapper" class="wrapper active">
@@ -91,6 +114,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="app.js"></script>
     <script src="login.js"></script>
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.getElementById('hamburger-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', function () {
+      mobileNav.classList.toggle('active');
+    });
+  }
+});
+</script>
 
 
 </body>
