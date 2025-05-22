@@ -6,8 +6,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const navbar = {
         logo: document.querySelector('.logo'),
         aboutLink: document.getElementById('nav-about'),
+        aboutLink_m: document.getElementById('nav-about-mobile'),
         productLink: document.getElementById('nav-product'),
+        productLink_m: document.getElementById('nav-product-mobile'),
         contactLink: document.getElementById('nav-contact'), // Assuming contact might scroll to footer
+        contactLink_m: document.getElementById('nav-contact-mobile'),
         cartIconBtn: document.getElementById('cart-icon'),
         cartItemCountSpan: document.getElementById('cart-item-count')
     };
@@ -1482,16 +1485,32 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentView !== 'content') switchView('content');
             document.getElementById('about-container')?.scrollIntoView({ behavior: 'smooth' });
         });
+        navbar.aboutLink_m.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentView !== 'content') switchView('content');
+            document.getElementById('about-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
         navbar.productLink.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentView !== 'content') switchView('content');
             document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
         });
-         navbar.contactLink.addEventListener('click', (e) => {
+        navbar.productLink_m.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentView !== 'content') switchView('content');
+            document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        navbar.contactLink.addEventListener('click', (e) => {
             e.preventDefault();
              // Assuming contact scrolls to footer
             document.querySelector('.footer')?.scrollIntoView({ behavior: 'smooth' });
         });
+        navbar.contactLink_m.addEventListener('click', (e) => {
+            e.preventDefault();
+             // Assuming contact scrolls to footer
+            document.querySelector('.footer')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        
 
         //Listener for Category Filter Button
         if (contentContainers.categoryFiltersContainer) {
