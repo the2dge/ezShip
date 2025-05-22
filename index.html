@@ -27,11 +27,17 @@
     <!-- Member login + Cart + Hamburger -->
     <div class="nav-right">
       <button id="member-login-button"><a href="#" onclick="loginWithLINE()">會員登入</a></button>
-      <div id="member-service" style="display: none">
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-      </div>
+  <!-- Member Service (shown after login) -->
+  <div id="member-service-container" style="display: none; position: relative;">
+    <button id="member-service-toggle">會員服務 ▾</button>
+    
+    <!-- Hidden dropdown menu -->
+    <ul id="member-service-menu" class="member-service-menu" style="display: none;">
+      <li><a href="#">我的訂單</a></li>
+      <li><a href="#">修改資料</a></li>
+      <li><a href="#" onclick="logout()">登出</a></li>
+    </ul>
+  </div>
 
       <div class="cart-icon-container">
         <button id="cart-icon">
