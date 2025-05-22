@@ -82,7 +82,7 @@ function loginWithLINE() {
 
 function updateNavbarWithUserName(userName) {
   const loginBtn = document.getElementById('member-login-button');
-  const memberService = document.getElementById('member-service');
+  const memberService = document.getElementById('member-service-container');
   console.log("LineUser Name is shown here!");
   if (loginBtn) {
     loginBtn.textContent = `👤 ${userName}`;
