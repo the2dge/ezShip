@@ -33,7 +33,7 @@ async function handleLINELoginReturn() {
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 }
-function loginWithLINE() {
+function loginWithLINE_tmp() {
   // IMPORTANT: First, make sure we get the ACTUAL current cart from your global state
   // This ensures we're not using a stale reference
   // Assuming your cart is stored in a global variable or state management system
@@ -62,7 +62,7 @@ function loginWithLINE() {
   const loginUrl = `https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=profile%20openid%20email&state=content`;
   window.location.href = loginUrl;
 }
-function loginWithLINE_tmp() {
+function loginWithLINE() {
   // fallback: try to load cart from sessionStorage if not in memory
   //const storedCart = sessionStorage.getItem("cart");
   const storedCart = localStorage.getItem('cart');
