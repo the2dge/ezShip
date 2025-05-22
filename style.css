@@ -102,6 +102,41 @@ body { margin: 0; font-family: sans-serif; }
 .mobile-nav.active {
   display: block;
 }
+.member-service-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0 0;
+  width: 160px;
+  z-index: 100;
+}
+
+.member-service-menu li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.member-service-menu li:last-child {
+  border-bottom: none;
+}
+
+.member-service-menu a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+#member-service-toggle {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 /* Main Body */
 .main-body { padding: 20px; max-width: 1200px; margin: 20px auto; min-height: 60vh; } /* Ensure footer isn't too high */
 
