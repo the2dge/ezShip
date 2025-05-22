@@ -81,7 +81,8 @@ function loginWithLINE() {
 }
 
 function updateNavbarWithUserName(userName) {
-  const loginBtn = document.getElementById('member-login-btn');
+  const loginBtn = document.getElementById('member-login-button');
+  console.log("LineUser Name is shown here!");
   if (loginBtn) {
     loginBtn.textContent = `👤 ${userName}`;
     loginBtn.disabled = true; // Optional: prevent re-clicking
