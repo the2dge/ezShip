@@ -82,10 +82,12 @@ function loginWithLINE() {
 
 function updateNavbarWithUserName(userName) {
   const loginBtn = document.getElementById('member-login-button');
+  const memberService = document.getElementById('member-service');
   console.log("LineUser Name is shown here!");
   if (loginBtn) {
     loginBtn.textContent = `👤 ${userName}`;
     loginBtn.disabled = true; // Optional: prevent re-clicking
+    memberService.style.display ="block";
   }
 }
 
