@@ -1767,9 +1767,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const profile = await exchangeCodeForToken(code);
     console.log("LINE info: ", profile);
           // Update UI
-   document.getElementById(member-login-button).style.display = 'none';
+   document.getElementById("member-login-button").style.display = 'none';
    // document.getElementById('user-dropdown').style.display = 'block';
-    document.getElementById(member-name-display).textContent = profile.displayName || '會員';
+    document.getElementById("member-name-display").textContent = profile.displayName || '會員';
 
     // Optional: save login info to localStorage/session
      localStorage.setItem('lineUser', JSON.stringify(profile));
