@@ -513,7 +513,7 @@ async function renderCheckoutPage(cartItems) {
       }
      console.log("LINE ID and isMember?:  ", lineUserId, isMember);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
-    renderCheckoutHeaderDOM(lineUserName);
+    //renderCheckoutHeaderDOM(lineUserName);
     
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
     renderOrderedItemsSummaryDOM(cartItems);
@@ -742,6 +742,9 @@ dropdown.appendChild(creditBalance);
 
 // --- Helper for "我訂購的商品" Title, List, and Totals Placeholders ---
 function renderOrderedItemsSummaryDOM(cartItems) {
+    const itemsHeader = document.createElement('h2');
+    itemsHeader.textContent = '結帳 -- 感謝您選擇荳荳先生';
+    mainBody.checkoutWrapper.appendChild(itemsHeader);
     const itemsTitle = document.createElement('h3');
     itemsTitle.textContent = '我訂購的商品';
     itemsTitle.style.marginTop = '20px';
