@@ -1664,7 +1664,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('lineUserEmail', email);
           sessionStorage.setItem('lineUserId', sub);
 
-        //  updateNavbarWithUserName(name); // Optional UI update
+          updateNavbarWithUserName(name); // Optional UI update
         } else {
           console.warn('LINE profile fetch failed:', data);
         }
