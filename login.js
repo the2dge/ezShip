@@ -84,8 +84,13 @@ function updateNavbarWithUserName(userName) {
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
+  const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${storedUserId}`);
+  const data = await res.json();
+  if (data.status === 'success') {
+    isMember = true;
+  }
   console.log("LineId is: ", storedUserId);
-  if (loginBtn) {
+  if (loginBtn && isMember) {
     loginBtn.textContent = `👤 ${userName}`;
     loginBtn.disabled = true; // Optional: prevent re-clicking
     memberService.style.display ="block";
