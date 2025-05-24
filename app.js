@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         aboutLink_m: document.getElementById('nav-about-mobile'),
         productLink: document.getElementById('nav-product'),
         productLink_m: document.getElementById('nav-product-mobile'),
+        mediaLink: document.getElementById('nav-media'),
         contactLink: document.getElementById('nav-contact'), // Assuming contact might scroll to footer
         contactLink_m: document.getElementById('nav-contact-mobile'),
         cartIconBtn: document.getElementById('cart-icon'),
@@ -174,6 +175,35 @@ document.addEventListener('DOMContentLoaded', async () => {
             <div>${aboutData.content}</div>
         `;
     }
+    
+function renderMedia(mediaData) {
+  const mediaGrid = document.getElementById('media-grid');
+  if (!mediaGrid || !mediaData || !mediaData.length) return;
+
+  mediaGrid.innerHTML = ''; // Clear previous
+
+  mediaData.forEach(item => {
+    const videoId = extractYouTubeId(item.videoUrl);
+    const iframeSrc = `https://www.youtube.com/embed/${videoId}`;
+
+    const card = document.createElement('div');
+    card.className = 'media-card';
+
+    card.innerHTML = `
+      <iframe src="${iframeSrc}" allowfullscreen></iframe>
+      <p>${item.altText}</p>
+    `;
+
+    mediaGrid.appendChild(card);
+  });
+}
+
+// Helper to extract ID from Shorts/normal URLs
+function extractYouTubeId(url) {
+  const shortsMatch = url.match(/shorts\/([\w-]+)/);
+  const normalMatch = url.match(/v=([\w-]+)/);
+  return shortsMatch?.[1] || normalMatch?.[1] || '';
+}
     function renderCategoryFilters(products) {
         if (!contentContainers.categoryFiltersContainer) return; // Exit if container not found
 
@@ -1503,6 +1533,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentView !== 'content') switchView('content');
             document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
         });
+        navbar.mediaLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentView !== 'content') switchView('content');
+            document.getElementById('media-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
         navbar.contactLink.addEventListener('click', (e) => {
             e.preventDefault();
              // Assuming contact scrolls to footer
@@ -1728,9 +1763,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initialization Function ---
     async function init() {
         // Fetch all necessary data concurrently
-        const [bannerData, aboutData, productsData, itemDetailsData] = await Promise.all([
+        const [bannerData, aboutData, mediaData, productsData, itemDetailsData] = await Promise.all([
             fetchData('banner.json'),
             fetchData('about.json'),
+            fetchData('media.json'),
             fetchData('products.json'),
             fetchData('items.json')
         ]);
@@ -1758,6 +1794,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const bannerRendered = renderBanner(bannerData);
         renderAbout(aboutData);
         renderProductGrid(allProductsData);
+        renderMedia(mediaData);
         renderSideCart();
         setupEventListeners();
 
