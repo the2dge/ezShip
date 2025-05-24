@@ -1660,45 +1660,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
      
     }
-    async function checkLINELogin() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const code = urlParams.get('code');
-        const state = urlParams.get('state'); // <-- Get "state"
 
-        if (code) {
-            console.log('Detected LINE login code:', code);
-            console.log('Detected state:', state);
-
-            await exchangeCodeForToken(code); // Do the login exchange
-
-            // After login success, check state
-            if (state === 'checkout') {
-                console.log('State=checkout → Switch to checkout page');
-                renderCheckoutPage(cart); // ⬅️ Must render using restored cart
-                switchView('checkout');
-            } else {
-                switchView('content'); // Default
-            }
-
-            // Clean up URL (remove code/state)
-            window.history.replaceState({}, document.title, window.location.pathname);
-
-        } else {
-            // Normal page load
-            const storedUserName = sessionStorage.getItem('lineUserName');
-            console.log("userName is", storedUserName);
-            if (storedUserName) {
-                    const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${storedUserName}`);
-                    const data = await res.json();
-                    if (data.status === 'success') {
-                      isMember = true;
-                    }
-                  }
-            if (storedUserName && isMember) {
-                updateNavbarWithUserName(storedUserName);
-            }
-        }
-    }
     async function exchangeCodeForToken(code) {
       const cloudFunctionURL = 'https://mrbean-website-line-login-545199463340.asia-east1.run.app'; // <-- replace with your real function URL
 
