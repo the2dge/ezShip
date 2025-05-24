@@ -225,6 +225,44 @@ body { margin: 0; font-family: sans-serif; }
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
+/*  Media Content */
+#media-container {
+  margin-top: 40px;
+  padding: 0 16px;
+}
+
+#media-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.media-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+}
+
+.media-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.media-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+
+.media-card p {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+}
 /* Item Wrapper Specifics */
 .item-detail { display: flex; gap: 30px; }
 .item-detail img { max-width: 40%; height: auto; }
