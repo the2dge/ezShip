@@ -85,11 +85,11 @@ function updateNavbarWithUserName(userName) {
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
   if (storedUserId) {
-  fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${storedUserId}`)
-    .then(res => res.json());
-    if (data.status === 'success') {
-                      isMember = true;
-                    }
+  const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${storedUserName}`);
+      const data = await res.json();
+      if (data.status === 'success') {
+        isMember = true;
+      }
   }
   console.log("LineId is: ", storedUserId, isMember);
   if (loginBtn && isMember) {
