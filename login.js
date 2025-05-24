@@ -81,6 +81,7 @@ function loginWithLINE() {
 }
 
 async function updateNavbarWithUserName(userName) {
+  let isMember = false;
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
