@@ -1705,13 +1705,14 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('❌ 訂單提交失敗，請稍後再試。');
         }
     }
+    /*
     function updateNavbarWithUserName(userName) {
       const loginBtn = document.getElementById('member-login-btn');
       if (loginBtn) {
         loginBtn.textContent = `👤 ${userName}`;
         loginBtn.disabled = true; // Optional: prevent re-clicking
       }
-    }
+    }*/
     function showUserDropdown(displayName) {
       document.getElementById('login-link').style.display = 'none';
       document.getElementById('user-name').textContent = displayName || '會員';
