@@ -80,7 +80,7 @@ function loginWithLINE() {
   window.location.href = loginUrl;
 }
 
-function updateNavbarWithUserName(userName) {
+async function updateNavbarWithUserName(userName) {
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
