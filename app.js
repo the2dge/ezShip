@@ -1788,13 +1788,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const savedCart = localStorage.getItem('cart');
       console.log("Item saved !Return from LINE Login: ", savedCart);
       if (savedCart) cart = JSON.parse(savedCart);
-
+      switchView('content');
+        /*
       if (state === 'checkout') {
         renderCheckoutPage(cart); // cart + user
         switchView('checkout');
       } else {
         switchView('content');
-      }
+      }*/
       window.history.replaceState({}, document.title, window.location.pathname);
       return; // ✅ exit early
     }
