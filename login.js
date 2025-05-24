@@ -83,7 +83,8 @@ function loginWithLINE() {
 function updateNavbarWithUserName(userName) {
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
-  console.log("LineUser Name is shown here!");
+  const storedUserId = sessionStorage.getItem('lineUserId');
+  console.log("LineId is: ", storedUserId);
   if (loginBtn) {
     loginBtn.textContent = `👤 ${userName}`;
     loginBtn.disabled = true; // Optional: prevent re-clicking
