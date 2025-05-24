@@ -1724,7 +1724,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
-
+    console.log("LINE user name exist!");
     if (storedUserName) updateNavbarWithUserName(storedUserName);
 
 
