@@ -451,7 +451,7 @@ function openLogisticsMap(orderId) {
       //const orderId = window.currentOrderId;
         
     if (!orderId) {
-        alert("Order ID 尚未生成，無法開啟門市選擇頁面");
+        Swal.fire("Order ID 尚未生成，無法開啟門市選擇頁面");
         return;
     }
     // Open the Cloud Function, passing orderId to ECPay
@@ -591,7 +591,7 @@ async function renderCheckoutPage(cartItems) {
 // --- Helper for Top Header: "結帳" Title & Member/Login Button ---
 function handleTopUp(amount) {
   // TODO: replace with real top-up call
-  alert(`您選擇了儲值 ${amount}`);
+  Swal.fire(`您選擇了儲值 ${amount}`);
 }
 function renderCheckoutHeaderDOM(lineUserName) {
     const titleRow = document.createElement('div');
@@ -641,7 +641,7 @@ function renderCheckoutHeaderDOM(lineUserName) {
         creditBalance.addEventListener('click', async () => {
             const lineUserId = sessionStorage.getItem('lineUserId');
             if (!lineUserId) {
-                alert('⚠️ 尚未登入 LINE 帳號，請先登入會員');
+                Swal.fire('⚠️ 尚未登入 LINE 帳號，請先登入會員');
                 dropdown.style.display = 'none';
                 return;
             }
@@ -650,18 +650,18 @@ function renderCheckoutHeaderDOM(lineUserName) {
                 const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
                 const data = await res.json();
                 if (data.status === 'success') {
-                    alert(`💰 目前點數餘額：${data.creditBalance}`);
+                    Swal.fire(`💰 目前點數餘額：${data.creditBalance}`);
                 } else if (data.status === 'not_found') {
                   const goToSignup = confirm('⚠️ 查無此會員資料，是否前往註冊頁面？');
                   if (goToSignup) {
                     window.location.href = 'https://www.mrbean.tw/signup';
                   }
                 } else {
-                    alert(`❌ 無法取得點數資料：${data.message || '請稍後再試'}`);
+                    Swal.fire(`❌ 無法取得點數資料：${data.message || '請稍後再試'}`);
                 }
             } catch (err) {
                 console.error('Error fetching credit balance:', err);
-                alert('🚫 發生錯誤，請檢查網路或稍後再試');
+                Swal.fire('🚫 發生錯誤，請檢查網路或稍後再試');
             }
             dropdown.style.display = 'none';
         });
@@ -730,7 +730,7 @@ dropdown.appendChild(creditBalance);
           //  sessionStorage.removeItem('selectedStoreInfo');
           //  sessionStorage.removeItem('discountCode');
           //  sessionStorage.removeItem('discountTier');
-            alert('已登出，購物車及部分結帳資訊已清除。');
+            Swal.fire('已登出，購物車及部分結帳資訊已清除。');
             window.location.reload();
         });
 
@@ -763,7 +763,7 @@ dropdown.appendChild(creditBalance);
                 loginWithLINE();
             } else {
                 console.error('loginWithLINE function is not defined.');
-                alert('登入功能暫時無法使用。');
+                Swal.fire('登入功能暫時無法使用。');
             }
         });
         titleRow.appendChild(memberLoginBtn);
@@ -985,7 +985,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     if (paymentMethod === 'credit_point') {
         const lineUserId = sessionStorage.getItem('lineUserId');
         if (!lineUserId) {
-            alert('⚠️ 未登入會員，無法使用點數付款');
+            Swal.fire('⚠️ 未登入會員，無法使用點數付款');
             return;
         }
 
@@ -998,14 +998,14 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
                 if (creditBalance >= submitAmount) {
                     submitButton.disabled = false;
                 } else {
-                    alert(`❌ 點數不足。目前餘額：${creditBalance}，需支付：${submitAmount}`);
+                    Swal.fire(`❌ 點數不足。目前餘額：${creditBalance}，需支付：${submitAmount}`);
                 }
             } else {
-                alert('⚠️ 無法取得會員點數，請稍後再試');
+                Swal.fire('⚠️ 無法取得會員點數，請稍後再試');
             }
         } catch (err) {
             console.error('點數查詢失敗:', err);
-            alert('🚫 發生錯誤，請稍後再試');
+            Swal.fire('🚫 發生錯誤，請稍後再試');
         }
     } else if (paymentMethod === 'credit_card_ecpay') {
         creditCardImageButton.style.display = 'block';
@@ -1196,7 +1196,7 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
       sessionStorage.removeItem('cart')
       renderSideCart();
       switchView('content');
-      alert('✅ Thank you for your order!');
+      Swal.fire('✅ 感謝您的訂購！');
         // Clear cart, session storage for checkout, and redirect or show success message
         // cart.length = 0; // Clear the global cart array
         // renderSideCart(); // Update side cart display
@@ -1448,7 +1448,7 @@ function ECpayStoreDataBackTransfer() {
         document.getElementById('pickup-store-info-display').style.display = 'none';
         currentShippingCost = 0;
         updateOrderSummaryDisplay(cart, currentShippingCost, currentDiscountRate);
-        alert("請重新選擇7-11門市，或選擇其他取貨方式。");
+        Swal.fire("請重新選擇7-11門市，或選擇其他取貨方式。");
          const event = new Event('change');
          shippingSelect.dispatchEvent(event); // Trigger validation
     }
@@ -1614,7 +1614,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.classList.contains('add-to-cart-btn')) {
                 const productId = e.target.dataset.productId;
                 addToCart(productId);
-                alert(`${allItemDetails[productId]?.name || 'Item'} added to cart!`); // Simple feedback
+                Swal.fire(`${allItemDetails[productId]?.name || 'Item'} 已加入購物車!`); // Simple feedback
             }
         });
 
@@ -1659,7 +1659,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 switchView('checkout');
                 sideCart.aside.classList.remove('open'); // Close side cart
             } else {
-                alert("您的購物車是空的, 無法結帳。");
+                Swal.fire("您的購物車是空的, 無法結帳。");
             }
         });
      
@@ -1706,10 +1706,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const text = await response.text();
             console.log('Order Save Result:', text);
 
-            alert('✅ 訂單已成功送出！謝謝您的購買！');
+            Swal.fire('✅ 訂單已成功送出！謝謝您的購買！');
         } catch (error) {
             console.error('Failed to submit order:', error);
-            alert('❌ 訂單提交失敗，請稍後再試。');
+            Swal.fire('❌ 訂單提交失敗，請稍後再試。');
         }
     }
     /*
