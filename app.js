@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         return total;
     }
     //Validate Promo Code
+    /*
     function validateDiscountCode(inputCode) {
       const member = membershipData.find(m =>
         m.discountCode.toLowerCase() === inputCode.trim().toLowerCase()
@@ -101,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         sessionStorage.removeItem('discountTier'); 
         return 0;
       }
-    }
+    }*/
 
     //Read Discount Code pushed from GAS!
         let membershipData = []; // Store membership data globally
@@ -1470,9 +1471,10 @@ function validateDiscountCode(inputCode) {
         sessionStorage.setItem('discountTier', member.tier);
         const tier = member.tier.toLowerCase();
         switch (tier) {
-            case 'gold': return 5;   // 5%
-            case 'silver': return 3; // 3%
-            case 'bronze': return 1; // 1%
+            case '鑽石級': return 10;
+            case '金級': return 5;   // 5%
+            case '銀級': return 3; // 3%
+            case '銅級': return 1; // 1%
             default: return 0;
         }
     } else {
