@@ -897,7 +897,11 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
 
         <div id="submit-area" style="margin-top: 20px;">
             <button type="submit" id="final-submit-btn" class="btn btn-primary btn-lg btn-block" style="display:block; width:100%; padding:10px; font-size:1.2em;">確認訂單</button>
-            <img src="image/creditcard.png" alt="Pay with Credit Card" id="ecpay-credit-card-btn" style="display:none; cursor:pointer; margin: 10px auto; max-width:150px; display:block;" />
+              <div id="credit-card-wrapper" style="display:none; text-align: center;">
+                <h4>💳 請點選信用卡圖示進行付款</h4>
+                <img src="image/creditcard.png" alt="Pay with Credit Card" id="ecpay-credit-card-btn"
+                  style="cursor:pointer; max-width:150px;" />
+              </div>
         </div>
     `;
 
@@ -957,7 +961,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     const shippingSelect = form.querySelector('#shipping-method');
     const paymentSelect = form.querySelector('#payment-option');
     const submitButton = form.querySelector('#final-submit-btn');
-    const creditCardImageButton = form.querySelector('#ecpay-credit-card-btn');
+    const creditCardImageButton = form.querySelector('#credit-card-wrapper');
     const nameInput = form.querySelector('#customer_name');
     const emailInput = form.querySelector('#customer_email');
     const phoneInput = form.querySelector('#customer_phone');
