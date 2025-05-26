@@ -28,7 +28,9 @@ function handleTopup(amount) {
     orderId: orderId,
     totalAmount: amount,
     tradeDesc: "Top Up",
-    customField1: "Top Up"
+    customField1: "Top Up",
+    returnUrl: 'https://asia-east1-ecpay-rtnmessage.cloudfunctions.net/handleECPayPost', 
+    clientBackUrl: 'https://www.mrbean.tw/' 
   };
 
   console.log("Sending topup data:", topupData);
