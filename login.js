@@ -27,8 +27,12 @@ function handleTopup(amount) {
     name: loginName,
     orderId: orderId,
     totalAmount: amount,
+    itemName: "Top Up",
     tradeDesc: "Top Up",
     customField1: "Top Up",
+    customField2: "Top Up",
+    customField3: "Top Up",
+    customField4: "Top Up",
     returnUrl: 'https://asia-east1-ecpay-rtnmessage.cloudfunctions.net/handleECPayPost', 
     clientBackUrl: 'https://www.mrbean.tw/' 
   };
@@ -37,7 +41,6 @@ function handleTopup(amount) {
 
 fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
   method: 'POST',
-  mode: "no-cors",
   headers: {'Content-Type': 'application/json'},
   body: JSON.stringify(topupData)
 })
