@@ -44,22 +44,15 @@ fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app',
   headers: {'Content-Type': 'application/json'},
   body: JSON.stringify(topupData)
 })
-.then(async res => {
-  const text = await res.text(); // get raw text
-  console.log("Raw response from server:", text);
-
-  try {
-    const data = JSON.parse(text); // try converting to JSON manually
-    if (data.status === 'success' && data.paymentUrl) {
-      window.location.href = data.paymentUrl;
-    } else {
-      Swal.fire('錯誤', data.message || '儲值失敗，請稍後再試', 'error');
+.then(response => {
+    if (!response.ok) {
+      // If we get an error response, convert it to text and throw
+      return response.text().then(text => {
+        throw new Error(`Server responded with ${response.status}: ${text}`);
+      });
     }
-  } catch (err) {
-    console.error("JSON parse error:", err);
-    Swal.fire('錯誤', '伺服器回傳格式錯誤', 'error');
-  }
-})
+    return response.text();
+  })
 .catch(err => {
   console.error('Topup error:', err);
   Swal.fire('錯誤', '無法聯繫伺服器，請稍後再試', 'error');
