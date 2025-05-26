@@ -37,9 +37,8 @@ function handleTopup(amount) {
 
 fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
+  mode: "no-cors",
+  headers: {'Content-Type': 'application/json'},
   body: JSON.stringify(topupData)
 })
 .then(async res => {
