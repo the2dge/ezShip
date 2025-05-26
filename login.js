@@ -13,6 +13,46 @@ function logout() {
   // Refresh to reset UI
   location.reload();
 }
+function handleTopup(amount) {
+  if (!amount || isNaN(amount)) {
+    Swal.fire('錯誤', '無效的儲值金額', 'error');
+    return;
+  }
+
+  const loginName = sessionStorage.getItem('lineUserName') || 'Unknown';
+  const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14); // e.g., 20240521123045
+  const orderId = `TU-${timestamp}`;
+  console.log("User Name is: ", loginName);
+  const topupData = {
+    name: loginName,
+    orderId: orderId,
+    totalAmount: amount,
+    tradeDesc: "Top Up",
+    customField1: "Top Up"
+  };
+
+  console.log("Sending topup data:", topupData);
+
+  fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(topupData)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === 'success' && data.paymentUrl) {
+      window.location.href = data.paymentUrl;
+    } else {
+      Swal.fire('錯誤', data.message || '儲值失敗，請稍後再試', 'error');
+    }
+  })
+  .catch(err => {
+    console.error('Topup error:', err);
+    Swal.fire('錯誤', '儲值過程中發生錯誤，請稍後再試', 'error');
+  });
+}
 async function handleLINELoginReturn() {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
