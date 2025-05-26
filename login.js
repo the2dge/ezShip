@@ -23,11 +23,11 @@ function handleTopup(amount) {
   const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14); // e.g., 20240521123045
   const orderId = `TU${timestamp}`;
   console.log("User Name is: ", loginName);
-  const topupData = {
+  const ecpayData = {
     name: loginName,
     orderId: orderId,
     totalAmount: amount,
-    itemName: "Top Up",
+    itemName: "儲值金額", 
     tradeDesc: "Top Up",
     customField1: "Top Up",
     customField2: "Top Up",
@@ -37,26 +37,30 @@ function handleTopup(amount) {
     clientBackUrl: 'https://www.mrbean.tw/' 
   };
 
-  console.log("Sending topup data:", topupData);
+  console.log("Sending topup data:", ecpayData);
 
-fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify(topupData)
-})
-.then(response => {
+  fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(ecpayData)
+  })
+  .then(response => {
     if (!response.ok) {
-      // If we get an error response, convert it to text and throw
       return response.text().then(text => {
         throw new Error(`Server responded with ${response.status}: ${text}`);
       });
     }
     return response.text();
   })
-.catch(err => {
-  console.error('Topup error:', err);
-  Swal.fire('錯誤', '無法聯繫伺服器，請稍後再試', 'error');
-});
+  .then(html => {
+    document.open();
+    document.write(html);
+    document.close();
+  })
+  .catch(error => {
+    console.error('Error initiating payment:', error);
+    Swal.fire('Failed 未能付款。請重試。 Error: ' + error.message);
+  });
 }
 async function handleLINELoginReturn() {
   const urlParams = new URLSearchParams(window.location.search);
