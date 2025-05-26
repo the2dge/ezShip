@@ -35,26 +35,33 @@ function handleTopup(amount) {
 
   console.log("Sending topup data:", topupData);
 
-  fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(topupData)
-  })
-  .then(res => res.json())
-  .then(data => {
+fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(topupData)
+})
+.then(async res => {
+  const text = await res.text(); // get raw text
+  console.log("Raw response from server:", text);
+
+  try {
+    const data = JSON.parse(text); // try converting to JSON manually
     if (data.status === 'success' && data.paymentUrl) {
       window.location.href = data.paymentUrl;
     } else {
       Swal.fire('錯誤', data.message || '儲值失敗，請稍後再試', 'error');
     }
-  })
-  .catch(err => {
-    console.error('Topup error:', err);
-    Swal.fire('錯誤', '儲值過程中發生錯誤，請稍後再試', 'error');
-  });
-}
+  } catch (err) {
+    console.error("JSON parse error:", err);
+    Swal.fire('錯誤', '伺服器回傳格式錯誤', 'error');
+  }
+})
+.catch(err => {
+  console.error('Topup error:', err);
+  Swal.fire('錯誤', '無法聯繫伺服器，請稍後再試', 'error');
+});
 async function handleLINELoginReturn() {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
