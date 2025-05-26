@@ -62,6 +62,7 @@ fetch('https://mrbean-creditpayment-production-545199463340.asia-east1.run.app',
   console.error('Topup error:', err);
   Swal.fire('錯誤', '無法聯繫伺服器，請稍後再試', 'error');
 });
+}
 async function handleLINELoginReturn() {
   const urlParams = new URLSearchParams(window.location.search);
   const code = urlParams.get('code');
