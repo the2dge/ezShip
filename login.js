@@ -21,7 +21,7 @@ function handleTopup(amount) {
 
   const loginName = sessionStorage.getItem('lineUserName') || 'Unknown';
   const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14); // e.g., 20240521123045
-  const orderId = `TU_${timestamp}`;
+  const orderId = `TU${timestamp}`;
   console.log("User Name is: ", loginName);
   const topupData = {
     name: loginName,
