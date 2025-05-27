@@ -13,6 +13,46 @@ function logout() {
   // Refresh to reset UI
   location.reload();
 }
+async function loadMemberInfo() {
+  const memberName = sessionStorage.getItem('lineUserName') || '未登入會員';
+  const lineUserId = sessionStorage.getItem('lineUserId');
+
+  if (!lineUserId) {
+    Swal.fire('請先登入', '您必須先登入才能查看帳號資訊', 'warning');
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
+    const result = await res.json();
+
+    if (result.status === 'success') {
+      const html = `
+        <div style="text-align: left;">
+          <p><strong>👤 會員名稱：</strong> ${memberName}</p>
+          <p><strong>🏅 會員等級：</strong> ${result.membershipLevel}</p>
+          <p><strong>💰 儲值餘額：</strong> $${Number(result.creditBalance).toLocaleString()}</p>
+          <p><strong>🧾 消費總額：</strong> $${Number(result.totalSpent).toLocaleString()}</p>
+          <p><strong>🎁 獎勵點數：</strong> ${Number(result.rewardPoint).toLocaleString()}</p>
+          <p><strong>🎟️ 專屬折扣碼：</strong> <code>${result.discountCode}</code></p>
+        </div>
+      `;
+
+      Swal.fire({
+        title: '會員帳號資訊',
+        html: html,
+        confirmButtonText: '關閉',
+        width: 400
+      });
+    } else {
+      Swal.fire('找不到資料', '請確認您是否為註冊會員', 'info');
+    }
+
+  } catch (err) {
+    console.error('Error fetching member info:', err);
+    Swal.fire('錯誤', '無法取得會員資料，請稍後再試', 'error');
+  }
+}
 function handleTopup(amount) {
   if (!amount || isNaN(amount)) {
     Swal.fire('錯誤', '無效的儲值金額', 'error');
