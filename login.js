@@ -34,7 +34,11 @@ async function loadMemberInfo() {
           <p><strong>💰 儲值餘額：</strong> $${Number(result.creditBalance).toLocaleString()}</p>
           <p><strong>🧾 消費總額：</strong> $${Number(result.totalSpent).toLocaleString()}</p>
           <p><strong>🎁 獎勵點數：</strong> ${Number(result.rewardPoint).toLocaleString()}</p>
-          <p><strong>🎟️ 專屬折扣碼：</strong> <code>${result.discountCode}</code></p>
+          <p>
+            <strong>🎟️ 專屬折扣碼：</strong>
+            <code id="member-discount-code">${result.discountCode}</code>
+            <button onclick="copyDiscountCode()" style="margin-left: 8px; padding: 2px 6px; font-size: 0.9em;">📋 複製</button>
+          </p>
         </div>
       `;
 
@@ -52,6 +56,17 @@ async function loadMemberInfo() {
     console.error('Error fetching member info:', err);
     Swal.fire('錯誤', '無法取得會員資料，請稍後再試', 'error');
   }
+}
+function copyDiscountCode() {
+  const code = document.getElementById('member-discount-code')?.textContent;
+  if (!code) return;
+
+  navigator.clipboard.writeText(code).then(() => {
+    Swal.fire('✅ 已複製', `折扣碼 ${code} 已複製到剪貼簿`, 'success');
+  }).catch(err => {
+    console.error('Copy failed:', err);
+    Swal.fire('錯誤', '無法複製折扣碼', 'error');
+  });
 }
 function handleTopup(amount) {
   if (!amount || isNaN(amount)) {
