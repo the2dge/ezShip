@@ -20,6 +20,7 @@ function handleTopup(amount) {
   }
 
   const loginName = sessionStorage.getItem('lineUserName') || 'Unknown';
+  const lineUerId = sessionStorage.getItem('lineUserId') || ' Unkown';
   const timestamp = new Date().toISOString().replace(/[-T:.Z]/g, '').slice(0, 14); // e.g., 20240521123045
   const orderId = `TU${timestamp}`;
   console.log("User Name is: ", loginName);
@@ -30,7 +31,7 @@ function handleTopup(amount) {
     itemName: "儲值金額", 
     tradeDesc: "Top Up",
     customField1: "Top Up",
-    customField2: "Top Up",
+    customField2: lineUserId,
     customField3: "Top Up",
     customField4: "Top Up",
     returnUrl: 'https://asia-east1-ecpay-rtnmessage.cloudfunctions.net/handleECPayPost', 
