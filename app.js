@@ -1003,7 +1003,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
                 if (creditBalance >= submitAmount) {
                     submitButton.disabled = false;
                 } else {
-                    Swal.fire(`❌ 點數不足。目前餘額：${creditBalance}，需支付：${submitAmount}`);
+                    Swal.fire(`❌ 儲值金不足。目前餘額：${creditBalance}，需支付：${submitAmount}`);
                 }
             } else {
                 Swal.fire('⚠️ 無法取得會員點數，請稍後再試');
