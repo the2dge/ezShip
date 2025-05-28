@@ -323,7 +323,11 @@ function extractYouTubeId(url) {
     function renderSideCart() {
         sideCart.itemsContainer.innerHTML = ''; // Clear current items
         if (cart.length === 0) {
-            sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。</p>';
+            sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。<br>歡迎重選您喜歡的商品</p>';
+            setTimeout(() => {
+              switchView('content');
+            }, 1500);
+
         } else {
             cart.forEach(item => {
                 const cartItemDiv = document.createElement('div');
