@@ -896,7 +896,7 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
             <select id="payment-option" name="payment_option" class="form-control" required>
                 <option value="pay_at_store">到店付款</option>
                 <option value="credit_card_ecpay">信用卡付款 (透過第三方支付:綠界 ECPay)</option>
-                ${lineUserName ? '<option value="credit_point">點數付款 (會員)</option>' : ''}
+                ${lineUserName ? '<option value="credit_point">💰 會員儲值金付款 </option>' : ''}
             </select>
         </div>
 
