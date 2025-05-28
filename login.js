@@ -99,7 +99,7 @@ async function checkOrders() {
       html += `<tr>
         <td>${order.orderId || ''}</td>
         <td>${order.paymentMethod || ''}</td>
-        <td>${order.storeAddress || ''}</td>
+        <td>${order.StoreAddress || ''}</td>
       </tr>`;
     });
     html += '</table>';
