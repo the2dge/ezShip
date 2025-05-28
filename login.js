@@ -230,6 +230,7 @@ async function updateNavbarWithUserName(userName) {
         // Send registration request
         await fetch('https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec', {
           method: 'POST',
+          mode: "no-cors",
           headers: {
             'Content-Type': 'application/json'
           },
