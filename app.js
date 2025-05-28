@@ -547,6 +547,9 @@ async function renderCheckoutPage(cartItems) {
           isMember = true;
         }
       }
+      if(!lineUserId){
+        Swal.fire("You have not yet registered!")
+      }
      console.log("LINE ID and isMember?:  ", lineUserId, isMember);
     // 1. Render Checkout Header (Title "結帳", Login/Member Button)
     //renderCheckoutHeaderDOM(lineUserName);
