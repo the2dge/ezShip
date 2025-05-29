@@ -1479,7 +1479,7 @@ function validateDiscountCode(inputCode) {
             case '鑽石級': return 10;
             case '金級': return 5;   // 5%
             case '銀級': return 3; // 3%
-            case '銅級': return 1; // 1%
+            case '銅級': return 2; // 1%
             default: return 0;
         }
     } else {
