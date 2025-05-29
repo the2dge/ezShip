@@ -114,7 +114,7 @@ async function checkOrders() {
     html += '</table>';
 
     Swal.fire({
-      title: '您的訂單紀錄',
+      title: '您的訂單查詢',
       html: html,
       width: '90%',
       confirmButtonText: '關閉'
