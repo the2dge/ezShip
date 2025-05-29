@@ -116,56 +116,6 @@ async function checkOrders() {
     Swal.fire("錯誤", "查詢訂單時發生錯誤", "error");
   }
 }
-async function checkOrders_TMP() {
-  const lineUserId = sessionStorage.getItem('lineUserId');
-  if (!lineUserId) {
-    Swal.fire("請先登入以查看訂單");
-    return;
-  }
-
-  try {
-    const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getOrders`);
-    const data = await res.json();
-
-    if (data.status !== 'success' || !Array.isArray(data.orders)) {
-      Swal.fire("查詢失敗", "無法獲取訂單資料", "error");
-      return;
-    }
-
-    const userOrders = data.orders.filter(order => 
-      order.lineUserId && order.lineUserId.toString().trim() === lineUserId.trim()
-    );
-
-    if (userOrders.length === 0) {
-      Swal.fire("目前沒有您的訂單紀錄");
-      return;
-    }
-
-    // Create a simple display
-    let html = '<h3>我的訂單</h3><table border="1" style="width:100%; text-align:left;"><tr><th>訂單編號</th><th>付款方式</th><th>取貨門市</th></tr>';
-    
-    userOrders.forEach(order => {
-      html += <tr>
-        <td>${order.orderId || ''}</td>
-        <td>${order.paymentMethod || ''}</td>
-        <td>${order.storeAddress || ''}</td>
-      </tr>;
-    });
-    
-    html += '</table>';
-
-    Swal.fire({
-      title: '您的訂單紀錄',
-      html: html,
-      width: '90%',
-      confirmButtonText: '關閉'
-    });
-
-  } catch (error) {
-    console.error("Error fetching orders:", error);
-    Swal.fire("錯誤", "查詢訂單時發生錯誤", "error");
-  }
-}
 
 function handleTopup(amount) {
   if (!amount || isNaN(amount)) {
