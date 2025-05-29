@@ -68,6 +68,15 @@ function copyDiscountCode() {
     Swal.fire('錯誤', '無法複製折扣碼', 'error');
   });
 }
+function getPaymentMethodInChinese(paymentMethod) {
+  const paymentMethodMap = {
+    'pay_at_store': '取貨時付款',
+    'credit_point': '儲值金已付款',
+    'credit_card': '信用卡已付款'
+  };
+  
+  return paymentMethodMap[paymentMethod] || paymentMethod;
+}
 async function checkOrders() {
   const lineUserId = sessionStorage.getItem('lineUserId');
   if (!lineUserId) {
@@ -98,7 +107,7 @@ async function checkOrders() {
     userOrders.forEach(order => {
       html += `<tr>
         <td>${order.Order_ID || ''}</td>
-        <td>${order.Payment_Method || ''}</td>
+        <td>${getPaymentMethodInChinese(order.Payment_Method) || ''}</td>
         <td>${order.StoreAddress || ''}</td>
       </tr>`;
     });
