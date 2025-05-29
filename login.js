@@ -95,13 +95,30 @@ async function checkOrders() {
 
     // Create a simple display
     let html = '<h3>我的訂單</h3><table border="1" style="width:100%; text-align:left;"><tr><th>訂單編號</th><th>付款方式</th><th>取貨門市</th></tr>';
+    
     userOrders.forEach(order => {
+      let paymentLabel = '';
+      switch (order.paymentMethod) {
+        case 'pay_at_store':
+          paymentLabel = '取貨付款';
+          break;
+        case 'credit_card_ecpay':
+          paymentLabel = '信用卡已付款';
+          break;
+        case 'credit_point':
+          paymentLabel = '儲值金已付款';
+          break;
+        default:
+          paymentLabel = order.paymentMethod || '';
+      }
+    
       html += `<tr>
-        <td>${order.Order_ID || ''}</td>
-        <td>${order.Payment_Method || ''}</td>
-        <td>${order.StoreAddress || ''}</td>
+        <td>${order.orderId || ''}</td>
+        <td>${paymentLabel}</td>
+        <td>${order.storeAddress || ''}</td>
       </tr>`;
     });
+    
     html += '</table>';
 
     Swal.fire({
