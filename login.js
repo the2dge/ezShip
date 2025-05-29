@@ -77,6 +77,38 @@ function getPaymentMethodInChinese(paymentMethod) {
   
   return paymentMethodMap[paymentMethod] || paymentMethod;
 }
+function handleOrdersClick(element) {
+    const originalText = element.textContent;
+    element.textContent = '正在處理...';
+    element.classList.add('processing');
+    
+    // Call your original function
+    checkOrders().then(() => {
+        // Restore original text after processing
+        element.textContent = originalText;
+        element.classList.remove('processing');
+    }).catch(() => {
+        // Handle error and restore text
+        element.textContent = originalText;
+        element.classList.remove('processing');
+    });
+}
+
+function handleMemberClick(element) {
+    const originalText = element.textContent;
+    element.textContent = '正在處理...';
+    element.classList.add('processing');
+    
+    // Call your original function
+    loadMemberInfo().then(() => {
+        element.textContent = originalText;
+        element.classList.remove('processing');
+    }).catch(() => {
+        element.textContent = originalText;
+        element.classList.remove('processing');
+    });
+}
+
 async function checkOrders() {
   const lineUserId = sessionStorage.getItem('lineUserId');
   if (!lineUserId) {
