@@ -72,7 +72,7 @@ function getPaymentMethodInChinese(paymentMethod) {
   const paymentMethodMap = {
     'pay_at_store': '取貨時付款',
     'credit_point': '儲值金已付款',
-    'credit_card': '信用卡已付款'
+    'credit_card_ecpay': '信用卡已付款'
   };
   
   return paymentMethodMap[paymentMethod] || paymentMethod;
