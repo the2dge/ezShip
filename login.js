@@ -97,9 +97,9 @@ async function checkOrders() {
     let html = '<h3>我的訂單</h3><table border="1" style="width:100%; text-align:left;"><tr><th>訂單編號</th><th>付款方式</th><th>取貨門市</th></tr>';
     userOrders.forEach(order => {
       html += `<tr>
-        <td>${order.orderId || ''}</td>
-        <td>${order.paymentMethod || ''}</td>
-        <td>${order.storeAddress || ''}</td>
+        <td>${order.Order_ID || ''}</td>
+        <td>${order.Payment_Method || ''}</td>
+        <td>${order.StoreAddress || ''}</td>
       </tr>`;
     });
     html += '</table>';
