@@ -76,7 +76,7 @@ async function checkOrders() {
   }
 
   try {
-    const res = await fetch(`https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec?mode=getOrders`);
+    const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getOrders`);
     const data = await res.json();
 
     if (data.status !== 'success' || !Array.isArray(data.orders)) {
