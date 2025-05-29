@@ -35,8 +35,8 @@
     
     <!-- Hidden dropdown menu -->
     <ul id="member-service-menu" class="member-service-menu" style="display: none;">
-      <li><a href="#" onclick="checkOrders()">我的訂單</a></li>
-      <li><a href="#" onclick="loadMemberInfo()">帳號資訊</a></li>
+      <li><a href="#" id="ordersLink" onclick="handleOrdersClick(this)">我的訂單</a></li>
+      <li><a href="#" id="memberLink" onclick="handleMemberClick(this)">帳號資訊</a></li>
         <li class="topup-item">
             <a href="#">信用卡儲值</a>
             <ul class="topup-submenu">
