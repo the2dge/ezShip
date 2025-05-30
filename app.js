@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         productLink_m: document.getElementById('nav-product-mobile'),
         mediaLink: document.getElementById('nav-media'),
         mediaLink_m: document.getElementById('nav-media-mobile'),
+        memberLink: document.getElementById('nav-member'),
+        memberLink_m: document.getElementById('nav-member-mobile'),
         contactLink: document.getElementById('nav-contact'), // Assuming contact might scroll to footer
         contactLink_m: document.getElementById('nav-contact-mobile'),
         cartIconBtn: document.getElementById('cart-icon'),
@@ -1554,6 +1556,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             if (currentView !== 'content') switchView('content');
             document.getElementById('media-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        navbar.memberLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentView !== 'content') switchView('content');
+            document.getElementById('membership-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
+        navbar.memberLink_m.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentView !== 'content') switchView('content');
+            document.getElementById('membership-container')?.scrollIntoView({ behavior: 'smooth' });
         });
         navbar.contactLink.addEventListener('click', (e) => {
             e.preventDefault();
