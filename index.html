@@ -171,7 +171,7 @@
                       <li>每累積 500 積分 ➜ 可兌換為儲值積分</li>
                     </ol>
 
-                    <p style="text-align:center; margin-top: 40px;">
+                    <p id="joinNow" style="text-align:center; margin-top: 40px;">
                       <a href="javascript:void(0)" 
                          style="background: #ff9900; color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold;" 
                          onclick="loginWithLINE()">
@@ -226,6 +226,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.getElementById('hamburger-toggle');
   const mobileNav = document.getElementById('mobile-nav');
+  const joinNow = sessionStorage.getItem('lineUserId');
+
+  if (!joinNow){
+      document.getElementById("joinNow").style.display = 'block';
+  }
 
   if (hamburger && mobileNav) {
     hamburger.addEventListener('click', function () {
