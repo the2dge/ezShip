@@ -228,8 +228,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileNav = document.getElementById('mobile-nav');
   const joinNow = sessionStorage.getItem('lineUserId');
 
-  if (!joinNow){
-      document.getElementById("joinNow").style.display = 'block';
+  if (joinNow){
+      document.getElementById("joinNow").style.display = 'none';
   }
 
   if (hamburger && mobileNav) {
