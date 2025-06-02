@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<div class="backTopBtn" id="backTopBtn" style="display:block;">
+        <i class="fa fa-arrow-circle-up"></i>
+</div>
 <header class="navbar">
   <div class="navbar-container">
     <!-- Logo -->
@@ -262,7 +264,31 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const backTopBtn = document.getElementById('backTopBtn');
 
+    // Show/hide button when scrolling
+    window.addEventListener('scroll', function () {
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      const triggerHeight = document.body.scrollHeight / 3;
+
+      if (scrollY > triggerHeight) {
+        backTopBtn.style.display = 'block';
+      } else {
+        backTopBtn.style.display = 'none';
+      }
+    });
+
+    // Scroll smoothly to top on click
+    backTopBtn.addEventListener('click', function () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
