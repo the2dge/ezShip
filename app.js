@@ -1021,7 +1021,25 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
         submitButton.disabled = false;
     }
 }
+function validateCustomerName() {
+  const nameField = document.getElementById('customer_name');
+  const name = nameField.value.trim();
 
+  // Rule 1: Reject Arabic numerals or symbols
+  if (/[0-9!@#$%^&*(),.?":{}|<>_\-+=\\/\[\]]/.test(name)) {
+    Swal.fire('⚠️ 姓名不能包含數字或符號。請重新輸入。');
+    return false;
+  }
+
+  // Rule 2: English name can have only one space
+  const nameParts = name.split(/\s+/);
+  if (nameParts.length > 2) {
+    Swal.fire('⚠️ 英文姓名僅能包含一個空格，例如：John Doe');
+    return false;
+  }
+
+  return true;
+}
     function validateFormFields() {
         const isShippingSelected = shippingSelect.value !== "";
         const is711StoreSelectedIfApplicable = shippingSelect.value !== 'seven_eleven' || (shippingSelect.value === 'seven_eleven' && sessionStorage.getItem('selectedStoreInfo'));
@@ -1136,9 +1154,11 @@ shippingSelect.addEventListener('change', () => {
     });
 
     form.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
         const submitBtn = document.getElementById('final-submit-btn');
       // Prevent double submission
       if (submitBtn.disabled) return; 
+      if (!validateCustomerName()) return;
         submitBtn.disabled = true; // Disable immediately
         submitBtn.textContent = '處理中...';
         
