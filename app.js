@@ -1420,7 +1420,7 @@ function ECpayStoreDataBackTransfer() {
         // Restore other form fields that might have been cleared by navigation
         const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
         if (savedCheckoutData) {
-            document.getElementById('customer_name').value = savedCheckoutData.name || '';
+            document.getElementById('customer_name').value = savedCheckoutData.name || '未填寫完整';
             document.getElementById('customer_email').value = savedCheckoutData.email || '';
             document.getElementById('customer_phone').value = savedCheckoutData.phone || '';
             document.getElementById('payment-option').value = savedCheckoutData.payment || 'pay_at_store';
