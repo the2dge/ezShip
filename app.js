@@ -512,7 +512,7 @@ function ECpayStoreDataBackTransfer() {
     if (totalDiv) {
       totalDiv.innerHTML = `
         <div><strong>商品總額:</strong> $${totalAmount.toFixed(0)}</div>
-        ${shippingFee > 0 ? `<div style="color:red;"><strong>🚚 運費 (7-11 未滿 $1000):</strong> $60</div>` : ''}
+        ${shippingFee > 0 ? `<div style="color:red;"><strong>🚚 運費 (7-11 未滿 $1200):</strong> $70</div>` : ''}
         <div><strong>總金額:</strong> $${finalTotal.toFixed(0)}</div>
       `;
     }
@@ -574,7 +574,7 @@ async function renderCheckoutPage(cartItems) {
     if (localShippingSelectElement) { // Ensure the element was found
         if (localShippingSelectElement.value === 'seven_eleven') {
             // This implies createCheckoutFormDOM set its value because storedStoreInfo was present
-            currentShippingCost = calculateCartTotal() < 1000 ? 60 : 0;
+            currentShippingCost = calculateCartTotal() < 1200 ? 70 : 0;
         } else if (localShippingSelectElement.value === 'store_pickup') {
             currentShippingCost = 0;
         } else { // Default for "" (empty value) or other unexpected values
@@ -818,7 +818,7 @@ function renderOrderedItemsSummaryDOM(cartItems) {
     totalsContainer.innerHTML = `
         <div id="order-subtotal" style="display:flex; justify-content:space-between;"><strong>商品總額:</strong> <span>$0.00</span></div>
         <div id="order-discount" style="display:none; justify-content:space-between; color:green;"><strong>折扣:</strong> <span>-$0.00</span></div>
-        <div id="order-shipping" style="display:none; justify-content:space-between; color:red;"><strong>運費:(滿$1000可免)</strong> <span>$0.00</span></div>
+        <div id="order-shipping" style="display:none; justify-content:space-between; color:red;"><strong>運費:(滿$1200可免)</strong> <span>$0.00</span></div>
         <div id="order-final-total" style="font-weight:bold; margin-top:10px; display:flex; justify-content:space-between; font-size:1.2em;"><strong>總金額:</strong> <span>$0.00</span></div>
     `;
     mainBody.checkoutWrapper.appendChild(totalsContainer);
@@ -1085,7 +1085,7 @@ shippingSelect.addEventListener('change', () => {
     }
 
     // --- CASE B: Store already chosen → show info + “reselect” button ---
-    currentShippingCost = currentCartTotal < 1000 ? 60 : 0;
+    currentShippingCost = currentCartTotal < 1200 ? 70 : 0;
     storeInfoDiv.innerHTML = `
       <p style="margin:0;"><strong>已選擇 7-11 門市</strong></p>
       <p style="margin:0;">店號: ${existingStore.CVSStoreID}</p>
@@ -1120,7 +1120,7 @@ shippingSelect.addEventListener('change', () => {
 
   } else {
     // other shipping methods
-    currentShippingCost = (selection === 'seven_eleven') ? (currentCartTotal < 1000 ? 60 : 0) : 0;
+    currentShippingCost = (selection === 'seven_eleven') ? (currentCartTotal < 1200 ? 70 : 0) : 0;
     storeInfoDiv.style.display = 'none';
     storeInfoDiv.innerHTML = '';
   }
@@ -1435,7 +1435,7 @@ function ECpayStoreDataBackTransfer() {
             shippingSelect.value = 'seven_eleven'; // Pre-select the dropdown
         }
 
-        currentShippingCost = calculateCartTotal() < 1000 ? 60 : 0;
+        currentShippingCost = calculateCartTotal() < 1200 ? 70 : 0;
 
         // Restore other form fields that might have been cleared by navigation
         const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
