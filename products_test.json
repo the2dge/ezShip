@@ -1,6 +1,6 @@
 [
   {
-    "productID": "P001",
+    "id": "P001",
     "name": "杏仁 300g",
     "price": 300,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240704_152917.png",
@@ -8,7 +8,7 @@
     "category": "堅果"
   },
   {
-    "productID": "P002",
+    "id": "P002",
     "name": "腰果 300g",
     "price": 400,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
@@ -16,7 +16,7 @@
     "category": "堅果"
   },
   {
-    "productID": "P003",
+    "id": "P003",
     "name": "開心果 300g",
     "price": 400,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
@@ -24,7 +24,7 @@
     "category": "堅果"
   },
   {
-    "productID": "P004",
+    "id": "P004",
     "name": "綜合豆 300g",
     "price": 150,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
@@ -32,7 +32,7 @@
     "category": "雜糧"
   },
   {
-    "productID": "P005",
+    "id": "P005",
     "name": "智利黑葡萄 300g",
     "price": 300,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/blackgrape.jpg",
@@ -40,11 +40,19 @@
     "category": "乾果"
   },
   {
-    "productID": "P0006",
+    "id": "P0006",
     "name": "海苔杏仁片 300g",
     "price": 340,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/seaweedalmond.jpg",
     "title": "海苔杏仁片 300g",
+    "category": "休閒養生"
+  },
+  {
+    "id": "",
+    "name": "巴西乳酪絲 300g",
+    "price": 900,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheeseslice.jpg",
+    "title": "巴西乳酪絲 300g",
     "category": "休閒養生"
   }
 ]
