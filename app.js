@@ -301,7 +301,7 @@ function extractYouTubeId(url) {
 
         mainBody.itemWrapper.innerHTML = `
             <article class="item-detail">
-                <img src="${itemData.imgUrl}" alt="${itemData.name}">
+                <img src="${itemData.ImgUrl}" alt="${itemData.name}">
                 <div class="item-info">
                     <h2>${itemData.name}</h2>
                     <p>${itemData.description}</p>
