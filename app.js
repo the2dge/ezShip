@@ -261,9 +261,9 @@ function extractYouTubeId(url) {
         filteredProducts.forEach(product => {
             const productDiv = document.createElement('div');
             productDiv.classList.add('product-item');
-            productDiv.setAttribute('data-product-id', product.id);
+            productDiv.setAttribute('data-product-id', product.productID);
             productDiv.innerHTML = `
-                <img src="${product.thumbnailUrl}" alt="${product.name}">
+                <img src="${product.imgUrl}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <p>${product.price}</p>
                 ${product.title ? `<p class="product-title">${product.title}</p>` : ''}
@@ -1778,7 +1778,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchData('banner.json'),
             fetchData('about.json'),
             fetchData('media.json'),
-            fetchData('products.json'),
+            fetchData('products_test.json'),
             fetchData('items.json')
         ]);
 
