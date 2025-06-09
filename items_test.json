@@ -64,5 +64,16 @@
       "country": "Taiwan",
       "ingredient": "nuts!"
     }
+  },
+  "P10010": {
+    "id": "P10010",
+    "name": "帶皮腰果",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011999.jpg",
+    "description": "",
+    "price": "$400",
+    "specs": {
+      "country": "越南",
+      "ingredient": "腰果"
+    }
   }
 }
