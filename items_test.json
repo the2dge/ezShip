@@ -32,15 +32,15 @@
       "ingredient": "nuts"
     }
   },
-  "T00001": {
-    "id": "T00001",
-    "name": "mango",
+  "T001": {
+    "id": "T001",
+    "name": "Mango",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
-    "description": "mango",
+    "description": "Mango",
     "price": 100,
     "specs": {
-      "country": "taiwan",
-      "ingredient": "taiwan"
+      "country": "Taiwan",
+      "ingredient": "mango"
     }
   }
 }
