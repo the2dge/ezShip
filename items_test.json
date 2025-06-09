@@ -3,7 +3,7 @@
     "id": "P001",
     "name": "杏仁 300g",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240704_152917.png",
-    "description": "杏仁 IT IS THE BEST!",
+    "description": "杏仁 IT IS THE BEST!!!!",
     "price": 300,
     "specs": {
       "country": "TAIWAN",
@@ -41,39 +41,6 @@
     "specs": {
       "country": "Taiwan",
       "ingredient": "MISC"
-    }
-  },
-  "P005": {
-    "id": "P005",
-    "name": "智利黑葡萄 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/blackgrape.jpg",
-    "description": "智利黑葡萄 300g THE BEST",
-    "price": 300,
-    "specs": {
-      "country": "智利",
-      "ingredient": "黑葡萄"
-    }
-  },
-  "P006": {
-    "id": "P006",
-    "name": "海苔杏仁片 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/seaweedalmond.jpg",
-    "description": "海苔杏仁片 300g THE BEST",
-    "price": 340,
-    "specs": {
-      "country": "Taiwan",
-      "ingredient": "海苔 杏仁"
-    }
-  },
-  "P011": {
-    "id": "P011",
-    "name": "MING",
-    "ImgUrl": "aaaa",
-    "description": "NICE",
-    "price": 11,
-    "specs": {
-      "country": "Taiwan",
-      "ingredient": "nuts!"
     }
   }
 }
