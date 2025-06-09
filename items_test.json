@@ -1,46 +1,68 @@
 {
-  "P0000111": {
-    "id": "P0000111",
-    "name": "杏仁",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
-    "description": " nuts, not just nuts",
-    "price": 110,
+  "P001": {
+    "id": "P001",
+    "name": "杏仁 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240704_152917.png",
+    "description": "杏仁 IT IS THE BEST!",
+    "price": 300,
     "specs": {
-      "country": "taiwan",
-      "ingredient": "nuts"
+      "country": "TAIWAN",
+      "ingredient": "杏仁"
     }
   },
-  "P1001": {
-    "id": "P1001",
-    "name": "花生",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
-    "description": "The best peanut",
-    "price": 140,
-    "specs": {
-      "country": "taiwan",
-      "ingredient": "nuts"
-    }
-  },
-  "P0011101": {
-    "id": "P0011101",
-    "name": "TEST",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai_assistant.jpg",
-    "description": "Nice , very nice",
-    "price": 111,
-    "specs": {
-      "country": "taiwan",
-      "ingredient": "nuts"
-    }
-  },
-  "T001": {
-    "id": "T001",
-    "name": "Mango",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
-    "description": "Mango",
-    "price": 100,
+  "P002": {
+    "id": "P002",
+    "name": "腰果 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
+    "description": "腰果 300g THE BEST",
+    "price": 400,
     "specs": {
       "country": "Taiwan",
-      "ingredient": "mango"
+      "ingredient": "腰果"
+    }
+  },
+  "P003": {
+    "id": "P003",
+    "name": "開心果 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
+    "description": "開心果 THE BEST",
+    "price": 400,
+    "specs": {
+      "country": "Taiwan",
+      "ingredient": "開心果"
+    }
+  },
+  "P004": {
+    "id": "P004",
+    "name": "綜合豆 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
+    "description": "綜合豆 THE BEST",
+    "price": 150,
+    "specs": {
+      "country": "Taiwan",
+      "ingredient": "MISC"
+    }
+  },
+  "P005": {
+    "id": "P005",
+    "name": "智利黑葡萄 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/blackgrape.jpg",
+    "description": "智利黑葡萄 300g THE BEST",
+    "price": 300,
+    "specs": {
+      "country": "智利",
+      "ingredient": "黑葡萄"
+    }
+  },
+  "P0006": {
+    "id": "P0006",
+    "name": "海苔杏仁片 300g",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/seaweedalmond.jpg",
+    "description": "海苔杏仁片 300g THE BEST",
+    "price": 340,
+    "specs": {
+      "country": "Taiwan",
+      "ingredient": "海苔 杏仁"
     }
   }
 }
