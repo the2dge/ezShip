@@ -406,7 +406,7 @@ function extractYouTubeId(url) {
                 id: productId,
                 name: productToAdd.name,
                 price: productToAdd.price, // Use price from product grid data
-                img: productToAdd.thumbnailUrl, // Use thumbnail for cart
+                img: productToAdd.ImgUrl, // Use thumbnail for cart
                 quantity: 1
             });
         }
