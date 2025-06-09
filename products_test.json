@@ -1,0 +1,26 @@
+[
+  {
+    "productID": "P0000111",
+    "name": "Almond",
+    "price": 110,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
+    "title": "Almond",
+    "category": "nut"
+  },
+  {
+    "productID": "P1001",
+    "name": "Peanut",
+    "price": 140,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
+    "title": "Peanut",
+    "category": "Nuts"
+  },
+  {
+    "productID": "P0011101",
+    "name": "TEST",
+    "price": 111,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai_assistant.jpg",
+    "title": "TEST",
+    "category": "TEST"
+  }
+]
