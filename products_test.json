@@ -1,34 +1,50 @@
 [
   {
-    "productID": "P0000111",
-    "name": "杏仁",
-    "price": 110,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
-    "title": "Almond",
-    "category": "nuts"
-  },
-  {
-    "productID": "P1001",
-    "name": "花生",
-    "price": 140,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
-    "title": "Peanut",
-    "category": "dryfruit"
-  },
-  {
-    "productID": "P0011101",
-    "name": "TEST",
-    "price": 111,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai_assistant.jpg",
-    "title": "TEST",
-    "category": "snack"
-  },
-  {
-    "productID": "T001",
-    "name": "Mango",
-    "price": 100,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
-    "title": "Mango",
+    "productID": "P001",
+    "name": "杏仁 300g",
+    "price": 300,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240704_152917.png",
+    "title": "杏仁 300g",
     "category": "堅果"
+  },
+  {
+    "productID": "P002",
+    "name": "腰果 300g",
+    "price": 400,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
+    "title": "腰果 300g",
+    "category": "堅果"
+  },
+  {
+    "productID": "P003",
+    "name": "開心果 300g",
+    "price": 400,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
+    "title": "開心果 300g",
+    "category": "堅果"
+  },
+  {
+    "productID": "P004",
+    "name": "綜合豆 300g",
+    "price": 150,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
+    "title": "綜合豆 300g",
+    "category": "雜糧"
+  },
+  {
+    "productID": "P005",
+    "name": "智利黑葡萄 300g",
+    "price": 300,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/blackgrape.jpg",
+    "title": "智利黑葡萄 300g",
+    "category": "乾果"
+  },
+  {
+    "productID": "P0006",
+    "name": "海苔杏仁片 300g",
+    "price": 340,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/seaweedalmond.jpg",
+    "title": "海苔杏仁片 300g",
+    "category": "休閒養生"
   }
 ]
