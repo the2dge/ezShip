@@ -301,7 +301,7 @@ function extractYouTubeId(url) {
 
         mainBody.itemWrapper.innerHTML = `
             <article class="item-detail">
-                <img src="${itemData.largeImageUrl}" alt="${itemData.name}">
+                <img src="${itemData.imgUrl}" alt="${itemData.name}">
                 <div class="item-info">
                     <h2>${itemData.name}</h2>
                     <p>${itemData.description}</p>
@@ -1779,7 +1779,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchData('about.json'),
             fetchData('media.json'),
             fetchData('products_test.json'),
-            fetchData('items.json')
+            fetchData('items_test.json')
         ]);
 
         // --- Restore Cart & OrderId from SessionStorage ---
