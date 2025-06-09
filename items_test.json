@@ -4,7 +4,7 @@
     "name": "杏仁 300g",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240704_152917.png",
     "description": "杏仁 IT IS THE BEST!!!!",
-    "price": 300,
+    "price": "$300",
     "specs": {
       "country": "TAIWAN",
       "ingredient": "杏仁"
@@ -15,7 +15,7 @@
     "name": "腰果 300g",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
     "description": "腰果 300g THE BEST",
-    "price": 400,
+    "price": "$400",
     "specs": {
       "country": "Taiwan",
       "ingredient": "腰果"
@@ -26,7 +26,7 @@
     "name": "開心果 300g",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
     "description": "開心果 THE BEST",
-    "price": 400,
+    "price": "$400",
     "specs": {
       "country": "Taiwan",
       "ingredient": "開心果"
@@ -37,7 +37,7 @@
     "name": "綜合豆 300g",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
     "description": "綜合豆 THE BEST",
-    "price": 150,
+    "price": "$150",
     "specs": {
       "country": "Taiwan",
       "ingredient": "MISC"
@@ -48,7 +48,7 @@
     "name": "TEST",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
     "description": "ttt",
-    "price": 1000,
+    "price": "$1000",
     "specs": {
       "country": "tt",
       "ingredient": "tt"
@@ -58,8 +58,8 @@
     "id": "P011",
     "name": "MING",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
-    "description": "NICE",
-    "price": "$11",
+    "description": "NICE MAKE A WISH!",
+    "price": "$120",
     "specs": {
       "country": "Taiwan",
       "ingredient": "nuts!"
