@@ -53,5 +53,16 @@
       "country": "tt",
       "ingredient": "tt"
     }
+  },
+  "P011": {
+    "id": "P011",
+    "name": "MING",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
+    "description": "NICE",
+    "price": "$11",
+    "specs": {
+      "country": "Taiwan",
+      "ingredient": "nuts!"
+    }
   }
 }
