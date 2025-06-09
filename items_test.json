@@ -45,13 +45,13 @@
   },
   "P005": {
     "id": "P005",
-    "name": "TEST",
+    "name": "綠葡萄乾",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
-    "description": "ttt",
-    "price": "$1000",
+    "description": "The best ",
+    "price": "$150",
     "specs": {
-      "country": "tt",
-      "ingredient": "tt"
+      "country": "Brazil",
+      "ingredient": "Grape "
     }
   },
   "P011": {
