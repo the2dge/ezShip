@@ -2,7 +2,7 @@
   "P001": {
     "id": "P001",
     "name": "杏仁 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011995.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011995.jpg",
     "description": "杏仁 IT IS THE BEST!!!!",
     "price": "$300",
     "specs": {
@@ -13,7 +13,7 @@
   "P002": {
     "id": "P002",
     "name": "腰果 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
     "description": "腰果 300g THE BEST",
     "price": "$400",
     "specs": {
@@ -24,7 +24,7 @@
   "P003": {
     "id": "P003",
     "name": "開心果 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
     "description": "開心果 THE BEST",
     "price": "$400",
     "specs": {
@@ -35,7 +35,7 @@
   "P004": {
     "id": "P004",
     "name": "綜合豆 300g",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
     "description": "綜合豆 THE BEST",
     "price": "$150",
     "specs": {
@@ -46,7 +46,7 @@
   "P005": {
     "id": "P005",
     "name": "綠葡萄乾",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
     "description": "The best ",
     "price": "$150",
     "specs": {
@@ -56,10 +56,10 @@
   },
   "P011": {
     "id": "P011",
-    "name": "MING",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
-    "description": "NICE MAKE A WISH!",
-    "price": "$120",
+    "name": "紅心芭樂乾 300g",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/redgrava.jpg",
+    "description": "紅心芭樂乾 ",
+    "price": "$200",
     "specs": {
       "country": "Taiwan",
       "ingredient": "nuts!"
@@ -68,7 +68,7 @@
   "P10010": {
     "id": "P10010",
     "name": "帶皮腰果",
-    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011999.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011999.jpg",
     "description": "",
     "price": "$400",
     "specs": {
