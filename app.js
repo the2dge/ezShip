@@ -261,7 +261,7 @@ function extractYouTubeId(url) {
         filteredProducts.forEach(product => {
             const productDiv = document.createElement('div');
             productDiv.classList.add('product-item');
-            productDiv.setAttribute('data-product-id', product.productID);
+            productDiv.setAttribute('data-product-id', product.id);
             productDiv.innerHTML = `
                 <img src="${product.imgUrl}" alt="${product.name}">
                 <h3>${product.name}</h3>
