@@ -42,5 +42,16 @@
       "country": "Taiwan",
       "ingredient": "MISC"
     }
+  },
+  "P005": {
+    "id": "P005",
+    "name": "TEST",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
+    "description": "ttt",
+    "price": 1000,
+    "specs": {
+      "country": "tt",
+      "ingredient": "tt"
+    }
   }
 }
