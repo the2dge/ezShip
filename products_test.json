@@ -30,29 +30,5 @@
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
     "title": "綜合豆 300g",
     "category": "雜糧"
-  },
-  {
-    "id": "P005",
-    "name": "智利黑葡萄 300g",
-    "price": 300,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/blackgrape.jpg",
-    "title": "智利黑葡萄 300g",
-    "category": "乾果"
-  },
-  {
-    "id": "P006",
-    "name": "海苔杏仁片 300g",
-    "price": 340,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/seaweedalmond.jpg",
-    "title": "海苔杏仁片 300g",
-    "category": "休閒養生"
-  },
-  {
-    "id": "P011",
-    "name": "MING",
-    "price": 11,
-    "imgUrl": "aaaa",
-    "title": "TITLE",
-    "category": "堅果"
   }
 ]
