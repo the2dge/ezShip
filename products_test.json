@@ -24,11 +24,11 @@
     "category": "snack"
   },
   {
-    "productID": "T000101",
-    "name": "greenmango",
+    "productID": "T00001",
+    "name": "mango",
     "price": 100,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
-    "title": "greenmango",
+    "title": "mango",
     "category": "??"
   }
 ]
