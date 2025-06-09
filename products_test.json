@@ -30,5 +30,13 @@
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/mixbeans.jpg",
     "title": "綜合豆 300g",
     "category": "雜糧"
+  },
+  {
+    "id": "P005",
+    "name": "TEST",
+    "price": 1000,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
+    "title": "test",
+    "category": "乾果"
   }
 ]
