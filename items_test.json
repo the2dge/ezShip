@@ -1,7 +1,7 @@
 {
   "P0000111": {
     "id": "P0000111",
-    "name": "Almond",
+    "name": "??",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
     "description": " nuts, not just nuts",
     "price": 110,
@@ -12,7 +12,7 @@
   },
   "P1001": {
     "id": "P1001",
-    "name": "Peanut",
+    "name": "??",
     "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
     "description": "The best peanut",
     "price": 140,
