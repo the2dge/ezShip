@@ -253,7 +253,7 @@ function extractYouTubeId(url) {
             : products.filter(p => (p.category || 'Other') === currentFilterCategory);
 
         if (!filteredProducts || filteredProducts.length === 0) {
-            grid.innerHTML = '<p>No products found in this category.</p>';
+            grid.innerHTML = '<p>此類別中未找到任何產品。</p>';
             return;
         }
 
