@@ -1,0 +1,35 @@
+{
+  "P0000111": {
+    "id": "P0000111",
+    "name": "Almond",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
+    "description": " nuts, not just nuts",
+    "price": 110,
+    "specs": {
+      "???": "taiwan",
+      "??": "nuts"
+    }
+  },
+  "P1001": {
+    "id": "P1001",
+    "name": "Peanut",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
+    "description": "The best peanut",
+    "price": 140,
+    "specs": {
+      "???": "taiwan",
+      "??": "nuts"
+    }
+  },
+  "P0011101": {
+    "id": "P0011101",
+    "name": "TEST",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai_assistant.jpg",
+    "description": "Nice , very nice",
+    "price": 111,
+    "specs": {
+      "???": "taiwan",
+      "??": "nuts"
+    }
+  }
+}
