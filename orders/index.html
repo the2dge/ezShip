@@ -46,6 +46,7 @@
         <button class="nav-button" onclick="loadPage('home')">訂單總覽</button>
         <button class="nav-button" onclick="loadPage('order')">訂單管理</button>
         <button class="nav-button" onclick="loadPage('ecpay')">ECPay</button>
+        <button class="nav-button" onclick="loadPage('cms')">CMS</button>
     </div>
     
     <iframe id="webapp-frame" src="https://script.google.com/macros/s/AKfycbz0jhm5jQBLSi6OUJvkowLGkc6rNECeB1iW2_8VdNRTdWbZkr890bf77gS9LsNFoisY2Q/exec?v=home"></iframe>
@@ -70,7 +71,7 @@
         // Load page based on URL hash on initial load
         function initializePage() {
             const hash = window.location.hash.substring(1);
-            if (hash && ['home', 'order', 'ecpay'].includes(hash)) {
+            if (hash && ['home', 'order', 'ecpay', 'cms'].includes(hash)) {
                 loadPage(hash);
                 // Set active button
                 document.querySelectorAll('.nav-button').forEach(btn => {
@@ -88,7 +89,8 @@
             const pageNames = {
                 'home': '首頁',
                 'order': '訂單', 
-                'ecpay': 'ECPay'
+                'ecpay': 'ECPay',
+                'cms': 'CMS'
             };
             return pageNames[page] || '首頁';
         }
