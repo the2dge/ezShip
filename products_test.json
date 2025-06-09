@@ -5,7 +5,7 @@
     "price": 110,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/header-dogs.png",
     "title": "Almond",
-    "category": "??"
+    "category": "nuts"
   },
   {
     "productID": "P1001",
@@ -13,7 +13,7 @@
     "price": 140,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai.png",
     "title": "Peanut",
-    "category": "??"
+    "category": "dryfruit"
   },
   {
     "productID": "P0011101",
@@ -21,14 +21,14 @@
     "price": 111,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/ai_assistant.jpg",
     "title": "TEST",
-    "category": "????"
+    "category": "snack"
   },
   {
-    "productID": "T0001",
-    "name": "TEST",
+    "productID": "T000101",
+    "name": "greenmango",
     "price": 100,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
-    "title": "TEST",
+    "title": "greenmango",
     "category": "??"
   }
 ]
