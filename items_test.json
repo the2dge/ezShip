@@ -31,5 +31,16 @@
       "country": "taiwan",
       "ingredient": "nuts"
     }
+  },
+  "T0001": {
+    "id": "T0001",
+    "name": "TEST",
+    "ImgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/aiwenmango.png",
+    "description": "test",
+    "price": 100,
+    "specs": {
+      "country": "test",
+      "ingredient": "test"
+    }
   }
 }
