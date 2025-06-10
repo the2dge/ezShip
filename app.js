@@ -1032,23 +1032,48 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
         submitButton.disabled = false;
     }
 }
-function validateCustomerName() {
+
+    function validateCustomerName() {
   const nameField = document.getElementById('customer_name');
   const name = nameField.value.trim();
 
-  // Rule 1: Reject Arabic numerals or symbols
+  // 1) No digits or symbols allowed
   if (/[0-9!@#$%^&*(),.?":{}|<>_\-+=\\/\[\]]/.test(name)) {
     Swal.fire('⚠️ 姓名不能包含數字或符號。請重新輸入。');
     return false;
   }
 
-  // Rule 2: English name can have only one space
-  const nameParts = name.split(/\s+/);
-  if (nameParts.length > 2) {
-    Swal.fire('⚠️ 英文姓名僅能包含一個空格，例如：John Doe');
-    return false;
+  // 2) Pure Chinese? (Han script only)
+  if (/^[\p{Script=Han}]+$/u.test(name)) {
+    if (name.length < 2) {
+      Swal.fire('⚠️ 中文姓名應至少兩個字元。請重新輸入。');
+      return false;
+    }
+    return true;
   }
 
+  // 3) Pure English? (letters and spaces only)
+  if (/^[A-Za-z\s]+$/.test(name)) {
+    const parts = name.split(/\s+/);
+    if (parts.length > 2) {
+      Swal.fire('⚠️ 英文姓名僅能包含一個空格，例如：John Doe');
+      return false;
+    }
+    // Count letters (no spaces)
+    const lettersOnly = name.replace(/\s+/g, '');
+    if (lettersOnly.length < 2) {
+      Swal.fire('⚠️ 請輸入至少兩個字母的英文姓名。');
+      return false;
+    }
+    return true;
+  }
+
+  // 4) Mixed or other scripts: just require >=2 chars
+  if ([...name].length < 2) {
+    Swal.fire('⚠️ 姓名應至少兩個字元。請重新輸入。');
+    return false;
+  }
+  
   return true;
 }
     function validateFormFields() {
