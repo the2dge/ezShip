@@ -6,8 +6,8 @@
     "description": "杏仁採用超低溫烘焙，保留了所有原有的風味！您可以品嚐到來自豆豆先生的全球最佳烤杏仁。",
     "price": "$300",
     "specs": {
-      "country": "TAIWAN",
-      "ingredient": "杏仁 300g"
+      "原產地": "台灣",
+      "成分": "杏仁 "
     }
   },
   "P002": {
@@ -17,8 +17,8 @@
     "description": "腰果 300g THE BEST",
     "price": "$400",
     "specs": {
-      "country": "Taiwan",
-      "ingredient": "腰果"
+      "原產地": "Taiwan",
+      "成分": "腰果"
     }
   },
   "P003": {
@@ -28,8 +28,8 @@
     "description": "開心果 THE BEST",
     "price": "$400",
     "specs": {
-      "country": "Taiwan",
-      "ingredient": "開心果"
+      "原產地": "Taiwan",
+      "成分": "開心果"
     }
   },
   "P004": {
@@ -39,8 +39,8 @@
     "description": "綜合豆 THE BEST",
     "price": "$150",
     "specs": {
-      "country": "Taiwan",
-      "ingredient": "MISC"
+      "原產地": "Taiwan",
+      "成分": "MISC"
     }
   },
   "P005": {
@@ -50,8 +50,8 @@
     "description": "The best ",
     "price": "$150",
     "specs": {
-      "country": "Brazil",
-      "ingredient": "Grape "
+      "原產地": "Brazil",
+      "成分": "Grape "
     }
   },
   "P011": {
@@ -61,8 +61,8 @@
     "description": "紅心芭樂乾 ",
     "price": "$200",
     "specs": {
-      "country": "Taiwan",
-      "ingredient": "nuts!"
+      "原產地": "Taiwan",
+      "成分": "nuts!"
     }
   },
   "P1010": {
@@ -72,8 +72,8 @@
     "description": "帶皮腰果 We roast in ultra low temp!",
     "price": "$400",
     "specs": {
-      "country": "越南",
-      "ingredient": "腰果"
+      "原產地": "越南",
+      "成分": "腰果"
     }
   }
 }
