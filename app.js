@@ -239,38 +239,49 @@ function extractYouTubeId(url) {
             container.appendChild(button);
         });
     }
-    function renderProductGrid(products) {
-        const grid = contentContainers.productGrid; // Target the single grid
-        if (!grid) {
-            console.error("Product grid container not found!");
-            return;
-        }
-        grid.innerHTML = ''; // Clear previous products
-
-        // Filter products based on the current state
-        const filteredProducts = (currentFilterCategory === 'All')
-            ? products // Show all if 'All' is selected
-            : products.filter(p => (p.category || 'Other') === currentFilterCategory);
-
-        if (!filteredProducts || filteredProducts.length === 0) {
-            grid.innerHTML = '<p>此類別中未找到任何產品。</p>';
-            return;
-        }
-
-        // Render only the filtered products
-        filteredProducts.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product-item');
-            productDiv.setAttribute('data-product-id', product.id);
-            productDiv.innerHTML = `
-                <img src="${product.imgUrl}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p>${product.price}</p>
-                ${product.title ? `<p class="product-title">${product.title}</p>` : ''}
-            `;
-            grid.appendChild(productDiv);
-        });
+function renderProductGrid(products) {
+    const grid = contentContainers.productGrid;
+    if (!grid) {
+        console.error("Product grid container not found!");
+        return;
     }
+    grid.innerHTML = ''; // Clear previous products
+
+    const filteredProducts = (currentFilterCategory === 'All')
+        ? products
+        : products.filter(p => (p.category || 'Other') === currentFilterCategory);
+
+    if (!filteredProducts || filteredProducts.length === 0) {
+        grid.innerHTML = '<p>此分類目前沒有商品。</p>'; // "No products found in this category."
+        return;
+    }
+
+    filteredProducts.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product-item');
+        productDiv.setAttribute('data-product-id', product.id);
+
+        let outOfStockOverlay = ''; // NEW: Variable for the overlay
+        
+        // NEW: Check for stock status
+        if (product.stock === 'N') {
+            productDiv.classList.add('out-of-stock'); // Add class for styling and click handling
+            // Create a visual overlay indicating the item is out of stock
+            outOfStockOverlay = '<div class="stock-overlay"><p>補貨中</p></div>'; // "Restocking"
+        }
+
+        // Populate the inner HTML, including the overlay if needed
+        productDiv.innerHTML = `
+            ${outOfStockOverlay}
+            <img src="${product.imgUrl}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            ${product.title ? `<p class="product-title">${product.title}</p>` : ''}
+        `;
+        grid.appendChild(productDiv);
+    });
+}
+
 /* IT was used before the product Category is used
     function renderProductGrid(products) {
         if (!products) {
@@ -1641,11 +1652,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Product Item Click (Event Delegation)
         contentContainers.productContainer.addEventListener('click', (e) => {
             const productItem = e.target.closest('.product-item');
-            if (productItem) {
+
+            // MODIFIED: Add a check to ensure the item is NOT out of stock before proceeding.
+            if (productItem && !productItem.classList.contains('out-of-stock')) {
                 const productId = productItem.dataset.productId;
                 renderItemDetails(productId); // Render the detail view
-                switchView('item');        // Switch to the item view
+                switchView('item');           // Switch to the item view
             }
+            // If the item has the 'out-of-stock' class, nothing happens.
         });
 
          // Add to Cart Click (Event Delegation on item wrapper)
