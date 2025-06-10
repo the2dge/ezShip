@@ -282,6 +282,46 @@ a { text-decoration: none;}
   font-size: 14px;
   color: #333;
 }
+/**Out of Stock Display**/
+/* Style for the base product item to contain the overlay */
+.product-item {
+    position: relative; /* This is crucial for the overlay positioning */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Style for the out-of-stock item */
+.product-item.out-of-stock {
+    opacity: 0.6; /* Dim the item to show it's inactive */
+    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+}
+
+.product-item.out-of-stock:hover {
+    transform: none;
+}
+
+/* Style for the overlay itself */
+.stock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(100, 100, 100, 0.5); /* Semi-transparent dark background */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px; /* Match your product item's border-radius */
+    z-index: 10;
+}
 /* Item Wrapper Specifics */
 .item-detail { display: flex; gap: 30px; }
 .item-detail img { max-width: 40%; margin-bottom:20%; height: auto; }
