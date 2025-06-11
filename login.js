@@ -108,8 +108,81 @@ function handleMemberClick(element) {
         element.classList.remove('processing');
     });
 }
-
 async function checkOrders() {
+  const lineUserId = sessionStorage.getItem('lineUserId');
+  if (!lineUserId) {
+    Swal.fire("請先登入以查看訂單");
+    return;
+  }
+
+  // 1) Define your status translation map
+  const statusMap = {
+    "New":        "新訂單",
+    "Processing": "已交付小7",
+    "Completed":  "已取貨",
+    "Cancelled":  "訂單取消"
+  };
+
+  try {
+    const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getOrders`);
+    const data = await res.json();
+
+    if (data.status !== 'success' || !Array.isArray(data.orders)) {
+      Swal.fire("查詢失敗", "無法獲取訂單資料", "error");
+      return;
+    }
+
+    // 2) Filter only this user’s orders
+    const userOrders = data.orders.filter(order => 
+      order.lineUserId && String(order.lineUserId).trim() === lineUserId.trim()
+    );
+
+    if (userOrders.length === 0) {
+      Swal.fire("目前沒有您的訂單紀錄");
+      return;
+    }
+
+    // 3) Build the HTML table including a “Status” column
+    let html = `
+      <h3>我的訂單</h3>
+      <table border="1" style="width:100%; text-align:left;">
+        <tr>
+          <th>訂單編號</th>
+          <th>付款方式</th>
+          <th>取貨門市</th>
+          <th>狀態</th>
+        </tr>`;
+
+    userOrders.forEach(order => {
+      // translate status or fallback to original
+      const rawStatus = order.Status || order.status || "";
+      const zhStatus  = statusMap[rawStatus] || rawStatus;
+
+      html += `
+        <tr>
+          <td>${order.Order_ID || ""}</td>
+          <td>${getPaymentMethodInChinese(order.Payment_Method) || ""}</td>
+          <td>${order.StoreAddress || ""}</td>
+          <td>${zhStatus}</td>
+        </tr>`;
+    });
+
+    html += `</table>`;
+
+    // 4) Show it in a Swal modal
+    Swal.fire({
+      title: '您的訂單查詢',
+      html: html,
+      width: '90%',
+      confirmButtonText: '關閉'
+    });
+
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    Swal.fire("錯誤", "查詢訂單時發生錯誤", "error");
+  }
+}
+async function checkOrdersB() {
   const lineUserId = sessionStorage.getItem('lineUserId');
   if (!lineUserId) {
     Swal.fire("請先登入以查看訂單");
