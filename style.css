@@ -165,7 +165,7 @@ a { text-decoration: none;}
 #banner-slider-container {
     position: relative; /* Needed for absolute positioning of slides */
     width: 100%;
-    height: 500px; /* Or your desired height */
+    aspect-ratio: 16/9; /* Or your desired height */
     overflow: hidden; /* Hide parts of images outside the container */
     margin-bottom: 30px;
 }
