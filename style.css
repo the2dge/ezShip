@@ -401,6 +401,18 @@ a { text-decoration: none;}
 .item-detail .back-to-products-btn:hover {
   opacity: 0.9;
 }
+.item-detail .item-info .button-row {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  gap: 12px;                 /* space between buttons */
+  margin-top: 16px;          /* some breathing room above */
+}
+
+.item-detail .add-to-cart-btn,
+.item-detail .back-to-products-btn {
+  flex: 1;                   /* equal widths */
+  max-width: 140px;          /* optional cap */
+}
 /* Checkout Wrapper Specifics */
 #checkout-form { max-width: 600px; margin: 0 auto; }
 #checkout-form label { display: block; margin-bottom: 5px; }
