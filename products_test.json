@@ -39,10 +39,10 @@
     "id": "P005",
     "name": "綠葡萄乾",
     "price": "$150",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
     "title": "Green Grape",
     "category": "乾果",
-    "stock": "Y"
+    "stock": ""
   },
   {
     "id": "P011",
