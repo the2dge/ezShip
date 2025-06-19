@@ -66,9 +66,9 @@
     "id": "p0012",
     "name": 123,
     "price": "$300",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/2023-12-14-12-16-54-804.jpg",
-    "title": "巴西豆",
-    "category": "堅果",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheese_slices.jpg",
+    "title": "巴西Cheese Slices",
+    "category": "休閒養生",
     "stock": "Y"
   }
 ]
