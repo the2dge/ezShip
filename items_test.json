@@ -13,7 +13,7 @@
   "P002": {
     "id": "P002",
     "name": "腰果 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
     "description": "對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右!",
     "price": "$400",
     "specs": {
@@ -24,7 +24,7 @@
   "P003": {
     "id": "P003",
     "name": "開心果 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
     "description": "以超低溫烘烤，保留所有風味，讓您享受豆豆先生最美味的烤開心果!\n超低溫烘烤，超低溫烘烤，超低溫烘烤，這很重要,這很重要, 這很重要!!!",
     "price": "$400",
     "specs": {
@@ -34,19 +34,19 @@
   },
   "P004": {
     "id": "P004",
-    "name": "黃豆 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
-    "description": "黃豆 THE BEST",
+    "name": "綜合豆 300g",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011816.png",
+    "description": "綜合豆 THE BEST",
     "price": "$150",
     "specs": {
-      "原產地": "台灣",
-      "成分": "黃豆"
+      "原產地": "Taiwan",
+      "成分": "MISC"
     }
   },
   "P005": {
     "id": "P005",
     "name": "綠葡萄乾",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
     "description": "The best ",
     "price": "$150",
     "specs": {
@@ -57,18 +57,18 @@
   "P011": {
     "id": "P011",
     "name": "紅心芭樂乾 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grava_red.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/redgrava.jpg",
     "description": "紅心芭樂乾 ",
     "price": "$200",
     "specs": {
-      "原產地": "台灣",
+      "原產地": "Taiwan",
       "成分": "nuts!"
     }
   },
   "P1010": {
     "id": "P1010",
     "name": "帶皮腰果",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011999.jpg",
     "description": "帶皮腰果 We roast in ultra low temp!",
     "price": "$400",
     "specs": {
@@ -78,9 +78,9 @@
   },
   "p0012": {
     "id": "p0012",
-    "name": "花生",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/peanuts.jpg",
-    "description": "來自雲林 最好的花生!",
+    "name": 123,
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/2023-12-14-12-16-54-804.jpg",
+    "description": "純手工剝絲",
     "price": "$300",
     "specs": {
       "原產地": "巴西",
