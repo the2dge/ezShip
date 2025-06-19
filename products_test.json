@@ -4,16 +4,16 @@
     "name": "杏仁 300g",
     "price": "$300",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/almond.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "title": "杏仁 300g(半斤)",
     "category": "堅果",
-    "stock": "Y"
+    "stock": ""
   },
   {
     "id": "P002",
     "name": "腰果 300g",
     "price": "$400",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_165249-min.jpg",
+    "title": "腰果 300g",
     "category": "堅果",
     "stock": "N"
   },
@@ -21,25 +21,25 @@
     "id": "P003",
     "name": "開心果 300g",
     "price": "$400",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/20240707_160913-min.jpg",
+    "title": "",
     "category": "堅果",
     "stock": ""
   },
   {
     "id": "P004",
-    "name": "黃豆 300g",
+    "name": "綜合豆 300g",
     "price": "$150",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011816.png",
     "title": "",
     "category": "雜糧",
     "stock": ""
   },
   {
     "id": "P005",
-    "name": "綠葡萄乾 300g",
+    "name": "綠葡萄乾",
     "price": "$150",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/goldengrape.jpg",
     "title": "Green Grape",
     "category": "乾果",
     "stock": "Y"
@@ -48,26 +48,26 @@
     "id": "P011",
     "name": "紅心芭樂乾 300g",
     "price": "$200",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grava_red.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/redgrava.jpg",
+    "title": "紅心芭樂乾 300g",
     "category": "乾果",
     "stock": "Y"
   },
   {
     "id": "P1010",
-    "name": "帶皮腰果 300g",
+    "name": "帶皮腰果",
     "price": "$400",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011999.jpg",
+    "title": "帶皮腰果",
     "category": "堅果",
     "stock": "Y"
   },
   {
     "id": "p0012",
-    "name": "花生 300g",
+    "name": 123,
     "price": "$300",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/peanuts.jpg",
-    "title": "低溫烘焙 最佳口味",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/2023-12-14-12-16-54-804.jpg",
+    "title": "巴西豆",
     "category": "堅果",
     "stock": "Y"
   }
