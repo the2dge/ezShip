@@ -34,9 +34,9 @@
   },
   "P004": {
     "id": "P004",
-    "name": "綜合豆 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000011816.png",
-    "description": "綜合豆 THE BEST",
+    "name": "黃豆 300g",
+    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
+    "description": "黃豆 THE BEST",
     "price": "$150",
     "specs": {
       "原產地": "Taiwan",
