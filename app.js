@@ -2032,7 +2032,8 @@ function defer(callback) {
 } *///END of init()
 
     // --- Start the application ---
-    init();
+    // --- Start the application when DOM is ready ---
+    document.addEventListener('DOMContentLoaded', init);
     ECpayStoreDataBackTransfer();
 
 }); // End DOMContentLoaded
