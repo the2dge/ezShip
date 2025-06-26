@@ -607,7 +607,7 @@ async function renderCheckoutPage(cartItems) {
     // This function will set up all event listeners and may call updateOrderSummaryDisplay again
     // if, for example, it restores a discount code from session storage.
     initializeCheckoutFormStateAndListeners(checkoutFormElement, cartItems, storedStoreInfo);
-
+    switchView("checkout");
     // Note: The call to updateOrderSummaryDisplay at the end of initializeCheckoutFormStateAndListeners
     // will ensure the display is accurate after all its internal setup, including potential restoration
     // of discount codes which would affect currentDiscountRate.
