@@ -2033,7 +2033,7 @@ function defer(callback) {
 
     // --- Start the application ---
     // --- Start the application when DOM is ready ---
-    document.addEventListener('DOMContentLoaded', init);
+    init();
     ECpayStoreDataBackTransfer();
 
 }); // End DOMContentLoaded
