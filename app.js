@@ -1825,55 +1825,65 @@ document.addEventListener('DOMContentLoaded', () => {
 async function init() {
   const urlParams = new URLSearchParams(window.location.search);
 
-  // ─── Case A: OAuth “code” return from LINE login ───
+  // ── Case A: OAuth “code” return ──
   const code = urlParams.get('code');
   if (code) {
-    // 1) Exchange to profile
-    const profile = await exchangeCodeForToken(code);
-    localStorage.setItem('lineUser', JSON.stringify(profile));
-    sessionStorage.setItem('lineUserName', profile.displayName || '');
-    sessionStorage.setItem('lineUserEmail', profile.email || '');
-    sessionStorage.setItem('lineUserId', profile.userId || '');
+    let profile = {};
+    try {
+      profile = await exchangeCodeForToken(code) || {};
+    } catch (e) {
+      console.error("LINE exchange failed:", e);
+    }
+    const nameToSave  = profile.displayName || profile.name || "";
+    const emailToSave = profile.email       || "";
+    const idToSave    = profile.userId      || profile.id   || "";
 
-    // 2) Restore cart
+    sessionStorage.setItem('lineUserName',  nameToSave);
+    sessionStorage.setItem('lineUserEmail', emailToSave);
+    sessionStorage.setItem('lineUserId',    idToSave);
+    localStorage.setItem('lineUser', JSON.stringify(profile));
+
+    // restore cart
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     if (savedCart.length) {
       cart = savedCart;
       renderSideCart();
     }
 
-    // 3) Clean URL and jump to prior view (or default)
-    window.history.replaceState({}, document.title, window.location.pathname);
+    // now render home UI
+    await renderMainContent();
+    defer(renderDeferredContent);
     switchView('content');
+
+    // clean URL & done
+    window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
 
-  // ─── Case B: “name/email/lineUserId” params (older LINE return flow) ───
-  const name = urlParams.get('name');
-  const email = urlParams.get('email');
-  const lineUserId = urlParams.get('lineUserId');
-  if (name && lineUserId) {
-    sessionStorage.setItem('lineUserName', name);
-    sessionStorage.setItem('lineUserEmail', email || '');
-    sessionStorage.setItem('lineUserId', lineUserId);
+  // ── Case B: legacy name/email/lineUserId ──
+  const name        = urlParams.get('name');
+  const email       = urlParams.get('email');
+  const legacyId    = urlParams.get('lineUserId');
+  if (name && legacyId) {
+    sessionStorage.setItem('lineUserName',  name);
+    sessionStorage.setItem('lineUserEmail', email || "");
+    sessionStorage.setItem('lineUserId',    legacyId);
 
-    // Clean those params out of the URL
-    const cleanURL = new URL(window.location.href);
-    ['name','email','lineUserId'].forEach(p => cleanURL.searchParams.delete(p));
-    window.history.replaceState({}, document.title, cleanURL);
-
-    // Restore cart if any
     const saved = JSON.parse(localStorage.getItem('cart') || '[]');
     if (saved.length) {
       cart = saved;
       renderSideCart();
     }
 
+    await renderMainContent();
+    defer(renderDeferredContent);
     switchView('content');
+
+    window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
 
-  // ─── Case C: 7-11 store-selection return ───
+  // ── Case C: 7-11 store return (unchanged) ──
   const storeID      = urlParams.get('CVSStoreID');
   const storeName    = urlParams.get('CVSStoreName');
   const storeAddress = urlParams.get('CVSAddress');
@@ -1883,10 +1893,8 @@ async function init() {
       CVSStoreName: storeName,
       CVSAddress:   storeAddress
     }));
-    // clean URL
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    // restore cart & go right to checkout
     const saved = JSON.parse(localStorage.getItem('cart') || '[]');
     if (saved.length) {
       cart = saved;
@@ -1895,7 +1903,7 @@ async function init() {
     }
   }
 
-  // ─── Normal App Startup ───
+  // ── Normal startup ──
   await renderMainContent();
   defer(renderDeferredContent);
 }
