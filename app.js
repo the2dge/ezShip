@@ -1446,6 +1446,11 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
 // --- Modified ECpayStoreDataBackTransfer ---
 // This function is assumed to be called on DOMContentLoaded or when ECPay redirects back.
 function ECpayStoreDataBackTransfer() {
+    const shippingSelect = document.querySelector('#shipping-method');
+    if (!shippingSelect) {
+        console.warn('shippingSelect not found');
+        return;
+    }
     const urlParams = new URLSearchParams(window.location.search);
     const CVSStoreID = urlParams.get('CVSStoreID');
     const CVSStoreName = urlParams.get('CVSStoreName');
