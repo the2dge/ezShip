@@ -1818,8 +1818,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialization Function ---
 async function init() {
-    await renderMainContent();      // Step 1: Fast, above-the-fold content
-    defer(renderDeferredContent);  // Step 2: Lazy load background tasks
+    // --- Case 1: LINE login return ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const lineUserName = urlParams.get('name');
+    const lineUserEmail = urlParams.get('email');
+    const lineUserId = urlParams.get('lineUserId');
+
+    if (lineUserName && lineUserId) {
+        // Save session and clean URL
+        sessionStorage.setItem('lineUserName', lineUserName);
+        sessionStorage.setItem('lineUserEmail', lineUserEmail || '');
+        sessionStorage.setItem('lineUserId', lineUserId);
+
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.delete('name');
+        newUrl.searchParams.delete('email');
+        newUrl.searchParams.delete('lineUserId');
+        history.replaceState(null, '', newUrl);
+    }
+
+    // --- Case 2: 7-11 store return ---
+    const storeID = urlParams.get('CVSStoreID');
+    const storeName = urlParams.get('CVSStoreName');
+    const storeAddress = urlParams.get('CVSAddress');
+
+    if (storeID && storeName && storeAddress) {
+        // Save 7-11 store info to sessionStorage
+        sessionStorage.setItem('selectedStoreInfo', JSON.stringify({
+            CVSStoreID: storeID,
+            CVSStoreName: storeName,
+            CVSAddress: storeAddress
+        }));
+
+        // Remove store info from URL
+        const cleanedUrl = new URL(window.location.href);
+        cleanedUrl.searchParams.delete('CVSStoreID');
+        cleanedUrl.searchParams.delete('CVSStoreName');
+        cleanedUrl.searchParams.delete('CVSAddress');
+        history.replaceState(null, '', cleanedUrl);
+
+        // Resume checkout immediately
+        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (savedCart.length > 0) {
+            cart = savedCart;
+            await renderCheckoutPage(cart); // 🔁 jump to checkout
+            return;
+        }
+    }
+
+    // ⬇️ Then continue to normal flow
+    await renderMainContent();
+    defer(renderDeferredContent);
 }
 async function renderMainContent() {
     try {
