@@ -1823,57 +1823,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialization Function ---
 async function init() {
-    // --- Case 1: LINE login return ---
-    const urlParams = new URLSearchParams(window.location.search);
-    const lineUserName = urlParams.get('name');
-    const lineUserEmail = urlParams.get('email');
-    const lineUserId = urlParams.get('lineUserId');
+  const urlParams = new URLSearchParams(window.location.search);
 
-    if (lineUserName && lineUserId) {
-        // Save session and clean URL
-        sessionStorage.setItem('lineUserName', lineUserName);
-        sessionStorage.setItem('lineUserEmail', lineUserEmail || '');
-        sessionStorage.setItem('lineUserId', lineUserId);
+  // ─── Case A: OAuth “code” return from LINE login ───
+  const code = urlParams.get('code');
+  if (code) {
+    // 1) Exchange to profile
+    const profile = await exchangeCodeForToken(code);
+    localStorage.setItem('lineUser', JSON.stringify(profile));
+    sessionStorage.setItem('lineUserName', profile.displayName || '');
+    sessionStorage.setItem('lineUserEmail', profile.email || '');
+    sessionStorage.setItem('lineUserId', profile.userId || '');
 
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.delete('name');
-        newUrl.searchParams.delete('email');
-        newUrl.searchParams.delete('lineUserId');
-        history.replaceState(null, '', newUrl);
+    // 2) Restore cart
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (savedCart.length) {
+      cart = savedCart;
+      renderSideCart();
     }
 
-    // --- Case 2: 7-11 store return ---
-    const storeID = urlParams.get('CVSStoreID');
-    const storeName = urlParams.get('CVSStoreName');
-    const storeAddress = urlParams.get('CVSAddress');
+    // 3) Clean URL and jump to prior view (or default)
+    window.history.replaceState({}, document.title, window.location.pathname);
+    switchView('content');
+    return;
+  }
 
-    if (storeID && storeName && storeAddress) {
-        // Save 7-11 store info to sessionStorage
-        sessionStorage.setItem('selectedStoreInfo', JSON.stringify({
-            CVSStoreID: storeID,
-            CVSStoreName: storeName,
-            CVSAddress: storeAddress
-        }));
+  // ─── Case B: “name/email/lineUserId” params (older LINE return flow) ───
+  const name = urlParams.get('name');
+  const email = urlParams.get('email');
+  const lineUserId = urlParams.get('lineUserId');
+  if (name && lineUserId) {
+    sessionStorage.setItem('lineUserName', name);
+    sessionStorage.setItem('lineUserEmail', email || '');
+    sessionStorage.setItem('lineUserId', lineUserId);
 
-        // Remove store info from URL
-        const cleanedUrl = new URL(window.location.href);
-        cleanedUrl.searchParams.delete('CVSStoreID');
-        cleanedUrl.searchParams.delete('CVSStoreName');
-        cleanedUrl.searchParams.delete('CVSAddress');
-        history.replaceState(null, '', cleanedUrl);
+    // Clean those params out of the URL
+    const cleanURL = new URL(window.location.href);
+    ['name','email','lineUserId'].forEach(p => cleanURL.searchParams.delete(p));
+    window.history.replaceState({}, document.title, cleanURL);
 
-        // Resume checkout immediately
-        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-        if (savedCart.length > 0) {
-            cart = savedCart;
-            await renderCheckoutPage(cart); // 🔁 jump to checkout
-            return;
-        }
+    // Restore cart if any
+    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (saved.length) {
+      cart = saved;
+      renderSideCart();
     }
 
-    // ⬇️ Then continue to normal flow
-    await renderMainContent();
-    defer(renderDeferredContent);
+    switchView('content');
+    return;
+  }
+
+  // ─── Case C: 7-11 store-selection return ───
+  const storeID      = urlParams.get('CVSStoreID');
+  const storeName    = urlParams.get('CVSStoreName');
+  const storeAddress = urlParams.get('CVSAddress');
+  if (storeID && storeName && storeAddress) {
+    sessionStorage.setItem('selectedStoreInfo', JSON.stringify({
+      CVSStoreID:   storeID,
+      CVSStoreName: storeName,
+      CVSAddress:   storeAddress
+    }));
+    // clean URL
+    window.history.replaceState({}, document.title, window.location.pathname);
+
+    // restore cart & go right to checkout
+    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (saved.length) {
+      cart = saved;
+      await renderCheckoutPage(cart);
+      return;
+    }
+  }
+
+  // ─── Normal App Startup ───
+  await renderMainContent();
+  defer(renderDeferredContent);
 }
 async function renderMainContent() {
     try {
