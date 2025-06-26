@@ -302,7 +302,10 @@ function renderProductGrid(products) {
         });
     }
 */ 
-    function renderItemDetails(productId) {
+   async function renderItemDetails(productId) {
+        if (!allItemDetails || !Object.keys(allItemDetails).length) {
+        allItemDetails = await fetchData('items_test.json');
+    }
         const itemData = allItemDetails[productId];
         if (!itemData) {
             mainBody.itemWrapper.innerHTML = `<p>Error: Product details not found for ID ${productId}.</p>`;
@@ -1814,7 +1817,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // --- Initialization Function ---
-    async function init() {
+async function init() {
+    await renderMainContent();      // Step 1: Fast, above-the-fold content
+    defer(renderDeferredContent);  // Step 2: Lazy load background tasks
+}
+async function renderMainContent() {
+    try {
+        const [bannerData, aboutData, productData] = await Promise.all([
+            fetchData('banner.json'),
+            fetchData('about.json'),
+            fetchData('products_test.json'),
+        ]);
+
+        const bannerRendered = renderBanner(bannerData);
+        renderAbout(aboutData);
+        renderProductGrid(productData);
+        allProductsData = productData;
+
+        startSlideshowIfReady(bannerRendered);
+    } catch (error) {
+        console.error("Error rendering main content:", error);
+    }
+}
+
+function renderDeferredContent() {
+    fetchData('media.json').then(renderMedia);
+    loadMembershipData();  // Only needed for checkout or discounts
+    renderSideCart();      // UI enhancement only
+    setupEventListeners(); // DOM event bindings
+}
+
+function startSlideshowIfReady(bannerRendered) {
+    if (bannerRendered) {
+        startBannerSlideshow();
+    }
+}
+
+// Utility: Use browser idle time or fallback to timeout
+function defer(callback) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(callback);
+    } else {
+        setTimeout(callback, 200);
+    }
+}
+ /*   async function init() {
         // Fetch all necessary data concurrently
         const [bannerData, aboutData, mediaData, productsData, itemDetailsData] = await Promise.all([
             fetchData('banner.json'),
@@ -1910,10 +1957,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Normal load ---
     switchView('content');
-}//END of init()
+} *///END of init()
 
     // --- Start the application ---
-    await loadMembershipData();
     init();
     ECpayStoreDataBackTransfer();
 
