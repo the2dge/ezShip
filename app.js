@@ -1771,7 +1771,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('lineUserId', sub);
           console.log("In Code Exchange: LindID is: ", sessionStorage.getItem('lineUserId'));
 
-          updateNavbarWithUserName(name, "From Exchange Code"); // Optional UI update
+          updateNavbarWithUserName(name); // Optional UI update
         } else {
           console.warn('LINE profile fetch failed:', data);
         }
@@ -1802,7 +1802,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Swal.fire('❌ 訂單提交失敗，請稍後再試。');
         }
     }
-async function updateNavbarWithUserName(userName, testPoint) {
+async function updateNavbarWithUserName(userName) {
   let isMember = false;
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
