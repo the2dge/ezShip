@@ -1885,21 +1885,21 @@ async function init() {
   // ── Case A: OAuth “code” return ──
   const code = urlParams.get('code');
   if (code) {
-    let profile = {};
+  //  let profile = {};
     try {
       profile = await exchangeCodeForToken(code) || {};
     } catch (e) {
       console.error("LINE exchange failed:", e);
     }
-    const nameToSave  = profile.displayName || profile.name || "";
-    const emailToSave = profile.email       || "";
-    const idToSave    = profile.userId      || profile.id   || "";
-    console.log("Stored LINE Profile is:", profile);
+ //   const nameToSave  = profile.displayName || profile.name || "";
+ //   const emailToSave = profile.email       || "";
+ //   const idToSave    = profile.userId      || profile.id   || "";
+ //   console.log("Stored LINE Profile is:", profile);
 
-    sessionStorage.setItem('lineUserName',  nameToSave);
-    sessionStorage.setItem('lineUserEmail', emailToSave);
-    sessionStorage.setItem('lineUserId',    idToSave);
-    localStorage.setItem('lineUser', JSON.stringify(profile));
+ //   sessionStorage.setItem('lineUserName',  nameToSave);
+ //   sessionStorage.setItem('lineUserEmail', emailToSave);
+ //   sessionStorage.setItem('lineUserId',    idToSave);
+ //   localStorage.setItem('lineUser', JSON.stringify(profile));
     console.log("lineUserId Check after LINE Login: ", sessionStorage.getItem('lineUserId'));
     // restore cart
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
