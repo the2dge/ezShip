@@ -1815,11 +1815,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('user-dropdown').style.display = 'block';
     }
 
-    // Call this after login is confirmed
-    const storedUserName = sessionStorage.getItem('lineUserName');
-    console.log("LINE user name exist!");
-    if (storedUserName) updateNavbarWithUserName(storedUserName);
-
 
     // --- Initialization Function ---
 async function init() {
@@ -2043,6 +2038,11 @@ function defer(callback) {
     // --- Start the application ---
     // --- Start the application when DOM is ready ---
     init();
+        // Call this after login is confirmed
+    const storedUserName = sessionStorage.getItem('lineUserName');
+    console.log("LINE user name exist!");
+    if (storedUserName) updateNavbarWithUserName(storedUserName);
+
     ECpayStoreDataBackTransfer();
 
 }); // End DOMContentLoaded
