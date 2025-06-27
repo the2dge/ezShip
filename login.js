@@ -348,75 +348,7 @@ function loginWithLINE() {
   window.location.href = loginUrl;
 }
 
-async function updateNavbarWithUserName(userName, testPoint) {
-  let isMember = false;
-  const loginBtn = document.getElementById('member-login-button');
-  const memberService = document.getElementById('member-service-container');
-  const storedUserId = sessionStorage.getItem('lineUserId');
-  console.log("In Navbar lineUserId Update: ", sessionStorage.getItem('lineUserId'));
-  console.log("In Navbar testPoint is:", testPoint);
-  if (!storedUserId) return;
 
-  try {
-   const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${storedUserId}`);
-   const data = await res.json();
-
-    if (data.status === 'success') {
-      isMember = true;
-    }
-
-    if (loginBtn) {
-      loginBtn.textContent = `👤 ${userName}`;
-      loginBtn.disabled = true;
-    }
-
-    if (isMember) {
-      memberService.style.display = "block";
-    } else {
-      // Ask to complete registration
-      const { value: phoneNumber } = await Swal.fire({
-        title: '歡迎加入會員 🎉',
-        text: '是否願意提供電話號碼以完成會員註冊？',
-        input: 'tel',
-        inputLabel: '手機號碼',
-        inputPlaceholder: '請輸入您的手機號碼',
-        inputAttributes: {
-          maxlength: 12,
-          autocapitalize: 'off',
-          autocorrect: 'off'
-        },
-        confirmButtonText: '提交',
-        showCancelButton: true,
-        cancelButtonText: '稍後再說'
-      });
-
-      if (phoneNumber) {
-        // Send registration request
-        await fetch('https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec', {
-          method: 'POST',
-          mode: "no-cors",
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            mode: 'registerMember',
-            lineUserId: storedUserId,
-            lineUserName: userName,
-            telephone: phoneNumber
-          })
-        });
-
-        Swal.fire('完成註冊', '感謝您提供資料！已成功註冊會員。', 'success');
-        memberService.style.display = "block";
-      }
-    }
-
-    console.log("LineId is:", storedUserId, "IsMember:", isMember);
-
-  } catch (err) {
-    console.error('Error checking membership:', err);
-  }
-}
 /*
 async function updateNavbarWithUserName(userName) {
   let isMember = false;
