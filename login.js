@@ -348,13 +348,13 @@ function loginWithLINE() {
   window.location.href = loginUrl;
 }
 
-async function updateNavbarWithUserName(userName) {
+async function updateNavbarWithUserName(userName, testPoint) {
   let isMember = false;
   const loginBtn = document.getElementById('member-login-button');
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
   console.log("In Navbar lineUserId Update: ", sessionStorage.getItem('lineUserId'));
-  
+  console.log("In Navbar testPoint is:, testPoint);
   if (!storedUserId) return;
 
   try {
