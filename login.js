@@ -430,7 +430,3 @@ function generateCustomOrderId() {
   return `${aaCode}${day}${yyy}`;
 }
 
-// Call this after login is confirmed
-const storedUserName = sessionStorage.getItem('lineUserName');
-if (storedUserName) updateNavbarWithUserName(storedUserName);
-  
