@@ -1842,7 +1842,7 @@ async function init() {
     sessionStorage.setItem('lineUserEmail', emailToSave);
     sessionStorage.setItem('lineUserId',    idToSave);
     localStorage.setItem('lineUser', JSON.stringify(profile));
-
+    console.log("lineUserId Check after LINE Login: ", sessionStorage.getItem('lineUserId'));
     // restore cart
     const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
     if (savedCart.length) {
