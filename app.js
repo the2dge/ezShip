@@ -1771,7 +1771,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('lineUserId', sub);
           console.log("In Code Exchange: LindID is: ", sessionStorage.getItem('lineUserId'));
 
-          updateNavbarWithUserName(name); // Optional UI update
+          updateNavbarWithUserName(name, "From Exchange Code"); // Optional UI update
         } else {
           console.warn('LINE profile fetch failed:', data);
         }
