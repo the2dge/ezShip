@@ -1857,7 +1857,7 @@ async function init() {
 
     // clean URL & done
     window.history.replaceState({}, document.title, window.location.pathname);
-    console.log("last lineUserId Check: , sessionStorage.getItem('lineUserId'));
+    console.log("last lineUserId Check: ", sessionStorage.getItem('lineUserId'));
     return;
   }
 
