@@ -1832,6 +1832,7 @@ async function init() {
     const nameToSave  = profile.displayName || profile.name || "";
     const emailToSave = profile.email       || "";
     const idToSave    = profile.userId      || profile.id   || "";
+    console.log("Stored lineUserId:", idToSave);
 
     sessionStorage.setItem('lineUserName',  nameToSave);
     sessionStorage.setItem('lineUserEmail', emailToSave);
