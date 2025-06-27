@@ -2040,7 +2040,8 @@ function defer(callback) {
     init();
         // Call this after login is confirmed
     const storedUserName = sessionStorage.getItem('lineUserName');
-    console.log("LINE user name exist!");
+    
+    console.log("LINE user name exist!", sessionStorage.getItem('lineUserName'));
     if (storedUserName) updateNavbarWithUserName(storedUserName);
 
     ECpayStoreDataBackTransfer();
