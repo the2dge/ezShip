@@ -2,11 +2,11 @@
   {
     "id": "P001",
     "name": "杏仁 300g",
-    "price": "$300",
+    "price": "$325",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/almond.jpg",
     "title": "杏仁 300g(半斤)",
     "category": "堅果",
-    "stock": "N"
+    "stock": ""
   },
   {
     "id": "P002",
