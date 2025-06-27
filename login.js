@@ -354,7 +354,7 @@ async function updateNavbarWithUserName(userName, testPoint) {
   const memberService = document.getElementById('member-service-container');
   const storedUserId = sessionStorage.getItem('lineUserId');
   console.log("In Navbar lineUserId Update: ", sessionStorage.getItem('lineUserId'));
-  console.log("In Navbar testPoint is:, testPoint);
+  console.log("In Navbar testPoint is:", testPoint);
   if (!storedUserId) return;
 
   try {
