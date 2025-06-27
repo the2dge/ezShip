@@ -1769,7 +1769,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sessionStorage.setItem('lineUserName', name);
           sessionStorage.setItem('lineUserEmail', email);
           sessionStorage.setItem('lineUserId', sub);
-          console.log("In Code Exchange: LindID is: ", sessionStorage.setItem('lineUserId'));
+          console.log("In Code Exchange: LindID is: ", sessionStorage.getItem('lineUserId'));
 
           updateNavbarWithUserName(name); // Optional UI update
         } else {
