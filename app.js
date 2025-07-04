@@ -492,11 +492,12 @@ function generatePricingHtml(pricingData, productId) {
             cart.forEach(item => {
                 const cartItemDiv = document.createElement('div');
                 cartItemDiv.classList.add('side-cart-item');
-                cartItemDiv.setAttribute('data-cart-item-id', item.id);
+                cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
                 cartItemDiv.innerHTML = `
                     <img src="${item.img}" alt="${item.name}">
                     <div class="item-info">
                         <p class="name">${item.name}</p>
+                        <p class="size">${item.size}</p>
                         <p class="price">${item.price}</p>
                         <div class="quantity-control">
                             <button class="decrease-qty-btn" data-product-id="${item.id}">➖</button>
