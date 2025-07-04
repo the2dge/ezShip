@@ -383,7 +383,103 @@ async function renderItemDetails(productId) {
         btn.addEventListener('click', handleAddToCart);
     });
 }
+function parsePricingData(priceData) {
+    try {
+        // If it's already an array, return it
+        if (Array.isArray(priceData)) {
+            return priceData.filter(p => p.size && p.price);
+        }
+        
+        // If it's a string, try to parse as JSON
+        if (typeof priceData === 'string') {
+            // Check if it looks like JSON array
+            if (priceData.trim().startsWith('[')) {
+                const parsed = JSON.parse(priceData);
+                if (Array.isArray(parsed)) {
+                    return parsed.filter(p => p.size && p.price);
+                }
+            }
+            
+            // If it's just a number string, convert to single pricing
+            const numPrice = parseFloat(priceData);
+            if (!isNaN(numPrice)) {
+                return [{ size: 'Standard', price: numPrice }];
+            }
+        }
+        
+        // If it's a number, convert to single pricing
+        if (typeof priceData === 'number') {
+            return [{ size: 'Standard', price: priceData }];
+        }
+        
+        // Fallback: return empty array
+        console.warn('Unable to parse pricing data:', priceData);
+        return [];
+        
+    } catch (error) {
+        console.error('Error parsing pricing data:', error, priceData);
+        return [];
+    }
+}
 
+/**
+ * Generates HTML for pricing options with add to cart functionality
+ * @param {array} pricingData - Array of pricing objects
+ * @param {string} productId - Product ID
+ * @returns {string} HTML string for pricing section
+ */
+function generatePricingHtml(pricingData, productId) {
+    if (!pricingData || pricingData.length === 0) {
+        return '<p class="price-error">Price information not available</p>';
+    }
+
+    if (pricingData.length === 1) {
+        const pricing = pricingData[0];
+        return `
+            <div class="pricing-section single-price">
+                <p class="price">$${pricing.price}</p>
+                <button class="add-to-cart-btn" 
+                        data-product-id="${productId}" 
+                        data-size="${pricing.size}" 
+                        data-price="${pricing.price}">
+                    加入購物車
+                </button>
+            </div>
+        `;
+    }
+
+    // For multiple sizes, use dropdown
+    return `
+        <div class="pricing-section multiple-prices">
+            <h3>選擇包裝尺寸:</h3>
+            <select class="size-selector" data-product-id="${productId}">
+                ${pricingData.map(p => `<option value="${p.size}" data-price="${p.price}">${p.size} - $${p.price}</option>`).join('')}
+            </select>
+            <button class="add-to-cart-single-btn" data-product-id="${productId}">加入購物車</button>
+        </div>
+    `;
+}
+    function handleAddToCartManual(productId, size, price) {
+    const product = allItemDetails[productId];
+    const cartKey = `${productId}_${size}`;
+    const imageSrc = getFirstImage(product);
+
+    const existingItem = cart.find(item => item.cartKey === cartKey);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            cartKey,
+            id: productId,
+            name: product.name,
+            size,
+            price: `$${price}`,
+            img: imageSrc,
+            quantity: 1
+        });
+    }
+    renderSideCart();
+}
     function renderSideCart() {
         sideCart.itemsContainer.innerHTML = ''; // Clear current items
         if (cart.length === 0) {
