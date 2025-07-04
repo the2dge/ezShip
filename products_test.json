@@ -11,64 +11,10 @@
   {
     "id": "P002",
     "name": "腰果 300g",
-    "pricing": 400,
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peel.jpg\"]",
     "title": "腰果 300g",
     "category": "堅果"
-  },
-  {
-    "id": "P003",
-    "name": "開心果 300g",
-    "pricing": 400,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
-    "title": "",
-    "category": "堅果"
-  },
-  {
-    "id": "P004",
-    "name": "黃豆 300g",
-    "pricing": 150,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
-    "title": "",
-    "category": "雜糧"
-  },
-  {
-    "id": "P005",
-    "name": "綠葡萄乾",
-    "pricing": 150,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
-    "title": "Green Grape",
-    "category": "乾果"
-  },
-  {
-    "id": "P011",
-    "name": "紅心芭樂乾 300g",
-    "pricing": 200,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000012574.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000012574.jpg",
-    "title": "紅心芭樂乾 300g",
-    "category": "乾果"
-  },
-  {
-    "id": "P1010",
-    "name": "帶皮腰果",
-    "pricing": 400,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
-    "title": "帶皮腰果",
-    "category": "堅果"
-  },
-  {
-    "id": "p0012",
-    "name": 123,
-    "pricing": 300,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheese_slices.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheese_slices.jpg",
-    "title": "巴西Cheese Slices",
-    "category": "休閒養生"
   }
 ]
