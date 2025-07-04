@@ -15,76 +15,10 @@
     "name": "腰果 300g",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peel.jpg\"]",
     "description": "對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右!",
-    "price": "$400",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "specs": {
       "原產地": "Taiwan",
       "成分": "腰果"
-    }
-  },
-  "P003": {
-    "id": "P003",
-    "name": "開心果 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
-    "description": "以超低溫烘烤，保留所有風味，讓您享受豆豆先生最美味的烤開心果!\n超低溫烘烤，超低溫烘烤，超低溫烘烤，這很重要,這很重要, 這很重要!!!",
-    "price": "$400",
-    "specs": {
-      "原產地": "美國",
-      "成分": "開心果"
-    }
-  },
-  "P004": {
-    "id": "P004",
-    "name": "黃豆 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
-    "description": "黃豆 THE BEST",
-    "price": "$150",
-    "specs": {
-      "原產地": "Taiwan",
-      "成分": "MISC"
-    }
-  },
-  "P005": {
-    "id": "P005",
-    "name": "綠葡萄乾",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
-    "description": "The best ",
-    "price": "$150",
-    "specs": {
-      "原產地": "Taiwan",
-      "成分": "Grape "
-    }
-  },
-  "P011": {
-    "id": "P011",
-    "name": "紅心芭樂乾 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000012574.jpg",
-    "description": "紅心芭樂乾 ",
-    "price": "$200",
-    "specs": {
-      "原產地": "Taiwan",
-      "成分": "nuts!"
-    }
-  },
-  "P1010": {
-    "id": "P1010",
-    "name": "帶皮腰果",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
-    "description": "帶皮腰果 We roast in ultra low temp!",
-    "price": "$400",
-    "specs": {
-      "原產地": "越南",
-      "成分": "腰果"
-    }
-  },
-  "p0012": {
-    "id": "p0012",
-    "name": 123,
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheese_slices.jpg",
-    "description": "純手工剝絲",
-    "price": "$300",
-    "specs": {
-      "原產地": "巴西",
-      "成分": ""
     }
   }
 }
