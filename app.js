@@ -268,16 +268,55 @@ function renderProductGrid(products) {
         }
 
         const imageSrc = getFirstImage(product);
+        const priceDisplay = formatPriceDisplay(product);
 
         productDiv.innerHTML = `
             ${outOfStockOverlay}
             <img src="${imageSrc}" alt="${product.name}">
             <h3>${product.name}</h3>
-            <p>${product.price}</p>
+            ${priceDisplay}
             ${product.title ? `<p class="product-title">${product.title}</p>` : ''}
         `;
         grid.appendChild(productDiv);
     });
+}
+
+// Helper function to format price display based on pricing structure
+function formatPriceDisplay(product) {
+    // First, try to parse the new 'pricing' field
+    if (product.pricing) {
+        const pricingData = parsePricingData(product.pricing);
+        if (pricingData && pricingData.length > 0) {
+            if (pricingData.length === 1) {
+                // Single price option
+                const item = pricingData[0];
+                return `
+                    <div class="pricing-display">
+                        <span class="price-large">${item.price}</span>
+                        <span class="size-small">${item.size}</span>
+                    </div>
+                `;
+            } else {
+                // Multiple price options - show all options
+                const priceOptionsHtml = pricingData.map(item => `
+                    <div class="price-option">
+                        <span class="price-large">$${item.price}</span>
+                        <span class="size-small">${item.size}</span>
+                    </div>
+                `).join('');
+                
+                return `<div class="pricing-display multiple-prices">${priceOptionsHtml}</div>`;
+            }
+        }
+    }
+    
+    // Fallback to legacy 'price' field if pricing doesn't exist or is invalid
+    if (product.price) {
+        return `<p class="price">${product.price}</p>`;
+    }
+    
+    // Final fallback
+    return '<p class="price">價格請洽詢</p>';
 }
 
 function getFirstImage(product) {
