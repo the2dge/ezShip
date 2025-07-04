@@ -245,14 +245,14 @@ function renderProductGrid(products) {
         console.error("Product grid container not found!");
         return;
     }
-    grid.innerHTML = ''; // Clear previous products
+    grid.innerHTML = '';
 
     const filteredProducts = (currentFilterCategory === 'All')
         ? products
         : products.filter(p => (p.category || 'Other') === currentFilterCategory);
 
     if (!filteredProducts || filteredProducts.length === 0) {
-        grid.innerHTML = '<p>此分類目前沒有商品。</p>'; // "No products found in this category."
+        grid.innerHTML = '<p>此分類目前沒有商品。</p>';
         return;
     }
 
@@ -261,19 +261,17 @@ function renderProductGrid(products) {
         productDiv.classList.add('product-item');
         productDiv.setAttribute('data-product-id', product.id);
 
-        let outOfStockOverlay = ''; // NEW: Variable for the overlay
-        
-        // NEW: Check for stock status
+        let outOfStockOverlay = '';
         if (product.stock === 'N') {
-            productDiv.classList.add('out-of-stock'); // Add class for styling and click handling
-            // Create a visual overlay indicating the item is out of stock
-            outOfStockOverlay = '<div class="stock-overlay"><p>補貨中</p></div>'; // "Restocking"
+            productDiv.classList.add('out-of-stock');
+            outOfStockOverlay = '<div class="stock-overlay"><p>補貨中</p></div>';
         }
 
-        // Populate the inner HTML, including the overlay if needed
+        const imageSrc = getFirstImage(product);
+
         productDiv.innerHTML = `
             ${outOfStockOverlay}
-            <img src="${product.imgUrl}" alt="${product.name}">
+            <img src="${imageSrc}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>${product.price}</p>
             ${product.title ? `<p class="product-title">${product.title}</p>` : ''}
@@ -282,62 +280,109 @@ function renderProductGrid(products) {
     });
 }
 
-/* IT was used before the product Category is used
-    function renderProductGrid(products) {
-        if (!products) {
-             contentContainers.productGrid.innerHTML = '<p>Error loading products.</p>';
-             return;
-         }
-        contentContainers.productGrid.innerHTML = ''; // Clear previous content
-        products.forEach(product => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product-item');
-            productDiv.setAttribute('data-product-id', product.id);
-            productDiv.innerHTML = `
-                <img src="${product.imgUrl}" alt="${product.name}">
-                <h3>${product.name}</h3>
-                <p>${product.price}</p>
-            `;
-            contentContainers.productGrid.appendChild(productDiv);
-        });
+function getFirstImage(product) {
+    try {
+        if (typeof product.imgUrls === 'string') {
+            const parsed = JSON.parse(product.imgUrls);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed[0];
+        } else if (Array.isArray(product.imgUrls) && product.imgUrls.length > 0) {
+            return product.imgUrls[0];
+        }
+        if (typeof product.imgUrl === 'string' && product.imgUrl.startsWith('[')) {
+            const parsed = JSON.parse(product.imgUrl);
+            if (Array.isArray(parsed) && parsed.length > 0) return parsed[0];
+        }
+        return product.imgUrl || 'fallback.jpg';
+    } catch (e) {
+        console.warn("Failed to parse image URLs for product", product.id, e);
+        return 'fallback.jpg';
     }
-*/ 
-   async function renderItemDetails(productId) {
-        if (!allItemDetails || !Object.keys(allItemDetails).length) {
+}
+function getAllImages(product) {
+    try {
+        if (typeof product.imgUrls === 'string') return JSON.parse(product.imgUrls);
+        if (Array.isArray(product.imgUrls)) return product.imgUrls;
+        if (typeof product.imgUrl === 'string' && product.imgUrl.startsWith('[')) return JSON.parse(product.imgUrl);
+        return product.imgUrl ? [product.imgUrl] : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+async function renderItemDetails(productId) {
+    if (!allItemDetails || !Object.keys(allItemDetails).length) {
         allItemDetails = await fetchData('items_test.json');
     }
-        const itemData = allItemDetails[productId];
-        if (!itemData) {
-            mainBody.itemWrapper.innerHTML = `<p>Error: Product details not found for ID ${productId}.</p>`;
-            switchView('content'); // Go back if details aren't found
-            return;
-        }
 
-        mainBody.itemWrapper.innerHTML = `
-            <article class="item-detail">
-                <img src="${itemData.imgUrl}" alt="${itemData.name}">
-                <div class="item-info">
-                    <h2>${itemData.name}</h2>
-                    <p>${itemData.description}</p>
-                    ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
-                    <p class="price">${itemData.price}</p>
-                    <div class="button-row">
-                     <button class="add-to-cart-btn" data-product-id="${itemData.id}">加入購物車</button>
-                     <button class="back-to-products-btn" styple="cursor: 'pointer">返回產品頁</button> 
-                    </div>
+    const itemData = allItemDetails[productId];
+    if (!itemData) {
+        mainBody.itemWrapper.innerHTML = `<p>Error: Product details not found for ID ${productId}.</p>`;
+        switchView('content');
+        return;
+    }
+
+    const pricingData = parsePricingData(itemData.price);
+    const pricingHtml = generatePricingHtml(pricingData, itemData.id);
+    const imageList = getAllImages(itemData);
+
+    const imageGalleryHtml = imageList.map(url => `<img src="${url}" alt="${itemData.name}" class="gallery-thumb">`).join('');
+
+    mainBody.itemWrapper.innerHTML = `
+        <article class="item-detail">
+            <div class="image-gallery">
+                <div class="main-image">
+                    <img src="${imageList[0] || 'fallback.jpg'}" alt="${itemData.name}" id="main-product-image">
                 </div>
-            </article>
-        `;
-         // Add listener specifically for the new back button
-        const backBtn = mainBody.itemWrapper.querySelector('.back-to-products-btn');
-        if (backBtn) {
-          backBtn.addEventListener('click', (e) => {
+                <div class="thumbnail-row">
+                    ${imageGalleryHtml}
+                </div>
+            </div>
+            <div class="item-info">
+                <h2>${itemData.name}</h2>
+                <p>${itemData.description}</p>
+                ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
+                ${pricingHtml}
+                <div class="button-row">
+                    <button class="back-to-products-btn" style="cursor: pointer">返回產品頁</button> 
+                </div>
+            </div>
+        </article>
+    `;
+
+    const backBtn = mainBody.itemWrapper.querySelector('.back-to-products-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', (e) => {
             e.preventDefault();
             if (currentView !== 'content') switchView('content');
             document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
-          });
-        }
+        });
     }
+
+    const thumbs = mainBody.itemWrapper.querySelectorAll('.gallery-thumb');
+    thumbs.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            const mainImg = document.getElementById('main-product-image');
+            if (mainImg) mainImg.src = img.src;
+        });
+    });
+
+    const singleAddBtn = mainBody.itemWrapper.querySelector('.add-to-cart-single-btn');
+    if (singleAddBtn) {
+        singleAddBtn.addEventListener('click', () => {
+            const productId = singleAddBtn.getAttribute('data-product-id');
+            const selectEl = mainBody.itemWrapper.querySelector('.size-selector');
+            const selectedSize = selectEl.value;
+            const selectedPrice = selectEl.options[selectEl.selectedIndex].dataset.price;
+            handleAddToCartManual(productId, selectedSize, selectedPrice);
+        });
+    }
+
+    const addToCartBtns = mainBody.itemWrapper.querySelectorAll('.add-to-cart-btn');
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', handleAddToCart);
+    });
+}
 
     function renderSideCart() {
         sideCart.itemsContainer.innerHTML = ''; // Clear current items
