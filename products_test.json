@@ -1,8 +1,8 @@
 [
   {
     "id": "P001",
-    "name": "杏仁 300g",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "name": "精選杏仁",
+    "pricing": "[{\"price\":325,\"size\":\"半斤裝(300g)\"},{\"size\":\"1斤裝(600g)\",\"price\":600}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_fishlet.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_seaweed.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slices.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond.jpg\"]",
     "title": "杏仁 300g(半斤)",
