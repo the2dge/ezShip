@@ -2,12 +2,12 @@
   "P001": {
     "id": "P001",
     "name": "杏仁 300g",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/almond.jpg",
+    "imgUrl": "",
     "description": "杏仁採用超低溫烘焙，保留了所有原有的風味！您可以品嚐到來自豆豆先生的全球最佳烤杏仁。",
     "price": "$325",
     "specs": {
       "原產地": "台灣",
-      "成分": "杏仁 "
+      "成分": "杏仁"
     }
   },
   "P002": {
