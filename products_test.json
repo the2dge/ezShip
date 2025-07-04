@@ -12,8 +12,8 @@
     "id": "P002",
     "name": "腰果 300g",
     "price": "$400",
-    "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg",
-    "imgUrls": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peel.jpg\"]",
     "title": "腰果 300g",
     "category": "堅果"
   },
