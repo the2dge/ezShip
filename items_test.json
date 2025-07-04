@@ -4,7 +4,7 @@
     "name": "杏仁 300g",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_fishlet.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_seaweed.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slices.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond.jpg\"]",
     "description": "杏仁採用超低溫烘焙，保留了所有原有的風味！您可以品嚐到來自豆豆先生的全球最佳烤杏仁。",
-    "price": "undefined",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁"
@@ -15,7 +15,7 @@
     "name": "腰果 300g",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peel.jpg\"]",
     "description": "對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右!",
-    "price": "undefined",
+    "price": "$400",
     "specs": {
       "原產地": "Taiwan",
       "成分": "腰果"
@@ -26,7 +26,7 @@
     "name": "開心果 300g",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/pistachio.jpg",
     "description": "以超低溫烘烤，保留所有風味，讓您享受豆豆先生最美味的烤開心果!\n超低溫烘烤，超低溫烘烤，超低溫烘烤，這很重要,這很重要, 這很重要!!!",
-    "price": "undefined",
+    "price": "$400",
     "specs": {
       "原產地": "美國",
       "成分": "開心果"
@@ -37,7 +37,7 @@
     "name": "黃豆 300g",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/yellow_bean.jpg",
     "description": "黃豆 THE BEST",
-    "price": "undefined",
+    "price": "$150",
     "specs": {
       "原產地": "Taiwan",
       "成分": "MISC"
@@ -48,7 +48,7 @@
     "name": "綠葡萄乾",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/grapes_green.jpg",
     "description": "The best ",
-    "price": "undefined",
+    "price": "$150",
     "specs": {
       "原產地": "Taiwan",
       "成分": "Grape "
@@ -59,7 +59,7 @@
     "name": "紅心芭樂乾 300g",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/1000012574.jpg",
     "description": "紅心芭樂乾 ",
-    "price": "undefined",
+    "price": "$200",
     "specs": {
       "原產地": "Taiwan",
       "成分": "nuts!"
@@ -70,7 +70,7 @@
     "name": "帶皮腰果",
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cashew_peel.jpg",
     "description": "帶皮腰果 We roast in ultra low temp!",
-    "price": "undefined",
+    "price": "$400",
     "specs": {
       "原產地": "越南",
       "成分": "腰果"
@@ -81,7 +81,7 @@
     "name": 123,
     "imgUrl": "https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/cheese_slices.jpg",
     "description": "純手工剝絲",
-    "price": "undefined",
+    "price": "$300",
     "specs": {
       "原產地": "巴西",
       "成分": ""
