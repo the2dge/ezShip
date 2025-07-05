@@ -19,11 +19,11 @@
   },
   {
     "id": "p0012",
-    "name": "Peanut",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":150}]",
+    "name": "優質花生",
+    "pricing": "[{\"price\":150,\"size\":\"半斤裝(300g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/yellow_bean.jpg\"]",
-    "title": "Peanut",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "優質花生",
     "category": "堅果"
   }
 ]
