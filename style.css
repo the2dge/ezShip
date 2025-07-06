@@ -59,6 +59,7 @@ a { text-decoration: none;}
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-right: 20px;
 }
 
 /* Hamburger button (mobile only) */
