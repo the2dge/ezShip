@@ -2,9 +2,9 @@
   {
     "id": "P001",
     "name": "精選杏仁",
-    "pricing": "[{\"size\":\"半斤裝(300g)\",\"price\":325},{\"size\":\"1斤裝(600g)\",\"price\":600},{\"price\":100,\"size\":\"試吃包(80g)\"}]",
+    "pricing": "[{\"price\":325,\"size\":\"半斤裝(300g)\"},{\"price\":600,\"size\":\"1斤裝(600g)\"},{\"size\":\"試吃包(80g)\",\"price\":100}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slices.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slices.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/amondTester.jpg\"]",
     "title": "世界唯一超低温烘烤",
     "category": "堅果"
   },
