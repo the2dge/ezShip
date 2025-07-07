@@ -404,8 +404,47 @@ a { text-decoration: none;}
   color: #007bff;
   margin: 12px 0;
 }
+.pricing-section.multiple-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 15px;
+}
 
-.item-detail .add-to-cart-btn, .item-detail .add-to-cart-single-btn,
+/* Container to align label and selector in a row */
+.pricing-section.multiple-prices .size-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Label (h3) takes 40% */
+.pricing-section.multiple-prices .size-row h3 {
+  flex: 0 0 40%;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Select takes 60% */
+.pricing-section.multiple-prices .size-row .size-selector {
+  flex: 0 0 60%;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+/* Center the Add to Cart button below */
+.pricing-section.multiple-prices .add-to-cart-single-btn {
+  align-self: center;
+  padding: 8px 16px;
+  font-size: 1rem;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.item-detail .add-to-cart-btn,
 .item-detail .back-to-products-btn {
   display: inline-block;
   width: calc(50% - 8px);
