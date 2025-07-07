@@ -2,10 +2,10 @@
   {
     "id": "P001",
     "name": "精選杏仁",
-    "pricing": "[{\"size\":\"半斤裝(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤裝(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤裝(300g)\",\"price\":325},{\"size\":\"1斤裝(600g)\",\"price\":600}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almondSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/amondTesterSmall.jpg\"]",
-    "title": "杏仁 300g(半斤)",
+    "title": "荳荳精選杏仁",
     "category": "堅果"
   },
   {
