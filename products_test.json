@@ -10,11 +10,11 @@
   },
   {
     "id": "P002",
-    "name": "腰果 300g",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "name": "精選腰果",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashewSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
-    "title": "精選腰果",
+    "title": "荳荳精選腰果",
     "category": "堅果"
   },
   {
