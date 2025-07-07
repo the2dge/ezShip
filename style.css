@@ -405,7 +405,7 @@ a { text-decoration: none;}
   margin: 12px 0;
 }
 
-.item-detail .add-to-cart-btn,
+.item-detail .add-to-cart-btn, .item-detail .add-to-cart-single-btn,
 .item-detail .back-to-products-btn {
   display: inline-block;
   width: calc(50% - 8px);
