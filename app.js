@@ -292,7 +292,7 @@ function formatPriceDisplay(product) {
                 const item = pricingData[0];
                 return `
                     <div class="pricing-display">
-                        <span class="price-large">${item.price}</span>
+                        <span class="price-large">$${item.price}</span>
                         <span class="size-small">${item.size}</span>
                     </div>
                 `;
