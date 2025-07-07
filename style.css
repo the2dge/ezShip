@@ -434,7 +434,7 @@ a { text-decoration: none;}
   gap: 12px;                 /* space between buttons */
   margin-top: 16px;          /* some breathing room above */
 }
-
+.size-selector{margin-right: 10px; font-size: 1.1rem}
 .item-detail .add-to-cart-btn,
 .item-detail .back-to-products-btn {
   flex: 1;                   /* equal widths */
