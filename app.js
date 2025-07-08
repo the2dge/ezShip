@@ -2001,8 +2001,8 @@ async function updateNavbarWithUserName(userName) {
     }
 
     if (loginBtn) {
-      loginBtn.textContent = `👤 ${userName}`;
-      loginBtn.disabled = true;
+        loginBtn.innerHTML = `<span style="color: orange;">👤</span> ${userName}`;
+        loginBtn.disabled = true;
     }
 
     if (isMember) {
