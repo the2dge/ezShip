@@ -2001,7 +2001,7 @@ async function updateNavbarWithUserName(userName) {
     }
 
     if (loginBtn) {
-        loginBtn.innerHTML = `<span style="color: orange;">👤</span> ${userName}`;
+        loginBtn.innerHTML = `<span style="color: orange;font-size: 1.2rem">👤</span> ${userName}`;
         loginBtn.disabled = true;
     }
 
