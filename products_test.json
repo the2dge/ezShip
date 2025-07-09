@@ -1,29 +1,479 @@
 [
   {
-    "id": "P001",
-    "name": "精選杏仁",
-    "pricing": "[{\"price\":325,\"size\":\"半斤裝(300g)\"},{\"size\":\"1斤裝(600g)\",\"price\":600},{\"price\":100,\"size\":\"TESTER(80g)\"},{\"price\":1000,\"size\":\"GRAND SIZE(2KG)\"}]",
+    "id": "A001",
+    "name": "原味花生",
+    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almondSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/amondTesterSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000012298.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
     "title": "荳荳精選杏仁",
     "category": "堅果"
   },
   {
-    "id": "P002",
-    "name": "精選腰果",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "id": "A002",
+    "name": "蒜味花生",
+    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashewSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
     "title": "荳荳精選腰果",
     "category": "堅果"
   },
   {
-    "id": "p0012",
-    "name": "優質花生",
-    "pricing": "[{\"price\":150,\"size\":\"半斤裝(300g)\"}]",
+    "id": "A003",
+    "name": "南瓜子",
+    "pricing": "[{\"price\":180,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":360}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pumpkinseed.jpg\"]",
     "title": "優質花生",
     "category": "堅果"
+  },
+  {
+    "id": "A004",
+    "name": "開心果",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pistachio.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A005",
+    "name": "腰果",
+    "pricing": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":700,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A006",
+    "name": "鹽焗帶皮腰果",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A007",
+    "name": "杏仁",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almondSmall.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A008",
+    "name": "杏仁條",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A009",
+    "name": "完整核桃",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A010",
+    "name": "非完整胡桃",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A011",
+    "name": "完整胡桃",
+    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A012",
+    "name": "夏威夷豆",
+    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A013",
+    "name": "松子",
+    "pricing": "[{\"price\":600,\"size\":\"半斤(300g)\"},{\"price\":1200,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A014",
+    "name": "招牌綜合堅果",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "A016",
+    "name": "榛果",
+    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "堅果"
+  },
+  {
+    "id": "B001",
+    "name": "黑豆",
+    "pricing": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "B002",
+    "name": "黑芝麻粒",
+    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "B003",
+    "name": "黑芝麻粉",
+    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "B004",
+    "name": "綜合豆",
+    "pricing": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "B005",
+    "name": "紅心芭樂乾",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "B006",
+    "name": "純杏仁粉",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "雜糧"
+  },
+  {
+    "id": "C001",
+    "name": "甘草橄欖",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C002",
+    "name": "中藥橄欖",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C003",
+    "name": "綜合葡萄",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C004",
+    "name": "大黑葡萄",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C005",
+    "name": "小青葡萄",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C006",
+    "name": "黃金葡萄",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C007",
+    "name": "水蜜桃乾",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C008",
+    "name": "椰棗",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C009",
+    "name": "乾燥無花果",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C010",
+    "name": "迷你番茄乾",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C011",
+    "name": "歐洲棗",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C012",
+    "name": "蔓越莓果乾",
+    "pricing": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C013",
+    "name": "珍珠芭樂乾",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C014",
+    "name": "新鮮青梅乾(有仔)",
+    "pricing": "[{\"price\":225,\"size\":\"半斤(300g)\"},{\"price\":430,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C015",
+    "name": "無籽梅肉乾",
+    "pricing": "[{\"price\":500,\"size\":\"半斤(300g)\"},{\"price\":900,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C016",
+    "name": "檸檬片",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C017",
+    "name": "愛文芒果青乾",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C018",
+    "name": "野生小藍莓乾",
+    "pricing": "[{\"price\":700,\"size\":\"半斤(300g)\"},{\"price\":1300,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C019",
+    "name": "草莓乾",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "C020",
+    "name": "杏桃乾",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "果乾"
+  },
+  {
+    "id": "D001",
+    "name": "黑芝麻片",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D002",
+    "name": "黑芝麻條",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D003",
+    "name": "蒟蒻片",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D004",
+    "name": "紅棗核桃",
+    "pricing": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D005",
+    "name": "杏仁小魚(葷)",
+    "pricing": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":680,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D006",
+    "name": "海苔杏仁片",
+    "pricing": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D007",
+    "name": "原味素乳酪鬆",
+    "pricing": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D008",
+    "name": "特級紅棗",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D009",
+    "name": "紅棗脆片",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D010",
+    "name": "枸杞",
+    "pricing": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D012",
+    "name": "薑黃杏仁條",
+    "pricing": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
+  },
+  {
+    "id": "D013",
+    "name": "巴西乳酪絲",
+    "pricing": "[{\"price\":850,\"size\":\"半斤(300g)\"},{\"price\":1650,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "title": "",
+    "category": "休閒養生"
   }
 ]
