@@ -1,4 +1,3 @@
-//document.addEventListener('DOMContentLoaded', () => {
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -498,7 +497,386 @@ function generatePricingHtml(pricingData, productId) {
         </div>
     `;
 }
-    function handleAddToCartManual(productId, size, price) {
+function renderSideCart() {
+    sideCart.itemsContainer.innerHTML = ''; // Clear current items
+    if (cart.length === 0) {
+        sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。<br>歡迎重選您喜歡的商品</p>';
+        // Hide discount section when cart is empty
+        hideSideCartDiscountSection();
+        setTimeout(() => {
+            switchView('content');
+        }, 1500);
+    } else {
+        cart.forEach(item => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('side-cart-item');
+            cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
+            
+            // Check if item is selected (default to true if not set)
+            const isSelected = item.selected !== false;
+            
+            // Calculate item subtotal and discount
+            const unitPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+            const itemSubtotal = !isNaN(unitPrice) ? unitPrice * item.quantity : 0;
+            const itemDiscountAmount = itemSubtotal * (currentDiscountRate / 100);
+            const itemDiscountedTotal = itemSubtotal - itemDiscountAmount;
+            
+            // Generate subtotal display based on discount
+            let subtotalDisplay;
+            if (currentDiscountRate > 0 && isSelected) {
+                subtotalDisplay = `
+                    <div class="item-subtotal-container">
+                        <span class="item-subtotal original-price">小計: <del>${itemSubtotal.toFixed(0)}</del></span>
+                        <span class="item-subtotal discounted-price">$${itemDiscountedTotal.toFixed(0)}</span>
+                        <span class="item-savings">省 ${itemDiscountAmount.toFixed(0)}</span>
+                    </div>
+                `;
+            } else {
+                subtotalDisplay = `<span class="item-subtotal">小計: $${itemSubtotal.toFixed(0)}</span>`;
+            }
+            
+            cartItemDiv.innerHTML = `
+                <div class="item-controls">
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${item.cartKey}">
+                        <span class="checkmark">✓</span>
+                    </label>
+                </div>
+                <img src="${item.img}" alt="${item.name}">
+                <div class="item-info">
+                    <div class="item-row name-row">
+                        <span class="item-name">${item.name}</span>
+                    </div>
+                    <div class="item-row size-price-row">
+                        <span class="item-size">${item.size}</span>
+                        <span class="item-unit-price">${item.price}</span>
+                    </div>
+                    <div class="item-row subtotal-row">
+                      ${subtotalDisplay}
+                    </div>
+                    <div class="quantity-control">
+                        <button class="decrease-qty-btn" data-cart-key="${item.cartKey}">➖</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="increase-qty-btn" data-cart-key="${item.cartKey}">➕</button>
+                    </div>
+                </div>
+                
+            `;
+            
+            // Apply visual styling based on selection state
+            if (!isSelected) {
+                cartItemDiv.classList.add('item-unselected');
+            }
+            
+            sideCart.itemsContainer.appendChild(cartItemDiv);
+        });
+        
+        // Show discount section when cart has items
+        showSideCartDiscountSection();
+    }
+
+    // Update total and item count (only counting selected items)
+    updateSideCartTotals();
+
+    // Show/hide checkout button based on selected items
+    const hasSelectedItems = cart.some(item => item.selected !== false);
+    sideCart.checkoutBtn.style.display = hasSelectedItems ? 'block' : 'none';
+    
+    // Add event listeners for checkboxes and quantity buttons
+    const checkboxes = sideCart.itemsContainer.querySelectorAll('.item-select-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleItemSelection);
+    });
+    
+    // Add event listeners for quantity buttons
+    const increaseButtons = sideCart.itemsContainer.querySelectorAll('.increase-qty-btn');
+    const decreaseButtons = sideCart.itemsContainer.querySelectorAll('.decrease-qty-btn');
+    
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, 1);
+        });
+    });
+    
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, -1);
+        });
+    });
+}
+
+// Create and show discount section in side cart
+function showSideCartDiscountSection() {
+    let discountSection = document.getElementById('side-cart-discount-section');
+    
+    if (!discountSection) {
+        // Create discount section if it doesn't exist
+        discountSection = document.createElement('div');
+        discountSection.id = 'side-cart-discount-section';
+        discountSection.className = 'side-cart-discount';
+        
+        discountSection.innerHTML = `
+            <div class="discount-form">
+                <label for="side-cart-discount-code">折扣碼 (選填):</label>
+                <div class="discount-input-group">
+                    <input type="text" id="side-cart-discount-code" placeholder="輸入折扣碼" class="discount-input">
+                    <button type="button" id="side-cart-apply-discount" class="apply-discount-btn">套用</button>
+                </div>
+                <small id="side-cart-discount-message" class="discount-message"></small>
+            </div>
+        `;
+        
+        // Insert after cart total but before checkout button
+        const cartTotalElement = sideCart.totalSpan.parentElement;
+        cartTotalElement.parentNode.insertBefore(discountSection, sideCart.checkoutBtn);
+        
+        // Add event listener for apply discount button
+        document.getElementById('side-cart-apply-discount').addEventListener('click', applySideCartDiscount);
+        
+        // Add enter key support for discount input
+        document.getElementById('side-cart-discount-code').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                applySideCartDiscount();
+            }
+        });
+    }
+    
+    discountSection.style.display = 'block';
+    
+    // Restore previously applied discount if exists
+    const savedDiscountCode = sessionStorage.getItem('discountCode');
+    if (savedDiscountCode) {
+        document.getElementById('side-cart-discount-code').value = savedDiscountCode;
+        const discountMessage = document.getElementById('side-cart-discount-message');
+        const discountTier = sessionStorage.getItem('discountTier');
+        discountMessage.textContent = `已套用 ${discountTier || ''} 折扣!`;
+        discountMessage.className = 'discount-message success';
+    }
+}
+
+// Hide discount section
+function hideSideCartDiscountSection() {
+    const discountSection = document.getElementById('side-cart-discount-section');
+    if (discountSection) {
+        discountSection.style.display = 'none';
+    }
+}
+
+// Apply discount from side cart
+function applySideCartDiscount() {
+    const discountInput = document.getElementById('side-cart-discount-code');
+    const discountMessage = document.getElementById('side-cart-discount-message');
+    const code = discountInput.value.trim();
+    
+    if (!code) {
+        discountMessage.textContent = '請輸入折扣碼。';
+        discountMessage.className = 'discount-message warning';
+        currentDiscountRate = 0;
+    } else {
+        // membershipData must be loaded and accessible
+        const discountPercentage = validateDiscountCode(code);
+        if (discountPercentage > 0) {
+            currentDiscountRate = discountPercentage;
+            discountMessage.textContent = `已套用 ${sessionStorage.getItem('discountTier') || ''} 折扣 (${discountPercentage}% off)!`;
+            discountMessage.className = 'discount-message success';
+        } else {
+            currentDiscountRate = 0;
+            discountMessage.textContent = '無效的折扣碼。';
+            discountMessage.className = 'discount-message error';
+        }
+    }
+    
+    // Update totals with new discount
+    updateSideCartTotals();
+}
+
+// Update side cart totals with discount consideration
+function updateSideCartTotals() {
+    const subtotal = calculateSelectedSubtotal();
+    const discountAmount = subtotal * (currentDiscountRate / 100);
+    const finalTotal = subtotal - discountAmount;
+    console.log("cart data: ", cart);
+    // Keep the total display simple - just show the final total
+    sideCart.totalSpan.textContent = `${finalTotal.toFixed(0)}`;
+    
+    // Update item count
+    navbar.cartItemCountSpan.textContent = getSelectedItemCount();
+    
+    // Re-render items to show updated discount on each item
+    if (currentDiscountRate > 0) {
+        renderSideCartItemsOnly();
+    }
+}
+
+// Helper function to re-render just the items (without clearing everything)
+function renderSideCartItemsOnly() {
+    sideCart.itemsContainer.innerHTML = '';
+    
+    cart.forEach(item => {
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('side-cart-item');
+        cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
+        
+        const isSelected = item.selected !== false;
+        
+        // Calculate item subtotal and discount
+        const unitPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+        const itemSubtotal = !isNaN(unitPrice) ? unitPrice * item.quantity : 0;
+        const itemDiscountAmount = itemSubtotal * (currentDiscountRate / 100);
+        const itemDiscountedTotal = itemSubtotal - itemDiscountAmount;
+        
+        // Generate subtotal display based on discount
+        let subtotalDisplay;
+        if (currentDiscountRate > 0 && isSelected) {
+            subtotalDisplay = `
+                <div class="item-subtotal-container">
+                    <span class="item-subtotal original-price">小計: <del>$${itemSubtotal.toFixed(0)}</del></span>
+                    <span class="item-subtotal discounted-price">$${itemDiscountedTotal.toFixed(0)}</span>
+                    <span class="item-savings">省 ${itemDiscountAmount.toFixed(0)}</span>
+                </div>
+            `;
+        } else {
+            subtotalDisplay = `<span class="item-subtotal">小計: $${itemSubtotal.toFixed(0)}</span>`;
+        }
+        
+        cartItemDiv.innerHTML = `
+            <div class="item-controls">
+                <label class="checkbox-container">
+                    <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${item.cartKey}">
+                    <span class="checkmark">✓</span>
+                </label>
+            </div>
+            <img src="${item.img}" alt="${item.name}">
+            <div class="item-info">
+                <div class="item-row name-row">
+                    <span class="item-name">${item.name}</span>
+                </div>
+                <div class="item-row size-price-row">
+                    <span class="item-size">${item.size}</span>
+                    <span class="item-unit-price">${item.price}</span>
+                </div>
+                <div class="item-row subtotal-row">
+                    
+                    ${subtotalDisplay}
+                </div>
+                <div class="quantity-control">
+                    <button class="decrease-qty-btn" data-product-id="${item.id}">➖</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="increase-qty-btn" data-product-id="${item.id}">➕</button>
+                </div>
+            </div>
+            
+        `;
+        
+        if (!isSelected) {
+            cartItemDiv.classList.add('item-unselected');
+        }
+        
+        sideCart.itemsContainer.appendChild(cartItemDiv);
+    });
+    
+    // Re-add event listeners for checkboxes and quantity buttons
+    const checkboxes = sideCart.itemsContainer.querySelectorAll('.item-select-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleItemSelection);
+    });
+    
+    // Add event listeners for quantity buttons
+    const increaseButtons = sideCart.itemsContainer.querySelectorAll('.increase-qty-btn');
+    const decreaseButtons = sideCart.itemsContainer.querySelectorAll('.decrease-qty-btn');
+    
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, 1);
+        });
+    });
+    
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, -1);
+        });
+    });
+}
+
+// Calculate subtotal for selected items only (without discount)
+function calculateSelectedSubtotal() {
+    let total = 0;
+    cart.forEach(item => {
+        if (item.selected !== false) {
+            const price = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+            if (!isNaN(price)) {
+                total += price * item.quantity;
+            }
+        }
+    });
+    return total;
+}
+
+// Handle item selection/deselection (updated to use new total function)
+function handleItemSelection(event) {
+    const cartKey = event.target.dataset.cartKey;
+    const isChecked = event.target.checked;
+    
+    // Find the item in cart and update its selected state
+    const cartItem = cart.find(item => item.cartKey === cartKey);
+    if (cartItem) {
+        cartItem.selected = isChecked;
+        
+        // Update visual appearance
+        const cartItemDiv = event.target.closest('.side-cart-item');
+        if (isChecked) {
+            cartItemDiv.classList.remove('item-unselected');
+        } else {
+            cartItemDiv.classList.add('item-unselected');
+        }
+        
+        // Update totals and checkout button
+        updateSideCartTotals();
+        
+        const hasSelectedItems = cart.some(item => item.selected !== false);
+        sideCart.checkoutBtn.style.display = hasSelectedItems ? 'block' : 'none';
+    }
+}
+
+// Calculate total for selected items only (legacy function for backward compatibility)
+function calculateSelectedTotal() {
+    const subtotal = calculateSelectedSubtotal();
+    const discountAmount = subtotal * (currentDiscountRate / 100);
+    const finalTotal = subtotal - discountAmount;
+    return `${finalTotal.toFixed(2)}`;
+}
+
+// Change cart quantity using cartKey (fixes the bug with multiple items)
+function changeCartQuantityByKey(cartKey, changeAmount) {
+    const cartItemIndex = cart.findIndex(item => item.cartKey === cartKey);
+    if (cartItemIndex > -1) {
+        cart[cartItemIndex].quantity += changeAmount;
+
+        if (cart[cartItemIndex].quantity <= 0) {
+            // Remove the item if quantity is zero or less
+            cart.splice(cartItemIndex, 1);
+        }
+
+        renderSideCart(); // Re-render cart after change
+    }
+}
+
+// Get count of selected items
+function getSelectedItemCount() {
+    return cart.reduce((sum, item) => {
+        if (item.selected !== false) {
+            return sum + item.quantity;
+        }
+        return sum;
+    }, 0);
+}
+
+// Modified handleAddToCartManual to ensure new items are selected by default
+function handleAddToCartManual(productId, size, price) {
     const product = allItemDetails[productId];
     const cartKey = `${productId}_${size}`;
     const imageSrc = getFirstImage(product);
@@ -506,6 +884,7 @@ function generatePricingHtml(pricingData, productId) {
     const existingItem = cart.find(item => item.cartKey === cartKey);
     if (existingItem) {
         existingItem.quantity += 1;
+        existingItem.selected = true;
     } else {
         cart.push({
             cartKey,
@@ -514,51 +893,22 @@ function generatePricingHtml(pricingData, productId) {
             size,
             price: `$${price}`,
             img: imageSrc,
-            quantity: 1
+            quantity: 1,
+            selected: true
         });
     }
     renderSideCart();
 }
-    function renderSideCart() {
-        sideCart.itemsContainer.innerHTML = ''; // Clear current items
-        if (cart.length === 0) {
-            sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。<br>歡迎重選您喜歡的商品</p>';
-            setTimeout(() => {
-              switchView('content');
-            }, 1500);
 
-        } else {
-            cart.forEach(item => {
-                const cartItemDiv = document.createElement('div');
-                cartItemDiv.classList.add('side-cart-item');
-                cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
-                cartItemDiv.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}">
-                    <div class="item-info">
-                        <p class="name">${item.name}</p>
-                        <p class="size">${item.size}</p>
-                        <p class="price">${item.price}</p>
-                        <div class="quantity-control">
-                            <button class="decrease-qty-btn" data-product-id="${item.id}">➖</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="increase-qty-btn" data-product-id="${item.id}">➕</button>
-                        </div>
-                    </div>
-                    <button class="remove-item-btn">刪除</button>
-                `;
-                sideCart.itemsContainer.appendChild(cartItemDiv);
-            });
-            
-        }
-
-        // Update total and item count
-        sideCart.totalSpan.textContent = calculateTotal();
-        navbar.cartItemCountSpan.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-        // Show/hide checkout button based on cart content
-        sideCart.checkoutBtn.style.display = cart.length > 0 ? 'block' : 'none';
+// Remove discount code section from checkout form (call this in your checkout rendering)
+function removeDiscountFromCheckoutForm() {
+    // When rendering checkout page, remove or hide the discount code section
+    // since it's now handled in the side cart
+    const checkoutDiscountSection = document.querySelector('#checkout-form-refactored .form-group');
+    if (checkoutDiscountSection && checkoutDiscountSection.innerHTML.includes('折扣碼')) {
+        checkoutDiscountSection.style.display = 'none';
     }
-
+}
     // --- View Switching ---
     function switchView(viewName) {
         currentView = viewName;
@@ -729,6 +1079,8 @@ let currentDiscountRate = 0; // Store as percentage, e.g., 5 for 5%
 
 // --- Main Function to Render Checkout Page ---
 async function renderCheckoutPage(cartItems) {
+    // keep only items where selected !== false (i.e. checked)
+    const selectedItems = cartItems.filter(item => item.selected !== false);
     mainBody.checkoutWrapper.innerHTML = ''; // Clear previous content
     window.scrollTo(0, 0);
 
@@ -753,7 +1105,7 @@ async function renderCheckoutPage(cartItems) {
     //renderCheckoutHeaderDOM(lineUserName);
     
     // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
-    renderOrderedItemsSummaryDOM(cartItems);
+    renderOrderedItemsSummaryDOM(selectedItems);
 
     // 3. Render "Back for More Items" Button
     renderBackToShoppingButtonDOM();
@@ -782,12 +1134,12 @@ async function renderCheckoutPage(cartItems) {
         console.warn('#shipping-method element not found for initial cost calculation in renderCheckoutPage.');
         currentShippingCost = 0; // Fallback if element isn't found
     }
-    updateOrderSummaryDisplay(cartItems, currentShippingCost, currentDiscountRate);
+    updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
 
     // 5. Initial UI State & Event Listeners
     // This function will set up all event listeners and may call updateOrderSummaryDisplay again
     // if, for example, it restores a discount code from session storage.
-    initializeCheckoutFormStateAndListeners(checkoutFormElement, cartItems, storedStoreInfo);
+    initializeCheckoutFormStateAndListeners(checkoutFormElement, selectedItems, storedStoreInfo);
     switchView("checkout");
     // Note: The call to updateOrderSummaryDisplay at the end of initializeCheckoutFormStateAndListeners
     // will ensure the display is accurate after all its internal setup, including potential restoration
@@ -999,7 +1351,7 @@ function renderOrderedItemsSummaryDOM(cartItems) {
             itemDiv.style.justifyContent = 'space-between';
             itemDiv.style.padding = '5px 0';
             itemDiv.innerHTML = `
-                <span style="flex-basis: 50%;"><img src="${item.img}" alt="${item.name}" style="width:30px; height:30px; margin-right:10px; vertical-align:middle;"> ${item.name}</span>
+                <span style="flex-basis: 50%;"><img src="${item.img}" alt="${item.name}" style="width:60px; height:60px; margin-right:10px; vertical-align:middle;"> ${item.name}</span>
                 <span style="flex-basis: 20%; text-align:center;">${item.size}</span>
                 <span style="flex-basis: 20%; text-align:center;">x ${item.quantity}</span>
                 <span style="flex-basis: 30%; text-align:right;">${item.price}</span>
@@ -1058,15 +1410,6 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
 
     form.innerHTML = `
         <h4>顧客資訊 及 取貨選項</h4>
-
-        <div class="form-group">
-            <label for="discount_code">折扣碼 (選填):</label>
-            <div style="display:flex;">
-                <input type="text" id="discount_code" name="discount_code" class="form-control" style="flex-grow:1; margin-right:5px;">
-                <button type="button" id="apply-discount-btn" class="btn btn-secondary btn-sm">套用</button>
-            </div>
-            <small id="discount-message" class="form-text"></small>
-        </div>
 
         <div class="form-group">
             <label for="shipping-method">取貨方式:</label>
@@ -1130,7 +1473,11 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
 
 // --- Helper to Update Displayed Order Summary (Subtotal, Discount, Shipping, Total) ---
 function updateOrderSummaryDisplay(cartItems, shippingCost, discountPercentage) {
-    const subtotal = calculateCartTotal(); // This must return a number
+    // Sum only selectedItems
+    const subtotal = cartItems.reduce((sum, item) => {
+        const unit = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+        return sum + (isNaN(unit) ? 0 : unit * item.quantity);
+    }, 0);
     const discountAmount = subtotal * (discountPercentage / 100);
     const totalAfterDiscount = subtotal - discountAmount;
     const finalTotal = totalAfterDiscount + shippingCost;
@@ -1173,7 +1520,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     const emailInput = form.querySelector('#customer_email');
     const phoneInput = form.querySelector('#customer_phone');
     const discountInput = form.querySelector('#discount_code');
-    const applyDiscountBtn = form.querySelector('#apply-discount-btn');
+   // const applyDiscountBtn = form.querySelector('#apply-discount-btn');
     const discountMessage = form.querySelector('#discount-message');
     const storeInfoDiv = form.querySelector('#pickup-store-info-display');
 
@@ -1354,8 +1701,8 @@ shippingSelect.addEventListener('change', () => {
   toggleSubmitButtonVisibility();
 });
 
-
-    applyDiscountBtn.addEventListener('click', () => {
+//This part is no use as discount code is entered in sideCart Now!
+/*    applyDiscountBtn.addEventListener('click', () => {
         const code = discountInput.value.trim();
         if (!code) {
             discountMessage.textContent = '請輸入折扣碼。';
@@ -1376,7 +1723,7 @@ shippingSelect.addEventListener('change', () => {
         }
         updateOrderSummaryDisplay(cartItems, currentShippingCost, currentDiscountRate);
     });
-
+*/
     form.addEventListener('submit', async (e) => {
         e.preventDefault(); 
         const submitBtn = document.getElementById('final-submit-btn');
@@ -2187,99 +2534,7 @@ function defer(callback) {
         setTimeout(callback, 200);
     }
 }
-/*    async function init() {
-        // Fetch all necessary data concurrently
-        const [bannerData, aboutData, mediaData, productsData, itemDetailsData] = await Promise.all([
-            fetchData('banner.json'),
-            fetchData('about.json'),
-            fetchData('media.json'),
-            fetchData('products_test.json'),
-            fetchData('items_test.json')
-        ]);
 
-        // --- Restore Cart & OrderId from SessionStorage ---
-        //const savedCart = sessionStorage.getItem('cart');
-        //const savedOrderId = sessionStorage.getItem('currentOrderId');
-        // --- Restore Cart & OrderId from Storage ---
-        const savedCart = localStorage.getItem('cart');
-        const savedOrderId = localStorage.getItem('currentOrderId');
-        if (savedCart) {
-            cart = JSON.parse(savedCart);
-            console.log("Restored cart from session:", cart);
-        }
-
-        if (savedOrderId) {
-            window.currentOrderId = savedOrderId;
-            console.log("Restored orderId from session:", savedOrderId);
-        }
-        
-        // --- Now render ---
-        allProductsData = productsData || [];
-        allItemDetails = itemDetailsData || {};
-
-        const bannerRendered = renderBanner(bannerData);
-        renderAbout(aboutData);
-        renderProductGrid(allProductsData);
-        renderMedia(mediaData);
-        renderSideCart();
-        setupEventListeners();
-
-        if (bannerRendered) {
-            startBannerSlideshow();
-        }
-
-        console.log("E-commerce site initialized.");
-        // --- 🟡 Put login + state logic HERE ---
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  const state = urlParams.get('state');
-  const CVSStoreID = urlParams.get('CVSStoreID');
-
-    // --- Case 1: Returning from LINE login ---
-
-    if (code) {
-    const profile = await exchangeCodeForToken(code);
-    console.log("LINE info: ", profile);
-          // Update UI
-   //document.getElementById("member-login-button").style.display = 'none';
-   // document.getElementById('user-dropdown').style.display = 'block';
-   // document.getElementById("member-name-display").textContent = profile.displayName || '會員';
-
-    // Optional: save login info to localStorage/session
-     localStorage.setItem('lineUser', JSON.stringify(profile));
-
-      const savedCart = localStorage.getItem('cart');
-      console.log("Item saved !Return from LINE Login: ", savedCart);
-      if (savedCart) cart = JSON.parse(savedCart);
-      switchView('content');
-
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return; // ✅ exit early
-    }
-
-    // --- Case 2: Returning from 7-11 store selection ---
-    if (CVSStoreID) {
-      console.log("Detected 7-11 store info via CVSStoreID");
-      
-      // 🟡 Restore cart before rendering
-      const savedCart = localStorage.getItem('cart');
-      if (savedCart) cart = JSON.parse(savedCart);
-
-      renderCheckoutPage(cart); // store info will be handled inside
-      switchView('checkout');
-      
-      // 🧠 Call the transfer function only to update UI
-      ECpayStoreDataBackTransfer(); 
-      
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return;
-    }
-
-    // --- Normal load ---
-    switchView('content');
-} *///END of init()
-
-    // --- Start the application ---
     // --- Start the application when DOM is ready ---
     init();
         // Call this after login is confirmed
