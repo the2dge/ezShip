@@ -1,35 +1,585 @@
 {
-  "P001": {
-    "id": "P001",
-    "name": "精選杏仁",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almondSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/amondTesterSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000012298.jpg\"]",
-    "description": "杏仁採用超低溫烘焙，保留了所有原有的風味！您可以品嚐到來自豆豆先生的全球最佳烤杏仁。",
-    "price": "[{\"price\":325,\"size\":\"半斤裝(300g)\"},{\"size\":\"1斤裝(600g)\",\"price\":600},{\"price\":100,\"size\":\"TESTER(80g)\"},{\"price\":1000,\"size\":\"GRAND SIZE(2KG)\"}]",
+  "A001": {
+    "id": "A001",
+    "name": "原味花生",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "能維持心臟健康增加免疫力提高記憶力…緩解憂鬱",
+    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "花生"
+    }
+  },
+  "A002": {
+    "id": "A002",
+    "name": "蒜味花生",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含植物蛋白 健康脂肪來源 豐富的抗氧化物 促進腸道健康 穩定血糖",
+    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "花生"
+    }
+  },
+  "A003": {
+    "id": "A003",
+    "name": "南瓜子",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pumpkinseed.jpg\"]",
+    "description": "有豐富不飽和脂肪酸 蛋白質 纖維素 鎂 鋅 抗氧化劑可: 放鬆神經 防頻尿夜尿促進鈣質吸收幫助睡眠…等營養素",
+    "price": "[{\"price\":180,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":360}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "南瓜子"
+    }
+  },
+  "A004": {
+    "id": "A004",
+    "name": "開心果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pistachio.jpg\"]",
+    "description": "含維生素A 維生素E",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "開心果"
+    }
+  },
+  "A005": {
+    "id": "A005",
+    "name": "腰果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew.jpg\"]",
+    "description": "含豐富的維生素 可以抗氧化可促進皮膚保養和延緩老化",
+    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":700,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "腰果"
+    }
+  },
+  "A006": {
+    "id": "A006",
+    "name": "鹽焗帶皮腰果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
+    "description": "有鈣 鎂 鉀 鐵 維生素B1.B2.B6",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "帶皮腰果"
+    }
+  },
+  "A007": {
+    "id": "A007",
+    "name": "杏仁",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almondSmall.jpg\"]",
+    "description": "有維生素B群E醣類 多酚類鈣 鉀 鐵等…礦物質 保護心血管降膽固醇",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁"
     }
   },
-  "P002": {
-    "id": "P002",
-    "name": "精選腰果",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashewSmall.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
-    "description": "對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右;對於產品說明部分，最好有80個字左右!",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+  "A008": {
+    "id": "A008",
+    "name": "杏仁條",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\"]",
+    "description": "有維生素B群E醣類 多酚類鈣 鉀 鐵等…礦物質",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "specs": {
-      "原產地": "Taiwan",
-      "成分": "腰果"
+      "原產地": "台灣",
+      "成分": "杏仁"
     }
   },
-  "p0012": {
-    "id": "p0012",
-    "name": "優質花生",
+  "A009": {
+    "id": "A009",
+    "name": "完整核桃",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
-    "description": "優質花生 優質花生 優質花生",
-    "price": "[{\"price\":150,\"size\":\"半斤裝(300g)\"}]",
+    "description": "有豐富的維生素B6 有助於維持脂肪酸正常代謝 增進神經系統健康",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "specs": {
-      "原產地": "Taiwan",
-      "成分": "花生"
+      "原產地": "台灣",
+      "成分": "核桃"
+    }
+  },
+  "A010": {
+    "id": "A010",
+    "name": "非完整胡桃",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含健康脂肪 強效抗氧化 促進大腦健康 提升免疫力 穩定血糖與血壓 有助於控制體重",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "胡桃"
+    }
+  },
+  "A011": {
+    "id": "A011",
+    "name": "完整胡桃",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "保存更久 不易氧化 營養完整保留 較少受污染 有助控制食用量 自然無添加",
+    "price": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "胡桃"
+    }
+  },
+  "A012": {
+    "id": "A012",
+    "name": "夏威夷豆",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "含優良油脂 蛋白質 膳食纖維 均衡營養 不過容易消化不良 腹瀉症狀或對堅果過敏者 避免食用",
+    "price": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "夏威夷豆"
+    }
+  },
+  "A013": {
+    "id": "A013",
+    "name": "松子",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "含健康脂肪 含松子油酸 優質蛋白質來源 含抗氧化物與維生素 有豐富礦物質 支持腦部健康 適合素食與低醣飲食",
+    "price": "[{\"price\":600,\"size\":\"半斤(300g)\"},{\"price\":1200,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "松子"
+    }
+  },
+  "A014": {
+    "id": "A014",
+    "name": "招牌綜合堅果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "營養多樣 均衡補充 護心血管 抗氧化 抗老化 穩定血糖與能量補給 促進腸道健康 提高飽足感 幫助控制體重 適合素食與低醣飲食者",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "綜合堅果"
+    }
+  },
+  "A016": {
+    "id": "A016",
+    "name": "榛果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "心血管保護 超強抗氧化力 促進腦部健康 維持肌肉與骨骼健康 提升免疫力 控制血糖與增加飽足感",
+    "price": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "榛果"
+    }
+  },
+  "B001": {
+    "id": "B001",
+    "name": "黑豆",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高蛋白 低脂肪 超強抗氧化力 降血脂 護心臟 穩定血糖預防糖尿病 補腎 抗衰老 促進腸道健康 鐵質與葉酸補血效果佳",
+    "price": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "黑豆"
+    }
+  },
+  "B002": {
+    "id": "B002",
+    "name": "黑芝麻粒",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "補腎烏髮 含優質脂肪酸 高鈣補骨 改善便秘 延緩老化 保護肝臟與增強代謝 補鐵補血",
+    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "黑芝麻"
+    }
+  },
+  "B003": {
+    "id": "B003",
+    "name": "黑芝麻粉",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "營養吸收率更高 補腎烏髮 延緩老化 高鈣補骨 護心抗發炎 幫助腸道蠕動 保護肝臟 補血補氣 提升精神",
+    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "黑芝麻"
+    }
+  },
+  "B004": {
+    "id": "B004",
+    "name": "綜合豆",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高纖維促進腸道健康 優質植物性蛋白 豐富維生素與礦物質 低脂肪 低熱量 穩定血糖與延長飽足感 植物雌激素",
+    "price": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "綜合豆"
+    }
+  },
+  "B005": {
+    "id": "B005",
+    "name": "紅心芭樂乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含維生素C 豐富膳食纖維 天然抗氧化物質 低熱量 無脂肪 補充礦物質 方便保存與攜帶",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "紅心芭樂"
+    }
+  },
+  "B006": {
+    "id": "B006",
+    "name": "純杏仁粉",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高蛋白質 含健康脂肪 低碳水化合物 豐富維生素E 高纖維 豐富礦物質 無麩質",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "杏仁"
+    }
+  },
+  "C001": {
+    "id": "C001",
+    "name": "甘草橄欖",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "潤喉止咳 助消化 促進食慾 抗氧化與抗發炎 天然口氣清新劑 緩解口腔不適",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "甘草, 橄欖"
+    }
+  },
+  "C002": {
+    "id": "C002",
+    "name": "中藥橄欖",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "潤喉止咳 消炎抗菌 促進唾液分泌 緩解口腔不適 改善消化",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "橄欖"
+    }
+  },
+  "C003": {
+    "id": "C003",
+    "name": "綜合葡萄",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "豐富抗氧化物 心血管保護 促進消化與腸道健康 提升免疫力 抗發炎與抗癌潛力 補充水分與礦物質 促進腦部健康",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "葡萄"
+    }
+  },
+  "C004": {
+    "id": "C004",
+    "name": "大黑葡萄",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "豐富的抗氧化劑 保護心血管健康 促進腦部健康 抗發炎作用 含維生素與礦物質 促進消化與腸道健康 補充水分",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "葡萄"
+    }
+  },
+  "C005": {
+    "id": "C005",
+    "name": "小青葡萄",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "豐富維生素C 促進消化 保護心血管 補充水分與礦物質 抗氧化作用 低熱量適合減重",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "葡萄"
+    }
+  },
+  "C006": {
+    "id": "C006",
+    "name": "黃金葡萄",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高抗氧化能力 促進免疫力 促進心血管健康 補充水分與礦物質 助消化與腸道健康 低熱量健康零食",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "葡萄"
+    }
+  },
+  "C007": {
+    "id": "C007",
+    "name": "水蜜桃乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "豐富維生素A與C 膳食纖維含量高 補充礦物質 天然能量來源 促進皮膚健康 方便保存與攜帶",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "水蜜桃"
+    }
+  },
+  "C008": {
+    "id": "C008",
+    "name": "椰棗",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "天然能量來源 高膳食纖維 豐富礦物質 含多種維生素 抗氧化特性 促進心血管健康 天然甜味替代品",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "椰棗"
+    }
+  },
+  "C009": {
+    "id": "C009",
+    "name": "乾燥無花果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高膳食纖維 豐富鈣質 補充鉀與鎂 含抗氧化物質 天然糖分來源 促進消化 助於心血管健康",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "無花果"
+    }
+  },
+  "C010": {
+    "id": "C010",
+    "name": "迷你番茄乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含抗氧化劑 促進心血管健康 促進消化健康 補充維生素與礦物質 有助於眼睛健康 低熱量且口感濃縮",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "番茄"
+    }
+  },
+  "C011": {
+    "id": "C011",
+    "name": "歐洲棗",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高膳食纖維 豐富抗氧化物 補充多種礦物質 增強免疫力 有助於血糖調節 天然能量來源",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "歐洲棗"
+    }
+  },
+  "C012": {
+    "id": "C012",
+    "name": "蔓越莓果乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "預防泌尿道感染 抗氧化 抗老化 保護心血管健康 促進腸道健康 有助口腔健康 提升免疫力",
+    "price": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "蔓越莓"
+    }
+  },
+  "C013": {
+    "id": "C013",
+    "name": "珍珠芭樂乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "維生素C含量高 促進膠原蛋白 含膳食纖維 有助穩定血糖與控制體重 含多酚與抗氧化物 有助調節血壓",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "芭樂"
+    }
+  },
+  "C014": {
+    "id": "C014",
+    "name": "新鮮青梅乾(有仔)",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "促進消化 幫助腸道蠕動 改善口臭 含抗氧化物 減少疲勞感 護肝排毒",
+    "price": "[{\"price\":225,\"size\":\"半斤(300g)\"},{\"price\":430,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "青梅"
+    }
+  },
+  "C015": {
+    "id": "C015",
+    "name": "無籽梅肉乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "促進食慾 幫助消化 緩解口臭與生津止渴 抗氧化 去籽更方便食用",
+    "price": "[{\"price\":500,\"size\":\"半斤(300g)\"},{\"price\":900,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "梅"
+    }
+  },
+  "C016": {
+    "id": "C016",
+    "name": "檸檬片",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含維生素C 促進消化 抗氧化 淨化身體 提升代謝 清新口氣 護膚亮白",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "檸檬"
+    }
+  },
+  "C017": {
+    "id": "C017",
+    "name": "愛文芒果青乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "開胃促消化 富含維生素C 促進腸道健康 抗氧化 提升代謝 口感酸甜 解膩醒腦",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "愛文芒果"
+    }
+  },
+  "C018": {
+    "id": "C018",
+    "name": "野生小藍莓乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "超強抗氧化力 護眼明目 增強記憶力與腦部健康 促進心血管健康 抗發炎 含天然膳食纖維",
+    "price": "[{\"price\":700,\"size\":\"半斤(300g)\"},{\"price\":1300,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "小藍莓"
+    }
+  },
+  "C019": {
+    "id": "C019",
+    "name": "草莓乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含維生素C 抗氧化 幫助腸道蠕動 保護心血管健康 減少甜食負擔 天然果香",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "草莓"
+    }
+  },
+  "C020": {
+    "id": "C020",
+    "name": "杏桃乾",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "富含鐵質 維生素A豐富 高膳食纖維 鉀含量高 天然抗氧化 提升能量",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "杏桃"
+    }
+  },
+  "D001": {
+    "id": "D001",
+    "name": "黑芝麻片",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "養髮護髮 補腎強骨 促進腸道蠕動 抗氧化 補鈣強骨 提升能量",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "黑芝麻"
+    }
+  },
+  "D002": {
+    "id": "D002",
+    "name": "黑芝麻條",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "滋養頭髮 補腎養肝 促進腸道健康 強力抗氧化 補鈣助骨骼健康 快速補充能量",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "黑芝麻"
+    }
+  },
+  "D003": {
+    "id": "D003",
+    "name": "蒟蒻片",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "低熱量 低脂肪 豐富膳食纖維 延緩血糖上升 增加飽足感 促進腸道益菌生長 無麩質適合過敏體質者",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "蒟蒻"
+    }
+  },
+  "D004": {
+    "id": "D004",
+    "name": "紅棗核桃",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "補血養氣 健腦益智 促進消化 抗氧化 補腎養血 心血管保護",
+    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "紅棗, 核桃"
+    }
+  },
+  "D005": {
+    "id": "D005",
+    "name": "杏仁小魚(葷)",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "補鈣強骨 含優質蛋白質 提供健康脂肪與抗氧化物 促進腦部健康 補充礦物質與維生素 增強體力與耐力",
+    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":680,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "杏仁, 小魚"
+    }
+  },
+  "D006": {
+    "id": "D006",
+    "name": "海苔杏仁片",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "豐富抗氧化物質 補充優質蛋白質與健康脂肪 促進腸道健康 補充礦物質 提振精神與體力 低熱量",
+    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "海苔, 杏仁"
+    }
+  },
+  "D007": {
+    "id": "D007",
+    "name": "原味素乳酪鬆",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "植物蛋白質來源 低膽固醇 低飽和脂肪 豐富膳食纖維 無乳糖 口感酥脆低熱量小點心 素食友善",
+    "price": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "乳酪"
+    }
+  },
+  "D008": {
+    "id": "D008",
+    "name": "特級紅棗",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "補氣養血 助眠安神 抗氧化 促進消化 護肝解毒",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "紅棗"
+    }
+  },
+  "D009": {
+    "id": "D009",
+    "name": "紅棗脆片",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "保留紅棗營養 膳食纖維豐富 低脂低卡 天然抗氧化成分 增強體力",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "紅棗"
+    }
+  },
+  "D010": {
+    "id": "D010",
+    "name": "枸杞",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "補肝腎 抗氧化 提升免疫力 調節血糖與血脂",
+    "price": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "枸杞"
+    }
+  },
+  "D012": {
+    "id": "D012",
+    "name": "薑黃杏仁條",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "強效抗炎抗氧化 促進腦部健康 補充優質蛋白質與健康脂肪 調節消化",
+    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "薑黃, 杏仁"
+    }
+  },
+  "D013": {
+    "id": "D013",
+    "name": "巴西乳酪絲",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "description": "高蛋白質 含鈣質 含益生菌 風味濃郁滿足口感",
+    "price": "[{\"price\":850,\"size\":\"半斤(300g)\"},{\"price\":1650,\"size\":\"1斤(600g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "乳酪"
     }
   }
 }
