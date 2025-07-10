@@ -1647,7 +1647,7 @@ shippingSelect.addEventListener('change', () => {
       localStorage.setItem('cart', JSON.stringify(cart));
       sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
         name: nameInput.value, email: emailInput.value, phone: phoneInput.value,
-        payment: paymentSelect.value, discountCode,
+        payment: paymentSelect.value, discountCode: document.getElementById('side-cart-discount-code').value.trim(),
         currentDiscountRate: currentDiscountRate
       }));
 
