@@ -182,9 +182,9 @@
   {
     "id": "B006",
     "name": "純杏仁粉",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_powder.png\"]",
     "title": "",
     "category": "雜糧"
   },
