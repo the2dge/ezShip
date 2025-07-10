@@ -178,9 +178,9 @@
   "B002": {
     "id": "B002",
     "name": "黑芝麻粒",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/blackSesame.png\"]",
     "description": "補腎烏髮 含優質脂肪酸 高鈣補骨 改善便秘 延緩老化 保護肝臟與增強代謝 補鐵補血",
-    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"size\":\"1斤(600g)\",\"price\":300}]",
     "specs": {
       "原產地": "台灣",
       "成分": "黑芝麻"
