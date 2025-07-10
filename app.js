@@ -1,4 +1,3 @@
-//Have issue when discount Code is applied!
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
