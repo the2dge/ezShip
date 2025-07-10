@@ -1644,7 +1644,11 @@ shippingSelect.addEventListener('change', () => {
       window.currentOrderId = orderId;
       localStorage.setItem('currentOrderId', orderId);
       localStorage.setItem('cart', JSON.stringify(cart));
-
+      console.log("7-11 Store", JSON.stringify({
+        name: nameInput.value, email: emailInput.value, phone: phoneInput.value,
+        payment: paymentSelect.value, discountCode: discountInput.value,
+        currentDiscountRate: currentDiscountRate
+      }));
       sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
         name: nameInput.value, email: emailInput.value, phone: phoneInput.value,
         payment: paymentSelect.value, discountCode: discountInput.value,
