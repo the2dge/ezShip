@@ -389,9 +389,9 @@
   {
     "id": "D003",
     "name": "蒟蒻片",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":580}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/wood_fungus.jpg\"]",
     "title": "",
     "category": "休閒養生"
   },
