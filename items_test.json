@@ -15,7 +15,7 @@
     "name": "蒜味花生",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
     "description": "富含植物蛋白 健康脂肪來源 豐富的抗氧化物 促進腸道健康 穩定血糖",
-    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"price\":300,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "花生"
