@@ -721,7 +721,7 @@ a { text-decoration: none;}
     min-width: 20px;
     text-align: center;
 }
-#checkout-btn { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; text-align: center; }
+#checkout-btn { width: 100%; padding: 10px; background-color: #ff3b00; color: white;font-size: 1.2rem; border: none; cursor: pointer; text-align: center; }
 .checkout-title-row {
     display: flex;
     align-items: center;
