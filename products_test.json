@@ -137,9 +137,9 @@
   {
     "id": "B001",
     "name": "黑豆",
-    "pricing": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":100},{\"size\":\"1斤(600g)\",\"price\":200}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/beans_black.jpg\"]",
     "title": "",
     "category": "雜糧"
   },
