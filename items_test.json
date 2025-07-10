@@ -365,9 +365,9 @@
   "C013": {
     "id": "C013",
     "name": "珍珠芭樂乾",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grava.jpg\"]",
     "description": "維生素C含量高 促進膠原蛋白 含膳食纖維 有助穩定血糖與控制體重 含多酚與抗氧化物 有助調節血壓",
-    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":440}]",
     "specs": {
       "原產地": "台灣",
       "成分": "芭樂"
