@@ -290,11 +290,11 @@
   {
     "id": "C012",
     "name": "蔓越莓果乾",
-    "pricing": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":250},{\"price\":500,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/rasberries.jpg\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C013",
