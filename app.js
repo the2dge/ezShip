@@ -1678,7 +1678,7 @@ shippingSelect.addEventListener('change', () => {
           email: emailInput.value,
           phone: phoneInput.value,
           payment: paymentSelect.value,
-          discountCode: discountInput.value,
+          discountCode: sessionStorage.getItem('discountCode') || '',
           currentDiscountRate: currentDiscountRate
         }));
           // 🔁 Also re-save cart and orderId (in case cart updated)
