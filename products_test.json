@@ -211,9 +211,9 @@
     "name": "綜合葡萄",
     "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_blended_grapes.png\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C004",
