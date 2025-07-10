@@ -353,11 +353,11 @@
   {
     "id": "C019",
     "name": "草莓乾",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":550}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_strawberry.png\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C020",
