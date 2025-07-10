@@ -1,3 +1,4 @@
+//Have issue when discount Code is applied!
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -651,7 +652,7 @@ function showSideCartDiscountSection() {
         document.getElementById('side-cart-discount-code').value = savedDiscountCode;
         const discountMessage = document.getElementById('side-cart-discount-message');
         const discountTier = sessionStorage.getItem('discountTier');
-       // discountMessage.textContent = `已套用 ${discountTier || ''} 折扣!`;
+      //  discountMessage.textContent = `已套用 ${discountTier || ''} 折扣!`;
         discountMessage.className = 'discount-message success';
     }
 }
@@ -776,7 +777,6 @@ function renderSideCartItemsOnly() {
         
         sideCart.itemsContainer.appendChild(cartItemDiv);
     });
-    
     // Re-add event listeners for checkboxes and quantity buttons
     const checkboxes = sideCart.itemsContainer.querySelectorAll('.item-select-checkbox');
     checkboxes.forEach(checkbox => {
@@ -1519,7 +1519,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     const nameInput = form.querySelector('#customer_name');
     const emailInput = form.querySelector('#customer_email');
     const phoneInput = form.querySelector('#customer_phone');
-    const discountInput = form.querySelector('#discount_code');
+   // const discountInput = form.querySelector('#discount_code');
    // const applyDiscountBtn = form.querySelector('#apply-discount-btn');
     const discountMessage = form.querySelector('#discount-message');
     const storeInfoDiv = form.querySelector('#pickup-store-info-display');
@@ -1645,6 +1645,7 @@ shippingSelect.addEventListener('change', () => {
       window.currentOrderId = orderId;
       localStorage.setItem('currentOrderId', orderId);
       localStorage.setItem('cart', JSON.stringify(cart));
+
       sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
         name: nameInput.value, email: emailInput.value, phone: phoneInput.value,
         payment: paymentSelect.value, discountCode: document.getElementById('side-cart-discount-code').value.trim(),
@@ -1669,12 +1670,13 @@ shippingSelect.addEventListener('change', () => {
     // wire up the “reselect” button
     document.getElementById('reselect-store-btn')
       .addEventListener('click', () => {
+        const discountCode = sessionStorage.getItem('discountCode') || '';
         sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
           name: nameInput.value,
           email: emailInput.value,
           phone: phoneInput.value,
           payment: paymentSelect.value,
-          discountCode: sessionStorage.getItem('discountCode') || '',
+          discountCode,
           currentDiscountRate: currentDiscountRate
         }));
           // 🔁 Also re-save cart and orderId (in case cart updated)
@@ -1955,14 +1957,8 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
         emailInput.value = savedCheckoutData.email || '';
         phoneInput.value = savedCheckoutData.phone || '';
         paymentSelect.value = savedCheckoutData.payment || 'pay_at_store';
-        if (savedCheckoutData.discountCode) {
-            discountInput.value = savedCheckoutData.discountCode;
-            // Restore applied discount rate
+        if (savedCheckoutData.currentDiscountRate) {
             currentDiscountRate = savedCheckoutData.currentDiscountRate || 0;
-            if (currentDiscountRate > 0) {
-                 discountMessage.textContent = `已套用 ${sessionStorage.getItem('discountTier') || ''} 折扣 (${currentDiscountRate}% off)!`;
-                 discountMessage.className = 'form-text text-success';
-            }
         }
         sessionStorage.removeItem('checkoutFormDataBeforeECPay'); // Clean up
     }
@@ -2020,15 +2016,8 @@ function ECpayStoreDataBackTransfer() {
             document.getElementById('customer_email').value = savedCheckoutData.email || '';
             document.getElementById('customer_phone').value = savedCheckoutData.phone || '';
             document.getElementById('payment-option').value = savedCheckoutData.payment || 'pay_at_store';
-            if (savedCheckoutData.discountCode) {
-                document.getElementById('discount_code').value = savedCheckoutData.discountCode;
-                currentDiscountRate = savedCheckoutData.currentDiscountRate || 0; // Restore discount rate
-                // Visually update discount message if needed
-                if (currentDiscountRate > 0) {
-                    const discountMessageEl = document.getElementById('discount-message');
-                    discountMessageEl.textContent = `已套用 ${sessionStorage.getItem('discountTier') || ''} 折扣 (${currentDiscountRate}% off)!`;
-                    discountMessageEl.className = 'form-text text-success';
-                }
+            if (savedCheckoutData.currentDiscountRate) {
+                currentDiscountRate = savedCheckoutData.currentDiscountRate || 0;
             }
             sessionStorage.removeItem('checkoutFormDataBeforeECPay'); // Clean up
         }
@@ -2258,26 +2247,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     const productId = cartItemDiv.dataset.cartItemId;
                     removeFromCart(productId);
                 }
-            } else if (e.target.classList.contains('increase-qty-btn')) {
-                const productId = e.target.dataset.productId;
-                changeCartQuantity(productId, 1); // Increase quantity by 1
-            } else if (e.target.classList.contains('decrease-qty-btn')) {
-                const productId = e.target.dataset.productId;
-                changeCartQuantity(productId, -1); // Decrease quantity by 1
             }
+            // Quantity control is now handled by setupSideCartEventListeners()
         });
         
 
         // Checkout Button Click (in Side Cart)
+        // Checkout Button Click (in Side Cart) - FIXED
         sideCart.checkoutBtn.addEventListener('click', () => {
-            if (cart.length > 0) {
-                renderCheckoutPage(cart); // ⬅️ Pass current cart
-                //cart = []; // Clear cart
-                renderSideCart(); // Update side cart visually
+            const selectedItems = cart.filter(item => item.selected !== false);
+            if (selectedItems.length > 0) {
+                renderCheckoutPage(selectedItems); // ⬅️ Pass only selected items
                 switchView('checkout');
                 sideCart.aside.classList.remove('open'); // Close side cart
             } else {
-                Swal.fire("您的購物車是空的, 無法結帳。");
+                Swal.fire("請選擇要結帳的商品。");
             }
         });
      
