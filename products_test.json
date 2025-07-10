@@ -146,9 +146,9 @@
   {
     "id": "B002",
     "name": "黑芝麻粒",
-    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"size\":\"1斤(600g)\",\"price\":300}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/blackSesame.png\"]",
     "title": "",
     "category": "雜糧"
   },
