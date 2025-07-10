@@ -771,7 +771,7 @@ a { text-decoration: none;}
 .topup-item:hover .topup-submenu {
   display: block;
 }
-#checkout-wrapper{padding: 4%;}
+#checkout-wrapper{padding: 5%;}
 .checkout-list {
   padding: 0 10%;
     display: flex;
@@ -779,7 +779,15 @@ a { text-decoration: none;}
     gap: 10px;
     margin: 20px 0;
 }
+.checkout-item-display {
+  display: flex;
+  font-size: 1.1em;
+  justify-content: space-between;
+  align-items: center;  /* ← centers size/qty/price vertically */
+  padding: 5px 0;
+}
 
+/* if you want to keep your inline flex-basis & text-align that's fine */
 .checkout-item-row {
     display: flex;
     align-items: center;
@@ -812,6 +820,25 @@ a { text-decoration: none;}
     text-align: center;
     margin-bottom: 20px;
 }
+#order-subtotal span, #order-discount span, #order-shipping span, #order-final-total span{margin: 0 8%; font-size: 1.2em;}
+.form-group {
+  display: flex;
+  align-items: center;    /* vertically center label + control */
+  margin-bottom: 1rem;    /* whatever spacing you prefer */
+}
+
+.form-group label {
+  flex: 0 0 30%;          /* fixed 30% width */
+  max-width: 30%;
+  margin: 0;              /* remove default bottom margin */
+}
+
+.form-group .form-control {
+  flex: 0 0 70%;          /* fixed 70% width */
+  max-width: 70%;
+}
+#side-cart-discount-code{border: solid 2px green; font-size: 1.1em}
+.apply-discount-btn{font-size: 1.2em; padding:4px; margin-left: 5%;}
 .member-dropdown-wrapper {
   position: relative;
   display: inline-block;
