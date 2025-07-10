@@ -101,9 +101,9 @@
   {
     "id": "A012",
     "name": "夏威夷豆",
-    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":850}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/macadamia.jpg\"]",
     "title": "",
     "category": "堅果"
   },
