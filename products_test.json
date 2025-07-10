@@ -191,11 +191,11 @@
   {
     "id": "C001",
     "name": "甘草橄欖",
-    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/olives.jpg\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C002",
