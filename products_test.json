@@ -11,9 +11,9 @@
   {
     "id": "A002",
     "name": "蒜味花生",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts_garlic.webp\"]",
     "title": "荳荳精選花生",
     "category": "堅果"
   },
