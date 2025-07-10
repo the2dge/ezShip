@@ -790,14 +790,14 @@ function renderSideCartItemsOnly() {
     increaseButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const cartKey = e.target.dataset.cartKey;
-            changeCartQuantityByKey(cartKey, 1);
+            changeCartQuantityByKey(cartKey, 0);
         });
     });
     
     decreaseButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const cartKey = e.target.dataset.cartKey;
-            changeCartQuantityByKey(cartKey, -1);
+            changeCartQuantityByKey(cartKey, 0);
         });
     });
 }
