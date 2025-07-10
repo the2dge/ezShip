@@ -134,9 +134,9 @@
   "A013": {
     "id": "A013",
     "name": "松子",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pineseed.jpg\"]",
     "description": "含健康脂肪 含松子油酸 優質蛋白質來源 含抗氧化物與維生素 有豐富礦物質 支持腦部健康 適合素食與低醣飲食",
-    "price": "[{\"price\":600,\"size\":\"半斤(300g)\"},{\"price\":1200,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":600,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1200}]",
     "specs": {
       "原產地": "台灣",
       "成分": "松子"
