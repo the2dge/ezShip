@@ -173,9 +173,9 @@
   {
     "id": "B005",
     "name": "紅心芭樂乾",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grava_red.jpg\"]",
     "title": "",
     "category": "雜糧"
   },
