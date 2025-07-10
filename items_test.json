@@ -244,9 +244,9 @@
   "C002": {
     "id": "C002",
     "name": "中藥橄欖",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_herbal_olive.png\"]",
     "description": "潤喉止咳 消炎抗菌 促進唾液分泌 緩解口腔不適 改善消化",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "specs": {
       "原產地": "台灣",
       "成分": "橄欖"
