@@ -563,9 +563,9 @@
   "D012": {
     "id": "D012",
     "name": "薑黃杏仁條",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\"]",
     "description": "強效抗炎抗氧化 促進腦部健康 補充優質蛋白質與健康脂肪 調節消化",
-    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":400},{\"size\":\"1斤(600g)\",\"price\":780}]",
     "specs": {
       "原產地": "台灣",
       "成分": "薑黃, 杏仁"
