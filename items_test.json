@@ -343,9 +343,9 @@
   "C011": {
     "id": "C011",
     "name": "歐洲棗",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dates_seedless.jpg\"]",
     "description": "高膳食纖維 豐富抗氧化物 補充多種礦物質 增強免疫力 有助於血糖調節 天然能量來源",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "specs": {
       "原產地": "台灣",
       "成分": "歐洲棗"
