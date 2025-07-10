@@ -222,9 +222,9 @@
   "B006": {
     "id": "B006",
     "name": "純杏仁粉",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_powder.png\"]",
     "description": "高蛋白質 含健康脂肪 低碳水化合物 豐富維生素E 高纖維 豐富礦物質 無麩質",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁"
