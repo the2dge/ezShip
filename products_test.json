@@ -254,11 +254,11 @@
   {
     "id": "C008",
     "name": "椰棗",
-    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_coconut_date.png\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C009",
