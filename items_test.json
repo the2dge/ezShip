@@ -508,9 +508,9 @@
   "D006": {
     "id": "D006",
     "name": "海苔杏仁片",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_seaweed.jpg\"]",
     "description": "豐富抗氧化物質 補充優質蛋白質與健康脂肪 促進腸道健康 補充礦物質 提振精神與體力 低熱量",
-    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":780,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":400},{\"price\":780,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "海苔, 杏仁"
