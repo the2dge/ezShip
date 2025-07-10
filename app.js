@@ -1,3 +1,4 @@
+//Have issue when discount Code is applied!
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -762,9 +763,9 @@ function renderSideCartItemsOnly() {
                     ${subtotalDisplay}
                 </div>
                 <div class="quantity-control">
-                    <button class="decrease-qty-btn" data-product-id="${item.id}">➖</button>
+                    <button class="decrease-qty-btn" data-cart-key="${item.cartKey}">➖</button>
                     <span class="quantity">${item.quantity}</span>
-                    <button class="increase-qty-btn" data-product-id="${item.id}">➕</button>
+                    <button class="increase-qty-btn" data-cart-key="${item.cartKey}">➕</button>
                 </div>
             </div>
             
@@ -1345,16 +1346,16 @@ function renderOrderedItemsSummaryDOM(cartItems) {
         listElement.innerHTML = '<p>您的購物車是空的。</p>';
     } else {
         cartItems.forEach(item => {
-            const itemDiv = document.createElement('div');
+           const itemDiv = document.createElement('div');
             itemDiv.className = 'checkout-item-display'; // Add class for styling
             itemDiv.style.display = 'flex';
             itemDiv.style.justifyContent = 'space-between';
             itemDiv.style.padding = '5px 0';
             itemDiv.innerHTML = `
                 <span style="flex-basis: 50%;"><img src="${item.img}" alt="${item.name}" style="width:60px; height:60px; margin-right:10px; vertical-align:middle;"> ${item.name}</span>
-                <span style="flex-basis: 20%; text-align:center;">${item.size}</span>
-                <span style="flex-basis: 20%; text-align:center;">x ${item.quantity}</span>
-                <span style="flex-basis: 30%; text-align:right;">${item.price}</span>
+                <span style="flex-basis: 25%; text-align:center;">${item.size}</span>
+                <span style="flex-basis: 15%; text-align:center;">x ${item.quantity}</span>
+                <span style="flex-basis: 30%; text-align:center;">${item.price}</span>
             `;
             listElement.appendChild(itemDiv);
         });
@@ -1370,7 +1371,7 @@ function renderOrderedItemsSummaryDOM(cartItems) {
         <div id="order-subtotal" style="display:flex; justify-content:space-between;"><strong>商品總額:</strong> <span>$0.00</span></div>
         <div id="order-discount" style="display:none; justify-content:space-between; color:green;"><strong>折扣:</strong> <span>-$0.00</span></div>
         <div id="order-shipping" style="display:none; justify-content:space-between; color:red;"><strong>運費:(滿$1200可免)</strong> <span>$0.00</span></div>
-        <div id="order-final-total" style="font-weight:bold; margin-top:10px; display:flex; justify-content:space-between; font-size:1.2em;"><strong>總金額:</strong> <span>$0.00</span></div>
+        <div id="order-final-total" style="font-weight:bold; margin-top:10px; display:flex; justify-content:space-between; font-size:1.3em;"><strong>總金額:</strong> <span>$0.00</span></div>
     `;
     mainBody.checkoutWrapper.appendChild(totalsContainer);
 }
