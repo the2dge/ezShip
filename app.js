@@ -651,7 +651,7 @@ function showSideCartDiscountSection() {
         document.getElementById('side-cart-discount-code').value = savedDiscountCode;
         const discountMessage = document.getElementById('side-cart-discount-message');
         const discountTier = sessionStorage.getItem('discountTier');
-        discountMessage.textContent = `已套用 ${discountTier || ''} 折扣!`;
+       // discountMessage.textContent = `已套用 ${discountTier || ''} 折扣!`;
         discountMessage.className = 'discount-message success';
     }
 }
