@@ -530,9 +530,9 @@
   "D008": {
     "id": "D008",
     "name": "特級紅棗",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dates_big.jpg\"]",
     "description": "補氣養血 助眠安神 抗氧化 促進消化 護肝解毒",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":580,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "紅棗"
