@@ -145,7 +145,7 @@
   "A014": {
     "id": "A014",
     "name": "招牌綜合堅果",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/nuts_mixed.jpg\"]",
     "description": "營養多樣 均衡補充 護心血管 抗氧化 抗老化 穩定血糖與能量補給 促進腸道健康 提高飽足感 幫助控制體重 適合素食與低醣飲食者",
     "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
