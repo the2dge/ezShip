@@ -362,11 +362,11 @@
   {
     "id": "C020",
     "name": "杏桃乾",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_peach.png\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "D001",
