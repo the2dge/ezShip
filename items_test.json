@@ -453,9 +453,9 @@
   "D001": {
     "id": "D001",
     "name": "黑芝麻片",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/snack_seaweed_almond_slice.png\"]",
     "description": "養髮護髮 補腎強骨 促進腸道蠕動 抗氧化 補鈣強骨 提升能量",
-    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "specs": {
       "原產地": "台灣",
       "成分": "黑芝麻"
