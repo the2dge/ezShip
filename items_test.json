@@ -211,9 +211,9 @@
   "B005": {
     "id": "B005",
     "name": "紅心芭樂乾",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grava_red.jpg\"]",
     "description": "富含維生素C 豐富膳食纖維 天然抗氧化物質 低熱量 無脂肪 補充礦物質 方便保存與攜帶",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "specs": {
       "原產地": "台灣",
       "成分": "紅心芭樂"
