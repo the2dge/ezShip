@@ -1641,12 +1641,13 @@ shippingSelect.addEventListener('change', () => {
       // generate new orderId
       const now = new Date();
       const orderId = `${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}${String(now.getHours()).padStart(2,'0')}${String(now.getMinutes()).padStart(2,'0')}${String(now.getSeconds()).padStart(2,'0')}${Math.floor(Math.random()*1000)}`;
+      const discountCode = sessionStorage.getItem('discountCode') || '';
       window.currentOrderId = orderId;
       localStorage.setItem('currentOrderId', orderId);
       localStorage.setItem('cart', JSON.stringify(cart));
       console.log("7-11 Store", JSON.stringify({
         name: nameInput.value, email: emailInput.value, phone: phoneInput.value,
-        payment: paymentSelect.value, discountCode: discountInput.value,
+        payment: paymentSelect.value, discountCode,
         currentDiscountRate: currentDiscountRate
       }));
       sessionStorage.setItem('checkoutFormDataBeforeECPay', JSON.stringify({
