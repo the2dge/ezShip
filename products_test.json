@@ -335,11 +335,11 @@
   {
     "id": "C017",
     "name": "愛文芒果青乾",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_green_aiwen_mango.png\"]",
     "title": "",
-    "category": "果乾"
+    "category": ""
   },
   {
     "id": "C018",
