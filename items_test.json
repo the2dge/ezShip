@@ -189,9 +189,9 @@
   "B003": {
     "id": "B003",
     "name": "黑芝麻粉",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/sesamePowder.png\"]",
     "description": "營養吸收率更高 補腎烏髮 延緩老化 高鈣補骨 護心抗發炎 幫助腸道蠕動 保護肝臟 補血補氣 提升精神",
-    "price": "[{\"price\":150,\"size\":\"半斤(300g)\"},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"size\":\"1斤(600g)\",\"price\":300}]",
     "specs": {
       "原產地": "台灣",
       "成分": "黑芝麻"
