@@ -380,9 +380,9 @@
   {
     "id": "D002",
     "name": "黑芝麻條",
-    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/snack_black_sesame_slice.png\"]",
     "title": "",
     "category": "休閒養生"
   },
