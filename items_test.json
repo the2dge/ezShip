@@ -200,7 +200,7 @@
   "B004": {
     "id": "B004",
     "name": "綜合豆",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/beans_mixed.webp\"]",
     "description": "高纖維促進腸道健康 優質植物性蛋白 豐富維生素與礦物質 低脂肪 低熱量 穩定血糖與延長飽足感 植物雌激素",
     "price": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
     "specs": {
