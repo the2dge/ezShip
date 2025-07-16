@@ -387,9 +387,9 @@
   "C015": {
     "id": "C015",
     "name": "無籽梅肉乾",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_plum_seedless.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020807.jpg\"]",
     "description": "促進食慾 幫助消化 緩解口臭與生津止渴 抗氧化 去籽更方便食用",
-    "price": "[{\"price\":500,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":900}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"size\":\"1斤(600g)\",\"price\":950}]",
     "specs": {
       "原產地": "台灣",
       "成分": "梅"
