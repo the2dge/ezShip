@@ -554,7 +554,7 @@
     "name": "枸杞",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/gogiberries.jpg\"]",
     "description": "補肝腎 抗氧化 提升免疫力 調節血糖與血脂",
-    "price": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":550}]",
     "specs": {
       "原產地": "台灣",
       "成分": "枸杞"
