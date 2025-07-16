@@ -431,9 +431,9 @@
   "C019": {
     "id": "C019",
     "name": "草莓乾",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_strawberry.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020780.jpg\"]",
     "description": "富含維生素C 抗氧化 幫助腸道蠕動 保護心血管健康 減少甜食負擔 天然果香",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":550}]",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "草莓"
