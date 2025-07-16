@@ -463,13 +463,13 @@
   },
   "D002": {
     "id": "D002",
-    "name": "黑芝麻條",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/snack_black_sesame_slice.png\"]",
+    "name": "黑芝麻糕",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020798.jpg\"]",
     "description": "滋養頭髮 補腎養肝 促進腸道健康 強力抗氧化 補鈣助骨骼健康 快速補充能量",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
-      "成分": "黑芝麻"
+      "成分": "黑芝麻粉"
     }
   },
   "D003": {
