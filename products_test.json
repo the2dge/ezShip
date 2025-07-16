@@ -344,7 +344,7 @@
   {
     "id": "C018",
     "name": "野生小藍莓乾",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":700},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":700},{\"size\":\"1斤(600g)\",\"price\":1300}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/blueberries.jpg\"]",
     "title": "",
