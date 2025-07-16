@@ -287,12 +287,12 @@
   },
   "C006": {
     "id": "C006",
-    "name": "黃金葡萄",
+    "name": "黃金葡萄乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grapes_gold.jpg\"]",
     "description": "高抗氧化能力 促進免疫力 促進心血管健康 補充水分與礦物質 助消化與腸道健康 低熱量健康零食",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "specs": {
-      "原產地": "台灣",
+      "原產地": "美國",
       "成分": "葡萄"
     }
   },
