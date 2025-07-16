@@ -272,9 +272,9 @@
   {
     "id": "C010",
     "name": "迷你番茄乾",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":440}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020747.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020771.jpg\"]",
     "title": "",
     "category": ""
   },
