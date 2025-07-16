@@ -422,9 +422,9 @@
     "name": "野生小藍莓乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/blueberries.jpg\"]",
     "description": "超強抗氧化力 護眼明目 增強記憶力與腦部健康 促進心血管健康 抗發炎 含天然膳食纖維",
-    "price": "[{\"price\":700,\"size\":\"半斤(300g)\"},{\"price\":1300,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":700},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
     "specs": {
-      "原產地": "台灣",
+      "原產地": "美國",
       "成分": "小藍莓"
     }
   },
