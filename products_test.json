@@ -424,8 +424,8 @@
   },
   {
     "id": "D007",
-    "name": "原味素乳酪鬆",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"size\":\"1斤(600g)\",\"price\":780}]",
+    "name": "原味乳酪絲",
+    "pricing": "[{\"price\":900,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1750}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cheese_slices.jpg\"]",
     "title": "",
