@@ -484,5 +484,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022655.jpg\"]",
     "title": "顆粒蔓越莓",
     "category": "乾果"
+  },
+  {
+    "id": "C021",
+    "name": "蔓越莓果粒",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":275},{\"price\":540,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022655.jpg\"]",
+    "title": "顆粒蔓越莓",
+    "category": "乾果"
   }
 ]
