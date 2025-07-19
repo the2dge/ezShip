@@ -493,5 +493,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022661.jpg\"]",
     "title": "",
     "category": "雜糧"
+  },
+  {
+    "id": "B008",
+    "name": "紅麴納豆混搭南瓜子",
+    "pricing": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":420}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022662.jpg\"]",
+    "title": "",
+    "category": "雜糧"
   }
 ]
