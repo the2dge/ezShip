@@ -619,8 +619,8 @@
     "id": "C022",
     "name": "愛文芒果青乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022836.jpg\"]",
-    "description": "",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":350},{\"price\":700,\"size\":\"1斤(600g)\"}]",
+    "description": "無加糖，純原味，不甜的愛文芒果乾",
+    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":700}]",
     "specs": {
       "原產地": "台灣",
       "成分": "愛文芒果"
