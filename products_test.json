@@ -502,5 +502,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022662.jpg\"]",
     "title": "",
     "category": "雜糧"
+  },
+  {
+    "id": "C022",
+    "name": "愛文芒果青乾",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":350},{\"price\":700,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022836.jpg\"]",
+    "title": "愛玩芒果乾整片",
+    "category": "乾果"
   }
 ]
