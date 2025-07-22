@@ -628,10 +628,10 @@
   },
   "D014": {
     "id": "D014",
-    "name": "素乳絡嵩",
+    "name": "素食乳絡鬆",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022839.jpg\"]",
     "description": "有加乳絡的素肉鬆，富含植物蛋白，兼具補鈣功能",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"price\":880,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "豆類，芝麻，乳酪絲"
