@@ -514,8 +514,8 @@
   },
   {
     "id": "D014",
-    "name": "素乳絡嵩",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "name": "素食乳絡鬆",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"price\":880,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022839.jpg\"]",
     "title": "素肉鬆+乳酪",
