@@ -511,5 +511,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022836.jpg\"]",
     "title": "愛文芒果乾/整片",
     "category": "乾果"
+  },
+  {
+    "id": "D014",
+    "name": "素乳絡嵩",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022839.jpg\"]",
+    "title": "素肉鬆+乳酪",
+    "category": "休閒養生"
   }
 ]
