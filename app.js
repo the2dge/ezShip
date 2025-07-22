@@ -2109,6 +2109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     ECpayStoreDataBackTransfer();
 });
+    //For Page Refresh when returning from ECPay Payment
+    window.addEventListener('pageshow', async (event) => {
+    if (event.persisted) {
+        // Page was restored from BFCache, re-initialize content
+        console.log("Page restored from BFCache. Re-initializing content.");
+        init(); // Re-run initial content rendering, which includes renderMainContent()
+        ECpayStoreDataBackTransfer(); // Re-process ECPay data if any, as it might be relevant on BFCache restore
+    }
+});
     // --- Event Listeners Setup ---
     function setupEventListeners() {
         // Navbar Links (Scroll within content view)
