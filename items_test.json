@@ -636,5 +636,16 @@
       "原產地": "台灣",
       "成分": "豆類，芝麻，乳酪絲"
     }
+  },
+  "開心果醬": {
+    "id": "開心果醬",
+    "name": "西西里開心果醬",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022738.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022737.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022736.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022734.jpg\"]",
+    "description": "義大利西西里開心果醬",
+    "price": "[{\"size\":\"一罐\",\"price\":600}]",
+    "specs": {
+      "原產地": "義大利",
+      "成分": "開心果，食用油"
+    }
   }
 }
