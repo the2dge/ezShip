@@ -1427,9 +1427,40 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
             <label for="customer_name">收件人姓名:</label>
             <input type="text" id="customer_name" name="customer_name" class="form-control" value="${storedName}" required>
         </div>
+        <div class="form-group" id="home-delivery-address-wrapper" style="display: none; flex-direction: column; align-items: stretch;">
+          <label for="delivery-city">宅配地址：</label>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <select id="delivery-city" class="form-control" style="flex: 1;">
+              <option value="">請選擇縣市</option>
+              <option value="台北市">台北市</option><!--1-->
+              <option value="新北市">新北市</option><!--2-->
+              <option value="桃園市">桃園市</option><!--3-->
+              <option value="台中市">台中市</option><!--4-->
+              <option value="台南市">台南市</option><!--5-->
+              <option value="高雄市">高雄市</option><!--6-->
+              <option value="基隆市">基隆市</option><!--7-->
+              <option value="新竹市">新竹市</option><!--8-->
+              <option value="嘉義市">嘉義市</option><!--9-->
+              <option value="宜蘭縣">宜蘭縣</option><!--10-->
+              <option value="苗栗縣">苗栗縣</option><!--11-->
+              <option value="彰化縣">彰化縣</option><!--12-->
+              <option value="南投縣">南投縣</option><!--13-->
+              <option value="雲林縣">雲林縣</option><!--14-->
+              <option value="嘉義縣">嘉義縣</option><!--15-->
+              <option value="臺東縣">臺東縣</option><!--16-->
+              <option value="花蓮縣">花蓮縣</option><!--17-->
+              <option value="澎湖縣">澎湖縣</option><!--18-->
+              <option value="金門縣">金門縣</option><!--19-->
+              <option value="連江縣">連江縣</option><!--20-->
+            </select>
+
+            <input type="text" id="delivery-address" class="form-control" placeholder="請輸入街道、門牌等詳細地址" style="flex: 2;">
+          </div>
+        </div>
         <div class="form-group">
             <label for="customer_email">Email:</label>
-            <input type="email" id="customer_email" name="customer_email" class="form-control" value="${lineUserEmail}" required>
+            <input type="email" id="customer_email" name="customer_email" class="form-control" value="${lineUserEmail}" style="display:none">
         </div>
         <div class="form-group">
             <label for="customer_phone">電話:</label>
@@ -1530,6 +1561,9 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     const paymentMethod = paymentSelect.value;
     const submitAmount = parseFloat(sessionStorage.getItem('finalOrderAmountForSubmission')) || 0;
 
+    document.getElementById('delivery-city')?.addEventListener('change', toggleSubmitButtonVisibility);
+    document.getElementById('delivery-address')?.addEventListener('input', toggleSubmitButtonVisibility);
+   
     // Default: disable both buttons
     submitButton.disabled = true;
     creditCardImageButton.style.display = 'none';
@@ -1631,7 +1665,27 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
 shippingSelect.addEventListener('change', () => {
   const selection = shippingSelect.value;
   const currentCartTotal = calculateCartTotal();
+  const deliveryAddressWrapper = document.getElementById('home-delivery-address-wrapper');
+  const paymentSelect = form.querySelector('#payment-option');
+  const payAtStoreOption = paymentSelect.querySelector('option[value="pay_at_store"]');
 
+      if (shippingSelect.value === 'store_pickup') {
+      // 宅配：hide 到店付款
+      if (payAtStoreOption) payAtStoreOption.style.display = 'none';
+
+      // Optionally switch to credit card by default if needed
+      if (paymentSelect.value === 'pay_at_store') {
+        paymentSelect.value = 'credit_card_ecpay';
+      }
+    } else {
+      // 非宅配：show 到店付款
+      if (payAtStoreOption) payAtStoreOption.style.display = 'block';
+    }
+     if (shippingSelect.value === 'store_pickup') {
+        deliveryAddressWrapper.style.display = 'block';
+      } else {
+        deliveryAddressWrapper.style.display = 'none';
+      }
   // If user picks 7-11…
   if (selection === 'seven_eleven') {
     const existingStore = JSON.parse(sessionStorage.getItem('selectedStoreInfo'));
@@ -1749,10 +1803,18 @@ if (shippingMethodValue === 'seven_eleven' && selectedStoreInfo) {
     calculatedAddress = selectedStoreInfo.CVSAddress || '7-11 CVS Address Not Provided';
     cvsStoreIDValue = selectedStoreInfo.CVSStoreID || null;
 } else if (shippingMethodValue === 'store_pickup') {
-    calculatedAddress = '來商店取貨 ([康寧路三段99巷10弄1號])'; // Replace with your actual store address or a generic note
-}
-// If you have other shipping methods that provide a typed address, handle them here.
+    const citySelect = document.getElementById('delivery-city');
+    const addressInput = document.getElementById('delivery-address');
 
+    const city = citySelect?.value?.trim() || '';
+    const address = addressInput?.value?.trim() || '';
+
+    if (city && address) {
+        calculatedAddress = `${city}${address}`;
+    } else {
+        calculatedAddress = null; // Incomplete input
+    }
+}
 const discountAmount = parseFloat(sessionStorage.getItem('orderDiscountAmountForSubmission')) || 0;
 const discountRate = parseFloat(currentDiscountRate) || 0;
 
@@ -1842,7 +1904,18 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
             pickupOption = "便利商店";
        
         } else if (shippingMethodValue === 'store_pickup') {
-            calculatedAddress = '來商店取貨 (In-store pickup at [Your Store Address])'; // Replace with your actual store address or a generic note
+            const citySelect = document.getElementById('delivery-city');
+            const addressInput = document.getElementById('delivery-address');
+
+            const city = citySelect?.value?.trim() || '';
+            const address = addressInput?.value?.trim() || '';
+
+            if (city && address) {
+                calculatedAddress = `宅配:${city}${address}`;
+                pickupOption = "宅配";
+            } else {
+                calculatedAddress = null; // Incomplete input
+            }
         }
         const totalForECPay = parseFloat(sessionStorage.getItem('finalOrderAmountForSubmission'));
         let orderIdForECPay = localStorage.getItem('currentOrderId');
