@@ -1,3 +1,4 @@
+
 //Have issue when discount Code is applied!
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
@@ -1525,7 +1526,12 @@ function updateOrderSummaryDisplay(cartItems, shippingCost, discountPercentage) 
 
     const shippingDiv = document.getElementById('order-shipping');
     if (shippingCost > 0) {
-        shippingDiv.querySelector('span').textContent = `$${shippingCost.toFixed(0)}`;
+        const shippingMethod = document.getElementById('shipping-method')?.value;
+        const threshold = shippingMethod === 'seven_eleven' ? 1200 : 3000;
+        shippingDiv.innerHTML = `
+            <strong>運費(${shippingMethod === 'seven_eleven' ? '7-11 未滿 $1200' : '宅配未滿 $3000'}):</strong> 
+            <span>$${shippingCost.toFixed(0)}</span>
+        `;
         shippingDiv.style.display = 'flex';
     } else {
         shippingDiv.style.display = 'none';
@@ -1747,7 +1753,13 @@ shippingSelect.addEventListener('change', () => {
 
   } else {
     // other shipping methods
-    currentShippingCost = (selection === 'seven_eleven') ? (currentCartTotal < 1200 ? 70 : 0) : 0;
+    if (selection === 'seven_eleven') {
+    currentShippingCost = currentCartTotal < 1200 ? 70 : 0;
+    } else if (selection === 'store_pickup') { // 宅配
+        currentShippingCost = currentCartTotal < 3000 ? 120 : 0;
+    } else {
+        currentShippingCost = 0;
+    }
     storeInfoDiv.style.display = 'none';
     storeInfoDiv.innerHTML = '';
   }
@@ -2080,8 +2092,14 @@ function ECpayStoreDataBackTransfer() {
             shippingSelect.value = 'seven_eleven'; // Pre-select the dropdown
         }
 
-        currentShippingCost = calculateCartTotal() < 1200 ? 70 : 0;
-
+        const cartTotal = calculateCartTotal();
+        if (localShippingSelectElement.value === 'seven_eleven') {
+            currentShippingCost = cartTotal < 1200 ? 70 : 0;
+        } else if (localShippingSelectElement.value === 'store_pickup') {
+            currentShippingCost = cartTotal < 3000 ? 120 : 0;
+        } else {
+            currentShippingCost = 0;
+        }
         // Restore other form fields that might have been cleared by navigation
         const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
         if (savedCheckoutData) {
