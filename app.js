@@ -1822,7 +1822,7 @@ if (shippingMethodValue === 'seven_eleven' && selectedStoreInfo) {
     const address = addressInput?.value?.trim() || '';
 
     if (city && address) {
-        calculatedAddress = `${city}${address}`;
+        calculatedAddress = `宅配:${city}${address}`;
     } else {
         calculatedAddress = null; // Incomplete input
     }
