@@ -478,7 +478,7 @@ function generatePricingHtml(pricingData, productId) {
         return `
             <div class="pricing-section single-price">
                 <p class="price">$${pricing.price}</p>
-                <button class="add-to-cart-btn" 
+                <button class="add-to-cart-single-btn" 
                         data-product-id="${productId}" 
                         data-size="${pricing.size}" 
                         data-price="${pricing.price}">
