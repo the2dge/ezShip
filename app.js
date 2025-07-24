@@ -877,9 +877,15 @@ function getSelectedItemCount() {
     }, 0);
 }
 function handleAddToCart(e) {
+    e.stopPropagation(); // Prevent event bubbling
     const productId = e.target.dataset.productId;
     const size = e.target.dataset.size;
     const price = e.target.dataset.price;
+    
+    // Debounce - prevent multiple rapid clicks
+    e.target.disabled = true;
+    setTimeout(() => e.target.disabled = false, 500);
+    
     handleAddToCartManual(productId, size, price);
 }
 // Modified handleAddToCartManual to ensure new items are selected by default
