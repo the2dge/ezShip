@@ -434,7 +434,11 @@ a { text-decoration: none;}
   font-size: 1.3rem;
   background-color: #faf0f0;
 }
-
+.pricing-section.single-price{
+  flex: 0 0 60%;
+  font-size: 1.3rem;
+  flex-direction: column;
+}
 /* Center the Add to Cart button below */
 .pricing-section.multiple-prices .add-to-cart-single-btn {
   align-self: center;
