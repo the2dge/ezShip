@@ -436,6 +436,7 @@ a { text-decoration: none;}
 }
 .pricing-section.single-price{
   display: flex;
+  flex-direction: column;
   justify-content: space-between; /* pushes children to opposite ends */
   align-items: center; 
   font-size: 1.3rem;
