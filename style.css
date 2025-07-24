@@ -435,10 +435,18 @@ a { text-decoration: none;}
   background-color: #faf0f0;
 }
 .pricing-section.single-price{
-  flex: 0 0 60%;
+  display: flex;
+  justify-content: space-between; /* pushes children to opposite ends */
+  align-items: center; 
   font-size: 1.3rem;
-  flex-direction: column;
 }
+.pricing-section.single-price p{
+  margin-right: auto;
+}
+.pricing-section.single-price button{
+  margin: 0 auto;
+}
+
 /* Center the Add to Cart button below */
 .pricing-section.multiple-prices .add-to-cart-single-btn {
   align-self: center;
