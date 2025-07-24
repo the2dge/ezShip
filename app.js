@@ -419,8 +419,9 @@ async function renderItemDetails(productId) {
     }
 
     const addToCartBtns = mainBody.itemWrapper.querySelectorAll('.add-to-cart-btn');
-    addToCartBtns.forEach(btn => {
-        btn.addEventListener('click', handleAddToCart);
+        addToCartBtns.forEach(btn => {
+        btn.removeEventListener('click', handleAddToCart); // Remove old listener
+        btn.addEventListener('click', handleAddToCart);   // Add new listener
     });
 }
 function parsePricingData(priceData) {
