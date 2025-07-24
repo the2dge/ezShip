@@ -420,7 +420,7 @@ async function renderItemDetails(productId) {
 
     const addToCartBtns = mainBody.itemWrapper.querySelectorAll('.add-to-cart-btn');
     addToCartBtns.forEach(btn => {
-        btn.addEventListener('click', handleAddToCartManual);
+        btn.addEventListener('click', handleAddToCart);
     });
 }
 function parsePricingData(priceData) {
