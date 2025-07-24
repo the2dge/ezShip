@@ -478,7 +478,7 @@ function generatePricingHtml(pricingData, productId) {
         return `
             <div class="pricing-section single-price">
                 <p class="price">$${pricing.price}</p>
-                <button class="add-to-cart-single-btn" 
+                <button class="add-to-cart-btn" 
                         data-product-id="${productId}" 
                         data-size="${pricing.size}" 
                         data-price="${pricing.price}">
@@ -875,7 +875,12 @@ function getSelectedItemCount() {
         return sum;
     }, 0);
 }
-
+function handleAddToCart(e) {
+    const productId = e.target.dataset.productId;
+    const size = e.target.dataset.size;
+    const price = e.target.dataset.price;
+    handleAddToCartManual(productId, size, price);
+}
 // Modified handleAddToCartManual to ensure new items are selected by default
 function handleAddToCartManual(productId, size, price) {
     const product = allItemDetails[productId];
