@@ -1,0 +1,361 @@
+/* Professional Grouped Side Cart Styles */
+
+/* Product Group Container */
+.side-cart-product-group {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.side-cart-product-group:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Product Header - Image (30%) + Name (70%) */
+.product-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.product-image-container {
+    flex: 0 0 30%;
+    max-width: 70px;
+}
+
+.product-image {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.product-name-container {
+    flex: 1;
+    text-align: center;
+    padding: 0 8px;
+}
+
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+/* Variants Container */
+.variants-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+/* Individual Variant Item */
+.variant-item {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all 0.2s ease;
+}
+
+.variant-item:hover {
+    background: #e9ecef;
+}
+
+.variant-item.variant-unselected {
+    opacity: 0.5;
+    background-color: #f1f3f4;
+}
+
+/* Variant Controls */
+.variant-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.variant-checkbox-container {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.variant-checkbox-container input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    margin-right: 8px;
+}
+
+.variant-checkbox-container input[type="checkbox"]:checked {
+    background: #007bff;
+}
+
+.variant-checkbox-container input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Variant Info Section */
+.variant-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.variant-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.variant-size {
+    font-weight: 600;
+    color: #495057;
+    font-size: 13px;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+}
+
+.variant-unit-price {
+    font-size: 11px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.variant-quantity-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Variant Quantity Control */
+.variant-quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 20px;
+    padding: 4px 8px;
+    border: 1px solid #dee2e6;
+}
+
+.decrease-qty-btn, .increase-qty-btn {
+    background: #ff7b7b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.decrease-qty-btn:hover, .increase-qty-btn:hover {
+    background: #0056b3;
+    transform: scale(1.1);
+}
+
+.variant-quantity {
+    font-weight: 600;
+    color: #333;
+    min-width: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Variant Price Display */
+.variant-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.variant-original {
+    text-decoration: line-through;
+    color: #6c757d;
+    font-size: 11px;
+}
+
+.variant-discounted, .variant-final {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+/* Product Total Section */
+.product-total-container {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 2px solid #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.product-total-line, .discount-total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-label {
+    font-weight: 600;
+    color: #495057;
+    font-size: 13px;
+}
+
+.original-total {
+    text-decoration: line-through;
+    color: #6c757d;
+    font-size: 12px;
+}
+
+.discounted-total, .final-total {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.product-savings {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+
+.product-savings-badge {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+/* Side cart container improvements */
+#side-cart-items {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+#side-cart-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+#side-cart-items::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+#side-cart-items::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+#side-cart-items::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Responsive Design */
+@media (max-width: 380px) {
+    .side-cart-product-group {
+        padding: 12px;
+    }
+    
+    .product-header {
+        margin-bottom: 12px;
+    }
+    
+    .product-name {
+        font-size: 14px;
+    }
+    
+    .variant-item {
+        padding: 8px;
+    }
+    
+    .variant-controls {
+        gap: 8px;
+    }
+    
+    .variant-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .variant-quantity-price {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+    
+    .variant-size {
+        font-size: 12px;
+    }
+    
+    .decrease-qty-btn, .increase-qty-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+/* Animation for smooth transitions */
+.variant-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced focus states for accessibility */
+.variant-checkbox-container input[type="checkbox"]:focus,
+.decrease-qty-btn:focus,
+.increase-qty-btn:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
