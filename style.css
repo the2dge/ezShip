@@ -850,7 +850,7 @@ a { text-decoration: none;}
   flex: 0 0 70%;          /* fixed 70% width */
   max-width: 70%;
 }
-#side-cart-discount-code{border: solid 2px green; font-size: 1.1em}
+#side-cart-discount-code{width: 180px;border: solid 2px green; font-size: 1.1em}
 .apply-discount-btn{font-size: 1.2em; padding:4px; margin-left: 5%;}
 .member-dropdown-wrapper {
   position: relative;
