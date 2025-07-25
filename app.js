@@ -500,85 +500,162 @@ function generatePricingHtml(pricingData, productId) {
         </div>
     `;
 }
+// Replace the renderSideCart() function with this grouped version
 function renderSideCart() {
     sideCart.itemsContainer.innerHTML = ''; // Clear current items
     if (cart.length === 0) {
         sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。<br>歡迎重選您喜歡的商品</p>';
-        // Hide discount section when cart is empty
         hideSideCartDiscountSection();
         setTimeout(() => {
             switchView('content');
         }, 1500);
     } else {
-        cart.forEach(item => {
-            const cartItemDiv = document.createElement('div');
-            cartItemDiv.classList.add('side-cart-item');
-            cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
-            
-            // Check if item is selected (default to true if not set)
-            const isSelected = item.selected !== false;
-            
-            // Calculate item subtotal and discount
-            const unitPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
-            const itemSubtotal = !isNaN(unitPrice) ? unitPrice * item.quantity : 0;
-            const itemDiscountAmount = itemSubtotal * (currentDiscountRate / 100);
-            const itemDiscountedTotal = itemSubtotal - itemDiscountAmount;
-            
-            // Generate subtotal display based on discount
-            let subtotalDisplay;
-            if (currentDiscountRate > 0 && isSelected) {
-                subtotalDisplay = `
-                    <div class="item-subtotal-container">
-                        <span class="item-subtotal original-price">小計: <del>${itemSubtotal.toFixed(0)}</del></span>
-                        <span class="item-subtotal discounted-price">$${itemDiscountedTotal.toFixed(0)}</span>
-                        <span class="item-savings">省 ${itemDiscountAmount.toFixed(0)}</span>
-                    </div>
-                `;
-            } else {
-                subtotalDisplay = `<span class="item-subtotal">小計: $${itemSubtotal.toFixed(0)}</span>`;
+        // Group cart items by product ID
+        const groupedItems = cart.reduce((groups, item) => {
+            if (!groups[item.id]) {
+                groups[item.id] = {
+                    productInfo: {
+                        id: item.id,
+                        name: item.name,
+                        img: item.img
+                    },
+                    variants: []
+                };
             }
+            groups[item.id].variants.push(item);
+            return groups;
+        }, {});
+
+        // Render each product group
+        Object.values(groupedItems).forEach(productGroup => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('side-cart-product-group');
             
-            cartItemDiv.innerHTML = `
-                <div class="item-controls">
-                    <label class="checkbox-container">
-                        <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${item.cartKey}">
-                        <span class="checkmark">✓</span>
-                    </label>
-                </div>
-                <img src="${item.img}" alt="${item.name}">
-                <div class="item-info">
-                    <div class="item-row name-row">
-                        <span class="item-name">${item.name}</span>
+            // Calculate total for this product (all variants)
+            let productTotal = 0;
+            let productDiscountedTotal = 0;
+            let hasSelectedVariants = false;
+            
+            productGroup.variants.forEach(variant => {
+                const isSelected = variant.selected !== false;
+                if (isSelected) {
+                    hasSelectedVariants = true;
+                    const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
+                    const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
+                    const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
+                    productTotal += variantSubtotal;
+                    productDiscountedTotal += (variantSubtotal - variantDiscountAmount);
+                }
+            });
+
+            const productDiscountAmount = productTotal - productDiscountedTotal;
+
+            // Generate product total display
+            let productTotalDisplay = '';
+            if (hasSelectedVariants) {
+                if (currentDiscountRate > 0) {
+                    productTotalDisplay = `
+                        <div class="product-total-container">
+                            <div class="product-total-line">
+                                <span class="total-label">單品總計:</span>
+                                <span class="original-total">$${productTotal.toFixed(0)}</span>
+                            </div>
+                            <div class="discount-total-line">
+                                <span class="total-label">折後總計:</span>
+                                <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
+                            </div>
+                            <div class="product-savings">
+                                <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    productTotalDisplay = `
+                        <div class="product-total-container">
+                            <div class="product-total-line">
+                                <span class="total-label">單品總計:</span>
+                                <span class="final-total">$${productTotal.toFixed(0)}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            productDiv.innerHTML = `
+                <!-- Product Header: Image (30%) + Name (70%) -->
+                <div class="product-header">
+                    <div class="product-image-container">
+                        <img src="${productGroup.productInfo.img}" alt="${productGroup.productInfo.name}" class="product-image">
                     </div>
-                    <div class="item-row size-price-row">
-                        <span class="item-size">${item.size}</span>
-                        <span class="item-unit-price">${item.price}</span>
-                    </div>
-                    <div class="item-row subtotal-row">
-                      ${subtotalDisplay}
-                    </div>
-                    <div class="quantity-control">
-                        <button class="decrease-qty-btn" data-cart-key="${item.cartKey}">➖</button>
-                        <span class="quantity">${item.quantity}</span>
-                        <button class="increase-qty-btn" data-cart-key="${item.cartKey}">➕</button>
+                    <div class="product-name-container">
+                        <h3 class="product-name">${productGroup.productInfo.name}</h3>
                     </div>
                 </div>
                 
+                <!-- Variants List -->
+                <div class="variants-container">
+                    ${productGroup.variants.map(variant => {
+                        const isSelected = variant.selected !== false;
+                        const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
+                        const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
+                        const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
+                        const variantDiscountedTotal = variantSubtotal - variantDiscountAmount;
+
+                        let variantPriceDisplay;
+                        if (currentDiscountRate > 0 && isSelected) {
+                            variantPriceDisplay = `
+                                <div class="variant-price">
+                                    <span class="variant-original">$${variantSubtotal.toFixed(0)}</span>
+                                    <span class="variant-discounted">$${variantDiscountedTotal.toFixed(0)}</span>
+                                </div>
+                            `;
+                        } else {
+                            variantPriceDisplay = `
+                                <div class="variant-price">
+                                    <span class="variant-final">$${variantSubtotal.toFixed(0)}</span>
+                                </div>
+                            `;
+                        }
+
+                        return `
+                            <div class="variant-item ${!isSelected ? 'variant-unselected' : ''}" data-cart-key="${variant.cartKey}">
+                                <div class="variant-controls">
+                                    <label class="variant-checkbox-container">
+                                        <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${variant.cartKey}">
+                                        
+                                    </label>
+                                    
+                                    <div class="variant-info">
+                                        <div class="variant-details">
+                                            <span class="variant-size">${variant.size}</span>
+                                            <span class="variant-unit-price">${variant.price}/個</span>
+                                        </div>
+                                        <div class="variant-quantity-price">
+                                            <div class="variant-quantity-control">
+                                                <button class="decrease-qty-btn" data-cart-key="${variant.cartKey}">➖</button>
+                                                <span class="variant-quantity">${variant.quantity}</span>
+                                                <button class="increase-qty-btn" data-cart-key="${variant.cartKey}">➕</button>
+                                            </div>
+                                            ${variantPriceDisplay}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                
+                <!-- Product Total -->
+                ${productTotalDisplay}
             `;
             
-            // Apply visual styling based on selection state
-            if (!isSelected) {
-                cartItemDiv.classList.add('item-unselected');
-            }
-            
-            sideCart.itemsContainer.appendChild(cartItemDiv);
+            sideCart.itemsContainer.appendChild(productDiv);
         });
         
-        // Show discount section when cart has items
         showSideCartDiscountSection();
     }
 
-    // Update total and item count (only counting selected items)
+    // Update total and item count
     updateSideCartTotals();
 
     // Show/hide checkout button based on selected items
@@ -590,8 +667,177 @@ function renderSideCart() {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', handleItemSelection);
     });
+    const increaseButtons = sideCart.itemsContainer.querySelectorAll('.increase-qty-btn');
+    const decreaseButtons = sideCart.itemsContainer.querySelectorAll('.decrease-qty-btn');
     
-    // Add event listeners for quantity buttons
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, 1);
+        });
+    });
+    
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const cartKey = e.target.dataset.cartKey;
+            changeCartQuantityByKey(cartKey, -1);
+        });
+    });
+    // Update totals
+    updateSideCartTotals();
+}
+
+// Update renderSideCartItemsOnly() with the same grouped structure
+function renderSideCartItemsOnly() {
+    sideCart.itemsContainer.innerHTML = '';
+    
+    // Group cart items by product ID
+    const groupedItems = cart.reduce((groups, item) => {
+        if (!groups[item.id]) {
+            groups[item.id] = {
+                productInfo: {
+                    id: item.id,
+                    name: item.name,
+                    img: item.img
+                },
+                variants: []
+            };
+        }
+        groups[item.id].variants.push(item);
+        return groups;
+    }, {});
+
+    // Render each product group
+    Object.values(groupedItems).forEach(productGroup => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('side-cart-product-group');
+        
+        // Calculate total for this product (all variants)
+        let productTotal = 0;
+        let productDiscountedTotal = 0;
+        let hasSelectedVariants = false;
+        
+        productGroup.variants.forEach(variant => {
+            const isSelected = variant.selected !== false;
+            if (isSelected) {
+                hasSelectedVariants = true;
+                const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
+                const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
+                const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
+                productTotal += variantSubtotal;
+                productDiscountedTotal += (variantSubtotal - variantDiscountAmount);
+            }
+        });
+
+        const productDiscountAmount = productTotal - productDiscountedTotal;
+
+        // Generate product total display
+        let productTotalDisplay = '';
+        if (hasSelectedVariants) {
+            if (currentDiscountRate > 0) {
+                productTotalDisplay = `
+                    <div class="product-total-container">
+                        <div class="product-total-line">
+                            <span class="total-label">單品總計:</span>
+                            <span class="original-total">$${productTotal.toFixed(0)}</span>
+                        </div>
+                        <div class="discount-total-line">
+                            <span class="total-label">折後總計:</span>
+                            <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
+                        </div>
+                        <div class="product-savings">
+                            <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                productTotalDisplay = `
+                    <div class="product-total-container">
+                        <div class="product-total-line">
+                            <span class="total-label">單品總計:</span>
+                            <span class="final-total">$${productTotal.toFixed(0)}</span>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        productDiv.innerHTML = `
+            <!-- Product Header: Image (30%) + Name (70%) -->
+            <div class="product-header">
+                <div class="product-image-container">
+                    <img src="${productGroup.productInfo.img}" alt="${productGroup.productInfo.name}" class="product-image">
+                </div>
+                <div class="product-name-container">
+                    <h3 class="product-name">${productGroup.productInfo.name}</h3>
+                </div>
+            </div>
+            
+            <!-- Variants List -->
+            <div class="variants-container">
+                ${productGroup.variants.map(variant => {
+                    const isSelected = variant.selected !== false;
+                    const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
+                    const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
+                    const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
+                    const variantDiscountedTotal = variantSubtotal - variantDiscountAmount;
+
+                    let variantPriceDisplay;
+                    if (currentDiscountRate > 0 && isSelected) {
+                        variantPriceDisplay = `
+                            <div class="variant-price">
+                                <span class="variant-original">$${variantSubtotal.toFixed(0)}</span>
+                                <span class="variant-discounted">$${variantDiscountedTotal.toFixed(0)}</span>
+                            </div>
+                        `;
+                    } else {
+                        variantPriceDisplay = `
+                            <div class="variant-price">
+                                <span class="variant-final">$${variantSubtotal.toFixed(0)}</span>
+                            </div>
+                        `;
+                    }
+
+                    return `
+                        <div class="variant-item ${!isSelected ? 'variant-unselected' : ''}" data-cart-key="${variant.cartKey}">
+                            <div class="variant-controls">
+                                <label class="variant-checkbox-container">
+                                    <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${variant.cartKey}">
+                                </label>
+                                
+                                <div class="variant-info">
+                                    <div class="variant-details">
+                                        <span class="variant-size">${variant.size}</span>
+                                        <span class="variant-unit-price">${variant.price}/個</span>
+                                    </div>
+                                    <div class="variant-quantity-price">
+                                        <div class="variant-quantity-control">
+                                            <button class="decrease-qty-btn" data-cart-key="${variant.cartKey}">➖</button>
+                                            <span class="variant-quantity">${variant.quantity}</span>
+                                            <button class="increase-qty-btn" data-cart-key="${variant.cartKey}">➕</button>
+                                        </div>
+                                        ${variantPriceDisplay}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+            
+            <!-- Product Total -->
+            ${productTotalDisplay}
+        `;
+        
+        sideCart.itemsContainer.appendChild(productDiv);
+    });
+    
+    // Re-add event listeners
+    const checkboxes = sideCart.itemsContainer.querySelectorAll('.item-select-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleItemSelection);
+    });
+    
     const increaseButtons = sideCart.itemsContainer.querySelectorAll('.increase-qty-btn');
     const decreaseButtons = sideCart.itemsContainer.querySelectorAll('.decrease-qty-btn');
     
@@ -667,7 +913,6 @@ function hideSideCartDiscountSection() {
     }
 }
 
-// Apply discount from side cart
 function applySideCartDiscount() {
     const discountInput = document.getElementById('side-cart-discount-code');
     const discountMessage = document.getElementById('side-cart-discount-message');
@@ -691,8 +936,11 @@ function applySideCartDiscount() {
         }
     }
     
-    // Update totals with new discount
-    updateSideCartTotals();
+    // IMPORTANT: Re-render the entire side cart to update:
+    // 1. Product-level subtotals with discount
+    // 2. Individual variant pricing with discount  
+    // 3. Main cart total
+    renderSideCart();
 }
 
 // Update side cart totals with discount consideration
@@ -700,109 +948,16 @@ function updateSideCartTotals() {
     const subtotal = calculateSelectedSubtotal();
     const discountAmount = subtotal * (currentDiscountRate / 100);
     const finalTotal = subtotal - discountAmount;
-    console.log("cart data: ", cart);
-    // Keep the total display simple - just show the final total
-    sideCart.totalSpan.textContent = `${finalTotal.toFixed(0)}`;
     
-    // Update item count
+    // Update the displayed totals
+    sideCart.totalSpan.textContent = `$${finalTotal.toFixed(0)}`;
     navbar.cartItemCountSpan.textContent = getSelectedItemCount();
     
-    // Re-render items to show updated discount on each item
-    if (currentDiscountRate > 0) {
-        renderSideCartItemsOnly();
-    }
+    // Store values for checkout
+    sessionStorage.setItem('currentDiscountRate', currentDiscountRate.toString());
+    sessionStorage.setItem('orderDiscountAmountForSubmission', discountAmount.toString());
 }
 
-// Helper function to re-render just the items (without clearing everything)
-function renderSideCartItemsOnly() {
-    sideCart.itemsContainer.innerHTML = '';
-    
-    cart.forEach(item => {
-        const cartItemDiv = document.createElement('div');
-        cartItemDiv.classList.add('side-cart-item');
-        cartItemDiv.setAttribute('data-cart-item-id', item.cartKey);
-        
-        const isSelected = item.selected !== false;
-        
-        // Calculate item subtotal and discount
-        const unitPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
-        const itemSubtotal = !isNaN(unitPrice) ? unitPrice * item.quantity : 0;
-        const itemDiscountAmount = itemSubtotal * (currentDiscountRate / 100);
-        const itemDiscountedTotal = itemSubtotal - itemDiscountAmount;
-        
-        // Generate subtotal display based on discount
-        let subtotalDisplay;
-        if (currentDiscountRate > 0 && isSelected) {
-            subtotalDisplay = `
-                <div class="item-subtotal-container">
-                    <span class="item-subtotal original-price">小計: <del>$${itemSubtotal.toFixed(0)}</del></span>
-                    <span class="item-subtotal discounted-price">$${itemDiscountedTotal.toFixed(0)}</span>
-                    <span class="item-savings">省 ${itemDiscountAmount.toFixed(0)}</span>
-                </div>
-            `;
-        } else {
-            subtotalDisplay = `<span class="item-subtotal">小計: $${itemSubtotal.toFixed(0)}</span>`;
-        }
-        
-        cartItemDiv.innerHTML = `
-            <div class="item-controls">
-                <label class="checkbox-container">
-                    <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${item.cartKey}">
-                    <span class="checkmark">✓</span>
-                </label>
-            </div>
-            <img src="${item.img}" alt="${item.name}">
-            <div class="item-info">
-                <div class="item-row name-row">
-                    <span class="item-name">${item.name}</span>
-                </div>
-                <div class="item-row size-price-row">
-                    <span class="item-size">${item.size}</span>
-                    <span class="item-unit-price">${item.price}</span>
-                </div>
-                <div class="item-row subtotal-row">
-                    
-                    ${subtotalDisplay}
-                </div>
-                <div class="quantity-control">
-                    <button class="decrease-qty-btn" data-cart-key="${item.cartKey}">➖</button>
-                    <span class="quantity">${item.quantity}</span>
-                    <button class="increase-qty-btn" data-cart-key="${item.cartKey}">➕</button>
-                </div>
-            </div>
-            
-        `;
-        
-        if (!isSelected) {
-            cartItemDiv.classList.add('item-unselected');
-        }
-        
-        sideCart.itemsContainer.appendChild(cartItemDiv);
-    });
-    // Re-add event listeners for checkboxes and quantity buttons
-    const checkboxes = sideCart.itemsContainer.querySelectorAll('.item-select-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', handleItemSelection);
-    });
-    
-    // Add event listeners for quantity buttons
-    const increaseButtons = sideCart.itemsContainer.querySelectorAll('.increase-qty-btn');
-    const decreaseButtons = sideCart.itemsContainer.querySelectorAll('.decrease-qty-btn');
-    
-    increaseButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const cartKey = e.target.dataset.cartKey;
-            changeCartQuantityByKey(cartKey, 0);
-        });
-    });
-    
-    decreaseButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const cartKey = e.target.dataset.cartKey;
-            changeCartQuantityByKey(cartKey, 0);
-        });
-    });
-}
 
 // Calculate subtotal for selected items only (without discount)
 function calculateSelectedSubtotal() {
@@ -828,17 +983,13 @@ function handleItemSelection(event) {
     if (cartItem) {
         cartItem.selected = isChecked;
         
-        // Update visual appearance
-        const cartItemDiv = event.target.closest('.side-cart-item');
-        if (isChecked) {
-            cartItemDiv.classList.remove('item-unselected');
-        } else {
-            cartItemDiv.classList.add('item-unselected');
-        }
+        // IMPORTANT: Re-render the entire side cart to update:
+        // 1. Visual checkbox states
+        // 2. Product-level totals (單品總計)
+        // 3. Variant visual styling (selected/unselected)
+        renderSideCart();
         
-        // Update totals and checkout button
-        updateSideCartTotals();
-        
+        // Update main cart totals and checkout button
         const hasSelectedItems = cart.some(item => item.selected !== false);
         sideCart.checkoutBtn.style.display = hasSelectedItems ? 'block' : 'none';
     }
