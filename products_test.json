@@ -682,5 +682,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/11.png\"]",
     "title": "5ml",
     "category": "美妝保健"
+  },
+  {
+    "id": "E018",
+    "name": "大激賞 夜納豆Q10膠囊30顆",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":1200},{\"price\":1200,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/12.png\"]",
+    "title": "30粒/瓶",
+    "category": "美妝保健"
   }
 ]
