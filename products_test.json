@@ -628,5 +628,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/05.png\"]",
     "title": "一盒14包 / 每包20ml",
     "category": "美妝保健"
+  },
+  {
+    "id": "E012",
+    "name": "恬睡飲 量子鎂素Mg",
+    "pricing": "[{\"price\":990,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":990}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/06.png\"]",
+    "title": "一盒14包 / 每包20ml",
+    "category": "美妝保健"
   }
 ]
