@@ -583,5 +583,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/02.png\"]",
     "title": "8包入/盒 (每包3.5g)",
     "category": "美妝保健"
+  },
+  {
+    "id": "E007",
+    "name": "康普茶 綠茶",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":780},{\"size\":\"1斤(600g)\",\"price\":780}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/03.png\"]",
+    "title": "14包入/盒 (每包5g±1%)",
+    "category": "美妝保健"
   }
 ]
