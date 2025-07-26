@@ -664,5 +664,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/09.png\"]",
     "title": "50g",
     "category": "美妝保健"
+  },
+  {
+    "id": "E016",
+    "name": "大薑軍電氣石貼布",
+    "pricing": "[{\"price\":190,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":190}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/10.png\"]",
+    "title": "10入/包",
+    "category": "美妝保健"
   }
 ]
