@@ -637,8 +637,8 @@
       "成分": "豆類，芝麻，乳酪絲"
     }
   },
-  "j01": {
-    "id": "j01",
+  "開心果醬": {
+    "id": "開心果醬",
     "name": "西西里開心果醬",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022738.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022737.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022736.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022734.jpg\"]",
     "description": "義大利西西里開心果醬",
@@ -646,6 +646,17 @@
     "specs": {
       "原產地": "義大利",
       "成分": "開心果，食用油"
+    }
+  },
+  "E001": {
+    "id": "E001",
+    "name": "咕嚕咕嚕超纖酵素粉(黃金土鳳梨)",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "description": "*澱粉、蛋白、脂肪、纖維分解酵素及十益菌，維持消化道機能\n*使排便順暢，促進新陳代謝\n*海洋鎂(天然海水礦物質提取)",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":880},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": ""
     }
   }
 }
