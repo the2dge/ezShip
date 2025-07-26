@@ -911,5 +911,16 @@
       "原產地": "台灣",
       "成分": ""
     }
+  },
+  "E025": {
+    "id": "E025",
+    "name": "靈芝多醣體發泡錠（10錠）",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/19.png\"]",
+    "description": "*靈芝多醣體添加                                                                                                   *維生素C                                                                                                                            *維生素D 800IU                                                                                                           *鋅",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":180},{\"size\":\"1斤(600g)\",\"price\":180}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": ""
+    }
   }
 }
