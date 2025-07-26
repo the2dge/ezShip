@@ -538,5 +538,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
     "title": "14包入/盒 (每包10g±3%)",
     "category": "美妝保健"
+  },
+  {
+    "id": "E002",
+    "name": "咕嚕咕嚕超纖酵素粉 (綜合莓果)",
+    "pricing": "[{\"price\":880,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "title": "14包入/盒 (每包10g±3%)",
+    "category": "美妝保健"
   }
 ]
