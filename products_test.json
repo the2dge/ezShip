@@ -522,12 +522,21 @@
     "category": "休閒養生"
   },
   {
-    "id": "j01",
+    "id": "開心果醬",
     "name": "西西里開心果醬",
     "pricing": "[{\"size\":\"一罐\",\"price\":600}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022738.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022737.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022736.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022734.jpg\"]",
     "title": "",
     "category": "堅果"
+  },
+  {
+    "id": "E001",
+    "name": "咕嚕咕嚕超纖酵素粉(黃金土鳳梨)",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":880},{\"size\":\"1斤(600g)\",\"price\":880}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "title": "14包入/盒 (每包10g±3%)",
+    "category": "美妝保健"
   }
 ]
