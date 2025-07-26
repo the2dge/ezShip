@@ -745,5 +745,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/18.png\"]",
     "title": "8包入/盒",
     "category": "美妝保健"
+  },
+  {
+    "id": "E025",
+    "name": "靈芝多醣體發泡錠（10錠）",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":180},{\"size\":\"1斤(600g)\",\"price\":180}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/19.png\"]",
+    "title": "(每包10g±3%)",
+    "category": ""
   }
 ]
