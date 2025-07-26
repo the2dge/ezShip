@@ -646,5 +646,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/07.png\"]",
     "title": "20片/包 7.5cm*12cm/片",
     "category": ""
+  },
+  {
+    "id": "E014",
+    "name": "溫熱清體排濁貼布",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":350},{\"size\":\"1斤(600g)\",\"price\":350}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/08.png\"]",
+    "title": "20片/包 7.5cm*12cm/片",
+    "category": "美妝保健"
   }
 ]
