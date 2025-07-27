@@ -722,7 +722,7 @@
   {
     "id": "E022",
     "name": "大激賞 穀胱甘太美顏C膠囊30顆",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":980},{\"size\":\"1斤(600g)\",\"price\":980}]",
+    "pricing": "[{\"price\":980,\"size\":\"30粒/瓶\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/16.png\"]",
     "title": "30粒/瓶",
