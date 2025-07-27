@@ -713,7 +713,7 @@
   {
     "id": "E021",
     "name": "大激賞 苦瓜胜肽EX",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":1200},{\"size\":\"1斤(600g)\",\"price\":1200}]",
+    "pricing": "[{\"price\":1200,\"size\":\"30粒/瓶\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/15.png\"]",
     "title": "30粒/瓶",
