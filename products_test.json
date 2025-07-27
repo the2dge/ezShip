@@ -569,7 +569,7 @@
   {
     "id": "E005",
     "name": "大麥薄荷茶 拋水 茶包",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":480},{\"size\":\"1斤(600g)\",\"price\":480}]",
+    "pricing": "[{\"price\":480,\"size\":\"8包入/盒\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/02.png\"]",
     "title": "8包入/盒 (每包3.5g)",
