@@ -578,7 +578,7 @@
   {
     "id": "E006",
     "name": "藤黃果洛神茶 油切 茶包",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":480},{\"price\":480,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"8包入/盒\",\"price\":480}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/02.png\"]",
     "title": "8包入/盒 (每包3.5g)",
