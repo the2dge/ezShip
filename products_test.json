@@ -641,7 +641,7 @@
   {
     "id": "E013",
     "name": "碧璽貼布，溫和有效",
-    "pricing": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":350,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"20片/包\",\"price\":350}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/07.png\"]",
     "title": "20片/包 7.5cm*12cm/片",
