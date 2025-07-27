@@ -740,7 +740,7 @@
   {
     "id": "E024",
     "name": "靈芝勁量快充電解水(8包/盒)",
-    "pricing": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":450}]",
+    "pricing": "[{\"size\":\"8包入/盒\",\"price\":450}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/18.png\"]",
     "title": "8包入/盒",
