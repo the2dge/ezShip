@@ -596,7 +596,7 @@
   {
     "id": "E008",
     "name": "康普茶 熱帶水果",
-    "pricing": "[{\"price\":780,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":780}]",
+    "pricing": "[{\"size\":\"14包入/盒\",\"price\":780}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/03.png\"]",
     "title": "14包入/盒 (每包5g±1%)",
