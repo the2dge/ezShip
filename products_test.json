@@ -326,11 +326,11 @@
   {
     "id": "C016",
     "name": "檸檬片",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020755.jpg\"]",
     "title": "",
-    "category": ""
+    "category": "乾果"
   },
   {
     "id": "C017",
