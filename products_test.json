@@ -317,11 +317,11 @@
   {
     "id": "C015",
     "name": "無籽梅肉乾",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"size\":\"1斤(600g)\",\"price\":950}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"price\":950,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020807.jpg\"]",
     "title": "",
-    "category": ""
+    "category": "乾果"
   },
   {
     "id": "C016",
