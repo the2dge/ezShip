@@ -263,11 +263,11 @@
   {
     "id": "C009",
     "name": "乾燥無花果",
-    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/figs.jpg\"]",
     "title": "",
-    "category": ""
+    "category": "乾果"
   },
   {
     "id": "C010",
