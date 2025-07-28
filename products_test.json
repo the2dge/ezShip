@@ -200,11 +200,11 @@
   {
     "id": "C002",
     "name": "中藥橄欖",
-    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dry_herbal_olive.png\"]",
     "title": "",
-    "category": ""
+    "category": "乾果"
   },
   {
     "id": "C003",
