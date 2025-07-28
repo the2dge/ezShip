@@ -218,11 +218,11 @@
   {
     "id": "C004",
     "name": "大黑葡萄乾",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":400}]",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grapes_black.jpg\"]",
     "title": "",
-    "category": ""
+    "category": "乾果"
   },
   {
     "id": "C005",
