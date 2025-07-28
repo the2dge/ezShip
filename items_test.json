@@ -378,7 +378,7 @@
     "name": "新鮮青梅乾(有仔)",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020806.jpg\"]",
     "description": "促進消化 幫助腸道蠕動 改善口臭 含抗氧化物 減少疲勞感 護肝排毒",
-    "price": "[{\"price\":225,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":430}]",
+    "price": "[{\"price\":225,\"size\":\"半斤(300g)\"},{\"price\":430,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "青梅"
