@@ -389,7 +389,7 @@
     "name": "無籽梅肉乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020807.jpg\"]",
     "description": "促進食慾 幫助消化 緩解口臭與生津止渴 抗氧化 去籽更方便食用",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"size\":\"1斤(600g)\",\"price\":950}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"price\":950,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "酸梅"
