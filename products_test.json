@@ -434,11 +434,11 @@
   {
     "id": "D008",
     "name": "特級紅棗",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":580,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":580}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020783.jpg\"]",
     "title": "",
-    "category": "休閒養生"
+    "category": "乾果"
   },
   {
     "id": "D009",
