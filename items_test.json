@@ -323,7 +323,7 @@
     "name": "乾燥無花果",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/figs.jpg\"]",
     "description": "高膳食纖維 豐富鈣質 補充鉀與鎂 含抗氧化物質 天然糖分來源 促進消化 助於心血管健康",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":400}]",
     "specs": {
       "原產地": "中東",
       "成分": "無花果"
