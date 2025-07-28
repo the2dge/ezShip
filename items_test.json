@@ -543,7 +543,7 @@
     "name": "紅棗脆片",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dates_cuts.jpg\"]",
     "description": "保留紅棗營養 膳食纖維豐富 低脂低卡 天然抗氧化成分 增強體力",
-    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "紅棗"
