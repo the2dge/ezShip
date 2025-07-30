@@ -659,9 +659,9 @@
   {
     "id": "E015",
     "name": "大薑軍活力滲透霜50g",
-    "pricing": "[{\"size\":\"50g\",\"price\":490}]",
+    "pricing": "[{\"price\":490,\"size\":\"50g\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/09.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B1.jpg\"]",
     "title": "50g",
     "category": "美妝保健"
   },
