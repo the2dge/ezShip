@@ -533,9 +533,9 @@
   {
     "id": "E001",
     "name": "咕嚕咕嚕超纖酵素粉(黃金土鳳梨)",
-    "pricing": "[{\"size\":\"14包入/盒\",\"price\":880}]",
+    "pricing": "[{\"price\":880,\"size\":\"14包入/盒\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A7.jpg\"]",
     "title": "14包入/盒 (每包10g±3%)",
     "category": "美妝保健"
   },
