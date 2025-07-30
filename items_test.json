@@ -673,7 +673,7 @@
   "E003": {
     "id": "E003",
     "name": "咕嚕咕嚕超纖酵素粉 (優格益生菌)",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/C7.jpg\"]",
     "description": "*澱粉、蛋白、脂肪、纖維分解酵素及十益菌，維持消化道機能\n*使排便順暢，促進新陳代謝\n*海洋鎂(天然海水礦物質提取)",
     "price": "[{\"size\":\"14包入/盒\",\"price\":880}]",
     "specs": {
