@@ -740,9 +740,9 @@
   {
     "id": "E024",
     "name": "靈芝勁量快充電解水(8包/盒)",
-    "pricing": "[{\"size\":\"8包入/盒\",\"price\":450}]",
+    "pricing": "[{\"price\":450,\"size\":\"8包入/盒\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/18.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H7.jpg\"]",
     "title": "8包入/盒",
     "category": "美妝保健"
   },
