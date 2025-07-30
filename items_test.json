@@ -904,9 +904,9 @@
   "E024": {
     "id": "E024",
     "name": "靈芝勁量快充電解水(8包/盒)",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/18.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/H7.jpg\"]",
     "description": "靈芝多醣體                                                                                                             *無咖啡因                                                                                                                *液態補充吸收快                                                                                                                 *以補充能量取代預支能量",
-    "price": "[{\"size\":\"8包入/盒\",\"price\":450}]",
+    "price": "[{\"price\":450,\"size\":\"8包入/盒\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
