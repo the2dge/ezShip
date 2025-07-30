@@ -805,9 +805,9 @@
   "E015": {
     "id": "E015",
     "name": "大薑軍活力滲透霜50g",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/09.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B1.jpg\"]",
     "description": "*運動後、貼身按摩、舒緩肌膚不適感。\n*天然草本成分，無添加刺激性化學物質。\n*溫熱與清涼雙重效果，快速舒緩不適。\n適用族群:運動員、搬重物導致肌肉不適者、姿勢不良導致不適者。",
-    "price": "[{\"size\":\"50g\",\"price\":490}]",
+    "price": "[{\"price\":490,\"size\":\"50g\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
