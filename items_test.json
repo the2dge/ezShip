@@ -772,9 +772,9 @@
   "E012": {
     "id": "E012",
     "name": "恬睡飲 量子鎂素Mg",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A7.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A8.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173154_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173155_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173156_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173157_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173158_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173159_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173160_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173161_0.jpg\"]",
     "description": "*專利黑棗發酵粉、專利NMN酵母粉、專利猴頭菇菌絲體粉                             *酸棗仁萃取粉、L-色胺酸                                                                                     *安全SGS檢驗:不含有害生菌、不含重金屬、不含禁用防腐劑。",
-    "price": "[{\"price\":990,\"size\":\"一盒14包\"}]",
+    "price": "[{\"size\":\"一盒14包\",\"price\":990}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
