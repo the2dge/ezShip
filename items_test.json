@@ -695,9 +695,9 @@
   "E005": {
     "id": "E005",
     "name": "大麥薄荷茶 拋水 茶包",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/02.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/I1.jpg\"]",
     "description": "*養顏美容，促進新陳代謝\n*幫助消化，維持健康\n*幫助維持消化道機能，促進排便順暢\n*適合族群：三餐外食族、愛吃油炸食物、想維持體態",
-    "price": "[{\"price\":480,\"size\":\"8包入/盒\"}]",
+    "price": "[{\"size\":\"8包入/盒\",\"price\":480}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
