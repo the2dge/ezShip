@@ -713,9 +713,9 @@
   {
     "id": "E021",
     "name": "大激賞 苦瓜胜肽EX",
-    "pricing": "[{\"price\":1200,\"size\":\"30粒/瓶\"}]",
+    "pricing": "[{\"size\":\"30粒/瓶\",\"price\":1200}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/15.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/B6.jpg\"]",
     "title": "30粒/瓶",
     "category": "美妝保健"
   },
