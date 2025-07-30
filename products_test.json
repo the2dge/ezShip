@@ -632,9 +632,9 @@
   {
     "id": "E012",
     "name": "恬睡飲 量子鎂素Mg",
-    "pricing": "[{\"size\":\"一盒14包\",\"price\":990}]",
+    "pricing": "[{\"price\":990,\"size\":\"一盒14包\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/06.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A7.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A8.jpg\"]",
     "title": "一盒14包 / 每包20ml",
     "category": "美妝保健"
   },
