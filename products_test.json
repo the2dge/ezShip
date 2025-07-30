@@ -731,9 +731,9 @@
   {
     "id": "E023",
     "name": "大激賞 夜清葉黃素膠囊30顆",
-    "pricing": "[{\"size\":\"30粒/瓶\",\"price\":980}]",
+    "pricing": "[{\"price\":980,\"size\":\"30粒/瓶\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D6.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173122_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173123_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173124_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173125_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173126_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173127_0.jpg\"]",
     "title": "30粒/瓶",
     "category": "美妝保健"
   },
