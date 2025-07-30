@@ -704,9 +704,9 @@
   {
     "id": "E020",
     "name": "大激賞 葡萄糖胺步步順膠囊",
-    "pricing": "[{\"size\":\"30粒/瓶\",\"price\":980}]",
+    "pricing": "[{\"price\":980,\"size\":\"30粒/瓶\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E7.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173128_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173129_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173130_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173131_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173132_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173133_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173134_0.jpg\"]",
     "title": "30粒/瓶",
     "category": "美妝保健"
   },
