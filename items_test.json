@@ -651,9 +651,9 @@
   "E001": {
     "id": "E001",
     "name": "咕嚕咕嚕超纖酵素粉(黃金土鳳梨)",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/01.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A7.jpg\"]",
     "description": "*澱粉、蛋白、脂肪、纖維分解酵素及十益菌，維持消化道機能\n*使排便順暢，促進新陳代謝\n*海洋鎂(天然海水礦物質提取)",
-    "price": "[{\"size\":\"14包入/盒\",\"price\":880}]",
+    "price": "[{\"price\":880,\"size\":\"14包入/盒\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
