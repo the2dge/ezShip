@@ -849,7 +849,7 @@
   "E019": {
     "id": "E019",
     "name": "大激賞 元氣紅潤膠囊30顆",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/13.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/A7.jpg\"]",
     "description": "*甘氨酸亞鐵50mg(每顆含鐵質10mg)                                                                                    *複方維生素C 32.5mg                                                                                                         *啤酒酵母B群 88.5mg                                                                                                           *調整體質，維持活力好氣色",
     "price": "[{\"size\":\"30粒/瓶\",\"price\":980}]",
     "specs": {
