@@ -587,9 +587,9 @@
   {
     "id": "E007",
     "name": "康普茶 綠茶",
-    "pricing": "[{\"size\":\"14包入/盒\",\"price\":780}]",
+    "pricing": "[{\"price\":780,\"size\":\"14包入/盒\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/03.png\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D7.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D8.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D9.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/D10.jpg\"]",
     "title": "14包入/盒 (每包5g±1%)",
     "category": "美妝保健"
   },
