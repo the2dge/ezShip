@@ -684,7 +684,7 @@
   "E004": {
     "id": "E004",
     "name": "鳳梨酵素茶 順暢 茶包",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/L1.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/L1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/K7.jpg\"]",
     "description": "*養顏美容，促進新陳代謝\n*幫助消化，維持健康\n*幫助維持消化道機能，促進排便順暢\n*適合族群：三餐外食族、愛吃油炸食物、想維持體態",
     "price": "[{\"size\":\"8包入/盒\",\"price\":480}]",
     "specs": {
