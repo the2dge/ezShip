@@ -860,9 +860,9 @@
   "E020": {
     "id": "E020",
     "name": "大激賞 葡萄糖胺步步順膠囊",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E6.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/E7.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173128_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173129_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173130_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173131_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173132_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173133_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173134_0.jpg\"]",
     "description": "*葡萄糖胺、鯊魚軟骨粉、MSM、二型膠原蛋白\n*葡萄糖胺+軟骨粉+二型膠原蛋白，複方成分達到靈活關鍵",
-    "price": "[{\"size\":\"30粒/瓶\",\"price\":980}]",
+    "price": "[{\"price\":980,\"size\":\"30粒/瓶\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
