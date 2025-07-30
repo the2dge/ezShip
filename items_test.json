@@ -882,9 +882,9 @@
   "E022": {
     "id": "E022",
     "name": "大激賞 穀胱甘太美顏C膠囊30顆",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F1.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F2.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F3.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F4.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F5.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/F6.jpg\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173135_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173136_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173137_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173138_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173139_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173140_0.jpg\"]",
     "description": "*日本頂級圓酵母榖胱甘肽添加                                                                            *綜合蔬果粉添加                                                                                                   *薏仁萃取物添加                                                                                                   *西印度櫻桃萃取物(含維生素C)                                                                                                  *多種成分、複方加成",
-    "price": "[{\"price\":980,\"size\":\"30粒/瓶\"}]",
+    "price": "[{\"size\":\"30粒/瓶\",\"price\":980}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
