@@ -375,6 +375,7 @@ a { text-decoration: none;}
   box-sizing: border-box;
 }
 .item-detail .item-info img{
+    margin-left: 50px;
     width: 12%;
 }
 .item-detail .item-info h2 {
