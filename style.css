@@ -218,6 +218,18 @@ a { text-decoration: none;}
     background-color: orange;
     color: white;
 }
+.webLink {
+    background-color: orange;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+.webLink:hover{
+  color: orange;
+  background-color: grey;
+}
 /* Add these styles or similar to your style.css */
 
 .category-section {
