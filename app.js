@@ -405,6 +405,7 @@ async function renderItemDetails(productId) {
 
         // --- Check for member discount code ---
         const discountCode = sessionStorage.getItem('memberDiscountCode') || '';
+        console.log("memeber discount code is: ", discountCode);
         let shareText = `${itemData.name} ${shareUrl}`;
         if (discountCode) {
           shareText += `\n使用我的優惠碼: ${discountCode}`;
