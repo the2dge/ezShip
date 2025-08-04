@@ -2771,7 +2771,19 @@ async function init() {
       return;
     }
   }
+  const productId = urlParams.get('product');
+  if (productId) {
+    // Ensure products data is ready before rendering details
+    if (!Object.keys(allItemDetails).length) {
+      allItemDetails = await fetchData('items_test.json');
+    }
+    await renderItemDetails(productId);
+    switchView('item');
 
+    // Clean URL after loading
+    window.history.replaceState({}, document.title, window.location.pathname);
+    return;
+  }
   // ── Normal startup ──
   await renderMainContent();
   defer(renderDeferredContent);
