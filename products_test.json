@@ -569,9 +569,9 @@
   {
     "id": "E005",
     "name": "大麥薄荷茶 拋水 茶包",
-    "pricing": "[{\"size\":\"8包入/盒\",\"price\":480}]",
+    "pricing": "[{\"price\":480,\"size\":\"8包入/盒\"}]",
     "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/I1.jpg\"]",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173208_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173209_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173210_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173211_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173212_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173207_0.jpg\"]",
     "title": "8包入/盒 (每包3.5g)",
     "category": "美妝保健"
   },
