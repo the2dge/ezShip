@@ -739,9 +739,9 @@
   "E009": {
     "id": "E009",
     "name": "康普茶 薑檸",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/03.png\"]",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173258_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173259_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173260_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173261_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173262_0.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/173263_0.jpg\"]",
     "description": "*德國專利纖維包覆技術\n*發酵過程中穩定保存維生素和營養物質\n*幫助消化，使排便順暢\n*促進新陳代謝，調整體質",
-    "price": "[{\"size\":\"14包入/盒\",\"price\":780}]",
+    "price": "[{\"price\":780,\"size\":\"14包入/盒\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": ""
