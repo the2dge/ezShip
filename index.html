@@ -236,7 +236,46 @@
     <script src="login.js"></script>
     <script src="app.js"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const webLinkBtn = document.querySelector('.webLink');
+  if (webLinkBtn) {
+    webLinkBtn.addEventListener('click', () => {
+      const shareUrl = `${window.location.origin}`;
+      const memberDiscountCode = sessionStorage.getItem('memberDiscountCode') || '';
+      let shareText = `快來逛逛荳荳精選商品！ ${shareUrl}`;
+      if (memberDiscountCode) {
+        shareText += `\n使用我的優惠碼: ${memberDiscountCode}`;
+      }
 
+      Swal.fire({
+        title: '分享我們的網站',
+        html: `
+          <div style="display:flex;justify-content:space-around;align-items:center;font-size:2rem;">
+            <a href="https://line.me/R/msg/text/?${encodeURIComponent(shareText)}" target="_blank" title="LINE">
+              <img src="image/line.png" alt="LINE" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}" target="_blank" title="Facebook">
+              <img src="image/facebook.png" alt="Facebook" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.instagram.com/?url=${encodeURIComponent(shareUrl)}" target="_blank" title="Instagram">
+              <img src="image/instagram.png" alt="Instagram" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
+              <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
+              <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
+            </a>
+          </div>
+        `,
+        showConfirmButton: false,
+        showCloseButton: true
+      });
+    });
+  }
+});
+</script>
+<script>
 document.addEventListener('DOMContentLoaded', function () {
   const hamburger = document.getElementById('hamburger-toggle');
   const mobileNav = document.getElementById('mobile-nav');
