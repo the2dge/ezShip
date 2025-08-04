@@ -2626,6 +2626,7 @@ async function updateNavbarWithUserName(userName) {
    const data = await res.json();
 
     if (data.status === 'success') {
+      console.log("Member info:", data);
       isMember = true;
     }
 
