@@ -404,7 +404,7 @@ async function renderItemDetails(productId) {
         const shareUrl = `${window.location.origin}?product=${encodeURIComponent(itemData.id)}`;
 
         // --- Check for member discount code ---
-        const discountCode = sessionStorage.getItem('discountCode') || '';
+        const discountCode = sessionStorage.getItem('memberDiscountCode') || '';
         let shareText = `${itemData.name} ${shareUrl}`;
         if (discountCode) {
           shareText += `\n使用我的優惠碼: ${discountCode}`;
@@ -2626,8 +2626,13 @@ async function updateNavbarWithUserName(userName) {
    const data = await res.json();
 
     if (data.status === 'success') {
-      console.log("Member info:", data);
       isMember = true;
+      if (data.discountCode) {
+        sessionStorage.setItem('memberDiscountCode', data.discountCode);
+        console.log('Member discount code loaded:', data.discountCode);
+      } else {
+        sessionStorage.removeItem('memberDiscountCode');
+      }
     }
 
     if (loginBtn) {
