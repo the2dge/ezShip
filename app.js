@@ -412,7 +412,7 @@ async function renderItemDetails(productId) {
         }
 
         Swal.fire({
-          title: '分享商品',
+          title: '好物分享',
           html: `
             <div style="display:flex;justify-content:space-around;align-items:center;font-size:2rem;">
               <a href="https://line.me/R/msg/text/?${encodeURIComponent(shareText)}" target="_blank" title="LINE">
