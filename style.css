@@ -219,10 +219,10 @@ a { text-decoration: none;}
     color: white;
 }
 
-.webLink{border: 0px;color: orange;background-color: transparent;border-radius: 50%;}
+.webLink{font-size: 14px;border: 0px;color: orange;background-color: transparent;border-radius: 50%;cursor: pointer;}
 
 .webLink:hover{
-  color: orange;
+  color: grey;
 }
 /* Add these styles or similar to your style.css */
 
