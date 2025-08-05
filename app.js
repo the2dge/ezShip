@@ -2698,7 +2698,12 @@ async function updateNavbarWithUserName(userName) {
     // --- Initialization Function ---
 async function init() {
   const urlParams = new URLSearchParams(window.location.search);
-
+    // ── Case 0: discount code from shared link ──
+  const sharedDiscountCode = urlParams.get('discountCode');
+  if (sharedDiscountCode) {
+    sessionStorage.setItem('discountCode', sharedDiscountCode);
+    console.log("Shared discount code detected:", sharedDiscountCode);
+  }
   // ── Case A: OAuth “code” return ──
   const code = urlParams.get('code');
   if (code) {
@@ -2784,7 +2789,10 @@ async function init() {
     if (!Object.keys(allItemDetails).length) {
       allItemDetails = await fetchData('items_test.json');
     }
+    await renderMainContent();
     await renderItemDetails(productId);
+    setupEventListeners();
+    loadMembershipData();
     switchView('item');
 
     // Clean URL after loading
