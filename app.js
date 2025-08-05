@@ -600,9 +600,9 @@ function renderSideCart() {
                                 <span class="total-label">折後總計:</span>
                                 <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
                             </div>
-                            <div class="product-savings">
+                           <!-- <div class="product-savings">
                                 <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
-                            </div>
+                            </div>-->
                         </div>
                     `;
                 } else {
@@ -781,9 +781,9 @@ function renderSideCartItemsOnly() {
                             <span class="total-label">折後總計:</span>
                             <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
                         </div>
-                        <div class="product-savings">
+                      <!--  <div class="product-savings">
                             <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
-                        </div>
+                        </div>-->
                     </div>
                 `;
             } else {
