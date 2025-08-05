@@ -378,7 +378,7 @@ async function renderItemDetails(productId) {
                 </div>
             </div>
             <div class="item-info">
-                <h2>${itemData.name} <img src="image/share.png" class='share-btn'>
+                <h2>${itemData.name} <span class='share-btn'>好物分享<img src="image/share1.png"></span>
                 </h2>
                 <p>${itemData.description}</p>
                 ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
