@@ -1670,10 +1670,10 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
             <input type="text" id="delivery-address" class="form-control" placeholder="請輸入街道、門牌等詳細地址" style="flex: 2;">
           </div>
         </div>
-       <!-- <div class="form-group">
-            <label for="customer_email">Email:</label>
+        <div class="form-group">
+            <label for="customer_email" style="display:none">Email:</label>
             <input type="email" id="customer_email" name="customer_email" class="form-control" value="${lineUserEmail}" style="display:none">
-        </div>-->
+        </div>
         <div class="form-group">
             <label for="customer_phone">電話:</label>
             <input type="tel" id="customer_phone" name="customer_phone" class="form-control" pattern="09[0-9]{8}" value="${storedPhone}" placeholder="例如: 0912345678" required>
