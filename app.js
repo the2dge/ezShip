@@ -2641,6 +2641,7 @@ async function updateNavbarWithUserName(userName) {
       isMember = true;
       if (data.discountCode) {
         sessionStorage.setItem('memberDiscountCode', data.discountCode);
+        sessionStorage.setItem('discountCode', data.discountCode);
         console.log('Member discount code loaded:', data.discountCode);
       } else {
         sessionStorage.removeItem('memberDiscountCode');
