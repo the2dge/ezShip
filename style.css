@@ -387,10 +387,15 @@ a { text-decoration: none;}
   width: 100%;
   box-sizing: border-box;
 }
-.item-detail .item-info img{
-    margin-left: 50px;
-    width: 12%;
+.item-detail .item-info h2 span{
+    color: orange;
+    font-size: 14px;
 }
+.item-detail .item-info img{
+    margin-left: 20px;
+    width: 30px;
+}
+
 .item-detail .item-info h2 {
   margin: 0 0 8px;
   font-size: 1.5em;
