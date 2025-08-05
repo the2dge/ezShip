@@ -100,7 +100,7 @@
                     <button class="category-btn" data-category="雜糧">養生雜糧</button>
                     <button class="category-btn" data-category="休閒養生">休閒養生</button>
                     <button class="category-btn" data-category="美妝保健">美妝保健</button>
-                    <button class="webLink">好物分享<img src="image/share.png" width="20px"></button>
+                    <button class="webLink">好物分享<img src="image/share1.png" width="20px"></button>
                 </div>
                 <div class="product-grid">
                 </div>
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const memberDiscountCode = sessionStorage.getItem('memberDiscountCode') || '';
       let shareText = `快來逛逛荳荳精選商品！ ${shareUrl}`;
       if (memberDiscountCode) {
-        shareText += `\n使用我的優惠碼: ${memberDiscountCode}`;
+        shareText += `\n歡迎使用我的優惠碼: ${memberDiscountCode}`;         
       }
 
       Swal.fire({
