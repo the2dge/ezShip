@@ -2179,7 +2179,7 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
             // MerchantTradeDate: Formatted YYYY/MM/DD HH:MM:SS (Server should generate this ideally)
             totalAmount: sessionStorage.getItem('finalOrderAmountForSubmission') || 0,
             customField1: pickupOption,
-            customField2: sessionStorage.getItem('lineUserId') || null,
+            customField2: calculatedAddress,
             customField3: nameInput.value,
             customField4: phoneInput.value,
             tradeDesc: 'Order Description', // Replace with your order description
