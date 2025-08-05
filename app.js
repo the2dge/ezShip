@@ -408,7 +408,7 @@ async function renderItemDetails(productId) {
         console.log("memeber discount code is: ", discountCode);
         let shareText = `${itemData.name} ${shareUrl}`;
         if (discountCode) {
-          shareText += `?discountCode=${discountCode}\n歡迎使用我的優惠碼: ${discountCode}`;
+          shareText = `${itemData.name} ${shareUrl}?discountCode=${discountCode}\n歡迎使用我的優惠碼: ${discountCode}`;
         }
 
         Swal.fire({
