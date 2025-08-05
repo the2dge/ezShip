@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const memberDiscountCode = sessionStorage.getItem('memberDiscountCode') || '';
       let shareText = `快來逛逛荳荳精選商品！ ${shareUrl}`;
       if (memberDiscountCode) {
-        shareText += `\n歡迎使用我的優惠碼: ${memberDiscountCode}`;         
+        shareText += `&discountCode=${memberDiscountCode}\n歡迎使用我的優惠碼: ${memberDiscountCode}`;         
       }
 
       Swal.fire({
