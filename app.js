@@ -1652,18 +1652,19 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
               <option value="高雄市">高雄市</option><!--6-->
               <option value="基隆市">基隆市</option><!--7-->
               <option value="新竹市">新竹市</option><!--8-->
-              <option value="嘉義市">嘉義市</option><!--9-->
-              <option value="宜蘭縣">宜蘭縣</option><!--10-->
-              <option value="苗栗縣">苗栗縣</option><!--11-->
-              <option value="彰化縣">彰化縣</option><!--12-->
-              <option value="南投縣">南投縣</option><!--13-->
-              <option value="雲林縣">雲林縣</option><!--14-->
-              <option value="嘉義縣">嘉義縣</option><!--15-->
-              <option value="臺東縣">臺東縣</option><!--16-->
-              <option value="花蓮縣">花蓮縣</option><!--17-->
-              <option value="澎湖縣">澎湖縣</option><!--18-->
-              <option value="金門縣">金門縣</option><!--19-->
-              <option value="連江縣">連江縣</option><!--20-->
+              <option value="新竹縣">新竹縣</option><!--9-->
+              <option value="嘉義市">嘉義市</option><!--10-->
+              <option value="宜蘭縣">宜蘭縣</option><!--11-->
+              <option value="苗栗縣">苗栗縣</option><!--12-->
+              <option value="彰化縣">彰化縣</option><!--13-->
+              <option value="南投縣">南投縣</option><!--14-->
+              <option value="雲林縣">雲林縣</option><!--15-->
+              <option value="嘉義縣">嘉義縣</option><!--16-->
+              <option value="臺東縣">臺東縣</option><!--17-->
+              <option value="花蓮縣">花蓮縣</option><!--18-->
+              <option value="澎湖縣">澎湖縣</option><!--19-->
+              <option value="金門縣">金門縣</option><!--20-->
+              <option value="連江縣">連江縣</option><!--21-->
             </select>
 
             <input type="text" id="delivery-address" class="form-control" placeholder="請輸入街道、門牌等詳細地址" style="flex: 2;">
