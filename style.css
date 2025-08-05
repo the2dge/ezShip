@@ -381,6 +381,7 @@ a { text-decoration: none;}
   box-sizing: border-box;
 }
 .item-detail .item-info h2 span{
+    margin-left: 20px;
     color: orange;
     font-size: 14px;
 }
