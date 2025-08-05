@@ -984,11 +984,22 @@ function updateSideCartTotals() {
     const subtotal = calculateSelectedSubtotal();
     const discountAmount = subtotal * (currentDiscountRate / 100);
     const finalTotal = subtotal - discountAmount;
-    
-    // Update the displayed totals
+
+    // Update totals
     sideCart.totalSpan.textContent = `$${finalTotal.toFixed(0)}`;
+
+    // Handle discount display
+    const discountContainer = document.getElementById('discount-container');
+    const discountElement = document.getElementById('cart-discount');
+    if (discountAmount > 0) {
+        discountElement.textContent = `-$${discountAmount.toFixed(0)}`;
+        discountContainer.style.display = 'inline';
+    } else {
+        discountContainer.style.display = 'none';
+    }
+
     navbar.cartItemCountSpan.textContent = getSelectedItemCount();
-    
+
     // Store values for checkout
     sessionStorage.setItem('currentDiscountRate', currentDiscountRate.toString());
     sessionStorage.setItem('orderDiscountAmountForSubmission', discountAmount.toString());
