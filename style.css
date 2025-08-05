@@ -218,18 +218,11 @@ a { text-decoration: none;}
     background-color: orange;
     color: white;
 }
-.webLink {
-    background-color: orange;
-    border: 0px;
-    padding: 10px 10px;
-    margin: 5px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: 0.3s;
-}
+
+.webLink{border: 0px;color: orange;background-color: transparent;border-radius: 50%;}
+
 .webLink:hover{
   color: orange;
-  background-color: grey;
 }
 /* Add these styles or similar to your style.css */
 
