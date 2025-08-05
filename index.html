@@ -227,8 +227,13 @@
         <div id="side-cart-items" class="side-cart-items">
             </div>
         <div class="side-cart-footer">
-            <p>總金額: <span id="cart-total">$0.00</span></p>
-            <button id="checkout-btn">去買單</button>
+          <p>
+              總金額: <span id="cart-total">$0.00</span>
+              &nbsp;<span id="discount-container" style="display:none;">
+                  折扣: <span id="cart-discount" class="discount-box">$0.00</span>
+              </span>
+          </p>
+          <button id="checkout-btn">去買單</button>
         </div>
     </aside>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
