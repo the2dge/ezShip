@@ -772,5 +772,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023333.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023355.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023356.jpg\"]",
     "title": "超低溫乾燥花生醬",
     "category": "堅果"
+  },
+  {
+    "id": "D017",
+    "name": "藍莓益生菌",
+    "pricing": "[{\"price\":350,\"size\":\"10小包/袋\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023359.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023360.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023362.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023363.jpg\"]",
+    "title": "鳳梨酵素藍莓益生菌",
+    "category": "美妝保健"
   }
 ]
