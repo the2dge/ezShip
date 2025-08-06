@@ -966,5 +966,16 @@
       "原產地": "台灣",
       "成分": "腰果杏仁核桃胡桃夏威夷豆南瓜籽"
     }
+  },
+  "D019": {
+    "id": "D019",
+    "name": "杉林溪春茶",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023340.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023345.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023348.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023347.jpg\"]",
+    "description": "自家種植純天然台灣好茶，杉林溪春茶",
+    "price": "[{\"price\":1200,\"size\":\"半斤(300g)\"}]",
+    "specs": {
+      "原產地": "台灣",
+      "成分": "茶葉"
+    }
   }
 }
