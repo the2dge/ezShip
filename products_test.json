@@ -808,5 +808,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023343.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023344.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023349.jpg\"]",
     "title": "綜合堅果罐裝大",
     "category": "堅果"
+  },
+  {
+    "id": "A018",
+    "name": "大罐裝綜合纖堅果",
+    "pricing": "[{\"size\":\"450g\",\"price\":620}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022250.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022247.jpg\"]",
+    "title": "大罐裝綜合堅果B款",
+    "category": "堅果"
   }
 ]
