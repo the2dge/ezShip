@@ -580,7 +580,7 @@ function renderSideCart() {
                     const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
                     const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
                     productTotal += variantSubtotal;
-                    productDiscountedTotal += (variantSubtotal - variantDiscountAmount - 0.1);
+                    productDiscountedTotal += (variantSubtotal - variantDiscountAmount);
                 }
             });
 
@@ -635,8 +635,8 @@ function renderSideCart() {
                         const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
                         const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
                         const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
-                        const variantDiscountedTotal = variantSubtotal - variantDiscountAmount;
-
+                        const variantDiscountedTotal = variantSubtotal - variantDiscountAmount - 0.5;
+                        
                         let variantPriceDisplay;
                         if (currentDiscountRate > 0 && isSelected) {
                             variantPriceDisplay = `
