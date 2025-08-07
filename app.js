@@ -1819,6 +1819,7 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     }
 }
 
+
     function validateCustomerName() {
   const nameField = document.getElementById('customer_name');
   const name = nameField.value.trim();
