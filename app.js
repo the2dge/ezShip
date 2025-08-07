@@ -1863,15 +1863,30 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
   return true;
 }
     function validateFormFields() {
-        const isShippingSelected = shippingSelect.value !== "";
-        const is711StoreSelectedIfApplicable = shippingSelect.value !== 'seven_eleven' || (shippingSelect.value === 'seven_eleven' && sessionStorage.getItem('selectedStoreInfo'));
-
-        return isShippingSelected &&
-               is711StoreSelectedIfApplicable &&
-               nameInput.value.trim() !== '' &&
-               emailInput.checkValidity() && // Built-in email validation
-               phoneInput.checkValidity(); // For pattern matching e.g. "09[0-9]{8}"
+    const isShippingSelected = shippingSelect.value !== "";
+    const is711StoreSelectedIfApplicable = shippingSelect.value !== 'seven_eleven' || 
+        (shippingSelect.value === 'seven_eleven' && sessionStorage.getItem('selectedStoreInfo'));
+    
+    // Basic form fields validation
+    const basicFieldsValid = nameInput.value.trim() !== '' &&
+                            emailInput.checkValidity() && 
+                            phoneInput.checkValidity();
+    
+    // Additional validation for 宅配 (store_pickup)
+    let deliveryAddressValid = true;
+    if (shippingSelect.value === 'store_pickup') {
+        const citySelect = document.getElementById('delivery-city');
+        const addressInput = document.getElementById('delivery-address');
+        
+        deliveryAddressValid = citySelect && citySelect.value !== '' && 
+                              addressInput && addressInput.value.trim() !== '';
     }
+
+    return isShippingSelected &&
+           is711StoreSelectedIfApplicable &&
+           basicFieldsValid &&
+           deliveryAddressValid;
+}
 
     // Add event listeners to form fields for validation
     [nameInput, emailInput, phoneInput, shippingSelect, paymentSelect].forEach(el => {
