@@ -635,7 +635,7 @@ function renderSideCart() {
                         const unitPrice = parseFloat(variant.price.replace(/[^0-9.-]+/g, ""));
                         const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
                         const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
-                        const variantDiscountedTotal = variantSubtotal - variantDiscountAmount - 0.1;
+                        const variantDiscountedTotal = variantSubtotal - variantDiscountAmount;
                         
                         let variantPriceDisplay;
                         if (currentDiscountRate > 0 && isSelected) {
