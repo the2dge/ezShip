@@ -580,7 +580,7 @@ function renderSideCart() {
                     const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
                     const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
                     productTotal += variantSubtotal;
-                    productDiscountedTotal += (variantSubtotal - variantDiscountAmount);
+                    productDiscountedTotal += (variantSubtotal - variantDiscountAmount - 0.1);
                 }
             });
 
