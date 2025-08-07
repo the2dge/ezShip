@@ -385,6 +385,9 @@ a { text-decoration: none;}
     color: orange;
     font-size: 14px;
 }
+.item-detail .item-info h2 span:hover{
+  cursor: pointer;
+}
 .item-detail .item-info img{
     width: 30px;
 }
