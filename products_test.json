@@ -811,11 +811,11 @@
   },
   {
     "id": "A018",
-    "name": "大罐裝綜合纖堅果",
-    "pricing": "[{\"size\":\"450g\",\"price\":620}]",
+    "name": "大罐裝綜合纖堅果A款",
+    "pricing": "[{\"price\":620,\"size\":\"450g\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022250.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022247.jpg\"]",
-    "title": "大罐裝綜合堅果B款",
+    "title": "大罐裝綜合堅果A款",
     "category": "堅果"
   }
 ]
