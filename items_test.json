@@ -982,8 +982,8 @@
     "id": "A017",
     "name": "大罐裝綜合纖堅果B款",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023343.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023344.jpg\"]",
-    "description": "大罐裝A款,內容物:\n杏仁,核桃,胡桃,夏豆,腰果,野生小藍莓\n\n#純原味_不添加任何鹽_糖_香料_防腐劑\n現作品：保存期限4個月",
-    "price": "[{\"size\":\"450公克\",\"price\":620}]",
+    "description": "大罐裝B款,內容物:\n杏仁,核桃,胡桃,夏豆,腰果,野生小藍莓\n\n#純原味_不添加任何鹽_糖_香料_防腐劑\n現作品：保存期限4個月",
+    "price": "[{\"price\":620,\"size\":\"450公克\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁,核桃,胡桃,夏威夷豆,腰果,野生小藍莓"
