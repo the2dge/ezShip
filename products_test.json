@@ -785,7 +785,7 @@
   {
     "id": "D018",
     "name": "原味綜合堅果醬",
-    "pricing": "[{\"size\":\"500公克\",\"price\":550}]",
+    "pricing": "[{\"price\":550,\"size\":\"500公克\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023336.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023351.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000013164.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000013160.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/5f00e5b4-1464-458b-8064-ef0726f3857a-1_all_8520.jpg\"]",
     "title": "無添原味綜合堅果醬",
