@@ -767,7 +767,7 @@
   {
     "id": "D016",
     "name": "原味花生醬",
-    "pricing": "[{\"price\":350,\"size\":\"500公克\"}]",
+    "pricing": "[{\"size\":\"500公克\",\"price\":350}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023333.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023355.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023356.jpg\"]",
     "title": "超低溫乾燥花生醬",
