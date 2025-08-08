@@ -803,7 +803,7 @@
   {
     "id": "A017",
     "name": "大罐裝綜合纖堅果B款",
-    "pricing": "[{\"size\":\"450公克\",\"price\":620}]",
+    "pricing": "[{\"price\":620,\"size\":\"450公克\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023343.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000023344.jpg\"]",
     "title": "大罐裝綜合纖堅果B款",
