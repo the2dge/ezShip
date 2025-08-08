@@ -991,10 +991,10 @@
   },
   "A018": {
     "id": "A018",
-    "name": "大罐裝綜合纖堅果",
+    "name": "大罐裝綜合纖堅果A款",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022250.jpg\",\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022247.jpg\"]",
     "description": "腰果,杏仁,核桃,胡桃,夏威夷豆,枸杞,蔓越莓",
-    "price": "[{\"size\":\"450g\",\"price\":620}]",
+    "price": "[{\"price\":620,\"size\":\"450g\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "腰果,杏仁,核桃,胡桃,夏威夷豆,枸杞,蔓越莓"
