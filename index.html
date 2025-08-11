@@ -28,7 +28,7 @@
         <li><a href="#" id="nav-product">荳荳精選</a></li>
         <li><a href="#" id="nav-about">關於荳荳</a></li>
         <li><a href="#" id="nav-media">荳荳頻道</a></li>
-        <li><a href="#" id="nav-member">荳荳會員</a></li>
+        <li><a href="#" id="nav-member">荳荳消費</a></li>
         <li><a href="#" id="nav-contact">聯絡我們</a></li>
       </ul>
     </nav>
@@ -79,7 +79,7 @@
       <li><a href="#" id="nav-product-mobile">荳荳精選</a></li>
       <li><a href="#" id="nav-about-mobile">關於荳荳</a></li>
       <li><a href="#" id="nav-media-mobile">荳荳頻道</a></li>
-      <li><a href="#" id="nav-member-mobile">荳荳會員</a></li>
+      <li><a href="#" id="nav-member-mobile">荳荳消費</a></li>
       <li><a href="#" id="nav-contact-mobile">聯絡我們</a></li>
     </ul>
   </nav>
@@ -100,7 +100,7 @@
                     <button class="category-btn" data-category="雜糧">養生雜糧</button>
                     <button class="category-btn" data-category="休閒養生">休閒養生</button>
                     <button class="category-btn" data-category="美妝保健">美妝保健</button>
-                    <button class="webLink">好物分享<img src="image/share1.png" width="20px"></button>
+                    <button class="webLink">好物分享<img src="image/share1.png" width="30px"></button>
                 </div>
                 <div class="product-grid">
                 </div>
@@ -112,80 +112,112 @@
                   <div id="media-grid" class="media-grid"></div>
             </section>
             <section id="membership-container" style="padding: 40px 20px; background: #f9f9f9; font-family: 'Helvetica Neue', sans-serif;">
-                  <div style="max-width: 900px; margin: 0 auto;">
-                    <h2 style="text-align:center; color: orange; margin-bottom: 20px;">會員專屬福利</h2>
-                    <p style="text-align:center; color: #666;">用 LINE 快速註冊，享有豐富的會員獎勵、儲值優惠與折扣。</p>
+              <div style="max-width: 900px; margin: 0 auto;">
 
-                    <hr style="margin: 30px 0;">
+                <!-- 消費說明 -->
+                <h2 id="guide-toggle" style="text-align:center; color: orange; margin-bottom: 20px; cursor:pointer">消費說明 ▾</h2>
+                <p style="text-align:center; color: #666;">宅配及 7-11 便利商店取貨、付款方式總覽。</p>
+                <hr style="margin: 20px 0;">
+                <div id="guide-content" class="collapsible">
+                  <h3>📦 購物/出貨與付款指南</h3>
+                  <ul style="line-height: 1.9; margin: 0; padding-left: 20px;">
+                    <li><strong>取貨方式</strong>：可選擇 <strong>宅配</strong> 或 <strong>7-11 取貨</strong>。</li>
+                    <li><strong>7-11 取貨</strong>
+                      <ul style="margin-top: 6px;">
+                        <li>非會員：<strong>到店付款</strong> 或 <strong>信用卡付款</strong></li>
+                        <li>會員：<strong>到店付款</strong>、<strong>信用卡付款</strong>、或 <strong>會員儲值金</strong>（信用點）</li>
+                      </ul>
+                    </li>
+                    <li><strong>宅配</strong>
+                      <ul style="margin-top: 6px;">
+                        <li>非會員：<strong>信用卡付款</strong></li>
+                        <li>會員：<strong>信用卡付款</strong> 或 <strong>會員儲值金</strong></li>
+                      </ul>
+                    </li>
+                  </ul>
 
-                    <h3>📱 簡易註冊流程</h3>
-                    <ul style="line-height: 1.8;">
-                      <li>使用 LINE ID 登入</li>
-                      <li>首次登入，系統將要求提供手機號碼</li>
-                      <li>完成註冊即可享優惠</li>
-                    </ul>
-
-                    <h3>🏅 會員等級制度</h3>
-                    <table style="width:100%; border-collapse: collapse; margin-bottom: 20px; text-align: center;">
-                      <thead>
-                        <tr style="background-color: #ddd;">
-                          <th style="padding: 10px;">等級</th>
-                          <th>儲值金額</th>
-                          <th>年消費金額</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>銅級</td><td>$1,000</td><td>$1,000</td></tr>
-                        <tr><td>銀級</td><td>$10,000</td><td>$11,000</td></tr>
-                        <tr><td>金級</td><td>$20,000</td><td>$22,000</td></tr>
-                        <tr><td>鑽石級</td><td>$50,000</td><td>$55,000</td></tr>
-                      </tbody>
-                    </table>
-
-                    <h3>💰 儲值回饋方案 透過 綠界科技(ECPay) 刷卡</h3>
-                    <ul style="line-height: 1.8;">
-                      <li>$1,000 儲值 ➜ 獲得 $1,020 儲值金 (2% 優惠)</li>
-                      <li>$3,000 儲值 ➜ 獲得 $3,090 儲值金 (3% 優惠)</li>
-                      <li>$5,000 儲值 ➜ 獲得 $5,200 儲值金 (4% 優惠)</li>
-                      <li>$10,000 儲值 ➜ 獲得 $10,500 儲值金 (5% 優惠)</li>
-                      <li>$20,000 儲值 ➜ 獲得 $21,400 儲值金 (7% 優惠)</li>
-                      <li>$50,000 儲值 ➜ 獲得 $55,000 儲值金 (10% 優惠)</li>
-                    </ul>
-
-                    <h3>🛒 會員折扣</h3>
-                    <table style="width:100%; border-collapse: collapse; margin-bottom: 20px; text-align: center;">
-                      <thead>
-                        <tr style="background-color: #ddd;">
-                          <th style="padding: 10px;">等級</th>
-                          <th>線上購物折扣</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr><td>銅會員</td><td>2% 折扣</td></tr>
-                        <tr><td>銀會員</td><td>3% 折扣</td></tr>
-                        <tr><td>金會員</td><td>5% 折扣</td></tr>
-                        <tr><td>鑽石會員</td><td>10% 折扣</td></tr>
-                      </tbody>
-                    </table>
-
-                    <h3>🔗 分享折扣碼賺積分</h3>
-                    <ol style="line-height: 1.8;">
-                      <li>將折扣碼分享給朋友</li>
-                      <li>朋友購物可享折扣</li>
-                      <li>您可獲得等級對應的獎勵積分</li>
-                      <li>2% / 3% / 5% / 10% 根據您的會員等級</li>
-                      <li>每累積 500 積分 ➜ 可兌換為儲值金</li>
-                    </ol>
-
-                    <p id="joinNow" style="text-align:center; margin-top: 40px;">
-                      <a href="javascript:void(0)" 
-                         style="background: #ff9900; color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold;" 
-                         onclick="loginWithLINE()">
-                         立即加入會員
-                      </a>
-                    </p>
+                  <!-- 可選：簡要運費門檻提示 -->
+                  <div style="margin-top:14px; font-size:0.95rem; color:#555;">
+                    <p style="margin:0.3rem 0;">🚚 <strong>7-11 取貨</strong>：未滿 $1200 可能酌收運費（系統於結帳自動計算）。</p>
+                    <p style="margin:0.3rem 0;">🏠 <strong>宅配</strong>：未滿 $3000 可能酌收運費（系統於結帳自動計算）。</p>
                   </div>
-                </section>
+                </div>
+
+                <!-- 會員專屬福利 -->
+                <h2 id="benefits-toggle" style="text-align:center; color: orange; margin: 30px 0 20px; cursor:pointer">會員專屬福利 ▾</h2>
+                <p style="text-align:center; color: #666;">用 LINE 快速註冊，享有豐富的會員獎勵、儲值優惠與折扣。</p>
+                <hr style="margin: 20px 0;">
+                <div id="benefits-content" class="collapsible">
+                  <h3>📱 簡易註冊流程</h3>
+                  <ul style="line-height: 1.8;">
+                    <li>使用 LINE ID 登入</li>
+                    <li>首次登入，系統將要求提供手機號碼</li>
+                    <li>完成註冊即可享優惠</li>
+                  </ul>
+
+                  <h3>🏅 會員等級制度</h3>
+                  <table style="width:100%; border-collapse: collapse; margin-bottom: 20px; text-align: center;">
+                    <thead>
+                      <tr style="background-color: #ddd;">
+                        <th style="padding: 10px;">等級</th>
+                        <th>儲值金額</th>
+                        <th>年消費金額</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>銅級</td><td>$1,000</td><td>$1,000</td></tr>
+                      <tr><td>銀級</td><td>$10,000</td><td>$11,000</td></tr>
+                      <tr><td>金級</td><td>$20,000</td><td>$22,000</td></tr>
+                      <tr><td>鑽石級</td><td>$50,000</td><td>$55,000</td></tr>
+                    </tbody>
+                  </table>
+
+                  <h3>💰 儲值回饋方案 透過 綠界科技(ECPay) 刷卡</h3>
+                  <ul style="line-height: 1.8;">
+                    <li>$1,000 儲值 ➜ 獲得 $1,020 儲值金 (2% 優惠)</li>
+                    <li>$3,000 儲值 ➜ 獲得 $3,090 儲值金 (3% 優惠)</li>
+                    <li>$5,000 儲值 ➜ 獲得 $5,200 儲值金 (4% 優惠)</li>
+                    <li>$10,000 儲值 ➜ 獲得 $10,500 儲值金 (5% 優惠)</li>
+                    <li>$20,000 儲值 ➜ 獲得 $21,400 儲值金 (7% 優惠)</li>
+                    <li>$50,000 儲值 ➜ 獲得 $55,000 儲值金 (10% 優惠)</li>
+                  </ul>
+
+                  <h3>🛒 會員折扣</h3>
+                  <table style="width:100%; border-collapse: collapse; margin-bottom: 20px; text-align: center;">
+                    <thead>
+                      <tr style="background-color: #ddd;">
+                        <th style="padding: 10px;">等級</th>
+                        <th>線上購物折扣</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>銅會員</td><td>2% 折扣</td></tr>
+                      <tr><td>銀會員</td><td>3% 折扣</td></tr>
+                      <tr><td>金會員</td><td>5% 折扣</td></tr>
+                      <tr><td>鑽石會員</td><td>10% 折扣</td></tr>
+                    </tbody>
+                  </table>
+
+                  <h3>🔗 分享折扣碼賺積分</h3>
+                  <ol style="line-height: 1.8;">
+                    <li>將折扣碼分享給朋友</li>
+                    <li>朋友購物可享折扣</li>
+                    <li>您可獲得等級對應的獎勵積分</li>
+                    <li>2% / 3% / 5% / 10% 根據您的會員等級</li>
+                    <li>每累積 500 積分 ➜ 可兌換為儲值金</li>
+                  </ol>
+
+                  <p id="joinNow" style="text-align:center; margin-top: 40px;">
+                    <a href="javascript:void(0)" 
+                       style="background: #ff9900; color: white; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold;" 
+                       onclick="loginWithLINE()">
+                       立即加入會員
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </section>
+                   
         </div>
 
         <div id="item-wrapper" class="wrapper">
@@ -249,11 +281,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const memberDiscountCode = sessionStorage.getItem('memberDiscountCode') || '';
       let shareText = `快來逛逛荳荳精選商品！ ${shareUrl}`;
       if (memberDiscountCode) {
-        shareText += `?discountCode=${memberDiscountCode}\n歡迎使用我的優惠碼: ${memberDiscountCode}`;         
+        shareText += `\n使用我的優惠碼: ${memberDiscountCode}`;
       }
 
       Swal.fire({
-        title: '分享我們的網站',
+        title: '分享荳荳精選',
         html: `
           <div style="display:flex;justify-content:space-around;align-items:center;font-size:2rem;">
             <a href="https://line.me/R/msg/text/?${encodeURIComponent(shareText)}" target="_blank" title="LINE">
@@ -267,6 +299,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </a>
             <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
               <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
+            </a>
+            <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
+              <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
             </a>
           </div>
         `,
@@ -334,6 +369,39 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const guideH2    = document.getElementById('guide-toggle');
+  const guideBox   = document.getElementById('guide-content');
+  const beneH2     = document.getElementById('benefits-toggle');
+  const beneBox    = document.getElementById('benefits-content');
+
+  function openOnly(boxToOpen) {
+    [guideBox, beneBox].forEach(box => box.classList.remove('open'));
+    if (boxToOpen) boxToOpen.classList.add('open');
+  }
+
+  // Click handlers
+  if (guideH2 && guideBox) {
+    guideH2.addEventListener('click', () => {
+      const willOpen = !guideBox.classList.contains('open');
+      openOnly(willOpen ? guideBox : null);
+    });
+  }
+  if (beneH2 && beneBox) {
+    beneH2.addEventListener('click', () => {
+      const willOpen = !beneBox.classList.contains('open');
+      openOnly(willOpen ? beneBox : null);
+    });
+  }
+
+  // Optional: auto-open based on hash (#guide / #benefits)
+  if (location.hash === '#guide') openOnly(guideBox);
+  else if (location.hash === '#benefits') openOnly(beneBox);
+  // Or pick one as default:
+  // openOnly(guideBox);
+});
 </script>
 
 </body>
