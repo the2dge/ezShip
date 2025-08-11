@@ -1,5 +1,3 @@
-
-//Have issue when discount Code is applied!
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -392,23 +390,28 @@ async function renderItemDetails(productId) {
 
     const backBtn = mainBody.itemWrapper.querySelector('.back-to-products-btn');
     if (backBtn) {
-        backBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (currentView !== 'content') switchView('content');
-            document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
-        });
+      backBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Clear URL parameters (keep only the path)
+        history.pushState({ view: 'content' }, '', window.location.pathname);
+
+        if (currentView !== 'content') {
+          switchView('content');
+        }
+        document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+      });
     }
     const shareBtn = mainBody.itemWrapper.querySelector('.share-btn');
     if (shareBtn) {
       shareBtn.addEventListener('click', () => {
-        const shareUrl = `${window.location.origin}?product=${encodeURIComponent(itemData.id)}`;
-
         // --- Check for member discount code ---
         const discountCode = sessionStorage.getItem('memberDiscountCode') || '';
-        console.log("memeber discount code is: ", discountCode);
-        let shareText = `這個 ${itemData.name} 好棒!\n ${shareUrl}`;
+        const shareUrl = `${window.location.origin}?product=${encodeURIComponent(itemData.id)}`;
+
+        let shareText = `${itemData.name} ${shareUrl}`;
         if (discountCode) {
-          shareText = `這個 ${itemData.name} 好棒!\n ${shareUrl}&discountCode=${discountCode}\n歡迎使用我的優惠碼: ${discountCode}`;
+          shareText += `?discountCode=${discountCode}\n歡迎使用我的優惠碼: ${discountCode}`;
         }
 
         Swal.fire({
@@ -426,6 +429,9 @@ async function renderItemDetails(productId) {
               </a>
               <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
                 <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
+              </a>
+              <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
+                <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
               </a>
             </div>
           `,
@@ -602,7 +608,7 @@ function renderSideCart() {
                             </div>
                            <!-- <div class="product-savings">
                                 <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
-                            </div>-->
+                            </div> -->
                         </div>
                     `;
                 } else {
@@ -636,7 +642,7 @@ function renderSideCart() {
                         const variantSubtotal = !isNaN(unitPrice) ? unitPrice * variant.quantity : 0;
                         const variantDiscountAmount = variantSubtotal * (currentDiscountRate / 100);
                         const variantDiscountedTotal = variantSubtotal - variantDiscountAmount;
-                        
+
                         let variantPriceDisplay;
                         if (currentDiscountRate > 0 && isSelected) {
                             variantPriceDisplay = `
@@ -980,6 +986,23 @@ function applySideCartDiscount() {
 }
 
 // Update side cart totals with discount consideration
+function updateSideCartTotals1() {
+    const subtotal = calculateSelectedSubtotal();
+    const discountAmount = subtotal * (currentDiscountRate / 100);
+    const finalTotal = subtotal - discountAmount;
+
+    // Update the displayed totals
+    const discountElement = document.getElementById('cart-discount');
+    if (discountElement) {
+        discountElement.textContent = `-$${discountAmount.toFixed(0)}`;
+    }
+    sideCart.totalSpan.textContent = `$${finalTotal.toFixed(0)}`;
+    navbar.cartItemCountSpan.textContent = getSelectedItemCount();
+
+    // Store values for checkout
+    sessionStorage.setItem('currentDiscountRate', currentDiscountRate.toString());
+    sessionStorage.setItem('orderDiscountAmountForSubmission', discountAmount.toString());
+}
 function updateSideCartTotals() {
     const subtotal = calculateSelectedSubtotal();
     const discountAmount = subtotal * (currentDiscountRate / 100);
@@ -1671,7 +1694,7 @@ function createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo) {
           </div>
         </div>
         <div class="form-group">
-            <label for="customer_email" style="display:none">Email:</label>
+            <label for="customer_email" style="display: none">Email:</label>
             <input type="email" id="customer_email" name="customer_email" class="form-control" value="${lineUserEmail}" style="display:none">
         </div>
         <div class="form-group">
@@ -1818,7 +1841,6 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
         submitButton.disabled = false;
     }
 }
-
 
     function validateCustomerName() {
   const nameField = document.getElementById('customer_name');
@@ -2050,6 +2072,7 @@ if (shippingMethodValue === 'seven_eleven' && selectedStoreInfo) {
 
     if (city && address) {
         calculatedAddress = `宅配:${city}${address}`;
+        customField2Value = `宅配地址: ${city}${address}`;
     } else {
         calculatedAddress = null; // Incomplete input
     }
@@ -2195,7 +2218,7 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
             // MerchantTradeDate: Formatted YYYY/MM/DD HH:MM:SS (Server should generate this ideally)
             totalAmount: sessionStorage.getItem('finalOrderAmountForSubmission') || 0,
             customField1: pickupOption,
-            customField2: calculatedAddress,
+            customField2: calculatedAddress || null,
             customField3: nameInput.value,
             customField4: phoneInput.value,
             tradeDesc: 'Order Description', // Replace with your order description
@@ -2436,6 +2459,23 @@ document.addEventListener('DOMContentLoaded', () => {
         ECpayStoreDataBackTransfer(); // Re-process ECPay data if any, as it might be relevant on BFCache restore
     }
 });
+    window.addEventListener('popstate', async (e) => {
+  const state = e.state || {};
+  if (state.view === 'item' && state.productId) {
+    if (!Object.keys(allItemDetails || {}).length) {
+      allItemDetails = await fetchData('items_test.json');
+    }
+    await renderItemDetails(state.productId);
+    switchView('item');
+  } else {
+    await renderMainContent();
+    switchView('content');
+    // (optional) restore previous list scroll
+    if (typeof window.__listScrollY === 'number') {
+      requestAnimationFrame(() => window.scrollTo(0, window.__listScrollY));
+    }
+  }
+});
     // --- Event Listeners Setup ---
     function setupEventListeners() {
         // Navbar Links (Scroll within content view)
@@ -2531,17 +2571,29 @@ document.addEventListener('DOMContentLoaded', () => {
              console.warn("Category filters container not found for event listener setup.");
         }
         // Product Item Click (Event Delegation)
-        contentContainers.productContainer.addEventListener('click', (e) => {
-            const productItem = e.target.closest('.product-item');
+        contentContainers.productContainer.addEventListener('click', async (e) => {
+  const productItem = e.target.closest('.product-item');
+  if (!productItem || productItem.classList.contains('out-of-stock')) return;
 
-            // MODIFIED: Add a check to ensure the item is NOT out of stock before proceeding.
-            if (productItem && !productItem.classList.contains('out-of-stock')) {
-                const productId = productItem.dataset.productId;
-                renderItemDetails(productId); // Render the detail view
-                switchView('item');           // Switch to the item view
-            }
-            // If the item has the 'out-of-stock' class, nothing happens.
-        });
+  const productId = productItem.dataset.productId;
+
+  // (optional) remember current list scroll so you can restore it later
+  window.__listScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+
+  // include discountCode in URL if present (propagates member/shared code)
+  const dc = sessionStorage.getItem('discountCode') || sessionStorage.getItem('memberDiscountCode') || '';
+  const itemUrl = `${window.location.pathname}?product=${encodeURIComponent(productId)}${dc ? `&discountCode=${encodeURIComponent(dc)}` : ''}`;
+
+  // push a state so Back returns to your product list (SPA behavior)
+  history.pushState({ view: 'item', productId }, '', itemUrl);
+
+  // make sure details render after the state change
+  if (!Object.keys(allItemDetails || {}).length) {
+    allItemDetails = await fetchData('items_test.json');
+  }
+  await renderItemDetails(productId);
+  switchView('item');
+});
 
          // Add to Cart Click (Event Delegation on item wrapper)
         mainBody.itemWrapper.addEventListener('click', (e) => {
@@ -2727,7 +2779,7 @@ async function updateNavbarWithUserName(userName) {
     // --- Initialization Function ---
 async function init() {
   const urlParams = new URLSearchParams(window.location.search);
-    // ── Case 0: discount code from shared link ──
+  // ── Case 0: discount code from shared link ──
   const sharedDiscountCode = urlParams.get('discountCode');
   if (sharedDiscountCode) {
     sessionStorage.setItem('discountCode', sharedDiscountCode);
@@ -2828,6 +2880,7 @@ async function init() {
     window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
+
   // ── Normal startup ──
   await renderMainContent();
   defer(renderDeferredContent);
