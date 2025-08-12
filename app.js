@@ -1326,72 +1326,77 @@ let currentDiscountRate = 0; // Store as percentage, e.g., 5 for 5%
 
 // --- Main Function to Render Checkout Page ---
 async function renderCheckoutPage(cartItems) {
-    // keep only items where selected !== false (i.e. checked)
-    const selectedItems = cartItems.filter(item => item.selected !== false);
-    mainBody.checkoutWrapper.innerHTML = ''; // Clear previous content
-    window.scrollTo(0, 0);
+    try {
+        // Keep loading visible during the entire process
+        console.log('Starting checkout page render...');
+        
+        const selectedItems = cartItems.filter(item => item.selected !== false);
+        mainBody.checkoutWrapper.innerHTML = '';
+        window.scrollTo(0, 0);
 
-    // --- Data Retrieval ---
-    const storedStoreInfo = JSON.parse(sessionStorage.getItem('selectedStoreInfo'));
-    const lineUserId = sessionStorage.getItem('lineUserId');
-    const lineUserName = sessionStorage.getItem('lineUserName');
-    const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
-   
-    let isMember = false;
+        // Show progress for member data fetching (this can be slow)
+        updateLoadingMessage('正在檢查會員資料...');
+        
+        const storedStoreInfo = JSON.parse(sessionStorage.getItem('selectedStoreInfo'));
+        const lineUserId = sessionStorage.getItem('lineUserId');
+        const lineUserName = sessionStorage.getItem('lineUserName');
+        const lineUserEmail = sessionStorage.getItem('lineUserEmail') || '';
+       
+        let isMember = false;
 
-      if (lineUserId) {
-        const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
-        const data = await res.json();
-        if (data.status === 'success') {
-          isMember = true;
+        if (lineUserId) {
+            const res = await fetch(`https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec?mode=getMemberInfo&lineUserId=${lineUserId}`);
+            const data = await res.json();
+            if (data.status === 'success') {
+                isMember = true;
+            }
         }
-      }
 
-     console.log("LINE ID and isMember?:  ", lineUserId, isMember);
-    // 1. Render Checkout Header (Title "結帳", Login/Member Button)
-    //renderCheckoutHeaderDOM(lineUserName);
-    
-    // 2. Render Ordered Items Summary ("我訂購的商品", list, totals container)
-    renderOrderedItemsSummaryDOM(selectedItems);
+        console.log("LINE ID and isMember?:  ", lineUserId, isMember);
+        
+        // Update loading message for rendering
+        updateLoadingMessage('正在準備結帳表單...');
+        
+        // Render sections
+        renderOrderedItemsSummaryDOM(selectedItems);
+        renderBackToShoppingButtonDOM();
 
-    // 3. Render "Back for More Items" Button
-    renderBackToShoppingButtonDOM();
+        const checkoutFormElement = createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo);
+        mainBody.checkoutWrapper.appendChild(checkoutFormElement);
 
-    // 4. Create and Append Checkout Form
-    const checkoutFormElement = createCheckoutFormDOM(lineUserName, lineUserEmail, storedStoreInfo);
-    mainBody.checkoutWrapper.appendChild(checkoutFormElement);
-
-    // Get a local reference to the shipping select element FROM THE NEWLY CREATED FORM
-    // This is used for the initial calculation of shipping cost.
-    const localShippingSelectElement = checkoutFormElement.querySelector('#shipping-method');
-
-    // 6. Initial Calculation of Shipping Cost (Moved before step 5 in execution order for clarity)
-    // This calculation is based on the initial state of the form,
-    // especially the #shipping-method value which createCheckoutFormDOM might have pre-set.
-    if (localShippingSelectElement) { // Ensure the element was found
-        if (localShippingSelectElement.value === 'seven_eleven') {
-            // This implies createCheckoutFormDOM set its value because storedStoreInfo was present
-            currentShippingCost = calculateCartTotal() < 1200 ? 70 : 0;
-        } else if (localShippingSelectElement.value === 'store_pickup') {
-            currentShippingCost = 0;
-        } else { // Default for "" (empty value) or other unexpected values
+        // Calculate shipping
+        const localShippingSelectElement = checkoutFormElement.querySelector('#shipping-method');
+        if (localShippingSelectElement) {
+            if (localShippingSelectElement.value === 'seven_eleven') {
+                currentShippingCost = calculateCartTotal() < 1200 ? 70 : 0;
+            } else if (localShippingSelectElement.value === 'store_pickup') {
+                currentShippingCost = 0;
+            } else {
+                currentShippingCost = 0;
+            }
+        } else {
             currentShippingCost = 0;
         }
-    } else {
-        console.warn('#shipping-method element not found for initial cost calculation in renderCheckoutPage.');
-        currentShippingCost = 0; // Fallback if element isn't found
+        
+        updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
+        initializeCheckoutFormStateAndListeners(checkoutFormElement, selectedItems, storedStoreInfo);
+        
+        // Final step
+        updateLoadingMessage('完成載入...');
+        
+        // Small delay to show completion message
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
+        switchView("checkout");
+        
+        console.log('Checkout page render completed');
+        
+    } catch (error) {
+        console.error('Error in renderCheckoutPage:', error);
+        throw error; // Re-throw so the calling function can handle it
     }
-    updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
-
-    // 5. Initial UI State & Event Listeners
-    // This function will set up all event listeners and may call updateOrderSummaryDisplay again
-    // if, for example, it restores a discount code from session storage.
-    initializeCheckoutFormStateAndListeners(checkoutFormElement, selectedItems, storedStoreInfo);
-    switchView("checkout");
-    // Note: The call to updateOrderSummaryDisplay at the end of initializeCheckoutFormStateAndListeners
-    // will ensure the display is accurate after all its internal setup, including potential restoration
-    // of discount codes which would affect currentDiscountRate.
 }
+
 
 // --- Helper for Top Header: "結帳" Title & Member/Login Button ---
 function handleTopUp(amount) {
@@ -1622,6 +1627,15 @@ function renderOrderedItemsSummaryDOM(cartItems) {
     mainBody.checkoutWrapper.appendChild(totalsContainer);
 }
 
+function updateLoadingMessage(message) {
+    const loadingOverlay = document.getElementById('checkout-loading-overlay');
+    if (loadingOverlay) {
+        const messageElement = loadingOverlay.querySelector('p');
+        if (messageElement) {
+            messageElement.textContent = message;
+        }
+    }
+}
 // --- Helper for "繼續購買" (Back for More Items) Button ---
 function renderBackToShoppingButtonDOM() {
     const backButton = document.createElement('button');
@@ -1638,25 +1652,35 @@ function renderBackToShoppingButtonDOM() {
     backButton.addEventListener('click', async (e) => {
         e.preventDefault();
         
-        // 🔥 ENSURE PRODUCTS ARE LOADED BEFORE SWITCHING VIEW
-        if (!allProductsData || allProductsData.length === 0) {
-            console.log('Products not loaded, fetching...');
-            const productData = await fetchData('products_test.json');
-            if (productData) {
-                allProductsData = productData;
-                renderProductGrid(productData);
-                renderCategoryFilters(productData);
+        try {
+            // If products need to be loaded, show loading
+            if (!allProductsData || allProductsData.length === 0) {
+                showCheckoutLoading();
+                updateLoadingMessage('正在載入商品資料...');
+                
+                console.log('Products not loaded, fetching...');
+                const productData = await fetchData('products_test.json');
+                if (productData) {
+                    allProductsData = productData;
+                    renderProductGrid(productData);
+                    renderCategoryFilters(productData);
+                }
+                
+                hideCheckoutLoading();
             }
-        }
-        
-        if (typeof switchView === 'function') {
-            switchView('content');
-            // Small delay to ensure DOM is updated before scrolling
-            setTimeout(() => {
-                document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        } else {
-            console.error('switchView function is not defined.');
+            
+            if (typeof switchView === 'function') {
+                switchView('content');
+                setTimeout(() => {
+                    document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            } else {
+                console.error('switchView function is not defined.');
+            }
+        } catch (error) {
+            console.error('Error loading products:', error);
+            hideCheckoutLoading();
+            Swal.fire('載入商品資料時發生錯誤，請稍後再試。');
         }
     });
     
@@ -2427,6 +2451,90 @@ function ECpayStoreDataBackTransfer() {
         shippingSelect.dispatchEvent(event);
     }
 }
+function showCheckoutLoading() {
+    // Remove any existing loading overlay
+    hideCheckoutLoading();
+    
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.id = 'checkout-loading-overlay';
+    loadingOverlay.innerHTML = `
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>正在準備結帳頁面...</p>
+            <small>Loading checkout page...</small>
+        </div>
+    `;
+    
+    // Styling for the loading overlay
+    Object.assign(loadingOverlay.style, {
+        position: 'fixed',
+        top: '0',
+        left: '0',
+        width: '100%',
+        height: '100%',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: '9999',
+        backdropFilter: 'blur(2px)'
+    });
+    
+    // Styling for the loading content
+    const loadingContent = loadingOverlay.querySelector('.loading-content');
+    Object.assign(loadingContent.style, {
+        textAlign: 'center',
+        padding: '30px',
+        backgroundColor: 'white',
+        borderRadius: '10px',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+        maxWidth: '300px'
+    });
+    
+    // Add CSS for spinner animation
+    const style = document.createElement('style');
+    style.textContent = `
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #5cb85c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-content p {
+            margin: 10px 0 5px 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .loading-content small {
+            color: #666;
+            font-size: 12px;
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(loadingOverlay);
+    
+    console.log('Checkout loading overlay shown');
+}
+
+function hideCheckoutLoading() {
+    const existingOverlay = document.getElementById('checkout-loading-overlay');
+    if (existingOverlay) {
+        existingOverlay.remove();
+        console.log('Checkout loading overlay hidden');
+    }
+}
 
 // --- Utility: Validate Discount Code ---
 // Make sure membershipData is loaded before this is called.
@@ -2671,17 +2779,40 @@ document.addEventListener('DOMContentLoaded', () => {
         
 
         // Checkout Button Click (in Side Cart)
-        // Checkout Button Click (in Side Cart) - FIXED
-        sideCart.checkoutBtn.addEventListener('click', () => {
-            const selectedItems = cart.filter(item => item.selected !== false);
-            if (selectedItems.length > 0) {
-                renderCheckoutPage(selectedItems); // ⬅️ Pass only selected items
+            sideCart.checkoutBtn.addEventListener('click', async () => {
+        const selectedItems = cart.filter(item => item.selected !== false);
+        if (selectedItems.length > 0) {
+            try {
+                // Show loading immediately
+                showCheckoutLoading();
+                
+                // Disable the checkout button to prevent double-clicks
+                sideCart.checkoutBtn.disabled = true;
+                sideCart.checkoutBtn.textContent = '處理中...';
+                
+                // Small delay to ensure loading shows before heavy operations
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                // Render checkout page (this is async and may take time)
+                await renderCheckoutPage(selectedItems);
+                
+                // Switch view and close side cart
                 switchView('checkout');
-                sideCart.aside.classList.remove('open'); // Close side cart
-            } else {
-                Swal.fire("請選擇要結帳的商品。");
+                sideCart.aside.classList.remove('open');
+                
+            } catch (error) {
+                console.error('Error rendering checkout page:', error);
+                Swal.fire('載入結帳頁面時發生錯誤，請稍後再試。');
+            } finally {
+                // Always hide loading and restore button state
+                hideCheckoutLoading();
+                sideCart.checkoutBtn.disabled = false;
+                sideCart.checkoutBtn.textContent = '結帳';
             }
-        });
+        } else {
+            Swal.fire("請選擇要結帳的商品。");
+        }
+    });
      
     }
 
