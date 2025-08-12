@@ -597,14 +597,19 @@ function generatePricingHtml(pricingData, productId) {
     `;
 }
 // Replace the renderSideCart() function with this grouped version
+// --- Fixed renderSideCart to respect shared product viewing ---
 function renderSideCart() {
     sideCart.itemsContainer.innerHTML = ''; // Clear current items
     if (cart.length === 0) {
         sideCart.itemsContainer.innerHTML = '<p>您的購物車是空的。<br>歡迎重選您喜歡的商品</p>';
         hideSideCartDiscountSection();
-        setTimeout(() => {
-            switchView('content');
-        }, 1500);
+        
+        // 🔥 DON'T auto-switch to content if we're currently viewing a shared product
+        if (currentView !== 'item') {
+            setTimeout(() => {
+                switchView('content');
+            }, 1500);
+        }
     } else {
         // Group cart items by product ID (maintain original functionality)
         const groupedItems = cart.reduce((groups, item) => {
@@ -654,11 +659,11 @@ function renderSideCart() {
                         <div class="product-total-container">
                             <div class="product-total-line">
                                 <span class="total-label">單品總計:</span>
-                                <span class="original-total">${productTotal.toFixed(0)}</span>
+                                <span class="original-total">$${productTotal.toFixed(0)}</span>
                             </div>
                             <div class="discount-total-line">
                                 <span class="total-label">折後總計:</span>
-                                <span class="discounted-total">${productDiscountedTotal.toFixed(0)}</span>
+                                <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
                             </div>
                         </div>
                     `;
@@ -667,7 +672,7 @@ function renderSideCart() {
                         <div class="product-total-container">
                             <div class="product-total-line">
                                 <span class="total-label">單品總計:</span>
-                                <span class="final-total">${productTotal.toFixed(0)}</span>
+                                <span class="final-total">$${productTotal.toFixed(0)}</span>
                             </div>
                         </div>
                     `;
@@ -698,14 +703,14 @@ function renderSideCart() {
                         if (currentDiscountRate > 0 && isSelected) {
                             variantPriceDisplay = `
                                 <div class="variant-price">
-                                    <span class="variant-original">${variantSubtotal.toFixed(0)}</span>
-                                    <span class="variant-discounted">${variantDiscountedTotal.toFixed(0)}</span>
+                                    <span class="variant-original">$${variantSubtotal.toFixed(0)}</span>
+                                    <span class="variant-discounted">$${variantDiscountedTotal.toFixed(0)}</span>
                                 </div>
                             `;
                         } else {
                             variantPriceDisplay = `
                                 <div class="variant-price">
-                                    <span class="variant-final">${variantSubtotal.toFixed(0)}</span>
+                                    <span class="variant-final">$${variantSubtotal.toFixed(0)}</span>
                                 </div>
                             `;
                         }
@@ -745,38 +750,38 @@ function renderSideCart() {
         });
         
         showSideCartDiscountSection();
-        
-        // 🎁 Auto-apply stored discount code if present
-        const storedDiscountCode = sessionStorage.getItem('discountCode');
-        if (storedDiscountCode) {
-            setTimeout(() => {
-                const discountInput = document.getElementById('side-cart-discount-code');
-                const applyBtn = document.getElementById('side-cart-apply-discount');
+    }
+
+    // 🎁 Auto-apply stored discount code if present (moved outside cart.length check)
+    const storedDiscountCode = sessionStorage.getItem('discountCode');
+    if (storedDiscountCode) {
+        setTimeout(() => {
+            const discountInput = document.getElementById('side-cart-discount-code');
+            const applyBtn = document.getElementById('side-cart-apply-discount');
+            
+            if (discountInput && !discountInput.value.trim()) {
+                console.log("🎁 Auto-applying stored discount code:", storedDiscountCode);
+                discountInput.value = storedDiscountCode;
                 
-                if (discountInput && !discountInput.value.trim()) {
-                    console.log("🎁 Auto-applying stored discount code:", storedDiscountCode);
-                    discountInput.value = storedDiscountCode;
-                    
-                    // Trigger apply discount
-                    if (applyBtn) {
-                        applyBtn.click();
-                    }
-                } else if (discountInput && discountInput.value.trim() === storedDiscountCode) {
-                    // Code is already applied, just validate
-                    console.log("🔄 Discount code already applied, validating...");
-                    const discountPercentage = validateDiscountCode(storedDiscountCode);
-                    if (discountPercentage > 0) {
-                        currentDiscountRate = discountPercentage;
-                        const discountMessage = document.getElementById('side-cart-discount-message');
-                        if (discountMessage) {
-                            const tierName = sessionStorage.getItem('discountTier') || '';
-                            discountMessage.textContent = `✅ 已套用 ${tierName} 折扣 (${discountPercentage}% off)!`;
-                            discountMessage.className = 'discount-message success';
-                        }
+                // Trigger apply discount
+                if (applyBtn) {
+                    applyBtn.click();
+                }
+            } else if (discountInput && discountInput.value.trim() === storedDiscountCode) {
+                // Code is already applied, just validate
+                console.log("🔄 Discount code already applied, validating...");
+                const discountPercentage = validateDiscountCode(storedDiscountCode);
+                if (discountPercentage > 0) {
+                    currentDiscountRate = discountPercentage;
+                    const discountMessage = document.getElementById('side-cart-discount-message');
+                    if (discountMessage) {
+                        const tierName = sessionStorage.getItem('discountTier') || '';
+                        discountMessage.textContent = `✅ 已套用 ${tierName} 折扣 (${discountPercentage}% off)!`;
+                        discountMessage.className = 'discount-message success';
                     }
                 }
-            }, 800); // Delay to ensure DOM elements are created
-        }
+            }
+        }, 800); // Delay to ensure DOM elements are created
     }
 
     // Update total and item count
@@ -810,7 +815,6 @@ function renderSideCart() {
     // Update totals
     updateSideCartTotals();
 }
-
 
 // Update renderSideCartItemsOnly() with the same grouped structure
 function renderSideCartItemsOnly() {
