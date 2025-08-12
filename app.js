@@ -1,4 +1,15 @@
 let cart =[];
+function persistCart() {
+  try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (_) {}
+}
+
+function rehydrateCart(saved) {
+  // keep backward compatibility + default selected=true
+  return (Array.isArray(saved) ? saved : []).map(it => ({
+    ...it,
+    selected: it.selected !== false // default to true if missing
+  }));
+}
 document.addEventListener('DOMContentLoaded', async () => {
 
     // --- DOM Element References ---
@@ -1057,6 +1068,7 @@ function handleItemSelection(event) {
         // 1. Visual checkbox states
         // 2. Product-level totals (單品總計)
         // 3. Variant visual styling (selected/unselected)
+        persistCart(); 
         renderSideCart();
         
         // Update main cart totals and checkout button
@@ -1083,7 +1095,7 @@ function changeCartQuantityByKey(cartKey, changeAmount) {
             // Remove the item if quantity is zero or less
             cart.splice(cartItemIndex, 1);
         }
-
+        persistCart(); 
         renderSideCart(); // Re-render cart after change
     }
 }
@@ -1131,6 +1143,7 @@ function handleAddToCartManual(productId, size, price) {
             selected: true
         });
     }
+    persistCart(); 
     renderSideCart();
 }
 
@@ -1203,6 +1216,7 @@ function removeDiscountFromCheckoutForm() {
     function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== productId);
         console.log("Cart updated after removal:", cart);
+        persistCart(); 
         renderSideCart(); // Update the visual cart display
     }
 
@@ -1231,7 +1245,7 @@ function removeDiscountFromCheckoutForm() {
                 // Remove the item if quantity is zero or less
                 cart.splice(cartItemIndex, 1);
             }
-
+            persistCart(); 
             renderSideCart(); // Re-render cart after change
         }
     }
