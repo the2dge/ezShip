@@ -2728,7 +2728,7 @@ async function updateNavbarWithUserName(userName) {
       // Ask to complete registration
       const { value: phoneNumber } = await Swal.fire({
         title: '歡迎加入會員 🎉',
-        text: '是否願意提供電話號碼以完成會員註冊？',
+        text: '請提供電話號碼以完成會員註冊',
         input: 'tel',
         inputLabel: '手機號碼',
         inputPlaceholder: '請輸入您的手機號碼',
