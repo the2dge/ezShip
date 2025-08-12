@@ -1257,6 +1257,8 @@ function openLogisticsMap(orderId) {
         Swal.fire("Order ID 尚未生成，無法開啟門市選擇頁面");
         return;
     }
+    persistCart(); 
+    sessionStorage.setItem('redirectAfterStoreSelect', '1');
     // Open the Cloud Function, passing orderId to ECPay
     const url = `https://mrbean-website-store-select-545199463340.asia-east1.run.app?orderId=${encodeURIComponent(orderId)}`;
     window.open(url, "_self");
