@@ -2794,6 +2794,13 @@ async function updateNavbarWithUserName(userName) {
 
     // --- Initialization Function ---
 async function init() {
+  // Always restore cart first
+  try {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    cart = rehydrateCart(savedCart);
+  } catch (_) {
+    cart = [];
+  }
   const urlParams = new URLSearchParams(window.location.search);
   // ── Case 0: discount code from shared link ──
   const sharedDiscountCode = urlParams.get('discountCode');
@@ -2872,13 +2879,15 @@ async function init() {
       CVSAddress:   storeAddress
     }));
     window.history.replaceState({}, document.title, window.location.pathname);
-
-    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (saved.length) {
-      cart = saved;
-      await renderCheckoutPage(cart);
-      return;
-    }
+  
+    // Always rehydrate; don't require length > 0
+    try {
+      const saved = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart = rehydrateCart(saved);
+    } catch (_) {}
+  
+    await renderCheckoutPage(cart);
+    return;
   }
   const productId = urlParams.get('product');
   if (productId) {
