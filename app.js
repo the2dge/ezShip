@@ -1,17 +1,7 @@
+//It is good but side-cart selected items will be gone after new 7-11 store selection
 let cart =[];
-function persistCart() {
-  try { localStorage.setItem('cart', JSON.stringify(cart)); } catch (_) {}
-}
-
-function rehydrateCart(saved) {
-  // keep backward compatibility + default selected=true
-  return (Array.isArray(saved) ? saved : []).map(it => ({
-    ...it,
-    selected: it.selected !== false // default to true if missing
-  }));
-}
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadMembershipData(); 
+
     // --- DOM Element References ---
     const navbar = {
         logo: document.querySelector('.logo'),
@@ -120,13 +110,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         let membershipData = []; // Store membership data globally
 
         async function loadMembershipData() {
-          try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec');
-            membershipData = await response.json();
-            console.log("Loaded membership promo codes:", membershipData);
-          } catch (error) {
-            console.error('Failed to load membership data:', error);
-          }
+            try {
+                const response = await fetch(' https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec'); // Replace with your Web App URL
+                membershipData = await response.json();
+                console.log("Loaded membership promo codes:", membershipData);
+            } catch (error) {
+                console.error('Failed to load membership data:', error);
+            }
         }
     // --- Rendering Functions ---
 
@@ -1068,7 +1058,6 @@ function handleItemSelection(event) {
         // 1. Visual checkbox states
         // 2. Product-level totals (單品總計)
         // 3. Variant visual styling (selected/unselected)
-        persistCart(); 
         renderSideCart();
         
         // Update main cart totals and checkout button
@@ -1095,7 +1084,7 @@ function changeCartQuantityByKey(cartKey, changeAmount) {
             // Remove the item if quantity is zero or less
             cart.splice(cartItemIndex, 1);
         }
-        persistCart(); 
+
         renderSideCart(); // Re-render cart after change
     }
 }
@@ -1143,7 +1132,6 @@ function handleAddToCartManual(productId, size, price) {
             selected: true
         });
     }
-    persistCart(); 
     renderSideCart();
 }
 
@@ -1216,7 +1204,6 @@ function removeDiscountFromCheckoutForm() {
     function removeFromCart(productId) {
         cart = cart.filter(item => item.id !== productId);
         console.log("Cart updated after removal:", cart);
-        persistCart(); 
         renderSideCart(); // Update the visual cart display
     }
 
@@ -1245,7 +1232,7 @@ function removeDiscountFromCheckoutForm() {
                 // Remove the item if quantity is zero or less
                 cart.splice(cartItemIndex, 1);
             }
-            persistCart(); 
+
             renderSideCart(); // Re-render cart after change
         }
     }
@@ -1257,8 +1244,6 @@ function openLogisticsMap(orderId) {
         Swal.fire("Order ID 尚未生成，無法開啟門市選擇頁面");
         return;
     }
-    persistCart(); 
-    sessionStorage.setItem('redirectAfterStoreSelect', '1');
     // Open the Cloud Function, passing orderId to ECPay
     const url = `https://mrbean-website-store-select-545199463340.asia-east1.run.app?orderId=${encodeURIComponent(orderId)}`;
     window.open(url, "_self");
@@ -2406,32 +2391,31 @@ function ECpayStoreDataBackTransfer() {
 
 
 // --- Utility: Validate Discount Code ---
+// Make sure membershipData is loaded before this is called.
 function validateDiscountCode(inputCode) {
-  const code = (inputCode || "").trim().toLowerCase();
-  const member = membershipData.find(m =>
-    String(m.discountCode || "").toLowerCase() === code
-  );
+    if (!membershipData || membershipData.length === 0) {
+        console.warn("Membership data not loaded. Cannot validate discount code.");
+        return 0;
+    }
+    const codeToValidate = inputCode.trim().toLowerCase();
+    const member = membershipData.find(m => m.discountCode.toLowerCase() === codeToValidate);
 
-  if (!member) {
-    sessionStorage.removeItem('discountCode');
-    sessionStorage.removeItem('discountTier');
-    return 0;
-  }
-
-  // Persist for later (sharing, checkout, etc.)
-  sessionStorage.setItem('discountCode', member.discountCode);
-  sessionStorage.setItem('discountTier', member.tier);
-
-  // Map tiers to % (matches your UI table)
-  switch (String(member.tier || "").toLowerCase()) {
-    case 'diamond': return 10;
-    case 'gold':    return 5;
-    case 'silver':  return 3;
-    case 'bronze':  return 2;
-    default:
-      // allow backend to send an explicit percent if you want
-      return Number(member.discountPercent) || 0;
-  }
+    if (member) {
+        sessionStorage.setItem('discountCode', member.discountCode); // Store the actual code used
+        sessionStorage.setItem('discountTier', member.tier);
+        const tier = member.tier.toLowerCase();
+        switch (tier) {
+            case '鑽石級': return 10;
+            case '金級': return 5;   // 5%
+            case '銀級': return 3; // 3%
+            case '銅級': return 2; // 1%
+            default: return 0;
+        }
+    } else {
+        sessionStorage.removeItem('discountCode');
+        sessionStorage.removeItem('discountTier');
+        return 0;
+    }
 }
 
 // --- Utility: Calculate Cart Subtotal (Numeric) ---
@@ -2795,13 +2779,6 @@ async function updateNavbarWithUserName(userName) {
 
     // --- Initialization Function ---
 async function init() {
-  // Always restore cart first
-  try {
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart = rehydrateCart(savedCart);
-  } catch (_) {
-    cart = [];
-  }
   const urlParams = new URLSearchParams(window.location.search);
   // ── Case 0: discount code from shared link ──
   const sharedDiscountCode = urlParams.get('discountCode');
@@ -2880,15 +2857,13 @@ async function init() {
       CVSAddress:   storeAddress
     }));
     window.history.replaceState({}, document.title, window.location.pathname);
-  
-    // Always rehydrate; don't require length > 0
-    try {
-      const saved = JSON.parse(localStorage.getItem('cart') || '[]');
-      cart = rehydrateCart(saved);
-    } catch (_) {}
-  
-    await renderCheckoutPage(cart);
-    return;
+
+    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (saved.length) {
+      cart = saved;
+      await renderCheckoutPage(cart);
+      return;
+    }
   }
   const productId = urlParams.get('product');
   if (productId) {
