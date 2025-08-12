@@ -11,7 +11,7 @@ function rehydrateCart(saved) {
   }));
 }
 document.addEventListener('DOMContentLoaded', async () => {
-
+    await loadMembershipData(); 
     // --- DOM Element References ---
     const navbar = {
         logo: document.querySelector('.logo'),
@@ -120,13 +120,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         let membershipData = []; // Store membership data globally
 
         async function loadMembershipData() {
-            try {
-                const response = await fetch(' https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec'); // Replace with your Web App URL
-                membershipData = await response.json();
-                console.log("Loaded membership promo codes:", membershipData);
-            } catch (error) {
-                console.error('Failed to load membership data:', error);
-            }
+          try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbzZhiPYkL62ZHeRMi1-RCkVQUodJDe6IR7UvNouwM1bkHmepJAfECA4JF1_HHLn9Zu7Yw/exec');
+            membershipData = await response.json();
+            console.log("Loaded membership promo codes:", membershipData);
+          } catch (error) {
+            console.error('Failed to load membership data:', error);
+          }
         }
     // --- Rendering Functions ---
 
@@ -2406,31 +2406,32 @@ function ECpayStoreDataBackTransfer() {
 
 
 // --- Utility: Validate Discount Code ---
-// Make sure membershipData is loaded before this is called.
 function validateDiscountCode(inputCode) {
-    if (!membershipData || membershipData.length === 0) {
-        console.warn("Membership data not loaded. Cannot validate discount code.");
-        return 0;
-    }
-    const codeToValidate = inputCode.trim().toLowerCase();
-    const member = membershipData.find(m => m.discountCode.toLowerCase() === codeToValidate);
+  const code = (inputCode || "").trim().toLowerCase();
+  const member = membershipData.find(m =>
+    String(m.discountCode || "").toLowerCase() === code
+  );
 
-    if (member) {
-        sessionStorage.setItem('discountCode', member.discountCode); // Store the actual code used
-        sessionStorage.setItem('discountTier', member.tier);
-        const tier = member.tier.toLowerCase();
-        switch (tier) {
-            case '鑽石級': return 10;
-            case '金級': return 5;   // 5%
-            case '銀級': return 3; // 3%
-            case '銅級': return 2; // 1%
-            default: return 0;
-        }
-    } else {
-        sessionStorage.removeItem('discountCode');
-        sessionStorage.removeItem('discountTier');
-        return 0;
-    }
+  if (!member) {
+    sessionStorage.removeItem('discountCode');
+    sessionStorage.removeItem('discountTier');
+    return 0;
+  }
+
+  // Persist for later (sharing, checkout, etc.)
+  sessionStorage.setItem('discountCode', member.discountCode);
+  sessionStorage.setItem('discountTier', member.tier);
+
+  // Map tiers to % (matches your UI table)
+  switch (String(member.tier || "").toLowerCase()) {
+    case 'diamond': return 10;
+    case 'gold':    return 5;
+    case 'silver':  return 3;
+    case 'bronze':  return 2;
+    default:
+      // allow backend to send an explicit percent if you want
+      return Number(member.discountPercent) || 0;
+  }
 }
 
 // --- Utility: Calculate Cart Subtotal (Numeric) ---
