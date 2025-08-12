@@ -1627,23 +1627,39 @@ function renderBackToShoppingButtonDOM() {
     const backButton = document.createElement('button');
     backButton.id = 'backForMoreItemsBtn';
     backButton.textContent = '🔙 繼續購買';
-    backButton.type = 'button'; // Important for forms
-    // Basic styling, can be moved to CSS
+    backButton.type = 'button';
+    
     Object.assign(backButton.style, {
         backgroundColor: '#5cb85c', color: 'white', padding: '10px 15px',
         border: 'none', borderRadius: '4px', cursor: 'pointer',
         marginTop: '20px', marginBottom: '20px'
     });
 
-    backButton.addEventListener('click', (e) => {
+    backButton.addEventListener('click', async (e) => {
         e.preventDefault();
+        
+        // 🔥 ENSURE PRODUCTS ARE LOADED BEFORE SWITCHING VIEW
+        if (!allProductsData || allProductsData.length === 0) {
+            console.log('Products not loaded, fetching...');
+            const productData = await fetchData('products_test.json');
+            if (productData) {
+                allProductsData = productData;
+                renderProductGrid(productData);
+                renderCategoryFilters(productData);
+            }
+        }
+        
         if (typeof switchView === 'function') {
             switchView('content');
-            document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+            // Small delay to ensure DOM is updated before scrolling
+            setTimeout(() => {
+                document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         } else {
             console.error('switchView function is not defined.');
         }
     });
+    
     mainBody.checkoutWrapper.appendChild(backButton);
 }
 
@@ -2317,8 +2333,6 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
 }
 
 // --- Modified ECpayStoreDataBackTransfer ---
-// This function is assumed to be called on DOMContentLoaded or when ECPay redirects back.
-// --- Modified ECpayStoreDataBackTransfer to restore cart ---
 function ECpayStoreDataBackTransfer() {
     const shippingSelect = document.querySelector('#shipping-method');
     if (!shippingSelect) {
@@ -2335,62 +2349,65 @@ function ECpayStoreDataBackTransfer() {
     const checkoutFormRefactored = document.getElementById('checkout-form-refactored');
     console.log("CVSStoreID, CVSAddress, OrderID and checkout-form-refactored: ", CVSStoreID, CVSAddress, MerchantTradeNo, checkoutFormRefactored);
     
+    // Only proceed if we're actually returning from ECPay store selection
     if (CVSStoreID && CVSStoreName && CVSAddress && MerchantTradeNo) {
         const selectedStoreData = { CVSStoreID, CVSStoreName, CVSAddress, MerchantTradeNo };
         sessionStorage.setItem('selectedStoreInfo', JSON.stringify(selectedStoreData));
         localStorage.setItem('currentOrderId', MerchantTradeNo);
 
-        // 🔥 RESTORE CART FROM LOCALSTORAGE
+        // Restore cart from localStorage
         const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
         if (savedCart.length > 0) {
-            cart = savedCart; // Restore global cart variable
+            cart = savedCart;
             console.log('Cart restored from localStorage:', cart);
-            renderSideCart(); // Update cart display
+            renderSideCart();
         }
 
-        const storeInfoDiv = document.getElementById('pickup-store-info-display');
-        const shippingSelect = document.getElementById('shipping-method');
+        // If we're on checkout page, update the form
+        if (checkoutFormRefactored) {
+            const storeInfoDiv = document.getElementById('pickup-store-info-display');
+            const shippingSelect = document.getElementById('shipping-method');
 
-        if (storeInfoDiv) {
-            storeInfoDiv.innerHTML = `
-                <p style="margin:0;"><strong>已選擇 7-11 門市</strong></p>
-                <p style="margin:0;">店號: ${CVSStoreID}</p>
-                <p style="margin:0;">店名: ${CVSStoreName}</p>
-                <p style="margin:0;">地址: ${CVSAddress}</p>
-            `;
-            storeInfoDiv.style.display = 'block';
-        }
-        if (shippingSelect) {
-            shippingSelect.value = 'seven_eleven';
-        }
-
-        const cartTotal = calculateCartTotal();
-        currentShippingCost = cartTotal < 1200 ? 70 : 0;
-        
-        // Restore other form fields
-        const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
-        if (savedCheckoutData) {
-            document.getElementById('customer_name').value = savedCheckoutData.name || '';
-            document.getElementById('customer_email').value = savedCheckoutData.email || '';
-            document.getElementById('customer_phone').value = savedCheckoutData.phone || '';
-            document.getElementById('payment-option').value = savedCheckoutData.payment || 'pay_at_store';
-            if (savedCheckoutData.currentDiscountRate) {
-                currentDiscountRate = savedCheckoutData.currentDiscountRate || 0;
+            if (storeInfoDiv) {
+                storeInfoDiv.innerHTML = `
+                    <p style="margin:0;"><strong>已選擇 7-11 門市</strong></p>
+                    <p style="margin:0;">店號: ${CVSStoreID}</p>
+                    <p style="margin:0;">店名: ${CVSStoreName}</p>
+                    <p style="margin:0;">地址: ${CVSAddress}</p>
+                `;
+                storeInfoDiv.style.display = 'block';
             }
-            sessionStorage.removeItem('checkoutFormDataBeforeECPay');
-        }
-        
-        // 🔥 FILTER FOR SELECTED ITEMS WHEN UPDATING DISPLAY
-        const selectedItems = cart.filter(item => item.selected !== false);
-        updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
+            if (shippingSelect) {
+                shippingSelect.value = 'seven_eleven';
+            }
 
-        if (shippingSelect) {
-            const event = new Event('change');
-            shippingSelect.dispatchEvent(event);
+            const cartTotal = calculateCartTotal();
+            currentShippingCost = cartTotal < 1200 ? 70 : 0;
+            
+            // Restore other form fields
+            const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
+            if (savedCheckoutData) {
+                document.getElementById('customer_name').value = savedCheckoutData.name || '';
+                document.getElementById('customer_email').value = savedCheckoutData.email || '';
+                document.getElementById('customer_phone').value = savedCheckoutData.phone || '';
+                document.getElementById('payment-option').value = savedCheckoutData.payment || 'pay_at_store';
+                if (savedCheckoutData.currentDiscountRate) {
+                    currentDiscountRate = savedCheckoutData.currentDiscountRate || 0;
+                }
+                sessionStorage.removeItem('checkoutFormDataBeforeECPay');
+            }
+            
+            const selectedItems = cart.filter(item => item.selected !== false);
+            updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
+
+            if (shippingSelect) {
+                const event = new Event('change');
+                shippingSelect.dispatchEvent(event);
+            }
         }
         
     } else if (checkoutFormRefactored && !CVSStoreID && shippingSelect.value === 'seven_eleven' && !sessionStorage.getItem('selectedStoreInfo')) {
-        // 🔥 ALSO RESTORE CART HERE IF USER NAVIGATED BACK WITHOUT SELECTING STORE
+        // Restore cart here too
         const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
         if (savedCart.length > 0) {
             cart = savedCart;
@@ -2410,6 +2427,7 @@ function ECpayStoreDataBackTransfer() {
         shippingSelect.dispatchEvent(event);
     }
 }
+
 // --- Utility: Validate Discount Code ---
 // Make sure membershipData is loaded before this is called.
 function validateDiscountCode(inputCode) {
@@ -2798,9 +2816,8 @@ async function updateNavbarWithUserName(userName) {
 
 
     // --- Initialization Function ---
-// --- Improved Initialization Function with Better Cart Restoration ---
 async function init() {
-  // 🔥 ALWAYS RESTORE CART FIRST (before any other logic)
+  // Always restore cart first
   const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
   if (savedCart.length > 0) {
     cart = savedCart;
@@ -2809,14 +2826,14 @@ async function init() {
 
   const urlParams = new URLSearchParams(window.location.search);
   
-  // ── Case 0: discount code from shared link ──
+  // Case 0: discount code from shared link
   const sharedDiscountCode = urlParams.get('discountCode');
   if (sharedDiscountCode) {
     sessionStorage.setItem('discountCode', sharedDiscountCode);
     console.log("Shared discount code detected:", sharedDiscountCode);
   }
   
-  // ── Case A: OAuth "code" return ──
+  // Case A: OAuth "code" return
   const code = urlParams.get('code');
   if (code) {
     try {
@@ -2825,25 +2842,6 @@ async function init() {
       console.error("LINE exchange failed:", e);
     }
     
-    // Cart already restored above, just render UI
-    renderSideCart(); // Update cart display
-    await renderMainContent();
-    defer(renderDeferredContent);
-    switchView('content');
-    window.history.replaceState({}, document.title, window.location.pathname);
-    return;
-  }
-
-  // ── Case B: legacy name/email/lineUserId ──
-  const name = urlParams.get('name');
-  const email = urlParams.get('email');
-  const legacyId = urlParams.get('lineUserId');
-  if (name && legacyId) {
-    sessionStorage.setItem('lineUserName', name);
-    sessionStorage.setItem('lineUserEmail', email || "");
-    sessionStorage.setItem('lineUserId', legacyId);
-
-    // Cart already restored above, just render UI
     renderSideCart();
     await renderMainContent();
     defer(renderDeferredContent);
@@ -2852,7 +2850,24 @@ async function init() {
     return;
   }
 
-  // ── Case C: 7-11 store return ──
+  // Case B: legacy name/email/lineUserId
+  const name = urlParams.get('name');
+  const email = urlParams.get('email');
+  const legacyId = urlParams.get('lineUserId');
+  if (name && legacyId) {
+    sessionStorage.setItem('lineUserName', name);
+    sessionStorage.setItem('lineUserEmail', email || "");
+    sessionStorage.setItem('lineUserId', legacyId);
+
+    renderSideCart();
+    await renderMainContent();
+    defer(renderDeferredContent);
+    switchView('content');
+    window.history.replaceState({}, document.title, window.location.pathname);
+    return;
+  }
+
+  // Case C: 7-11 store return
   const storeID = urlParams.get('CVSStoreID');
   const storeName = urlParams.get('CVSStoreName');
   const storeAddress = urlParams.get('CVSAddress');
@@ -2862,18 +2877,24 @@ async function init() {
       CVSStoreName: storeName,
       CVSAddress: storeAddress
     }));
+    
+    // 🔥 IMPORTANT: Render main content FIRST to populate allProductsData
+    await renderMainContent();
+    defer(renderDeferredContent);
+    
+    // Clean URL before rendering checkout
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    // Cart already restored above
+    // Now render checkout page if we have cart items
     if (cart.length > 0) {
-      renderSideCart(); // Update cart display
+      renderSideCart();
       const selectedItems = cart.filter(item => item.selected !== false);
-      await renderCheckoutPage(selectedItems); // Pass selected items
+      await renderCheckoutPage(selectedItems);
       return;
     }
   }
 
-  // ── Case D: Direct product link ──
+  // Case D: Direct product link
   const productId = urlParams.get('product');
   if (productId) {
     if (!Object.keys(allItemDetails).length) {
@@ -2883,17 +2904,18 @@ async function init() {
     await renderItemDetails(productId);
     setupEventListeners();
     loadMembershipData();
-    renderSideCart(); // Update cart display
+    renderSideCart();
     switchView('item');
     window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
 
-  // ── Normal startup ──
+  // Normal startup
   await renderMainContent();
   defer(renderDeferredContent);
-  renderSideCart(); // Always render side cart to show restored items
+  renderSideCart();
 }
+
 async function renderMainContent() {
     try {
         const [bannerData, aboutData, productData] = await Promise.all([
