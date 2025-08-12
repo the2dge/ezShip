@@ -348,22 +348,51 @@ function getAllImages(product) {
 }
 
 async function renderItemDetails(productId) {
+    console.log("🔍 renderItemDetails called with productId:", productId);
+    
     if (!allItemDetails || !Object.keys(allItemDetails).length) {
+        console.log("📦 Loading item details in renderItemDetails...");
         allItemDetails = await fetchData('items_test.json');
     }
 
+    console.log("📋 Available product IDs:", Object.keys(allItemDetails));
+    
     const itemData = allItemDetails[productId];
     if (!itemData) {
-        mainBody.itemWrapper.innerHTML = `<p>Error: Product details not found for ID ${productId}.</p>`;
+        console.error(`❌ Product details not found for ID: "${productId}"`);
+        console.log("🔍 Checking if productId needs decoding...");
+        
+        // Try URL decoding in case the ID was encoded
+        const decodedProductId = decodeURIComponent(productId);
+        const decodedItemData = allItemDetails[decodedProductId];
+        
+        if (decodedItemData) {
+            console.log("✅ Found product with decoded ID:", decodedProductId);
+            return renderItemDetails(decodedProductId); // Recursive call with decoded ID
+        }
+        
+        // Still not found, show error and switch to content view
+        mainBody.itemWrapper.innerHTML = `
+            <div style="padding: 20px; text-align: center;">
+                <h3>❌ 商品未找到</h3>
+                <p>找不到 ID 為 "${productId}" 的商品</p>
+                <button onclick="switchView('content')" class="btn btn-primary">返回商品列表</button>
+            </div>
+        `;
+        console.log("🔄 Switching to content view due to missing product");
         switchView('content');
         return;
     }
+
+    console.log("✅ Product data found:", itemData.name);
 
     const pricingData = parsePricingData(itemData.price);
     const pricingHtml = generatePricingHtml(pricingData, itemData.id);
     const imageList = getAllImages(itemData);
 
-    const imageGalleryHtml = imageList.map(url => `<img src="${url}" alt="${itemData.name}" class="gallery-thumb">`).join('');
+    const imageGalleryHtml = imageList.map(url => 
+        `<img src="${url}" alt="${itemData.name}" class="gallery-thumb">`
+    ).join('');
 
     mainBody.itemWrapper.innerHTML = `
         <article class="item-detail">
@@ -376,8 +405,7 @@ async function renderItemDetails(productId) {
                 </div>
             </div>
             <div class="item-info">
-                <h2>${itemData.name} <span class='share-btn'>好物分享<img src="image/share1.png"></span>
-                </h2>
+                <h2>${itemData.name} <span class='share-btn'>好物分享<img src="image/share1.png"></span></h2>
                 <p>${itemData.description}</p>
                 ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
                 ${pricingHtml}
@@ -388,58 +416,81 @@ async function renderItemDetails(productId) {
         </article>
     `;
 
+    // Set up event listeners
     const backBtn = mainBody.itemWrapper.querySelector('.back-to-products-btn');
     if (backBtn) {
-      backBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        // Clear URL parameters (keep only the path)
-        history.pushState({ view: 'content' }, '', window.location.pathname);
-
-        if (currentView !== 'content') {
-          switchView('content');
-        }
-        document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
-      });
+        backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            history.pushState({ view: 'content' }, '', window.location.pathname);
+            if (currentView !== 'content') {
+                switchView('content');
+            }
+            document.getElementById('product-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
     }
-    const shareBtn = mainBody.itemWrapper.querySelector('.share-btn');
-    if (shareBtn) {
-      shareBtn.addEventListener('click', () => {
-        // --- Check for member discount code ---
-        const discountCode = sessionStorage.getItem('memberDiscountCode') || '';
-        const shareUrl = `${window.location.origin}?product=${encodeURIComponent(itemData.id)}`;
 
-        let shareText = `${itemData.name} ${shareUrl}`;
+    // Share button with discount code
+    const shareBtn = mainBody.itemWrapper.querySelector('.share-btn');
+if (shareBtn) {
+    shareBtn.addEventListener('click', () => {
+        // Get discount code from session storage
+        const discountCode = sessionStorage.getItem('discountCode') || 
+                           sessionStorage.getItem('memberDiscountCode') || '';
+        
+        // Construct the share URL properly
+        let shareUrl = `${window.location.origin}?product=${encodeURIComponent(itemData.id)}`;
+        
+        // Add discount code to URL if available
         if (discountCode) {
-          shareText += `&discountCode=${discountCode}\n歡迎使用我的優惠碼: ${discountCode}`;
+            shareUrl += `&discountCode=${encodeURIComponent(discountCode)}`;
         }
+        
+        // Create share text with proper format
+        let shareText = `${itemData.name}\n${shareUrl}`;
+        if (discountCode) {
+            shareText += `\n\n🎁 歡迎使用我的優惠碼: ${discountCode}`;
+        }
+        
+        console.log("🔗 Generated share URL:", shareUrl);
+        console.log("📝 Generated share text:", shareText);
 
         Swal.fire({
-          title: '好物分享',
-          html: `
-            <div style="display:flex;justify-content:space-around;align-items:center;font-size:2rem;">
-              <a href="https://line.me/R/msg/text/?${encodeURIComponent(shareText)}" target="_blank" title="LINE">
-                <img src="image/line.png" alt="LINE" style="width:40px;height:40px;">
-              </a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}" target="_blank" title="Facebook">
-                <img src="image/facebook.png" alt="Facebook" style="width:40px;height:40px;">
-              </a>
-              <a href="https://www.instagram.com/?url=${encodeURIComponent(shareUrl)}" target="_blank" title="Instagram">
-                <img src="image/instagram.png" alt="Instagram" style="width:40px;height:40px;">
-              </a>
-              <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
-                <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
-              </a>
-              <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
-                <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
-              </a>
-            </div>
-          `,
-          showConfirmButton: false,
-          showCloseButton: true
+            title: '好物分享',
+            html: `
+                <div style="margin-bottom: 15px;">
+                    <p style="font-size: 14px; margin: 5px 0;"><strong>分享連結:</strong></p>
+                    <input type="text" value="${shareUrl}" readonly 
+                           style="width: 100%; padding: 5px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px;"
+                           onclick="this.select()" title="點擊選取全部">
+                </div>
+                <div style="display:flex;justify-content:space-around;align-items:center;font-size:2rem;">
+                    <a href="https://line.me/R/msg/text/?${encodeURIComponent(shareText)}" target="_blank" title="LINE">
+                        <img src="image/line.png" alt="LINE" style="width:40px;height:40px;">
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}" target="_blank" title="Facebook">
+                        <img src="image/facebook.png" alt="Facebook" style="width:40px;height:40px;">
+                    </a>
+                    <a href="https://www.instagram.com/?url=${encodeURIComponent(shareUrl)}" target="_blank" title="Instagram">
+                        <img src="image/instagram.png" alt="Instagram" style="width:40px;height:40px;">
+                    </a>
+                    <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
+                        <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
+                    </a>
+                    <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
+                        <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
+                    </a>
+                </div>
+                ${discountCode ? `<div style="margin-top: 15px;"><small style="color: #28a745;">✅ 優惠碼 ${discountCode} 已包含在分享連結中</small></div>` : ''}
+            `,
+            showConfirmButton: false,
+            showCloseButton: true,
+            width: '400px'
         });
-      });
-    }
+    });
+}
+
+
+    // Image gallery functionality
     const thumbs = mainBody.itemWrapper.querySelectorAll('.gallery-thumb');
     thumbs.forEach(img => {
         img.style.cursor = 'pointer';
@@ -449,6 +500,7 @@ async function renderItemDetails(productId) {
         });
     });
 
+    // Add to cart functionality
     const singleAddBtn = mainBody.itemWrapper.querySelector('.add-to-cart-single-btn');
     if (singleAddBtn) {
         singleAddBtn.addEventListener('click', () => {
@@ -461,10 +513,12 @@ async function renderItemDetails(productId) {
     }
 
     const addToCartBtns = mainBody.itemWrapper.querySelectorAll('.add-to-cart-btn');
-        addToCartBtns.forEach(btn => {
-        btn.removeEventListener('click', handleAddToCart); // Remove old listener
-        btn.addEventListener('click', handleAddToCart);   // Add new listener
+    addToCartBtns.forEach(btn => {
+        btn.removeEventListener('click', handleAddToCart);
+        btn.addEventListener('click', handleAddToCart);
     });
+    
+    console.log("✅ Product details rendered successfully");
 }
 function parsePricingData(priceData) {
     try {
@@ -552,7 +606,7 @@ function renderSideCart() {
             switchView('content');
         }, 1500);
     } else {
-        // Group cart items by product ID
+        // Group cart items by product ID (maintain original functionality)
         const groupedItems = cart.reduce((groups, item) => {
             if (!groups[item.id]) {
                 groups[item.id] = {
@@ -600,15 +654,12 @@ function renderSideCart() {
                         <div class="product-total-container">
                             <div class="product-total-line">
                                 <span class="total-label">單品總計:</span>
-                                <span class="original-total">$${productTotal.toFixed(0)}</span>
+                                <span class="original-total">${productTotal.toFixed(0)}</span>
                             </div>
                             <div class="discount-total-line">
                                 <span class="total-label">折後總計:</span>
-                                <span class="discounted-total">$${productDiscountedTotal.toFixed(0)}</span>
+                                <span class="discounted-total">${productDiscountedTotal.toFixed(0)}</span>
                             </div>
-                           <!-- <div class="product-savings">
-                                <span class="product-savings-badge">省 $${productDiscountAmount.toFixed(0)}</span>
-                            </div> -->
                         </div>
                     `;
                 } else {
@@ -616,7 +667,7 @@ function renderSideCart() {
                         <div class="product-total-container">
                             <div class="product-total-line">
                                 <span class="total-label">單品總計:</span>
-                                <span class="final-total">$${productTotal.toFixed(0)}</span>
+                                <span class="final-total">${productTotal.toFixed(0)}</span>
                             </div>
                         </div>
                     `;
@@ -647,14 +698,14 @@ function renderSideCart() {
                         if (currentDiscountRate > 0 && isSelected) {
                             variantPriceDisplay = `
                                 <div class="variant-price">
-                                    <span class="variant-original">$${variantSubtotal.toFixed(0)}</span>
-                                    <span class="variant-discounted">$${variantDiscountedTotal.toFixed(0)}</span>
+                                    <span class="variant-original">${variantSubtotal.toFixed(0)}</span>
+                                    <span class="variant-discounted">${variantDiscountedTotal.toFixed(0)}</span>
                                 </div>
                             `;
                         } else {
                             variantPriceDisplay = `
                                 <div class="variant-price">
-                                    <span class="variant-final">$${variantSubtotal.toFixed(0)}</span>
+                                    <span class="variant-final">${variantSubtotal.toFixed(0)}</span>
                                 </div>
                             `;
                         }
@@ -664,7 +715,6 @@ function renderSideCart() {
                                 <div class="variant-controls">
                                     <label class="variant-checkbox-container">
                                         <input type="checkbox" class="item-select-checkbox" ${isSelected ? 'checked' : ''} data-cart-key="${variant.cartKey}">
-                                        
                                     </label>
                                     
                                     <div class="variant-info">
@@ -695,6 +745,38 @@ function renderSideCart() {
         });
         
         showSideCartDiscountSection();
+        
+        // 🎁 Auto-apply stored discount code if present
+        const storedDiscountCode = sessionStorage.getItem('discountCode');
+        if (storedDiscountCode) {
+            setTimeout(() => {
+                const discountInput = document.getElementById('side-cart-discount-code');
+                const applyBtn = document.getElementById('side-cart-apply-discount');
+                
+                if (discountInput && !discountInput.value.trim()) {
+                    console.log("🎁 Auto-applying stored discount code:", storedDiscountCode);
+                    discountInput.value = storedDiscountCode;
+                    
+                    // Trigger apply discount
+                    if (applyBtn) {
+                        applyBtn.click();
+                    }
+                } else if (discountInput && discountInput.value.trim() === storedDiscountCode) {
+                    // Code is already applied, just validate
+                    console.log("🔄 Discount code already applied, validating...");
+                    const discountPercentage = validateDiscountCode(storedDiscountCode);
+                    if (discountPercentage > 0) {
+                        currentDiscountRate = discountPercentage;
+                        const discountMessage = document.getElementById('side-cart-discount-message');
+                        if (discountMessage) {
+                            const tierName = sessionStorage.getItem('discountTier') || '';
+                            discountMessage.textContent = `✅ 已套用 ${tierName} 折扣 (${discountPercentage}% off)!`;
+                            discountMessage.className = 'discount-message success';
+                        }
+                    }
+                }
+            }, 800); // Delay to ensure DOM elements are created
+        }
     }
 
     // Update total and item count
@@ -728,6 +810,7 @@ function renderSideCart() {
     // Update totals
     updateSideCartTotals();
 }
+
 
 // Update renderSideCartItemsOnly() with the same grouped structure
 function renderSideCartItemsOnly() {
@@ -965,23 +1048,27 @@ function applySideCartDiscount() {
         discountMessage.className = 'discount-message warning';
         currentDiscountRate = 0;
     } else {
+        console.log("🎁 Validating discount code:", code);
+        
         // membershipData must be loaded and accessible
         const discountPercentage = validateDiscountCode(code);
         if (discountPercentage > 0) {
             currentDiscountRate = discountPercentage;
-            discountMessage.textContent = `已套用 ${sessionStorage.getItem('discountTier') || ''} 折扣 (${discountPercentage}% off)!`;
+            const tierName = sessionStorage.getItem('discountTier') || '';
+            discountMessage.textContent = `✅ 已套用 ${tierName} 折扣 (${discountPercentage}% off)!`;
             discountMessage.className = 'discount-message success';
+            
+            console.log("✅ Discount code applied successfully:", code, discountPercentage + "%");
         } else {
             currentDiscountRate = 0;
-            discountMessage.textContent = '無效的折扣碼。';
+            discountMessage.textContent = '❌ 無效的折扣碼。';
             discountMessage.className = 'discount-message error';
+            
+            console.log("❌ Invalid discount code:", code);
         }
     }
     
-    // IMPORTANT: Re-render the entire side cart to update:
-    // 1. Product-level subtotals with discount
-    // 2. Individual variant pricing with discount  
-    // 3. Main cart total
+    // Re-render the entire side cart to update pricing
     renderSideCart();
 }
 
@@ -2957,14 +3044,23 @@ async function init() {
 
   const urlParams = new URLSearchParams(window.location.search);
   
-  // Case 0: discount code from shared link
+  // ── Case 0: Handle discount code from shared link (ALWAYS check this first) ──
   const sharedDiscountCode = urlParams.get('discountCode');
   if (sharedDiscountCode) {
     sessionStorage.setItem('discountCode', sharedDiscountCode);
-    console.log("Shared discount code detected:", sharedDiscountCode);
+    console.log("✅ Shared discount code detected and saved:", sharedDiscountCode);
+    
+    // Also apply to side cart discount input if it exists
+    setTimeout(() => {
+      const discountInput = document.getElementById('side-cart-discount-code');
+      if (discountInput) {
+        discountInput.value = sharedDiscountCode;
+        console.log("✅ Discount code applied to side cart input");
+      }
+    }, 1000);
   }
   
-  // Case A: OAuth "code" return
+  // ── Case A: OAuth "code" return ──
   const code = urlParams.get('code');
   if (code) {
     try {
@@ -2981,7 +3077,7 @@ async function init() {
     return;
   }
 
-  // Case B: legacy name/email/lineUserId
+  // ── Case B: legacy name/email/lineUserId ──
   const name = urlParams.get('name');
   const email = urlParams.get('email');
   const legacyId = urlParams.get('lineUserId');
@@ -2998,7 +3094,7 @@ async function init() {
     return;
   }
 
-  // Case C: 7-11 store return
+  // ── Case C: 7-11 store return ──
   const storeID = urlParams.get('CVSStoreID');
   const storeName = urlParams.get('CVSStoreName');
   const storeAddress = urlParams.get('CVSAddress');
@@ -3009,14 +3105,10 @@ async function init() {
       CVSAddress: storeAddress
     }));
     
-    // 🔥 IMPORTANT: Render main content FIRST to populate allProductsData
     await renderMainContent();
     defer(renderDeferredContent);
-    
-    // Clean URL before rendering checkout
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    // Now render checkout page if we have cart items
     if (cart.length > 0) {
       renderSideCart();
       const selectedItems = cart.filter(item => item.selected !== false);
@@ -3025,23 +3117,81 @@ async function init() {
     }
   }
 
-  // Case D: Direct product link
+  // ── Case D: Direct product link (with or without discount code) ──
   const productId = urlParams.get('product');
   if (productId) {
-    if (!Object.keys(allItemDetails).length) {
-      allItemDetails = await fetchData('items_test.json');
+    console.log("🔍 Product ID detected:", productId);
+    
+    try {
+      // Ensure main content and item details are loaded
+      await renderMainContent();
+      
+      if (!Object.keys(allItemDetails).length) {
+        console.log("📦 Loading item details...");
+        allItemDetails = await fetchData('items_test.json');
+      }
+      
+      // Verify the product exists
+      if (allItemDetails[productId]) {
+        console.log("✅ Product found, rendering details for:", productId);
+        await renderItemDetails(productId);
+        setupEventListeners();
+        loadMembershipData();
+        renderSideCart();
+        switchView('item');
+        
+        // If there's a discount code, show a helpful message
+        if (sharedDiscountCode) {
+          setTimeout(() => {
+            Swal.fire({
+              title: '🎁 優惠碼已套用！',
+              text: `已自動套用優惠碼：${sharedDiscountCode}`,
+              icon: 'success',
+              timer: 3000,
+              showConfirmButton: false,
+              toast: true,
+              position: 'top-end'
+            });
+          }, 1500);
+        }
+        
+      } else {
+        console.warn("❌ Product not found:", productId);
+        console.log("Available products:", Object.keys(allItemDetails));
+        
+        // Product not found, show all products but with discount code applied
+        defer(renderDeferredContent);
+        renderSideCart();
+        switchView('content');
+        
+        Swal.fire({
+          title: '商品未找到',
+          text: '指定的商品不存在，但優惠碼已套用！',
+          icon: 'warning',
+          confirmButtonText: '瀏覽其他商品'
+        });
+      }
+      
+    } catch (error) {
+      console.error("Error loading product:", error);
+      // Fallback to showing all products
+      defer(renderDeferredContent);
+      renderSideCart();
+      switchView('content');
+      
+      Swal.fire({
+        title: '載入錯誤',
+        text: '無法載入指定商品，請瀏覽其他商品。',
+        icon: 'error'
+      });
     }
-    await renderMainContent();
-    await renderItemDetails(productId);
-    setupEventListeners();
-    loadMembershipData();
-    renderSideCart();
-    switchView('item');
+    
+    // Clean URL after processing
     window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
 
-  // Normal startup
+  // ── Normal startup ──
   await renderMainContent();
   defer(renderDeferredContent);
   renderSideCart();
