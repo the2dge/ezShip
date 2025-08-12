@@ -1,4 +1,3 @@
-//It is good but side-cart selected items will be gone after new 7-11 store selection
 let cart =[];
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -1049,18 +1048,14 @@ function handleItemSelection(event) {
     const cartKey = event.target.dataset.cartKey;
     const isChecked = event.target.checked;
     
-    // Find the item in cart and update its selected state
     const cartItem = cart.find(item => item.cartKey === cartKey);
     if (cartItem) {
         cartItem.selected = isChecked;
         
-        // IMPORTANT: Re-render the entire side cart to update:
-        // 1. Visual checkbox states
-        // 2. Product-level totals (單品總計)
-        // 3. Variant visual styling (selected/unselected)
+        // 🔥 SAVE CART AFTER MODIFICATION
+        saveCartToStorage();
         renderSideCart();
         
-        // Update main cart totals and checkout button
         const hasSelectedItems = cart.some(item => item.selected !== false);
         sideCart.checkoutBtn.style.display = hasSelectedItems ? 'block' : 'none';
     }
@@ -1081,11 +1076,12 @@ function changeCartQuantityByKey(cartKey, changeAmount) {
         cart[cartItemIndex].quantity += changeAmount;
 
         if (cart[cartItemIndex].quantity <= 0) {
-            // Remove the item if quantity is zero or less
             cart.splice(cartItemIndex, 1);
         }
 
-        renderSideCart(); // Re-render cart after change
+        // 🔥 SAVE CART AFTER MODIFICATION
+        saveCartToStorage();
+        renderSideCart();
     }
 }
 
@@ -1109,6 +1105,22 @@ function handleAddToCart(e) {
     setTimeout(() => e.target.disabled = false, 500);
     
     handleAddToCartManual(productId, size, price);
+}
+function saveCartToStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log('Cart saved to localStorage:', cart.length, 'items');
+}
+
+// Restore cart from localStorage
+function restoreCartFromStorage() {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (savedCart.length > 0) {
+        cart = savedCart;
+        console.log('Cart restored from localStorage:', cart.length, 'items');
+        renderSideCart();
+        return true;
+    }
+    return false;
 }
 // Modified handleAddToCartManual to ensure new items are selected by default
 function handleAddToCartManual(productId, size, price) {
@@ -2306,26 +2318,35 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
 
 // --- Modified ECpayStoreDataBackTransfer ---
 // This function is assumed to be called on DOMContentLoaded or when ECPay redirects back.
+// --- Modified ECpayStoreDataBackTransfer to restore cart ---
 function ECpayStoreDataBackTransfer() {
     const shippingSelect = document.querySelector('#shipping-method');
     if (!shippingSelect) {
         console.warn('shippingSelect not found');
         return;
     }
+    
     const urlParams = new URLSearchParams(window.location.search);
     const CVSStoreID = urlParams.get('CVSStoreID');
     const CVSStoreName = urlParams.get('CVSStoreName');
     const CVSAddress = urlParams.get('CVSAddress');
-    const MerchantTradeNo = urlParams.get('MerchantTradeNo'); // This is the orderId
+    const MerchantTradeNo = urlParams.get('MerchantTradeNo');
 
-    // Check if we are on the checkout page by looking for a specific element
     const checkoutFormRefactored = document.getElementById('checkout-form-refactored');
     console.log("CVSStoreID, CVSAddress, OrderID and checkout-form-refactored: ", CVSStoreID, CVSAddress, MerchantTradeNo, checkoutFormRefactored);
+    
     if (CVSStoreID && CVSStoreName && CVSAddress && MerchantTradeNo) {
         const selectedStoreData = { CVSStoreID, CVSStoreName, CVSAddress, MerchantTradeNo };
         sessionStorage.setItem('selectedStoreInfo', JSON.stringify(selectedStoreData));
-        // Ensure currentOrderId in localStorage is also updated if it changed (it shouldn't from ECPay map)
         localStorage.setItem('currentOrderId', MerchantTradeNo);
+
+        // 🔥 RESTORE CART FROM LOCALSTORAGE
+        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (savedCart.length > 0) {
+            cart = savedCart; // Restore global cart variable
+            console.log('Cart restored from localStorage:', cart);
+            renderSideCart(); // Update cart display
+        }
 
         const storeInfoDiv = document.getElementById('pickup-store-info-display');
         const shippingSelect = document.getElementById('shipping-method');
@@ -2340,56 +2361,55 @@ function ECpayStoreDataBackTransfer() {
             storeInfoDiv.style.display = 'block';
         }
         if (shippingSelect) {
-            shippingSelect.value = 'seven_eleven'; // Pre-select the dropdown
+            shippingSelect.value = 'seven_eleven';
         }
 
         const cartTotal = calculateCartTotal();
-        if (localShippingSelectElement.value === 'seven_eleven') {
-            currentShippingCost = cartTotal < 1200 ? 70 : 0;
-        } else if (localShippingSelectElement.value === 'store_pickup') {
-            currentShippingCost = cartTotal < 3000 ? 120 : 0;
-        } else {
-            currentShippingCost = 0;
-        }
-        // Restore other form fields that might have been cleared by navigation
+        currentShippingCost = cartTotal < 1200 ? 70 : 0;
+        
+        // Restore other form fields
         const savedCheckoutData = JSON.parse(sessionStorage.getItem('checkoutFormDataBeforeECPay'));
         if (savedCheckoutData) {
-            document.getElementById('customer_name').value = savedCheckoutData.name || '未填寫完整';
+            document.getElementById('customer_name').value = savedCheckoutData.name || '';
             document.getElementById('customer_email').value = savedCheckoutData.email || '';
             document.getElementById('customer_phone').value = savedCheckoutData.phone || '';
             document.getElementById('payment-option').value = savedCheckoutData.payment || 'pay_at_store';
             if (savedCheckoutData.currentDiscountRate) {
                 currentDiscountRate = savedCheckoutData.currentDiscountRate || 0;
             }
-            sessionStorage.removeItem('checkoutFormDataBeforeECPay'); // Clean up
+            sessionStorage.removeItem('checkoutFormDataBeforeECPay');
         }
         
-        // 'cart' must be globally available or passed to updateOrderSummaryDisplay
-        updateOrderSummaryDisplay(cart, currentShippingCost, currentDiscountRate);
+        // 🔥 FILTER FOR SELECTED ITEMS WHEN UPDATING DISPLAY
+        const selectedItems = cart.filter(item => item.selected !== false);
+        updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
 
-        // Manually trigger change on shippingSelect to re-validate form and button states
         if (shippingSelect) {
             const event = new Event('change');
             shippingSelect.dispatchEvent(event);
         }
         
-        // Clean URL: Remove ECPay parameters to prevent re-processing on refresh.
-        // Do this carefully, only if you're sure the state is fully restored.
-        // window.history.replaceState({}, document.title, window.location.pathname);
     } else if (checkoutFormRefactored && !CVSStoreID && shippingSelect.value === 'seven_eleven' && !sessionStorage.getItem('selectedStoreInfo')) {
-        // If 7-11 is selected but no store info exists (e.g. user refreshed after ECPay redirect without params, or navigated back)
-        // and we are on checkout page, prompt to select store or clear selection
-        shippingSelect.value = ""; // Reset dropdown
+        // 🔥 ALSO RESTORE CART HERE IF USER NAVIGATED BACK WITHOUT SELECTING STORE
+        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        if (savedCart.length > 0) {
+            cart = savedCart;
+            console.log('Cart restored (no store selected case):', cart);
+            renderSideCart();
+        }
+        
+        shippingSelect.value = "";
         document.getElementById('pickup-store-info-display').style.display = 'none';
         currentShippingCost = 0;
-        updateOrderSummaryDisplay(cart, currentShippingCost, currentDiscountRate);
+        
+        const selectedItems = cart.filter(item => item.selected !== false);
+        updateOrderSummaryDisplay(selectedItems, currentShippingCost, currentDiscountRate);
         Swal.fire("請重新選擇7-11門市，或選擇其他取貨方式。");
-         const event = new Event('change');
-         shippingSelect.dispatchEvent(event); // Trigger validation
+        
+        const event = new Event('change');
+        shippingSelect.dispatchEvent(event);
     }
 }
-
-
 // --- Utility: Validate Discount Code ---
 // Make sure membershipData is loaded before this is called.
 function validateDiscountCode(inputCode) {
@@ -2778,96 +2798,84 @@ async function updateNavbarWithUserName(userName) {
 
 
     // --- Initialization Function ---
+// --- Improved Initialization Function with Better Cart Restoration ---
 async function init() {
+  // 🔥 ALWAYS RESTORE CART FIRST (before any other logic)
+  const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  if (savedCart.length > 0) {
+    cart = savedCart;
+    console.log('Cart restored at init:', cart);
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
+  
   // ── Case 0: discount code from shared link ──
   const sharedDiscountCode = urlParams.get('discountCode');
   if (sharedDiscountCode) {
     sessionStorage.setItem('discountCode', sharedDiscountCode);
     console.log("Shared discount code detected:", sharedDiscountCode);
   }
-  // ── Case A: OAuth “code” return ──
+  
+  // ── Case A: OAuth "code" return ──
   const code = urlParams.get('code');
   if (code) {
-  //  let profile = {};
     try {
-      profile = await exchangeCodeForToken(code) || {};
+      await exchangeCodeForToken(code);
     } catch (e) {
       console.error("LINE exchange failed:", e);
     }
- //   const nameToSave  = profile.displayName || profile.name || "";
- //   const emailToSave = profile.email       || "";
- //   const idToSave    = profile.userId      || profile.id   || "";
- //   console.log("Stored LINE Profile is:", profile);
-
- //   sessionStorage.setItem('lineUserName',  nameToSave);
- //   sessionStorage.setItem('lineUserEmail', emailToSave);
- //   sessionStorage.setItem('lineUserId',    idToSave);
- //   localStorage.setItem('lineUser', JSON.stringify(profile));
-    console.log("lineUserId Check after LINE Login: ", sessionStorage.getItem('lineUserId'));
-    // restore cart
-    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (savedCart.length) {
-      cart = savedCart;
-      renderSideCart();
-    }
-
-    // now render home UI
+    
+    // Cart already restored above, just render UI
+    renderSideCart(); // Update cart display
     await renderMainContent();
     defer(renderDeferredContent);
     switchView('content');
-
-    // clean URL & done
     window.history.replaceState({}, document.title, window.location.pathname);
-    console.log("last lineUserId Check: ", sessionStorage.getItem('lineUserId'));
     return;
   }
 
   // ── Case B: legacy name/email/lineUserId ──
-  const name        = urlParams.get('name');
-  const email       = urlParams.get('email');
-  const legacyId    = urlParams.get('lineUserId');
+  const name = urlParams.get('name');
+  const email = urlParams.get('email');
+  const legacyId = urlParams.get('lineUserId');
   if (name && legacyId) {
-    sessionStorage.setItem('lineUserName',  name);
+    sessionStorage.setItem('lineUserName', name);
     sessionStorage.setItem('lineUserEmail', email || "");
-    sessionStorage.setItem('lineUserId',    legacyId);
+    sessionStorage.setItem('lineUserId', legacyId);
 
-    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (saved.length) {
-      cart = saved;
-      renderSideCart();
-    }
-
+    // Cart already restored above, just render UI
+    renderSideCart();
     await renderMainContent();
     defer(renderDeferredContent);
     switchView('content');
-
     window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
 
-  // ── Case C: 7-11 store return (unchanged) ──
-  const storeID      = urlParams.get('CVSStoreID');
-  const storeName    = urlParams.get('CVSStoreName');
+  // ── Case C: 7-11 store return ──
+  const storeID = urlParams.get('CVSStoreID');
+  const storeName = urlParams.get('CVSStoreName');
   const storeAddress = urlParams.get('CVSAddress');
   if (storeID && storeName && storeAddress) {
     sessionStorage.setItem('selectedStoreInfo', JSON.stringify({
-      CVSStoreID:   storeID,
+      CVSStoreID: storeID,
       CVSStoreName: storeName,
-      CVSAddress:   storeAddress
+      CVSAddress: storeAddress
     }));
     window.history.replaceState({}, document.title, window.location.pathname);
 
-    const saved = JSON.parse(localStorage.getItem('cart') || '[]');
-    if (saved.length) {
-      cart = saved;
-      await renderCheckoutPage(cart);
+    // Cart already restored above
+    if (cart.length > 0) {
+      renderSideCart(); // Update cart display
+      const selectedItems = cart.filter(item => item.selected !== false);
+      await renderCheckoutPage(selectedItems); // Pass selected items
       return;
     }
   }
+
+  // ── Case D: Direct product link ──
   const productId = urlParams.get('product');
   if (productId) {
-    // Ensure products data is ready before rendering details
     if (!Object.keys(allItemDetails).length) {
       allItemDetails = await fetchData('items_test.json');
     }
@@ -2875,9 +2883,8 @@ async function init() {
     await renderItemDetails(productId);
     setupEventListeners();
     loadMembershipData();
+    renderSideCart(); // Update cart display
     switchView('item');
-
-    // Clean URL after loading
     window.history.replaceState({}, document.title, window.location.pathname);
     return;
   }
@@ -2885,6 +2892,7 @@ async function init() {
   // ── Normal startup ──
   await renderMainContent();
   defer(renderDeferredContent);
+  renderSideCart(); // Always render side cart to show restored items
 }
 async function renderMainContent() {
     try {
