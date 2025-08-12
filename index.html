@@ -326,6 +326,11 @@ document.addEventListener('DOMContentLoaded', function () {
     hamburger.addEventListener('click', function () {
       mobileNav.classList.toggle('active');
     });
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
   }
 
   const toggleBtn = document.getElementById('member-service-toggle');
