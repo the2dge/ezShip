@@ -476,9 +476,7 @@ if (shareBtn) {
                     <a href="https://www.threads.net/intent/post?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}" target="_blank" title="Threads">
                         <img src="image/threads.png" alt="Threads" style="width:40px;height:40px;">
                     </a>
-                    <a href="https://www.tiktok.com/share?url=${encodeURIComponent(shareUrl)}" target="_blank" title="TikTok">
-                        <img src="image/tiktok.png" alt="TikTok" style="width:40px;height:40px;">
-                    </a>
+                    
                 </div>
                 ${discountCode ? `<div style="margin-top: 15px;"><small style="color: #28a745;">✅ 優惠碼 ${discountCode} 已包含在分享連結中</small></div>` : ''}
             `,
