@@ -410,7 +410,7 @@ async function renderItemDetails(productId) {
                 ${itemData.specs ? `<ul>${Object.entries(itemData.specs).map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`).join('')}</ul>` : ''}
                 ${pricingHtml}
                 <div class="button-row">
-                    <button class="back-to-products-btn" style="cursor: pointer">返回產品頁</button> 
+                    <button class="back-to-products-btn" style="cursor: pointer">返回上一頁</button> 
                 </div>
             </div>
         </article>
