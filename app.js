@@ -1945,19 +1945,44 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     const storeInfoDiv = form.querySelector('#pickup-store-info-display');
 
     // Initial state for submit buttons
-    async function toggleSubmitButtonVisibility() {
+async function toggleSubmitButtonVisibility() {
     const isValid = validateFormFields();
     const paymentMethod = paymentSelect.value;
     const submitAmount = parseFloat(sessionStorage.getItem('finalOrderAmountForSubmission')) || 0;
 
-    document.getElementById('delivery-city')?.addEventListener('change', toggleSubmitButtonVisibility);
-    document.getElementById('delivery-address')?.addEventListener('input', toggleSubmitButtonVisibility);
+    // Add event listeners for delivery address fields (only add once)
+    const citySelect = document.getElementById('delivery-city');
+    const addressInput = document.getElementById('delivery-address');
+    if (citySelect && !citySelect.hasAttribute('data-listener-added')) {
+        citySelect.addEventListener('change', toggleSubmitButtonVisibility);
+        citySelect.setAttribute('data-listener-added', 'true');
+    }
+    if (addressInput && !addressInput.hasAttribute('data-listener-added')) {
+        addressInput.addEventListener('input', toggleSubmitButtonVisibility);
+        addressInput.setAttribute('data-listener-added', 'true');
+    }
    
     // Default: disable both buttons
     submitButton.disabled = true;
     creditCardImageButton.style.display = 'none';
 
-    if (!isValid) return;
+    // If form validation fails, stop here
+    if (!isValid) {
+        // Optional: Add visual feedback for invalid customer name
+        const nameField = document.getElementById('customer_name');
+        if (nameField && nameField.value.trim() && !isCustomerNameValid()) {
+            nameField.style.borderColor = '#dc3545'; // Red border for invalid name
+        } else if (nameField) {
+            nameField.style.borderColor = ''; // Reset border
+        }
+        return;
+    }
+
+    // Reset name field border color if validation passes
+    const nameField = document.getElementById('customer_name');
+    if (nameField) {
+        nameField.style.borderColor = ''; // Reset border
+    }
 
     if (paymentMethod === 'credit_point') {
         const lineUserId = sessionStorage.getItem('lineUserId');
@@ -1991,60 +2016,120 @@ function initializeCheckoutFormStateAndListeners(form, cartItems, initialStoredS
     }
 }
 
-    function validateCustomerName() {
-  const nameField = document.getElementById('customer_name');
-  const name = nameField.value.trim();
+function validateCustomerName() {
+    const nameField = document.getElementById('customer_name');
+    const name = nameField.value.trim();
 
-  // 1) No digits or symbols allowed
-  if (/[0-9!@#$%^&*(),.?":{}|<>_\-+=\\/\[\]]/.test(name)) {
-    Swal.fire('⚠️ 姓名不能包含數字或符號。請重新輸入。');
-    return false;
-  }
-
-  // 2) Pure Chinese? (Han script only)
-  if (/^[\p{Script=Han}]+$/u.test(name)) {
-    if (name.length < 2) {
-      Swal.fire('⚠️ 中文姓名應至少兩個字元。請重新輸入。');
-      return false;
+    // 1) No digits or symbols allowed
+    if (/[0-9!@#$%^&*(),.?":{}|<>_\-+=\\/\[\]]/.test(name)) {
+        Swal.fire('⚠️ 姓名不能包含數字或符號。請重新輸入。');
+        return false;
     }
+
+    // 2) Check for multiple spaces or consecutive spaces
+    const spaceCount = (name.match(/\s/g) || []).length;
+    if (spaceCount > 1) {
+        Swal.fire('⚠️ 姓名最多只能包含一個空格。請重新輸入。');
+        return false;
+    }
+    if (/\s{2,}/.test(name)) {
+        Swal.fire('⚠️ 姓名不能包含連續空格。請重新輸入。');
+        return false;
+    }
+
+    // 3) Pure Chinese? (Han script and single space only)
+    if (/^[\p{Script=Han}\s]*$/u.test(name) && /[\p{Script=Han}]/u.test(name)) {
+        const chineseOnly = name.replace(/\s/g, '');
+        if (chineseOnly.length < 2) {
+            Swal.fire('⚠️ 中文姓名應至少兩個字元。請重新輸入。');
+            return false;
+        }
+        return true;
+    }
+
+    // 4) Pure English? (letters and spaces only)
+    if (/^[A-Za-z\s]+$/.test(name)) {
+        const lettersOnly = name.replace(/\s/g, '');
+        if (lettersOnly.length < 2) {
+            Swal.fire('⚠️ 請輸入至少兩個字母的英文姓名。');
+            return false;
+        }
+        return true;
+    }
+
+    // 5) Mixed or other scripts: just require >=2 non-space chars
+    const nonSpaceChars = name.replace(/\s/g, '');
+    if ([...nonSpaceChars].length < 2) {
+        Swal.fire('⚠️ 姓名應至少兩個字元。請重新輸入。');
+        return false;
+    }
+    
     return true;
-  }
-
-  // 3) Pure English? (letters and spaces only)
-  if (/^[A-Za-z\s]+$/.test(name)) {
-    const parts = name.split(/\s+/);
-    if (parts.length > 2) {
-      Swal.fire('⚠️ 英文姓名僅能包含一個空格，例如：John Doe');
-      return false;
-    }
-    // Count letters (no spaces)
-    const lettersOnly = name.replace(/\s+/g, '');
-    if (lettersOnly.length < 2) {
-      Swal.fire('⚠️ 請輸入至少兩個字母的英文姓名。');
-      return false;
-    }
-    return true;
-  }
-
-  // 4) Mixed or other scripts: just require >=2 chars
-  if ([...name].length < 2) {
-    Swal.fire('⚠️ 姓名應至少兩個字元。請重新輸入。');
-    return false;
-  }
-  
-  return true;
 }
-    function validateFormFields() {
+
+function isCustomerNameValid() {
+    const nameField = document.getElementById('customer_name');
+    if (!nameField) return false;
+    
+    const name = nameField.value.trim();
+    
+    // Empty name
+    if (!name) return false;
+    
+    // 1) No digits or symbols allowed
+    if (/[0-9!@#$%^&*(),.?":{}|<>_\-+=\\/\[\]]/.test(name)) {
+        return false;
+    }
+
+    // 2) Check for multiple spaces or consecutive spaces
+    const spaceCount = (name.match(/\s/g) || []).length;
+    if (spaceCount > 1) {
+        return false; // More than one space not allowed
+    }
+    if (/\s{2,}/.test(name)) {
+        return false; // Consecutive spaces not allowed
+    }
+
+    // 3) Pure Chinese? (Han script only)
+    if (/^[\p{Script=Han}\s]*$/u.test(name) && /[\p{Script=Han}]/u.test(name)) {
+        const chineseOnly = name.replace(/\s/g, '');
+        if (chineseOnly.length < 2) {
+            return false;
+        }
+        return true;
+    }
+
+    // 4) Pure English? (letters and spaces only)
+    if (/^[A-Za-z\s]+$/.test(name)) {
+        const lettersOnly = name.replace(/\s/g, '');
+        if (lettersOnly.length < 2) {
+            return false;
+        }
+        return true;
+    }
+
+    // 5) Mixed or other scripts: just require >=2 non-space chars
+    const nonSpaceChars = name.replace(/\s/g, '');
+    if ([...nonSpaceChars].length < 2) {
+        return false;
+    }
+    
+    return true;
+}
+
+// Updated validateFormFields function
+function validateFormFields() {
     const isShippingSelected = shippingSelect.value !== "";
     const is711StoreSelectedIfApplicable = shippingSelect.value !== 'seven_eleven' || 
         (shippingSelect.value === 'seven_eleven' && sessionStorage.getItem('selectedStoreInfo'));
     
-    // Basic form fields validation
+    // Basic form fields validation INCLUDING customer name validation
     const basicFieldsValid = nameInput.value.trim() !== '' &&
+                            isCustomerNameValid() &&  // Add customer name validation
                             emailInput.checkValidity() && 
                             phoneInput.checkValidity();
     
-    // Additional validation for 宅配 (store_pickup)
+    // Additional validation for å®…é… (store_pickup)
     let deliveryAddressValid = true;
     if (shippingSelect.value === 'store_pickup') {
         const citySelect = document.getElementById('delivery-city');
