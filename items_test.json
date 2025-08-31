@@ -37,7 +37,7 @@
     "name": "開心果",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pistachio.jpg\"]",
     "description": "含維生素A 維生素E",
-    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "specs": {
       "原產地": "台灣",
       "成分": "開心果"
