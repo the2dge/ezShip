@@ -26,7 +26,7 @@
     "name": "南瓜子",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pumpkinseed.jpg\"]",
     "description": "有豐富不飽和脂肪酸 蛋白質 纖維素 鎂 鋅 抗氧化劑可: 放鬆神經 防頻尿夜尿促進鈣質吸收幫助睡眠…等營養素",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":180},{\"price\":360,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":180},{\"size\":\"1斤(600g)\",\"price\":350}]",
     "specs": {
       "原產地": "台灣",
       "成分": "南瓜子"
