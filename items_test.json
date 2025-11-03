@@ -125,7 +125,7 @@
     "name": "夏威夷豆",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/macadamia.jpg\"]",
     "description": "含優良油脂 蛋白質 膳食纖維 均衡營養 不過容易消化不良 腹瀉症狀或對堅果過敏者 避免食用",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":850}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":825}]",
     "specs": {
       "原產地": "台灣",
       "成分": "夏威夷豆"
