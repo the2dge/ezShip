@@ -47,7 +47,7 @@
   {
     "id": "A006",
     "name": "鹽焗帶皮腰果",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
     "title": "",
