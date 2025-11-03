@@ -65,7 +65,7 @@
   {
     "id": "A008",
     "name": "杏仁條",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":350},{\"size\":\"1斤(600g)\",\"price\":650}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\"]",
     "title": "",
