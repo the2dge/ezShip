@@ -312,7 +312,7 @@
     "name": "椰棗",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020787.jpg\"]",
     "description": "天然能量來源 高膳食纖維 豐富礦物質 含多種維生素 抗氧化特性 促進心血管健康 天然甜味替代品",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":400}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":230},{\"size\":\"1斤(600g)\",\"price\":450}]",
     "specs": {
       "原產地": "中東",
       "成分": "椰棗"
