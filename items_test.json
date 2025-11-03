@@ -59,7 +59,7 @@
     "name": "鹽焗帶皮腰果",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cashew_peelSmall.jpg\"]",
     "description": "有鈣 鎂 鉀 鐵 維生素B1.B2.B6",
-    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "帶皮腰果"
