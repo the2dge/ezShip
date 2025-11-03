@@ -279,7 +279,7 @@
     "name": "小青葡萄乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/grapes_green.jpg\"]",
     "description": "豐富維生素C 促進消化 保護心血管 補充水分與礦物質 抗氧化作用 低熱量適合減重",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":400}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"price\":360,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "中國新疆",
       "成分": "葡萄"
