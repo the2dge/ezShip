@@ -407,7 +407,7 @@
   {
     "id": "D005",
     "name": "杏仁小魚乾(葷)",
-    "pricing": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":680,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_fishlet.jpg\"]",
     "title": "",
