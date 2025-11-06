@@ -521,7 +521,7 @@
     "name": "原味乳酪絲",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cheese_slices.jpg\"]",
     "description": "植物蛋白質來源 低膽固醇 低飽和脂肪 豐富膳食纖維 無乳糖 口感酥脆低熱量小點心 素食友善",
-    "price": "[{\"price\":900,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1750}]",
+    "price": "[{\"price\":900,\"size\":\"半斤(300g)\"},{\"price\":1700,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "巴西",
       "成分": "乳酪"
