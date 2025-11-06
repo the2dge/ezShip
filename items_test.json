@@ -169,7 +169,7 @@
     "name": "黑豆",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/beans_black.jpg\"]",
     "description": "高蛋白 低脂肪 超強抗氧化力 降血脂 護心臟 穩定血糖預防糖尿病 補腎 抗衰老 促進腸道健康 鐵質與葉酸補血效果佳",
-    "price": "[{\"price\":130,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":230}]",
+    "price": "[{\"price\":130,\"size\":\"半斤(300g)\"},{\"price\":250,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "黑豆"
