@@ -477,7 +477,7 @@
     "name": "蒟蒻片",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/wood_fungus.jpg\"]",
     "description": "低熱量 低脂肪 豐富膳食纖維 延緩血糖上升 增加飽足感 促進腸道益菌生長 無麩質適合過敏體質者",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":580}]",
+    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "specs": {
       "原產地": "台灣",
       "成分": "蒟蒻"
