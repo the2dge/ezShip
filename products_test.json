@@ -254,7 +254,7 @@
   {
     "id": "C008",
     "name": "椰棗",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":230},{\"size\":\"1斤(600g)\",\"price\":450}]",
+    "pricing": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":450,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020787.jpg\"]",
     "title": "",
