@@ -110,7 +110,7 @@
   {
     "id": "A013",
     "name": "松子",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":650},{\"price\":1250,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":650,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1250}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pineseed.jpg\"]",
     "title": "",
