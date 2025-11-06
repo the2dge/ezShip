@@ -164,7 +164,7 @@
   {
     "id": "B004",
     "name": "綜合豆",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":130},{\"price\":230,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":130,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":250}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/beans_mixed.webp\"]",
     "title": "",
