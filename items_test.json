@@ -609,7 +609,7 @@
     "name": "紅麴納豆混搭南瓜子",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022662.jpg\"]",
     "description": "納豆降三高，南瓜子顧新血管\n混搭好吃又營業",
-    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":420}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "加拿大",
       "成分": "納豆，南瓜子"
