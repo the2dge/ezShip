@@ -257,7 +257,7 @@
     "name": "綜合葡萄乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020743.jpg\"]",
     "description": "豐富抗氧化物 心血管保護 促進消化與腸道健康 提升免疫力 抗發炎與抗癌潛力 補充水分與礦物質 促進腦部健康",
-    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":360}]",
+    "price": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":350,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "葡萄"
