@@ -400,7 +400,7 @@
     "name": "檸檬片",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020755.jpg\"]",
     "description": "富含維生素C 促進消化 抗氧化 淨化身體 提升代謝 清新口氣 護膚亮白",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
     "specs": {
       "原產地": "台灣",
       "成分": "檸檬"
