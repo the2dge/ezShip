@@ -356,7 +356,7 @@
     "name": "蔓越莓果乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/rasberries.jpg\"]",
     "description": "預防泌尿道感染 抗氧化 抗老化 保護心血管健康 促進腸道健康 有助口腔健康 提升免疫力",
-    "price": "[{\"price\":250,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":250},{\"size\":\"1斤(600g)\",\"price\":480}]",
     "specs": {
       "原產地": "美國",
       "成分": "蔓越莓"
