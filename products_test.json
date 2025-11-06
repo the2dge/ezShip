@@ -209,7 +209,7 @@
   {
     "id": "C003",
     "name": "綜合葡萄乾",
-    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":360}]",
+    "pricing": "[{\"price\":200,\"size\":\"半斤(300g)\"},{\"price\":350,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020743.jpg\"]",
     "title": "",
