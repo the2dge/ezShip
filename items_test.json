@@ -598,7 +598,7 @@
     "name": "紅麴納豆",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022661.jpg\"]",
     "description": "紅麴降三高，不硬好吃的納豆",
-    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":420,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":400,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "加拿大",
       "成分": "台灣紅麴/加拿大納豆"
