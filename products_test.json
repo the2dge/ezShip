@@ -362,7 +362,7 @@
   {
     "id": "C020",
     "name": "杏桃乾",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
+    "pricing": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022656.jpg\"]",
     "title": "",
