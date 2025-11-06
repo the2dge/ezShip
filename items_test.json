@@ -499,7 +499,7 @@
     "name": "杏仁小魚乾(葷)",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_fishlet.jpg\"]",
     "description": "補鈣強骨 含優質蛋白質 提供健康脂肪與抗氧化物 促進腦部健康 補充礦物質與維生素 增強體力與耐力",
-    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"price\":680,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":400,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁, 小魚"
