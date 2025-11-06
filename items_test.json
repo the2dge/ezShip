@@ -334,7 +334,7 @@
     "name": "迷你番茄乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020771.jpg\"]",
     "description": "富含抗氧化劑 促進心血管健康 促進消化健康 補充維生素與礦物質 有助於眼睛健康 低熱量且口感濃縮",
-    "price": "[{\"price\":220,\"size\":\"半斤(300g)\"},{\"price\":440,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":220},{\"size\":\"1斤(600g)\",\"price\":420}]",
     "specs": {
       "原產地": "台灣",
       "成分": "番茄"
