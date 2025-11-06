@@ -411,7 +411,7 @@
     "name": "愛文芒果青乾",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020752.jpg\"]",
     "description": "開胃促消化 富含維生素C 促進腸道健康 抗氧化 提升代謝 口感酸甜 解膩醒腦",
-    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":650,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"price\":350,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":650}]",
     "specs": {
       "原產地": "台灣",
       "成分": "愛文芒果"
