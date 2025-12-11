@@ -2,7 +2,7 @@
   {
     "id": "A001",
     "name": "原味花生",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"price\":300,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":150},{\"price\":250,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/peanuts.jpg\"]",
     "title": "荳荳精選花生",
@@ -77,15 +77,6 @@
     "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"size\":\"1斤(600g)\",\"price\":600}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/walnut.jpg\"]",
-    "title": "",
-    "category": "堅果"
-  },
-  {
-    "id": "A010",
-    "name": "非完整胡桃",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"size\":\"1斤(600g)\",\"price\":650}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pegans.jpg\"]",
     "title": "",
     "category": "堅果"
   },
