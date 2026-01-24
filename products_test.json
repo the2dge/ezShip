@@ -101,7 +101,7 @@
   {
     "id": "A013",
     "name": "松子",
-    "pricing": "[{\"price\":650,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1250}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":700},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pineseed.jpg\"]",
     "title": "",
@@ -455,15 +455,6 @@
     "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":800,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022837.jpg\"]",
-    "title": "",
-    "category": "休閒養生"
-  },
-  {
-    "id": "D013",
-    "name": "杏仁海藻牛扎糖",
-    "pricing": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":640,\"size\":\"1斤(600g)\"}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022653.jpg\"]",
     "title": "",
     "category": "休閒養生"
   },
