@@ -125,7 +125,7 @@
     "name": "松子",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pineseed.jpg\"]",
     "description": "含健康脂肪 含松子油酸 優質蛋白質來源 含抗氧化物與維生素 有豐富礦物質 支持腦部健康 適合素食與低醣飲食",
-    "price": "[{\"price\":650,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":1250}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":700},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "松子"
@@ -558,17 +558,6 @@
     "specs": {
       "原產地": "台灣",
       "成分": "薑黃, 杏仁"
-    }
-  },
-  "D013": {
-    "id": "D013",
-    "name": "杏仁海藻牛扎糖",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022653.jpg\"]",
-    "description": "香醇牛奶+杏仁+海藻提煉不甜的牛扎糖",
-    "price": "[{\"price\":325,\"size\":\"半斤(300g)\"},{\"price\":640,\"size\":\"1斤(600g)\"}]",
-    "specs": {
-      "原產地": "台灣",
-      "成分": "杏仁，牛奶，海藻糖"
     }
   },
   "C021": {
