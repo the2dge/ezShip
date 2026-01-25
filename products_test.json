@@ -344,7 +344,7 @@
   {
     "id": "C019",
     "name": "草莓乾",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":600}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":550,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020780.jpg\"]",
     "title": "",
