@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let allProductsData = []; // Store the original full list of products
     let allItemDetails = {};
     let currentFilterCategory = 'All'; // ADD state for the active filter, default to 'All'
+    let isCheckoutValid = false; // ✅ NEW: Track if checkout data is in sync with cart
 
     const sideCart = {
         aside: document.getElementById('side-cart'),
@@ -72,38 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         return total;
     }
-    //Validate Promo Code
-    /*
-    function validateDiscountCode(inputCode) {
-      const member = membershipData.find(m =>
-        m.discountCode.toLowerCase() === inputCode.trim().toLowerCase()
-      );
 
-      if (member) {
-        const tier = member.tier.toLowerCase();
-
-        // ✅ Save for later use (reward, display, etc.)
-        sessionStorage.setItem('discountCode', member.discountCode);
-        sessionStorage.setItem('discountTier', member.tier);
-       
-
-        switch (tier) {
-          case 'gold':
-            return 0.05;
-          case 'silver':
-            return 0.03;
-          case 'bronze':
-            return 0.01;
-          default:
-            return 0;
-        }
-      } else {
-        // ❌ Clear old values if invalid
-        sessionStorage.removeItem('discountCode');
-        sessionStorage.removeItem('discountTier'); 
-        return 0;
-      }
-    }*/
 
     //Read Discount Code pushed from GAS!
         let membershipData = []; // Store membership data globally
@@ -1252,6 +1222,42 @@ function removeDiscountFromCheckoutForm() {
         checkoutDiscountSection.style.display = 'none';
     }
 }
+
+// ✅ NEW: Function to disable/enable checkout submit buttons
+function setCheckoutButtonsState(enabled) {
+    const submitButton = document.querySelector('#final-submit-btn');
+    const creditCardButton = document.querySelector('#credit-card-wrapper');
+    
+    if (submitButton) {
+        submitButton.disabled = !enabled;
+        if (!enabled) {
+            submitButton.style.opacity = '0.5';
+            submitButton.style.cursor = 'not-allowed';
+            submitButton.title = '請先點擊「結帳」按鈕更新訂單';
+        } else {
+            submitButton.style.opacity = '1';
+            submitButton.style.cursor = 'pointer';
+            submitButton.title = '';
+        }
+    }
+    
+    if (creditCardButton) {
+        if (!enabled) {
+            creditCardButton.style.opacity = '0.5';
+            creditCardButton.style.pointerEvents = 'none';
+            creditCardButton.style.cursor = 'not-allowed';
+            creditCardButton.title = '請先點擊「結帳」按鈕更新訂單';
+        } else {
+            creditCardButton.style.opacity = '1';
+            creditCardButton.style.pointerEvents = 'auto';
+            creditCardButton.style.cursor = 'pointer';
+            creditCardButton.title = '';
+        }
+    }
+    
+    isCheckoutValid = enabled;
+}
+
     // --- View Switching ---
     function switchView(viewName) {
         currentView = viewName;
@@ -1679,6 +1685,7 @@ dropdown.appendChild(creditBalance);
 
 // --- Helper for "我訂購的商品" Title, List, and Totals Placeholders ---
 function renderOrderedItemsSummaryDOM(cartItems) {
+    console.log("Items are: ", cartItems);
     const itemsHeader = document.createElement('h2');
     itemsHeader.textContent = '結帳 -- 感謝您選擇荳荳先生';
     mainBody.checkoutWrapper.appendChild(itemsHeader);
@@ -2280,6 +2287,18 @@ shippingSelect.addEventListener('change', () => {
         const submitBtn = document.getElementById('final-submit-btn');
       // Prevent double submission
       if (submitBtn.disabled) return; 
+      
+      // ✅ NEW: Check if checkout is valid (in sync with cart)
+      if (!isCheckoutValid) {
+          Swal.fire({
+              icon: 'warning',
+              title: '請先更新訂單',
+              text: '您已修改購物車內容，請點擊側邊購物車的「結帳」按鈕以更新訂單資訊。',
+              confirmButtonText: '了解'
+          });
+          return;
+      }
+      
       if (!validateCustomerName()) return;
         submitBtn.disabled = true; // Disable immediately
         submitBtn.textContent = '處理中...';
@@ -2335,7 +2354,7 @@ const orderData = {
 
   lineUserName: sessionStorage.getItem('lineUserName') || null,
   lineUserId: sessionStorage.getItem('lineUserId') || null,
-  cartItems: cart
+  cartItems: cartItems  // ✅ FIXED: Use cartItems instead of cart
 };
 
 console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(orderData, null, 2));
@@ -2348,9 +2367,9 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
         body: JSON.stringify(orderData)
       });
 
-      // Reset state
-      cart = [];
-      localStorage.removeItem('cart'); 
+      // Reset state - ✅ FIXED: Remove only purchased items from cart
+      cart = cart.filter(item => !cartItems.some(ci => ci.cartKey === item.cartKey));
+      localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
       localStorage.removeItem('currentOrderId');
       sessionStorage.removeItem('cart')
       renderSideCart();
@@ -2367,6 +2386,17 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
     });
 
     creditCardImageButton.addEventListener('click', async () => {
+        // ✅ NEW: Check if checkout is valid (in sync with cart)
+        if (!isCheckoutValid) {
+            Swal.fire({
+                icon: 'warning',
+                title: '請先更新訂單',
+                text: '您已修改購物車內容，請點擊側邊購物車的「結帳」按鈕以更新訂單資訊。',
+                confirmButtonText: '了解'
+            });
+            return;
+        }
+        
         if (!validateFormFields()) {
             alert('請完整填寫表單並選擇有效的取貨方式。');
             return;
@@ -2440,9 +2470,9 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
 
           lineUserName: sessionStorage.getItem('lineUserName') || null,
           lineUserId: sessionStorage.getItem('lineUserId') || null,
-          cartItems: cart
+          cartItems: cartItems  // ✅ FIXED: Use cartItems instead of cart
         };
-        const itemsString = Array.isArray(cart)
+        const itemsString = Array.isArray(cartItems)
   ? cartItems.map(item => `${item.name} x${item.quantity}`).join(', ')
   : ''; 
 
@@ -2470,9 +2500,9 @@ console.log("Order Data for Submission to GAS (New Structure):", JSON.stringify(
         body: JSON.stringify(orderData)
       });   
 
-    // Reset state
-      cart = [];
-      localStorage.removeItem('cart'); 
+    // Reset state - ✅ FIXED: Remove only purchased items from cart
+      cart = cart.filter(item => !cartItems.some(ci => ci.cartKey === item.cartKey));
+      localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
       localStorage.removeItem('currentOrderId');
       sessionStorage.removeItem('cart')
       renderSideCart();
@@ -2938,6 +2968,10 @@ document.addEventListener('DOMContentLoaded', () => {
             sideCart.aside.classList.toggle('open');
             if (sideCart.aside.classList.contains('open')) {
                 renderSideCart(); // Ensure cart is up-to-date when opened
+                // ✅ NEW: Disable checkout buttons when cart opens (data may become out of sync)
+                if (currentView === 'checkout') {
+                    setCheckoutButtonsState(false);
+                }
             }
         });
 
@@ -2980,6 +3014,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Switch view and close side cart
                 switchView('checkout');
                 sideCart.aside.classList.remove('open');
+                
+                // ✅ NEW: Enable submit buttons since checkout is now in sync with cart
+                setCheckoutButtonsState(true);
                 
             } catch (error) {
                 console.error('Error rendering checkout page:', error);
