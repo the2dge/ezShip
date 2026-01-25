@@ -521,7 +521,7 @@
     "name": "特級紅棗",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020783.jpg\"]",
     "description": "補氣養血 助眠安神 抗氧化 促進消化 護肝解毒",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":580}]",
+    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "中國",
       "成分": "紅棗"
