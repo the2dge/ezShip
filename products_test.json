@@ -236,7 +236,7 @@
   {
     "id": "C007",
     "name": "水蜜桃乾",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":600}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"size\":\"1斤(600g)\",\"price\":550}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000020767.jpg\"]",
     "title": "",
