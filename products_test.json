@@ -434,7 +434,7 @@
   {
     "id": "D009",
     "name": "紅棗脆片",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":325},{\"price\":600,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dates_cuts.jpg\"]",
     "title": "",
