@@ -560,7 +560,7 @@
   {
     "id": "A015",
     "name": "榛果",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":850}]",
+    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"size\":\"1斤(600g)\",\"price\":850}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/hazelnuts.jpg\"]",
     "title": "",
