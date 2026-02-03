@@ -147,7 +147,7 @@
     "name": "榛果",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/hazelnuts.jpg\"]",
     "description": "心血管保護 超強抗氧化力 促進腦部健康 維持肌肉與骨骼健康 提升免疫力 控制血糖與增加飽足感",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":850}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"price\":850,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "榛果"
