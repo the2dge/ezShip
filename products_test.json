@@ -117,15 +117,6 @@
     "category": "堅果"
   },
   {
-    "id": "A015",
-    "name": "榛果",
-    "pricing": "[{\"price\":425,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/hazelnuts.jpg\"]",
-    "title": "",
-    "category": "堅果"
-  },
-  {
     "id": "B001",
     "name": "黑豆",
     "pricing": "[{\"price\":130,\"size\":\"半斤(300g)\"},{\"price\":250,\"size\":\"1斤(600g)\"}]",
