@@ -83,7 +83,7 @@
   {
     "id": "A011",
     "name": "完整胡桃",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":425},{\"size\":\"1斤(600g)\",\"price\":820}]",
+    "pricing": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022657.jpg\"]",
     "title": "",
