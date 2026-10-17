@@ -416,7 +416,7 @@
   {
     "id": "D010",
     "name": "枸杞",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":550,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"price\":275,\"size\":\"半斤(300g)\"},{\"price\":500,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/gogiberries.jpg\"]",
     "title": "",
