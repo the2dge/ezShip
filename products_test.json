@@ -173,7 +173,7 @@
   {
     "id": "C001",
     "name": "甘草橄欖",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":380}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":200},{\"size\":\"1斤(600g)\",\"price\":360}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/olives.jpg\"]",
     "title": "",
