@@ -371,7 +371,7 @@
   {
     "id": "D004",
     "name": "紅棗核桃",
-    "pricing": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"price\":800,\"size\":\"1斤(600g)\"}]",
+    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":400},{\"size\":\"1斤(600g)\",\"price\":800}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022659.jpg\"]",
     "title": "",
