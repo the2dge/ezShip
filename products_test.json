@@ -414,15 +414,6 @@
     "category": "乾果"
   },
   {
-    "id": "D009",
-    "name": "紅棗脆片",
-    "pricing": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/dates_cuts.jpg\"]",
-    "title": "",
-    "category": "乾果"
-  },
-  {
     "id": "D010",
     "name": "枸杞",
     "pricing": "[{\"size\":\"半斤(300g)\",\"price\":300},{\"price\":550,\"size\":\"1斤(600g)\"}]",
