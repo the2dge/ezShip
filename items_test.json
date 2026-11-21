@@ -80,8 +80,8 @@
     "id": "A008",
     "name": "杏仁條",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/almond_slicesSmall.jpg\"]",
-    "description": "有維生素B群E醣類 多酚類鈣 鉀 鐵等等…礦物質",
-    "price": "[{\"price\":450,\"size\":\"半斤(300g)\"},{\"price\":850,\"size\":\"1斤(600g)\"}]",
+    "description": "有維生素B群E醣類 多酚類鈣 鉀 鐵等…礦物質",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":450},{\"price\":850,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "台灣",
       "成分": "杏仁"
@@ -701,17 +701,6 @@
     "specs": {
       "原產地": "美國",
       "成分": "紅核桃"
-    }
-  },
-  "E01": {
-    "id": "E01",
-    "name": "TEST",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pinball.jpeg\"]",
-    "description": "TEST",
-    "price": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
-    "specs": {
-      "原產地": "Taiwan",
-      "成分": "Water"
     }
   }
 }
