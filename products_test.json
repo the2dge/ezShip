@@ -529,5 +529,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000037115.jpg\"]",
     "title": "紅核桃",
     "category": "堅果"
+  },
+  {
+    "id": "E01",
+    "name": "TEST",
+    "pricing": "[{\"price\":100,\"size\":\"半斤(300g)\"},{\"price\":200,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/pinball.jpeg\"]",
+    "title": "TEST",
+    "category": "美妝保健"
   }
 ]
