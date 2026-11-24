@@ -545,16 +545,7 @@
     "pricing": "[{\"price\":700,\"size\":\"半斤(300g)\"},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
     "imgUrl": "",
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000037117.jpg\"]",
-    "title": "",
-    "category": ""
-  },
-  {
-    "id": "T001",
-    "name": "堅果",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":100},{\"price\":200,\"size\":\"1斤(600g)\"}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000028461.jpg\"]",
-    "title": "堅果",
+    "title": "巴西堅果",
     "category": "堅果"
   }
 ]
