@@ -531,15 +531,6 @@
     "category": "堅果"
   },
   {
-    "id": "A032",
-    "name": "榛果",
-    "pricing": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"size\":\"1斤(600g)\",\"price\":950}]",
-    "imgUrl": "",
-    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/hazelnuts.jpg\"]",
-    "title": "榛果",
-    "category": "堅果"
-  },
-  {
     "id": "A030",
     "name": "榛果",
     "pricing": "[{\"size\":\"半斤(300g)\",\"price\":500},{\"size\":\"1斤(600g)\",\"price\":950}]",
@@ -547,5 +538,14 @@
     "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000037228.jpg\"]",
     "title": "榛果",
     "category": "堅果"
+  },
+  {
+    "id": "A033",
+    "name": "巴西豆",
+    "pricing": "[{\"price\":700,\"size\":\"半斤(300g)\"},{\"price\":1350,\"size\":\"1斤(600g)\"}]",
+    "imgUrl": "",
+    "imgUrls": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000037117.jpg\"]",
+    "title": "",
+    "category": ""
   }
 ]
