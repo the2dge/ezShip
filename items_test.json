@@ -298,12 +298,12 @@
   },
   "C009": {
     "id": "C009",
-    "name": "乾燥無花果",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/figs.jpg\"]",
+    "name": "無花果",
+    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/5f00e5b4-1464-458b-8064-ef0726f3857a-1_all_12723.jpg\"]",
     "description": "高膳食纖維 豐富鈣質 補充鉀與鎂 含抗氧化物質 天然糖分來源 促進消化 助於心血管健康",
-    "price": "[{\"size\":\"半斤(300g)\",\"price\":275},{\"price\":500,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":275},{\"size\":\"1斤(600g)\",\"price\":500}]",
     "specs": {
-      "原產地": "中東",
+      "原產地": "土耳其",
       "成分": "無花果"
     }
   },
