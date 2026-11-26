@@ -499,7 +499,7 @@
     "name": "原味乳酪絲",
     "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/cheese_slices.jpg\"]",
     "description": "植物蛋白質來源 低膽固醇 低飽和脂肪 豐富膳食纖維 無乳糖 口感酥脆低熱量小點心 素食友善",
-    "price": "[{\"price\":850,\"size\":\"半斤(300g)\"},{\"price\":1700,\"size\":\"1斤(600g)\"}]",
+    "price": "[{\"size\":\"半斤(300g)\",\"price\":850},{\"price\":1650,\"size\":\"1斤(600g)\"}]",
     "specs": {
       "原產地": "巴西",
       "成分": "乳酪"
@@ -591,17 +591,6 @@
     "specs": {
       "原產地": "台灣",
       "成分": "愛文芒果"
-    }
-  },
-  "D014": {
-    "id": "D014",
-    "name": "素食乳絡鬆",
-    "imgUrl": "[\"https://mrbeana1200.s3.ap-northeast-2.amazonaws.com/bean0629/1000022839.jpg\"]",
-    "description": "有加乳絡的素肉鬆，富含植物蛋白，兼具補鈣功能",
-    "price": "[{\"price\":300,\"size\":\"半斤(300g)\"},{\"price\":550,\"size\":\"1斤(600g)\"}]",
-    "specs": {
-      "原產地": "台灣",
-      "成分": "豆類，芝麻，乳酪絲"
     }
   },
   "D015": {
